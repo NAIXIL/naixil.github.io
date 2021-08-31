@@ -71,6 +71,41 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-W-3-Hyper-V虚拟机映射端口到宿主机" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/31/W-3-Hyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%98%A0%E5%B0%84%E7%AB%AF%E5%8F%A3%E5%88%B0%E5%AE%BF%E4%B8%BB%E6%9C%BA/" class="article-date">
+  <time class="dt-published" datetime="2021-08-31T07:13:11.162Z" itemprop="datePublished">2021-08-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>映射虚拟机端口5000到宿主机的6000</p>
+<p>netsh interface portproxy add v4tov4 listenport=6000 connectport=5000 connectaddress=101.7.186.201(虚拟机IP)</p>
+<p>删除端口映射：</p>
+<p>netsh interface portproxy delete v4tov4 listenport=6000</p>
+<p>显示端口：</p>
+<p>netsh interface portproxy show all</p>
+<p>netsh interface portproxy show v4tov4</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/31/W-3-Hyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%98%A0%E5%B0%84%E7%AB%AF%E5%8F%A3%E5%88%B0%E5%AE%BF%E4%B8%BB%E6%9C%BA/" data-id="ckszqho1i0000vsheg6p7d0pm" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/08/31/hello-world/" class="article-date">
@@ -151,6 +186,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/08/31/W-3-Hyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%98%A0%E5%B0%84%E7%AB%AF%E5%8F%A3%E5%88%B0%E5%AE%BF%E4%B8%BB%E6%9C%BA/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2021/08/31/hello-world/">Hello World</a>
