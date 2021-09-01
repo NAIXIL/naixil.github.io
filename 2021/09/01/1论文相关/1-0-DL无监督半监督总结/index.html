@@ -227,30 +227,30 @@
 
       
         <h1 id="进度安排"><a href="#进度安排" class="headerlink" title="进度安排"></a>进度安排</h1><ul>
-<li><input disabled type="checkbox"> 总结研究进展<ul>
-<li><input disabled type="checkbox"> 渠道<ul>
-<li><input disabled type="checkbox"> 微信文章</li>
-<li><input disabled type="checkbox"> 知乎</li>
-<li><input disabled type="checkbox"> CSDN</li>
-<li><input disabled type="checkbox"> 博客园</li>
-<li><input disabled type="checkbox"> Github</li>
-<li><input disabled type="checkbox"> 搜索引擎搜索</li>
-<li><input disabled type="checkbox"> 桂谦发的论文</li>
-<li><input disabled type="checkbox"> B站</li>
+<li><input disabled="" type="checkbox"> 总结研究进展<ul>
+<li><input disabled="" type="checkbox"> 渠道<ul>
+<li><input disabled="" type="checkbox"> 微信文章</li>
+<li><input disabled="" type="checkbox"> 知乎</li>
+<li><input disabled="" type="checkbox"> CSDN</li>
+<li><input disabled="" type="checkbox"> 博客园</li>
+<li><input disabled="" type="checkbox"> Github</li>
+<li><input disabled="" type="checkbox"> 搜索引擎搜索</li>
+<li><input disabled="" type="checkbox"> 桂谦发的论文</li>
+<li><input disabled="" type="checkbox"> B站</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><input disabled type="checkbox"> 找适合的实现好TSC的轮子<ul>
-<li><input disabled type="checkbox"> </li>
+<li><input disabled="" type="checkbox"> 找适合的实现好TSC的轮子<ul>
+<li><input disabled="" type="checkbox"> </li>
 </ul>
 </li>
-<li><input disabled type="checkbox"> 复现SOTA方法用于RTSC<ul>
+<li><input disabled="" type="checkbox"> 复现SOTA方法用于RTSC<ul>
 <li>FixMatch模型，2020。(MixMatch的改进)<ul>
-<li><input disabled type="checkbox"> 论文解读：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_20481015/article/details/104545204">https://blog.csdn.net/qq_20481015/article/details/104545204</a></li>
-<li><input disabled type="checkbox"> <a target="_blank" rel="noopener" href="https://github.com/google-research/fixmatch">https://github.com/google-research/fixmatch</a></li>
-<li><input disabled type="checkbox"> MixMatch,FixMatch对比：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39901859/article/details/107341619">https://blog.csdn.net/weixin_39901859/article/details/107341619</a></li>
-<li><input disabled type="checkbox"> FixMatch分析：<a target="_blank" rel="noopener" href="https://zhen8838.github.io/2020/02/06/ssl-fixmatch/">https://zhen8838.github.io/2020/02/06/ssl-fixmatch/</a></li>
+<li><input disabled="" type="checkbox"> 论文解读：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_20481015/article/details/104545204">https://blog.csdn.net/qq_20481015/article/details/104545204</a></li>
+<li><input disabled="" type="checkbox"> <a target="_blank" rel="noopener" href="https://github.com/google-research/fixmatch">https://github.com/google-research/fixmatch</a></li>
+<li><input disabled="" type="checkbox"> MixMatch,FixMatch对比：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39901859/article/details/107341619">https://blog.csdn.net/weixin_39901859/article/details/107341619</a></li>
+<li><input disabled="" type="checkbox"> FixMatch分析：<a target="_blank" rel="noopener" href="https://zhen8838.github.io/2020/02/06/ssl-fixmatch/">https://zhen8838.github.io/2020/02/06/ssl-fixmatch/</a></li>
 </ul>
 </li>
 </ul>
@@ -356,7 +356,7 @@
 <li>用训练出来的模型给（未标记数据集$\mu$）中的每个样本打上伪标记得到（新的数据集$\hat\mu$）</li>
 <li>挑选出模型的预测类别属于尾部类别的样本作为候选集$\hat s$加入到已标记集合中<ul>
 <li>挑选的方式：类别越少，入选概率越大。</li>
-<li><img src="../images/image-20210826164103549.png" alt="image-20210826164103549" style="zoom:67%;"></li>
+<li><img src="../images/image-20210826164103549.png" alt="image-20210826164103549" style="zoom:67%;" /></li>
 </ul>
 </li>
 </ol>
@@ -394,7 +394,7 @@
 </li>
 </ol>
 <h3 id="DL训练技巧"><a href="#DL训练技巧" class="headerlink" title="DL训练技巧"></a>DL训练技巧</h3><p>关于LSTM &amp; GRU训练技巧：</p>
-<img src="../images/image-20201126163439377.png" alt="image-20201126163439377" style="zoom:30%;">
+<img src="../images/image-20201126163439377.png" alt="image-20201126163439377" style="zoom:30%;" />
 
 <p>个人的经验是：</p>
 <p>【1】在数据量不大的情况下，结合特征工程并应用 GBRT 或者 XGboost 等集成学习方法获得预测效果比直接应用 LSTM 等模型效果会更好。</p>
@@ -409,14 +409,14 @@
 <li>Qin, Yao, et al.“A Dual-Stage Attention-Based Recurrent Neural Network for Time Series Prediction.”<em>IJCAI’17</em></li>
 </ul>
 <h3 id="重采样方法比较"><a href="#重采样方法比较" class="headerlink" title="重采样方法比较"></a>重采样方法比较</h3><ul>
-<li><input checked disabled type="checkbox"> 1 pandas的插值</li>
-<li><input checked disabled type="checkbox"> 2 pandas的resample</li>
-<li><input checked disabled type="checkbox"> 3 tslearn的timeseriesResample</li>
-<li><input checked disabled type="checkbox"> 4 scipy</li>
-<li><input checked disabled type="checkbox"> cubic spline等  这个对于长度有不同的影响，设置的段了后半部分取不到</li>
+<li><input checked="" disabled="" type="checkbox"> 1 pandas的插值</li>
+<li><input checked="" disabled="" type="checkbox"> 2 pandas的resample</li>
+<li><input checked="" disabled="" type="checkbox"> 3 tslearn的timeseriesResample</li>
+<li><input checked="" disabled="" type="checkbox"> 4 scipy</li>
+<li><input checked="" disabled="" type="checkbox"> cubic spline等  这个对于长度有不同的影响，设置的段了后半部分取不到</li>
 </ul>
 <p><strong>结论：</strong>Scipy的不适合重采样，因为插值不会在保证数据趋势的前提下缩减数据量。还是TSlearn的TSR最好</p>
-<h3 id="自训练（-Self-train-）"><a href="#自训练（-Self-train-）" class="headerlink" title="自训练（$Self-train$）"></a>自训练（$Self-train$）</h3><img src="../images/image-20210826163545932.png" alt="image-20210826163545932" style="zoom:50%;">
+<h3 id="自训练（-Self-train-）"><a href="#自训练（-Self-train-）" class="headerlink" title="自训练（$Self-train$）"></a>自训练（$Self-train$）</h3><img src="../images/image-20210826163545932.png" alt="image-20210826163545932" style="zoom:50%;" />
 
 <h3 id="伪标签技术（-pseudo-labled-data-）"><a href="#伪标签技术（-pseudo-labled-data-）" class="headerlink" title="伪标签技术（$pseudo-labled\ data$）"></a>伪标签技术（$pseudo-labled\ data$）</h3><ul>
 <li>论文：<code>Pseudo-Label : The Simple and Efficient Semi-Supervised Learning Method for Deep Neural Networks</code></li>
@@ -466,9 +466,9 @@
 <h3 id="数值稳定性"><a href="#数值稳定性" class="headerlink" title="数值稳定性"></a>数值稳定性</h3><p>避免梯度消失（可以由sigmod激活函数导致）和梯度爆炸（这个是由于每一层的输出的值太大）</p>
 <h4 id="权重初始化"><a href="#权重初始化" class="headerlink" title="权重初始化"></a>权重初始化</h4><ol>
 <li>随机初始化：正态分布权重。这种方法对小网络可以，但是对中大规模的网络并不好</li>
-<li>Xavier初始化：<img src="../images/image-20210829172829722.png" alt="image-20210829172829722" style="zoom:33%;"></li>
+<li>Xavier初始化：<img src="../images/image-20210829172829722.png" alt="image-20210829172829722" style="zoom:33%;" /></li>
 </ol>
-<h4 id="激活函数选取"><a href="#激活函数选取" class="headerlink" title="激活函数选取"></a>激活函数选取</h4><img src="../images/image-20210829173306181.png" alt="image-20210829173306181" style="zoom:50%;">
+<h4 id="激活函数选取"><a href="#激活函数选取" class="headerlink" title="激活函数选取"></a>激活函数选取</h4><img src="../images/image-20210829173306181.png" alt="image-20210829173306181" style="zoom:50%;" />
 
 
     </div>
@@ -584,7 +584,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -152,6 +152,118 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/2PythonStudy/Py-5-Numpy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/01/2PythonStudy/Py-5-Numpy/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-01 11:25:44" itemprop="dateCreated datePublished" datetime="2021-09-01T11:25:44+08:00">2021-09-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-13 16:25:54" itemprop="dateModified" datetime="2021-08-13T16:25:54+08:00">2021-08-13</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Numpy篇"><a href="#Numpy篇" class="headerlink" title="Numpy篇"></a>Numpy篇</h1><h2 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h2><h3 id="大小"><a href="#大小" class="headerlink" title="大小"></a>大小</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.size</span><br><span class="line">X.shapo</span><br></pre></td></tr></table></figure>
+
+<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3><ol>
+<li>单行或者区域</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 假设X是一个二维数组</span></span><br><span class="line">X[<span class="number">1</span>,:] <span class="comment"># 第一行的所有</span></span><br><span class="line">X[<span class="number">1</span>, <span class="number">2</span>:<span class="number">5</span>]</span><br><span class="line">X[<span class="number">1</span> : ] <span class="comment"># 第一行到往下的所有行</span></span><br><span class="line"><span class="comment"># X是一个三维数组</span></span><br><span class="line">X[<span class="number">1</span>] <span class="comment"># X的第一个矩阵，编号从0开始，下同</span></span><br><span class="line"><span class="built_in">print</span>(x[<span class="number">1</span>,<span class="number">2</span>]) <span class="comment"># X的第一个矩阵，第2行</span></span><br><span class="line">x[::-<span class="number">1</span>] <span class="comment"># 数组逆序取出来</span></span><br><span class="line"></span><br><span class="line">x[::<span class="number">3</span>, ::<span class="number">2</span>] <span class="comment"># 行隔3行取，列是隔2列取</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>任意多行</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 取想要的行</span></span><br><span class="line"></span><br><span class="line">x = np.random.randint(<span class="number">0</span>, <span class="number">10</span>, size=(<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line">y = <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">4</span>,<span class="number">2</span>) <span class="comment"># 0,2</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="built_in">print</span>(y)</span><br><span class="line"><span class="built_in">print</span>(x[[<span class="number">0</span>,<span class="number">2</span>]])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line">[[<span class="number">1</span> <span class="number">2</span> <span class="number">7</span> <span class="number">8</span>]</span><br><span class="line"> [<span class="number">5</span> <span class="number">0</span> <span class="number">8</span> <span class="number">5</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">5</span> <span class="number">5</span> <span class="number">9</span>]]</span><br><span class="line">range(<span class="number">0</span>, <span class="number">4</span>, <span class="number">2</span>)</span><br><span class="line">[[<span class="number">1</span> <span class="number">2</span> <span class="number">7</span> <span class="number">8</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">5</span> <span class="number">5</span> <span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="生成数组"><a href="#生成数组" class="headerlink" title="生成数组"></a>生成数组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.randint(<span class="number">0</span>, <span class="number">10</span>, size=(<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 生成随机二维数组</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.arange(<span class="number">1</span>,<span class="number">10</span>,<span class="number">1</span>, dtype=<span class="string">&#x27;float&#x27;</span>) <span class="comment"># 1~10步长为1</span></span><br><span class="line">np.linspace(<span class="number">0</span>, <span class="number">19</span>, <span class="number">300</span>, endpoint=<span class="literal">True</span>, dtype=<span class="string">&#x27;float&#x27;</span>) <span class="comment"># 0~19之间生成300个数组,endpoint包不包括19</span></span><br><span class="line">np.random.randn(<span class="number">3</span>)  <span class="comment"># 生成一个1*3随机数组</span></span><br><span class="line">np.random.randn(<span class="number">9</span>,<span class="number">3</span>)  <span class="comment"># 生成一个9*3随机数组</span></span><br><span class="line">np.random.randint(<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>)  <span class="comment"># 随机生成整型数组（起始， 结束， 数组大小）</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="展平数组"><a href="#展平数组" class="headerlink" title="展平数组"></a>展平数组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arrayX.ravel() <span class="comment"># 将一个数组展平成一个1x*的数组</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="函数的拟合"><a href="#函数的拟合" class="headerlink" title="函数的拟合"></a>函数的拟合</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">x = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>,<span class="number">70</span>,<span class="number">80</span>]</span><br><span class="line">x = np.array(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;x is :\n&#x27;</span>,x)</span><br><span class="line">num = [<span class="number">174</span>,<span class="number">236</span>,<span class="number">305</span>,<span class="number">334</span>,<span class="number">349</span>,<span class="number">351</span>,<span class="number">342</span>,<span class="number">323</span>]</span><br><span class="line">y = np.array(num)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;y is :\n&#x27;</span>,y)</span><br><span class="line"><span class="comment"># f1 为各项的系数，3 表示想要拟合的最高次项是多少。</span></span><br><span class="line">f1 = np.polyfit(x, y, <span class="number">3</span>)</span><br><span class="line"><span class="comment"># p1 为拟合的多项式表达式</span></span><br><span class="line">p1 = np.poly1d(f1)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;p1 is :\n&#x27;</span>,p1)</span><br><span class="line"></span><br><span class="line">plt.plot(x, y, <span class="string">&#x27;s&#x27;</span>,label=<span class="string">&#x27;original values&#x27;</span>)</span><br><span class="line">yvals = p1(x) <span class="comment">#拟合y值</span></span><br><span class="line">plt.plot(x, yvals, <span class="string">&#x27;r&#x27;</span>,label=<span class="string">&#x27;polyfit values&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> curve_fit</span><br><span class="line">x = [<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>,<span class="number">70</span>]</span><br><span class="line">x = np.array(x)</span><br><span class="line">num = [<span class="number">453</span>,<span class="number">482</span>,<span class="number">503</span>,<span class="number">508</span>,<span class="number">498</span>,<span class="number">479</span>]</span><br><span class="line">y = np.array(num)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里的函数可以自定义任意形式。</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">x, a, b,c</span>):</span></span><br><span class="line">    <span class="keyword">return</span> a*np.sqrt(x)*(b*np.square(x)+c)</span><br><span class="line"></span><br><span class="line"><span class="comment"># popt返回的是给定模型的最优参数。我们可以使用pcov的值检测拟合的质量，其对角线元素值代表着每个参数的方差。</span></span><br><span class="line">popt, pcov = curve_fit(func, x, y)</span><br><span class="line">a = popt[<span class="number">0</span>] </span><br><span class="line">b = popt[<span class="number">1</span>]</span><br><span class="line">c = popt[<span class="number">2</span>]</span><br><span class="line">yvals = func(x,a,b,c) <span class="comment">#拟合y值</span></span><br><span class="line">plot1 = plt.plot(x, y, <span class="string">&#x27;s&#x27;</span>,label=<span class="string">&#x27;original values&#x27;</span>)</span><br><span class="line">plot2 = plt.plot(x, yvals, <span class="string">&#x27;r&#x27;</span>,label=<span class="string">&#x27;polyfit values&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="加载txt文件"><a href="#加载txt文件" class="headerlink" title="加载txt文件"></a>加载txt文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># delimiter：选择分隔符；skiprows：选择跳过的行数；</span></span><br><span class="line">wineq_numpy = np.loadtxt(wine_path, dtype=np.float32, delimiter=<span class="string">&#x27;;&#x27;</span>, skiprows=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组扩维"><a href="#数组扩维" class="headerlink" title="数组扩维"></a>数组扩维</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.array(np.random.randn(8, 3))</span><br><span class="line">x.shape  # (8, 3)</span><br><span class="line">x[None].shape  #(1, 8, 3)</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除数组中nan值"><a href="#删除数组中nan值" class="headerlink" title="删除数组中nan值"></a>删除数组中nan值</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">importy numpy <span class="keyword">as</span> np</span><br><span class="line">tem0 = tem0[~np.isnan(tem0)]</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/2PythonStudy/Py-4-Torch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -270,7 +382,7 @@
 <li>报告K个验证集误差的平均</li>
 <li>通常K=5或者10。一般数据量越小，K越大</li>
 </ol>
-<h2 id="欠拟合与过拟合"><a href="#欠拟合与过拟合" class="headerlink" title="欠拟合与过拟合"></a>欠拟合与过拟合</h2><img src="../images/image-20210816225759426.png" alt="image-20210816225759426" style="zoom:67%;">
+<h2 id="欠拟合与过拟合"><a href="#欠拟合与过拟合" class="headerlink" title="欠拟合与过拟合"></a>欠拟合与过拟合</h2><img src="../images/image-20210816225759426.png" alt="image-20210816225759426" style="zoom:67%;" />
 
 <p>数据集简单的情况下，模型容量(表示拟合各种函数的能力)复杂，容易过拟合；</p>
 <p>数据集复杂，模型容量简单，容易欠拟合。</p>
@@ -506,21 +618,21 @@
 <li>把Windows的EDGE DEV作为Ubuntu的默认浏览器<ol>
 <li>import webbrowser</li>
 <li>webbrowser.register(‘msedge’,None,webbrowser.GenericBrowser(‘/usr/bin/msedge’))</li>
-<li>c.NotebookApp.browser=’msedge’<img src="../images/image-20210206135856519.png" alt="image-20210206135856519" style="zoom: 33%;"></li>
+<li>c.NotebookApp.browser=’msedge’<img src="../images/image-20210206135856519.png" alt="image-20210206135856519" style="zoom: 33%;" /></li>
 </ol>
 </li>
 <li>换命令模式 wq!退出</li>
 </ol>
 </li>
 <li><p>输入jupyter notebook 此时你的EDGE浏览器会访问localhost:8888/tree，这里我配置的时候显示</p>
-<img src="../images/image-20210206140917586.png" alt="image-20210206140917586" style="zoom:33%;"></li>
+<img src="../images/image-20210206140917586.png" alt="image-20210206140917586" style="zoom:33%;" /></li>
 </ol>
 <p><strong>这里我也不知道为啥，有知道的欢迎告知。</strong></p>
 <p>我的解决办法就是在ubuntu终端里面输入ifconfig查看当前WSL的ip地址，比如我的是</p>
-<img src="../images/image-20210206141119912.png" alt="image-20210206141119912" style="zoom:33%;">
+<img src="../images/image-20210206141119912.png" alt="image-20210206141119912" style="zoom:33%;" />
 
 <p>那么就把localhost换成IP地址172.27.118.134就行了，如下图就可以访问了。</p>
-<img src="../images/image-20210206141244301.png" alt="image-20210206141244301" style="zoom:50%;">
+<img src="../images/image-20210206141244301.png" alt="image-20210206141244301" style="zoom:50%;" />
 
 <h2 id="多虚拟环境配置"><a href="#多虚拟环境配置" class="headerlink" title="多虚拟环境配置"></a>多虚拟环境配置</h2><p>这里不推荐安装virtualenvwrapper，降低学习成本，而且安装了jupyter notebook之后也不需要频繁激活虚拟环境。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv </span><br><span class="line"><span class="comment"># 在/root（这里笔者以root用户登录的）文件夹下新建一个Virtualevs的文件夹用来存放虚拟环境</span></span><br><span class="line">mkdir /root/Virtualenvs</span><br><span class="line">cd /root/Virtualenvs</span><br><span class="line"><span class="comment"># 建立虚拟环境名字为‘tensorflow’</span></span><br><span class="line">virtualenv -p /usr/<span class="built_in">bin</span>/python3<span class="number">.8</span> tensorflow</span><br><span class="line"><span class="comment"># 激活虚拟环境配置jupyter notebook</span></span><br><span class="line">source /root/Virtualenvs/tensorflow/<span class="built_in">bin</span>/avtivate</span><br><span class="line"><span class="comment"># 这里终端应该是类似（tensorflow）...# 这种的形式，就说明进入到了虚拟环境，可以pip list查看一下安装的包，应该是 之后setuptools什么的</span></span><br><span class="line">ModuleNotFoundError: No module named <span class="string">&#x27;jupyter_nbextensions_configurator&#x27;</span></span><br><span class="line">python -m ipykernel install --name tensorflow --display-name tensorflow</span><br><span class="line"><span class="comment"># 再打开jupyter notebook之后就可以在new那里看到新建的虚拟环境了</span></span><br><span class="line">jupyter notebook</span><br><span class="line"><span class="comment"># 而且这样之后即使deactivate虚拟环境之后，在基础的那个环境里面打开jupyter notebook之后也可以选择虚拟环境</span></span><br></pre></td></tr></table></figure>
@@ -528,23 +640,23 @@
 <p>扩展安装</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter_contrib_nbextensions -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/ </span><br><span class="line">jupyter contrib nbextension install  --user</span><br><span class="line">pip install jupyter_nbextensions_configurator -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/</span><br><span class="line">jupyter nbextensions_configurator <span class="built_in">enable</span> --user</span><br><span class="line"><span class="comment"># 这之后就可以看到Nbextension，复选框选择哪个就是激活哪个</span></span><br></pre></td></tr></table></figure>
 
-<img src="../images/image-20210206144358079.png" alt="image-20210206144358079" style="zoom: 25%;">
+<img src="../images/image-20210206144358079.png" alt="image-20210206144358079" style="zoom: 25%;" />
 
 <h1 id="浪潮jupyter访问："><a href="#浪潮jupyter访问：" class="headerlink" title="浪潮jupyter访问："></a>浪潮jupyter访问：</h1><h2 id="新建开发环境"><a href="#新建开发环境" class="headerlink" title="新建开发环境"></a>新建开发环境</h2><p>使用tmux命令启动一个新的会话运行<code>jupyter lab</code></p>
 <p>依次输入如下命令：</p>
 <p><img src="/../images/image-20210730143240613.png" alt="image-20210730143240613"></p>
-<img src="../images/image-20210730143309274.png" alt="image-20210730143309274" style="zoom:50%;">
+<img src="../images/image-20210730143309274.png" alt="image-20210730143309274" style="zoom:50%;" />
 
 <p>记住jupyter的端口号：8888</p>
 <p>tmux的返回原来的终端：先按下Ctrl+B 再按下D，其他命令自行网络搜索。</p>
 <p>首先在本机的浏览器输入开发环境8888端口对应的101.7.186.128的端口（也即浏览器打开101.7.186.128:57663/），查看8888端口对应的浪潮主机端口方式见下图：</p>
-<img src="../images/image-20210730144015314.png" alt="image-20210730144015314" style="zoom:33%;">
+<img src="../images/image-20210730144015314.png" alt="image-20210730144015314" style="zoom:33%;" />
 
 <p>能打开则代表可以连接上。（默认密码是123，更改方式可以在开发环境的shell里面输入，<code>jupyter server password</code>进行更改）</p>
-<img src="../images/image-20210730144440658.png" alt="image-20210730144440658" style="zoom:33%;">
+<img src="../images/image-20210730144440658.png" alt="image-20210730144440658" style="zoom:33%;" />
 
 <p>如果打不开的话，转第二节：</p>
-<img src="../images/image-20210730144233395.png" alt="image-20210730144233395" style="zoom:50%;">
+<img src="../images/image-20210730144233395.png" alt="image-20210730144233395" style="zoom:50%;" />
 
 <h2 id="本地cmd操作"><a href="#本地cmd操作" class="headerlink" title="本地cmd操作"></a>本地cmd操作</h2><p>本机的命令行界面输入：</p>
 <p><code>ssh -p 42239  -N -f -L localhost:8889:localhost:8888 root@101.7.186.128</code></p>
@@ -554,7 +666,7 @@
 <p>回车之后不显示密码错误，代表已经建立连接了。下面的这个终端不要退出，需要保持连接。</p>
 <p><img src="/../images/image-20210730143822009.png" alt="image-20210730143822009"></p>
 <p>此时，在本机浏览器输入<a target="_blank" rel="noopener" href="http://localhost:8889/">http://localhost:8889/</a></p>
-<img src="../images/image-20210730144312561.png" alt="image-20210730144312561" style="zoom:33%;">
+<img src="../images/image-20210730144312561.png" alt="image-20210730144312561" style="zoom:33%;" />
 
 
 
@@ -1096,24 +1208,24 @@
       
           <h1 id="备考方针"><a href="#备考方针" class="headerlink" title="备考方针"></a>备考方针</h1><h2 id="EPI"><a href="#EPI" class="headerlink" title="EPI"></a>EPI</h2><p>就看行测的数学和思维逻辑那块</p>
 <h2 id="计算机基础复习进度"><a href="#计算机基础复习进度" class="headerlink" title="计算机基础复习进度"></a>计算机基础复习进度</h2><ul>
-<li><p><input disabled type="checkbox">  重点复习</p>
+<li><p><input disabled="" type="checkbox">  重点复习</p>
 <ul>
-<li><input checked disabled type="checkbox"> <strong>数据库</strong><ul>
-<li><input disabled type="checkbox"> 0822：1-3</li>
+<li><input checked="" disabled="" type="checkbox"> <strong>数据库</strong><ul>
+<li><input disabled="" type="checkbox"> 0822：1-3</li>
 </ul>
 </li>
-<li><input disabled type="checkbox"> <strong>数据结构</strong></li>
-<li><input disabled type="checkbox"> <strong>Java</strong></li>
-<li><input checked disabled type="checkbox"> <strong>计算机网络(看王道)</strong><ul>
-<li><input disabled type="checkbox"> 0824：1-3</li>
+<li><input disabled="" type="checkbox"> <strong>数据结构</strong></li>
+<li><input disabled="" type="checkbox"> <strong>Java</strong></li>
+<li><input checked="" disabled="" type="checkbox"> <strong>计算机网络(看王道)</strong><ul>
+<li><input disabled="" type="checkbox"> 0824：1-3</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><input disabled type="checkbox">  5道</p>
+<li><p><input disabled="" type="checkbox">  5道</p>
 <ul>
-<li><input disabled type="checkbox"> 软件工程<ul>
-<li><input disabled type="checkbox"> 掌握常见考点</li>
+<li><input disabled="" type="checkbox"> 软件工程<ul>
+<li><input disabled="" type="checkbox"> 掌握常见考点</li>
 </ul>
 </li>
 </ul>
@@ -1201,99 +1313,99 @@
 </tr>
 </tbody></table>
 <h4 id="编程（90min）"><a href="#编程（90min）" class="headerlink" title="编程（90min）"></a>编程（90min）</h4><ul>
-<li><p><input disabled type="checkbox">  数组</p>
+<li><p><input disabled="" type="checkbox">  数组</p>
 </li>
-<li><p><input disabled type="checkbox">  字符串转换</p>
+<li><p><input disabled="" type="checkbox">  字符串转换</p>
 <ul>
-<li><input disabled type="checkbox"> <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41112238/article/details/108311295?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162980945916780357261819%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=162980945916780357261819&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-2-108311295.pc_search_result_cache&utm_term=%E5%86%9C%E8%A1%8C+%E7%A0%94%E5%8F%91+%E7%AC%94%E8%AF%95&spm=1018.2226.3001.4187">以下三个的python解答</a> <a target="_blank" rel="noopener" href="https://blog.csdn.net/w448345485/article/details/117430853?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162980970816780366567221%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=162980970816780366567221&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-5-117430853.pc_search_result_cache&utm_term=%E5%86%9C%E8%A1%8C+%E7%A0%94%E5%8F%91+%E7%AC%94%E8%AF%95&spm=1018.2226.3001.4187">java解答</a></li>
-<li><input disabled type="checkbox"> 进制转换，用&amp;￥&amp;符号代替012</li>
-<li><input disabled type="checkbox"> 给一些点求离质心最近的点的编号</li>
-<li><input disabled type="checkbox"> 扑克牌排序</li>
+<li><input disabled="" type="checkbox"> <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41112238/article/details/108311295?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162980945916780357261819%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=162980945916780357261819&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-2-108311295.pc_search_result_cache&utm_term=%E5%86%9C%E8%A1%8C+%E7%A0%94%E5%8F%91+%E7%AC%94%E8%AF%95&spm=1018.2226.3001.4187">以下三个的python解答</a> <a target="_blank" rel="noopener" href="https://blog.csdn.net/w448345485/article/details/117430853?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162980970816780366567221%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=162980970816780366567221&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-5-117430853.pc_search_result_cache&utm_term=%E5%86%9C%E8%A1%8C+%E7%A0%94%E5%8F%91+%E7%AC%94%E8%AF%95&spm=1018.2226.3001.4187">java解答</a></li>
+<li><input disabled="" type="checkbox"> 进制转换，用&amp;￥&amp;符号代替012</li>
+<li><input disabled="" type="checkbox"> 给一些点求离质心最近的点的编号</li>
+<li><input disabled="" type="checkbox"> 扑克牌排序</li>
 </ul>
 </li>
-<li><p><input disabled type="checkbox">  小数组的循环遍历或者排序</p>
+<li><p><input disabled="" type="checkbox">  小数组的循环遍历或者排序</p>
 </li>
-<li><p><input disabled type="checkbox">  字符串算式求值</p>
+<li><p><input disabled="" type="checkbox">  字符串算式求值</p>
 </li>
-<li><p><input disabled type="checkbox">  给定两个正整数：num和n，编写程序判断能否把num分解为n个连续自然数相加的和，如果能分解，则返回分解得到的n个自然数构成的列表(列表中元素按照升序排列)，如果不能分解，则返回一个空列表。<a target="_blank" rel="noopener" href="https://blog.csdn.net/HVivid1314/article/details/117751103?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.control&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/HVivid1314/article/details/117751103?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.control&amp;spm=1001.2101.3001.4242</a></p>
+<li><p><input disabled="" type="checkbox">  给定两个正整数：num和n，编写程序判断能否把num分解为n个连续自然数相加的和，如果能分解，则返回分解得到的n个自然数构成的列表(列表中元素按照升序排列)，如果不能分解，则返回一个空列表。<a target="_blank" rel="noopener" href="https://blog.csdn.net/HVivid1314/article/details/117751103?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.control&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/HVivid1314/article/details/117751103?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.control&amp;spm=1001.2101.3001.4242</a></p>
 </li>
-<li><p><input disabled type="checkbox">  矩阵最大领域值</p>
+<li><p><input disabled="" type="checkbox">  矩阵最大领域值</p>
 </li>
-<li><p><input disabled type="checkbox">  人口增长率</p>
+<li><p><input disabled="" type="checkbox">  人口增长率</p>
 </li>
-<li><p><input disabled type="checkbox">  字符串排序</p>
+<li><p><input disabled="" type="checkbox">  字符串排序</p>
 </li>
-<li><p><input disabled type="checkbox">  括号匹配问题：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/535193?type=post&amp;order=create&amp;pos=&amp;page=1&amp;ncTraceId=&amp;channel=-1&amp;source_id=search_post_nctrack">https://www.nowcoder.com/discuss/535193?type=post&amp;order=create&amp;pos=&amp;page=1&amp;ncTraceId=&amp;channel=-1&amp;source_id=search_post_nctrack</a></p>
+<li><p><input disabled="" type="checkbox">  括号匹配问题：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/535193?type=post&amp;order=create&amp;pos=&amp;page=1&amp;ncTraceId=&amp;channel=-1&amp;source_id=search_post_nctrack">https://www.nowcoder.com/discuss/535193?type=post&amp;order=create&amp;pos=&amp;page=1&amp;ncTraceId=&amp;channel=-1&amp;source_id=search_post_nctrack</a></p>
 </li>
-<li><p><input disabled type="checkbox">  柱形图积水问题：</p>
+<li><p><input disabled="" type="checkbox">  柱形图积水问题：</p>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/668920%E4%B8%89%E9%81%93%E5%88%86%E5%88%AB%E6%98%AF%EF%BC%9AGDP%E6%80%BB%E9%87%8F%E5%92%8C%E5%A2%9E%E9%95%BF%E7%8E%87%E7%9A%84%E8%BF%90%E7%AE%97%E3%80%81%E4%B8%80%E4%B8%AA%E6%95%B0%E6%98%AF%E5%90%A6%E8%83%BD%E5%88%86%E8%A7%A3%E6%88%90%E5%A4%9A%E4%B8%AA%EF%BC%88n%EF%BC%89%E8%87%AA%E7%84%B6%E8%BF%9E%E7%BB%AD%E6%95%B0%E7%9B%B8%E5%8A%A0%E3%80%81%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E6%98%AF%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E7%AC%A6%E4%B8%B2[%E6%8E%92%E5%BA%8F](https://www.nowcoder.com/jump/super-jump/word?word=%E6%8E%92%E5%BA%8F)%E3%80%82">https://www.nowcoder.com/discuss/668920三道分别是：GDP总量和增长率的运算、一个数是否能分解成多个（n）自然连续数相加、还有一个是自定义字符串[排序](https://www.nowcoder.com/jump/super-jump/word?word=排序)。</a></p>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=leetcode">leetcode</a>完全平方数问题（没A出来）</p>
 </li>
-<li><p><input disabled type="checkbox">  LeetCode简单、中等级别的题目多刷一刷；剑指offer</p>
+<li><p><input disabled="" type="checkbox">  LeetCode简单、中等级别的题目多刷一刷；剑指offer</p>
 </li>
 </ul>
 <h3 id="网络面试经验"><a href="#网络面试经验" class="headerlink" title="网络面试经验"></a>网络面试经验</h3><h4 id="技术面"><a href="#技术面" class="headerlink" title="技术面"></a>技术面</h4><ul>
-<li><p><input disabled type="checkbox">  数据结构</p>
+<li><p><input disabled="" type="checkbox">  数据结构</p>
 <ul>
-<li><input disabled type="checkbox"> 堆栈</li>
-<li><input disabled type="checkbox"> 什么是哈夫曼树？</li>
-<li><input disabled type="checkbox"> 什么是满<a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=%E4%BA%8C%E5%8F%89%E6%A0%91">二叉树</a>？</li>
-<li><input disabled type="checkbox"> 列举几个<a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=%E6%8E%92%E5%BA%8F">排序</a><a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=%E7%AE%97%E6%B3%95">算法</a>。快排是否是稳定<a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=%E6%8E%92%E5%BA%8F">排序</a>，为什么（什么是稳定）？</li>
-<li><input disabled type="checkbox"> 哪些是稳定排序</li>
+<li><input disabled="" type="checkbox"> 堆栈</li>
+<li><input disabled="" type="checkbox"> 什么是哈夫曼树？</li>
+<li><input disabled="" type="checkbox"> 什么是满<a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=%E4%BA%8C%E5%8F%89%E6%A0%91">二叉树</a>？</li>
+<li><input disabled="" type="checkbox"> 列举几个<a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=%E6%8E%92%E5%BA%8F">排序</a><a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=%E7%AE%97%E6%B3%95">算法</a>。快排是否是稳定<a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=%E6%8E%92%E5%BA%8F">排序</a>，为什么（什么是稳定）？</li>
+<li><input disabled="" type="checkbox"> 哪些是稳定排序</li>
 </ul>
 </li>
-<li><p><input disabled type="checkbox">  数据库</p>
+<li><p><input disabled="" type="checkbox">  数据库</p>
 <ul>
-<li><input disabled type="checkbox"> 数据库中delete、drop、truncate的区别？哪个最快？</li>
-<li><input disabled type="checkbox"> 索引失效的情况。like+%开头这种情况一定会失效吗？</li>
-<li><input disabled type="checkbox"> 数据库的锁是哪些</li>
-<li><input disabled type="checkbox"> mysql的隔离性</li>
+<li><input disabled="" type="checkbox"> 数据库中delete、drop、truncate的区别？哪个最快？</li>
+<li><input disabled="" type="checkbox"> 索引失效的情况。like+%开头这种情况一定会失效吗？</li>
+<li><input disabled="" type="checkbox"> 数据库的锁是哪些</li>
+<li><input disabled="" type="checkbox"> mysql的隔离性</li>
 </ul>
 </li>
-<li><p><input disabled type="checkbox">  图论（遍历方式、表示方法、最短遍历算法）</p>
+<li><p><input disabled="" type="checkbox">  图论（遍历方式、表示方法、最短遍历算法）</p>
 </li>
-<li><p><input disabled type="checkbox">  计算机网络</p>
+<li><p><input disabled="" type="checkbox">  计算机网络</p>
 <ul>
-<li><p><input disabled type="checkbox">  session和cookie的区别</p>
+<li><p><input disabled="" type="checkbox">  session和cookie的区别</p>
 <ul>
-<li><p><input disabled type="checkbox">  ① cookie 只能存储 ASCII 码，而 session 可以存储任何类型的数据。</p>
+<li><p><input disabled="" type="checkbox">  ① cookie 只能存储 ASCII 码，而 session 可以存储任何类型的数据。</p>
 <p>② session 存储在服务器，而 cookie 存储在客户浏览器中，容易被恶意查看。。</p>
 <p>③ session 的运行依赖 session id，而 session id 存在 cookie 中，叫做 JSESSIONID。如果浏览器禁用了 cookie ，同时 session 也会失效（可以通过其它方式实现，比如在 url 中传递 session_id）</p>
 </li>
 </ul>
 </li>
-<li><p><input disabled type="checkbox">  面试官最爱的UDP和TCP高频面试题：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/doxVJZ1G6187B4AOXb0JlA">https://mp.weixin.qq.com/s/doxVJZ1G6187B4AOXb0JlA</a></p>
+<li><p><input disabled="" type="checkbox">  面试官最爱的UDP和TCP高频面试题：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/doxVJZ1G6187B4AOXb0JlA">https://mp.weixin.qq.com/s/doxVJZ1G6187B4AOXb0JlA</a></p>
 </li>
 </ul>
 </li>
-<li><p><input disabled type="checkbox">  Java</p>
+<li><p><input disabled="" type="checkbox">  Java</p>
 <ul>
-<li><input disabled type="checkbox"> ==和equals区别</li>
-<li><input disabled type="checkbox"> Spring</li>
-<li><input disabled type="checkbox"> List、Set、Map的区别</li>
-<li><input disabled type="checkbox"> spring特点/优点</li>
-<li><input disabled type="checkbox"> spring中IOC注入</li>
-<li><input disabled type="checkbox"> vue生命周期</li>
-<li><input disabled type="checkbox"> vue组件参数传递的方法</li>
-<li><input disabled type="checkbox"> <strong>HashMap 和 Hashtable 有什么区别</strong></li>
-<li><input disabled type="checkbox"> <strong>如何避免 sql 注入</strong></li>
-<li><input disabled type="checkbox"> <strong>java服务端开发的相关知识</strong>。</li>
+<li><input disabled="" type="checkbox"> ==和equals区别</li>
+<li><input disabled="" type="checkbox"> Spring</li>
+<li><input disabled="" type="checkbox"> List、Set、Map的区别</li>
+<li><input disabled="" type="checkbox"> spring特点/优点</li>
+<li><input disabled="" type="checkbox"> spring中IOC注入</li>
+<li><input disabled="" type="checkbox"> vue生命周期</li>
+<li><input disabled="" type="checkbox"> vue组件参数传递的方法</li>
+<li><input disabled="" type="checkbox"> <strong>HashMap 和 Hashtable 有什么区别</strong></li>
+<li><input disabled="" type="checkbox"> <strong>如何避免 sql 注入</strong></li>
+<li><input disabled="" type="checkbox"> <strong>java服务端开发的相关知识</strong>。</li>
 </ul>
 </li>
-<li><p><input disabled type="checkbox">  python</p>
+<li><p><input disabled="" type="checkbox">  python</p>
 <ul>
-<li><input disabled type="checkbox"> 内存管理机制</li>
-<li><input disabled type="checkbox"> python内存管理机制</li>
-<li><input disabled type="checkbox"> python如何提升运算速度</li>
-<li><input disabled type="checkbox"> 设计模式有哪些</li>
-<li><input disabled type="checkbox"> list中如何去重</li>
-<li><input disabled type="checkbox"> python有哪些数据类型</li>
-<li><input disabled type="checkbox"> python数据清洗有哪些方法</li>
+<li><input disabled="" type="checkbox"> 内存管理机制</li>
+<li><input disabled="" type="checkbox"> python内存管理机制</li>
+<li><input disabled="" type="checkbox"> python如何提升运算速度</li>
+<li><input disabled="" type="checkbox"> 设计模式有哪些</li>
+<li><input disabled="" type="checkbox"> list中如何去重</li>
+<li><input disabled="" type="checkbox"> python有哪些数据类型</li>
+<li><input disabled="" type="checkbox"> python数据清洗有哪些方法</li>
 </ul>
 </li>
-<li><p><input disabled type="checkbox">  游标是什么？</p>
+<li><p><input disabled="" type="checkbox">  游标是什么？</p>
 </li>
 </ul>
 <p>get和post   多次post怎么保证数据安全  springmvc接收流程 Redis数据结构 Redis缓存击穿和缓存雪崩 怎么解决缓存雪崩 solr服务器集群搭建 Redis主从机制 springBoot相对于spring的优势 拦截器怎么设计 · Java虚拟机 区，以及回收机制 · MySQL数据库的存储结构 ·索引的存储 ·常用算法（图论查找，搜索，以排序） · servlet与jsp的区别 · JSP的九大作用域，七大action · seesion cookie差异 · seesion cookie差异使用实例 · HTTP、ip、tcp 三次握手 StringBuffer与StringBuilder的区别 Spring IOC与Spring Aop实现原理 JVM内存分区 Callable与Runnable Zookeeper是什么 消息中间件是什么 实现线程的两种方式 .string buffer,builder 多态 spring怎么保持线程安全？ 数据库联合索引，普通索引，要遵循什么规则 线程几种状态，怎么转化的(没回答好） .堆排序 有哪些线程池 数据库事务，隔离级别 JVM内存模型 索引什么时候失效 JVM 运行时内存划分，OOM，栈溢出 垃圾回收，新生代，老年代，为什么新生代采用复制算法， TCP 三次握手，四次挥手，TIME WAIT spring，IOC 原理，AOP底层实现 抽象类和接口的区别 线程池实现原理 hashmap 实现 string buffer,builder Java特性，然后解释 java基本类型 .jvm模型，解释 .MySQL引擎 spring mvc流程 spring aop，ioc .redis缓存击透 如何处理高并发 项目介绍，遇到的困难，如何解决 mysql优化 线程池，参数 反射机制 垃圾回收机制 spring的IOC与aop MySQL安装时选择的字符集是哪个 MySQL拼接字符串用的哪个函数 .Linux常用指令 spring中有哪些设计模式</p>
@@ -1377,7 +1489,7 @@
 </ol>
 </li>
 </ol>
-<h2 id="兴业银行"><a href="#兴业银行" class="headerlink" title="兴业银行"></a>兴业银行</h2><h2 id="联想（0917）"><a href="#联想（0917）" class="headerlink" title="联想（0917）"></a>联想（0917）</h2><img src="../images/image-20210831103756385.png" alt="image-20210831103756385" style="zoom: 50%;">
+<h2 id="兴业银行"><a href="#兴业银行" class="headerlink" title="兴业银行"></a>兴业银行</h2><h2 id="联想（0917）"><a href="#联想（0917）" class="headerlink" title="联想（0917）"></a>联想（0917）</h2><img src="../images/image-20210831103756385.png" alt="image-20210831103756385" style="zoom: 50%;" />
 
 
 
@@ -1545,13 +1657,13 @@
 </ul>
 </li>
 </ul>
-<img src="../images/image-20210823150123515.png" alt="image-20210823150123515" style="zoom: 50%;">
+<img src="../images/image-20210823150123515.png" alt="image-20210823150123515" style="zoom: 50%;" />
 
 <ul>
 <li>要素<ul>
 <li>提问：以下哪项与题干中推理形式/结构相同？</li>
 <li>把名词换成字母<ul>
-<li><img src="../images/image-20210823151618623.png" alt="image-20210823151618623" style="zoom: 50%;"></li>
+<li><img src="../images/image-20210823151618623.png" alt="image-20210823151618623" style="zoom: 50%;" /></li>
 </ul>
 </li>
 </ul>
@@ -1570,7 +1682,7 @@
 </li>
 <li>代入法<ul>
 <li>假设选项正确，代入题干<ul>
-<li><img src="../images/image-20210823161100333.png" alt="image-20210823161100333" style="zoom:67%;"></li>
+<li><img src="../images/image-20210823161100333.png" alt="image-20210823161100333" style="zoom:67%;" /></li>
 </ul>
 </li>
 <li>题干有“补充/添加以下哪项可以退出”，尝试代入</li>
@@ -1586,9 +1698,9 @@
 </ul>
 <ol>
 <li>优先关注出现次数最多信息<ul>
-<li><img src="../images/image-20210823162454639.png" alt="image-20210823162454639" style="zoom: 50%;">
-- <img src="../images/image-20210823162532752.png" alt="image-20210823162532752" style="zoom: 50%;"></li>
-<li><img src="../images/image-20210823163459924.png" alt="image-20210823163459924" style="zoom: 50%;">
+<li><img src="../images/image-20210823162454639.png" alt="image-20210823162454639" style="zoom: 50%;" />
+- <img src="../images/image-20210823162532752.png" alt="image-20210823162532752" style="zoom: 50%;" /></li>
+<li><img src="../images/image-20210823163459924.png" alt="image-20210823163459924" style="zoom: 50%;" />
 - 根据题干，只有一个人考上了研究生，只有一个人说的正确且说的正确的人考上了研究生，可以知道，研究生只有一个且说的话正确；从“研究生”出现的地方入手，G说的话，必是假，因为如果G对，那么G是研究生，又因为研究生只有一个，所以G假话；可以推知H肯定没考上研究生，也就是H说了假话，也就是J是公务员，所以选D。</li>
 </ul>
 </li>
@@ -1613,10 +1725,10 @@
 </ol>
 </li>
 <li>例子<ul>
-<li><img src="../images/image-20210823195517523.png" alt="image-20210823195517523" style="zoom:50%;">
+<li><img src="../images/image-20210823195517523.png" alt="image-20210823195517523" style="zoom:50%;" />
 - 但是之前的不看，只有论点，否定论点：养老机构的噪音不影响居民生活。对比选项，A中心在位置，B中心在不了解，D中心在办养老机构之前，都无关</li>
-<li><img src="../images/image-20210823200857527.png" alt="image-20210823200857527" style="zoom:50%;"></li>
-<li><img src="../images/image-20210823212131897.png" alt="image-20210823212131897" style="zoom:50%;"></li>
+<li><img src="../images/image-20210823200857527.png" alt="image-20210823200857527" style="zoom:50%;" /></li>
+<li><img src="../images/image-20210823212131897.png" alt="image-20210823212131897" style="zoom:50%;" /></li>
 </ul>
 </li>
 <li>常见的论点特殊形式<ul>
@@ -1677,84 +1789,6 @@
 <li>加强提醒：赞同</li>
 </ul>
 <h2 id="日常结论"><a href="#日常结论" class="headerlink" title="日常结论"></a>日常结论</h2><h2 id="原因解释"><a href="#原因解释" class="headerlink" title="原因解释"></a>原因解释</h2><h1 id="定义判断-判断4，2h"><a href="#定义判断-判断4，2h" class="headerlink" title="定义判断(判断4，2h)"></a>定义判断(判断4，2h)</h1><h1 id="图形推理-判断1、2，5h"><a href="#图形推理-判断1、2，5h" class="headerlink" title="图形推理(判断1、2，5h)"></a>图形推理(判断1、2，5h)</h1><h1 id="类比推理-判断3，2h"><a href="#类比推理-判断3，2h" class="headerlink" title="类比推理(判断3，2h)"></a>类比推理(判断3，2h)</h1><h1 id="言语理解与表达-18h"><a href="#言语理解与表达-18h" class="headerlink" title="言语理解与表达(18h)"></a>言语理解与表达(18h)</h1><h1 id="数字推理"><a href="#数字推理" class="headerlink" title="数字推理"></a>数字推理</h1><h1 id="数字运算-数量1-4，12h"><a href="#数字运算-数量1-4，12h" class="headerlink" title="数字运算(数量1-4，12h)"></a>数字运算(数量1-4，12h)</h1><h1 id="资料分析-14h"><a href="#资料分析-14h" class="headerlink" title="资料分析(14h)"></a>资料分析(14h)</h1><h1 id="思维策略"><a href="#思维策略" class="headerlink" title="思维策略"></a>思维策略</h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/4%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/4%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-01 11:25:44" itemprop="dateCreated datePublished" datetime="2021-09-01T11:25:44+08:00">2021-09-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-24 21:24:15" itemprop="dateModified" datetime="2021-08-24T21:24:15+08:00">2021-08-24</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>0</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
       
     </div>
 
@@ -1838,7 +1872,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

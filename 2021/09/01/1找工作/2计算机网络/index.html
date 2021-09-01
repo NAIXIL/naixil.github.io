@@ -304,10 +304,10 @@
 <li>利用率：信道利用率；网络利用率（全网络信道利用率的加权平均）。利用率增大，时延急速变大</li>
 </ol>
 <h3 id="计算机网络体系结构（从功能的角度划分）"><a href="#计算机网络体系结构（从功能的角度划分）" class="headerlink" title="计算机网络体系结构（从功能的角度划分）"></a>计算机网络体系结构（从功能的角度划分）</h3><p>开放系统互连基本参考模型OSI/RM（7层），理论上的。事实上是TCP/IP（4层，应用层、运输层、网际层、网络接口层）。</p>
-<img src="../images/image-20210824003124298.png" alt="image-20210824003124298" style="zoom:50%;">
+<img src="../images/image-20210824003124298.png" alt="image-20210824003124298" style="zoom:50%;" />
 
 <p>OSI模型通信过程：</p>
-<img src="../images/image-20210824094024156.png" alt="image-20210824094024156" style="zoom:50%;">
+<img src="../images/image-20210824094024156.png" alt="image-20210824094024156" style="zoom:50%;" />
 
 <p>表示层：功能：数据格式变换；数据加密解密；数据压缩与回复</p>
 <p>会话层：功能：建立连接</p>
@@ -371,7 +371,7 @@
 </ul>
 </li>
 <li>常用编码方式：<ul>
-<li><img src="../images/image-20210824101613775.png" alt="image-20210824101613775" style="zoom: 67%;"></li>
+<li><img src="../images/image-20210824101613775.png" alt="image-20210824101613775" style="zoom: 67%;" /></li>
 <li>不归零制：正电瓶代表1；负代表0</li>
 <li>归零制：正脉冲代表1；负脉冲代表0</li>
 <li>曼彻斯特编码：位周期中心的向上跳变代表0；向下跳变代表1</li>
@@ -416,7 +416,7 @@
 <li>三个基本问题：<ol>
 <li>封装成帧<ol>
 <li>添加首部( SOH,start of header)和尾部(EOT,end of transmission )用于帧定界</li>
-<li>MTU：最大传送单元<img src="../images/image-20210824112746957.png" alt="image-20210824112746957" style="zoom: 80%;"></li>
+<li>MTU：最大传送单元<img src="../images/image-20210824112746957.png" alt="image-20210824112746957" style="zoom: 80%;" /></li>
 </ol>
 </li>
 <li>透明传输：转义SOH,EOT<ul>
@@ -434,7 +434,7 @@
 <li>循环冗余检验（CRC，Cyclic Redundancy Check）<ul>
 <li>添加帧检验序列（FCS），就是数据除以一个数之后的余数</li>
 <li>优点：可以实现无比特差错的传输，<strong>但并不是可靠传输</strong></li>
-<li><img src="../images/image-20210824160224978.png" alt="image-20210824160224978" style="zoom:80%;"></li>
+<li><img src="../images/image-20210824160224978.png" alt="image-20210824160224978" style="zoom:80%;" /></li>
 </ul>
 </li>
 <li>奇、偶校验码，能检测出来奇数个错，不能检测出来偶数个出错</li>
@@ -444,7 +444,7 @@
 <li>步骤<ol>
 <li>根据海明不等式确定效验码的位数：$2^r=k+r+1$,r为冗余信息位数，k为信息位数</li>
 <li>确定校验码位置和数据的位置：校验码的位置在$2^n$位置，例如四位校验码位置在：0、1、4、8位置，如下表$P_{1,2,3,4}$的位置</li>
-<li>校验码值的求解，令所有要校验的位的异或为0.要校验的位：与校验码位置的二进制位的1所在位置一样的数据（例如，校验码$p_2$的位置的二进制1在倒数第二位，发现$D_{1,3,4,6}$的在倒数第二位，所以$p_1 \oplus D_1 \oplus D_3\oplus D_4\oplus D_6 = 0$，异或：相同为0，相异为1）。<img src="../images/image-20210824161214278.png" alt="image-20210824161214278" style="zoom:67%;"></li>
+<li>校验码值的求解，令所有要校验的位的异或为0.要校验的位：与校验码位置的二进制位的1所在位置一样的数据（例如，校验码$p_2$的位置的二进制1在倒数第二位，发现$D_{1,3,4,6}$的在倒数第二位，所以$p_1 \oplus D_1 \oplus D_3\oplus D_4\oplus D_6 = 0$，异或：相同为0，相异为1）。<img src="../images/image-20210824161214278.png" alt="image-20210824161214278" style="zoom:67%;" /></li>
 <li>检错并纠错<ul>
 <li><img src="/../images/image-20210824162223340.png" alt="image-20210824162223340"></li>
 </ul>
@@ -463,9 +463,9 @@
 </ol>
 <h4 id="单帧滑动窗口与停止等待协议"><a href="#单帧滑动窗口与停止等待协议" class="headerlink" title="单帧滑动窗口与停止等待协议"></a>单帧滑动窗口与停止等待协议</h4><ol>
 <li>流程<ol>
-<li><img src="../images/image-20210824172711599.png" alt="image-20210824172711599" style="zoom: 50%;"></li>
-<li><img src="../images/image-20210824172754230.png" alt="image-20210824172754230" style="zoom:50%;"></li>
-<li><img src="../images/image-20210824172830473.png" alt="image-20210824172830473" style="zoom:50%;"></li>
+<li><img src="../images/image-20210824172711599.png" alt="image-20210824172711599" style="zoom: 50%;" /></li>
+<li><img src="../images/image-20210824172754230.png" alt="image-20210824172754230" style="zoom:50%;" /></li>
+<li><img src="../images/image-20210824172830473.png" alt="image-20210824172830473" style="zoom:50%;" /></li>
 </ol>
 </li>
 <li>缺点：信道利用率低</li>
@@ -480,14 +480,14 @@
 <li>只重传出现差错的数据帧或计时器超时的数据帧，但是此时必须加大接收窗口（以便接收发送序号不连续但是仍然处在接收窗口中的数据帧），等到所缺失的数据帧到达之后一并交送主机。</li>
 <li>特点：接收方有缓存；只重传出错的帧；对数据帧逐一确认，收一个确认一个</li>
 <li>窗口长度选择：发送窗口等于接收窗口长度。如果采用$n$个比特对帧进行编号，$W_{Tmax}=W_{Rmax}=2^{n-1}$<ul>
-<li><img src="../images/image-20210824221433716.png" alt="image-20210824221433716" style="zoom:50%;"></li>
+<li><img src="../images/image-20210824221433716.png" alt="image-20210824221433716" style="zoom:50%;" /></li>
 </ul>
 </li>
 </ol>
 <h3 id="介质访问控制（MAC）"><a href="#介质访问控制（MAC）" class="headerlink" title="介质访问控制（MAC）"></a>介质访问控制（MAC）</h3><ol>
 <li>主要任务：隔离信号同一信道的其他节点的信号，协调节点的传输。</li>
 </ol>
-<img src="../images/image-20210824222121267.png" alt="image-20210824222121267" style="zoom: 67%;">
+<img src="../images/image-20210824222121267.png" alt="image-20210824222121267" style="zoom: 67%;" />
 
 <h4 id="信道划分MAC（静态分配信道）"><a href="#信道划分MAC（静态分配信道）" class="headerlink" title="信道划分MAC（静态分配信道）"></a>信道划分MAC（静态分配信道）</h4><h5 id="频分、时分"><a href="#频分、时分" class="headerlink" title="频分、时分"></a>频分、时分</h5><p>频分复用(FDM, Frequency Division Multiplexing)、时分复用(TDM)、统计时分复用(STDM)</p>
 <ul>
@@ -500,7 +500,7 @@
 </ul>
 </li>
 <li>STDM：又称为异步时分复用<ul>
-<li><img src="../images/image-20210824222555789.png" alt="image-20210824222555789" style="zoom:50%;"></li>
+<li><img src="../images/image-20210824222555789.png" alt="image-20210824222555789" style="zoom:50%;" /></li>
 </ul>
 </li>
 </ul>
@@ -520,7 +520,7 @@
 <h4 id="随机MAC（动态分配信道）"><a href="#随机MAC（动态分配信道）" class="headerlink" title="随机MAC（动态分配信道）"></a>随机MAC（动态分配信道）</h4><h5 id="ALOHA协议"><a href="#ALOHA协议" class="headerlink" title="ALOHA协议"></a>ALOHA协议</h5><h6 id="纯ALOHA协议"><a href="#纯ALOHA协议" class="headerlink" title="纯ALOHA协议"></a>纯ALOHA协议</h6><ol>
 <li>思想：不监听信道；不按时间槽发送，<strong>想发就发</strong>；随机重发。</li>
 </ol>
-<img src="../images/image-20210824231312644.png" alt="image-20210824231312644" style="zoom: 50%;">
+<img src="../images/image-20210824231312644.png" alt="image-20210824231312644" style="zoom: 50%;" />
 
 <h6 id="时隙ALOHA协议"><a href="#时隙ALOHA协议" class="headerlink" title="时隙ALOHA协议"></a>时隙ALOHA协议</h6><ol>
 <li>思想：同步各个站点的时间，将时间划分成等长的时隙（slot），规定只能<strong>在每个时隙开始的时候才能发送一个帧</strong>。</li>
@@ -544,7 +544,7 @@
 </ul>
 </li>
 </ol>
-<img src="../images/image-20210824234459835.png" alt="image-20210824234459835" style="zoom:67%;">
+<img src="../images/image-20210824234459835.png" alt="image-20210824234459835" style="zoom:67%;" />
 
 <h5 id="CSMA-CD协议-rightarrow-适用于总线型网络或者半双工网络环境。"><a href="#CSMA-CD协议-rightarrow-适用于总线型网络或者半双工网络环境。" class="headerlink" title="CSMA/CD协议$\rightarrow$适用于总线型网络或者半双工网络环境。"></a>CSMA/CD协议$\rightarrow$适用于总线型网络或者半双工网络环境。</h5><p>载波侦听多路访问/碰撞检测。****</p>
 <ul>
@@ -607,7 +607,7 @@
 </ol>
 </li>
 </ol>
-<img src="../images/image-20210824154702057.png" alt="image-20210824154702057" style="zoom:80%;">
+<img src="../images/image-20210824154702057.png" alt="image-20210824154702057" style="zoom:80%;" />
 
 <ul>
 <li>通常将802.3局域网简称为以太网。<ul>
@@ -650,7 +650,7 @@
 </ul>
 </li>
 <li>链路控制协议（LCP）网络控制协议（NCP）<ul>
-<li><img src="../images/image-20210824153133032.png" alt="image-20210824153133032" style="zoom:80%;"></li>
+<li><img src="../images/image-20210824153133032.png" alt="image-20210824153133032" style="zoom:80%;" /></li>
 </ul>
 </li>
 </ol>
@@ -660,7 +660,7 @@
 </ul>
 </li>
 </ul>
-<img src="../images/image-20210825004001056.png" alt="image-20210825004001056" style="zoom:80%;">
+<img src="../images/image-20210825004001056.png" alt="image-20210825004001056" style="zoom:80%;" />
 
 
 
@@ -752,8 +752,8 @@
 </ol>
 </li>
 <li>IPV4地址与NAT<ul>
-<li><img src="../images/image-20210829235726192.png" alt="image-20210829235726192" style="zoom:80%;"></li>
-<li><img src="../images/image-20210830001031567.png" alt="image-20210830001031567" style="zoom:80%;"></li>
+<li><img src="../images/image-20210829235726192.png" alt="image-20210829235726192" style="zoom:80%;" /></li>
+<li><img src="../images/image-20210830001031567.png" alt="image-20210830001031567" style="zoom:80%;" /></li>
 <li>IP地址的特点：<ol>
 <li>由网络号和主机号构成</li>
 <li>IP地址是标识主机/路由器和一条链路的接口。因此一个主机连接多个网络就有多个IP。（路由器至少有2个IP地址）</li>
@@ -857,7 +857,7 @@
 <p>优点：实现简单、开销小、收敛过程较快</p>
 <p>缺点：网络规模受限；网络规模大则开销大；网络出现故障，则需要较长信息才能传播至所有路由。</p>
 <h4 id="开放最短路径优先（OSPF）"><a href="#开放最短路径优先（OSPF）" class="headerlink" title="开放最短路径优先（OSPF）"></a>开放最短路径优先（OSPF）</h4><h4 id="协议边界网关协议（BGP）"><a href="#协议边界网关协议（BGP）" class="headerlink" title="协议边界网关协议（BGP）"></a>协议边界网关协议（BGP）</h4><h3 id="IP组播（应用于UDP）"><a href="#IP组播（应用于UDP）" class="headerlink" title="IP组播（应用于UDP）"></a>IP组播（应用于UDP）</h3><h4 id="组播概念"><a href="#组播概念" class="headerlink" title="组播概念"></a>组播概念</h4><p>一对多发送</p>
-<img src="../images/image-20210830093627990.png" alt="image-20210830093627990" style="zoom: 67%;">
+<img src="../images/image-20210830093627990.png" alt="image-20210830093627990" style="zoom: 67%;" />
 
 <h4 id="IP组播地址"><a href="#IP组播地址" class="headerlink" title="IP组播地址"></a>IP组播地址</h4><p>采用D类地址：224.0.0.0~239.255.255.255</p>
 <ul>
@@ -870,7 +870,7 @@
 </li>
 </ul>
 <h4 id="IGMP与组播路由算法"><a href="#IGMP与组播路由算法" class="headerlink" title="IGMP与组播路由算法"></a>IGMP与组播路由算法</h4><p>因特网组管理协议（IGMP）</p>
-<img src="../images/image-20210830094609674.png" alt="image-20210830094609674" style="zoom:80%;">
+<img src="../images/image-20210830094609674.png" alt="image-20210830094609674" style="zoom:80%;" />
 
 <h3 id="移动IP"><a href="#移动IP" class="headerlink" title="移动IP"></a>移动IP</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><h4 id="通信过程"><a href="#通信过程" class="headerlink" title="通信过程"></a>通信过程</h4><h3 id="网络层设备"><a href="#网络层设备" class="headerlink" title="网络层设备"></a>网络层设备</h3><h4 id="路由器的组成与功能"><a href="#路由器的组成与功能" class="headerlink" title="路由器的组成与功能"></a>路由器的组成与功能</h4><h4 id="路由表与路由转发"><a href="#路由表与路由转发" class="headerlink" title="路由表与路由转发"></a>路由表与路由转发</h4><p><img src="/../images/image-20210830095054038.png" alt="image-20210830095054038"></p>
 <h2 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h2><h3 id="传输层提供的服务"><a href="#传输层提供的服务" class="headerlink" title="传输层提供的服务"></a>传输层提供的服务</h3><ol>
@@ -916,18 +916,18 @@
 <li>全双工通信</li>
 <li>面向字节流的</li>
 </ol>
-<h4 id="TCP报文段"><a href="#TCP报文段" class="headerlink" title="TCP报文段"></a>TCP报文段</h4><img src="../images/image-20210830102102384.png" alt="image-20210830102102384" style="zoom:80%;">
+<h4 id="TCP报文段"><a href="#TCP报文段" class="headerlink" title="TCP报文段"></a>TCP报文段</h4><img src="../images/image-20210830102102384.png" alt="image-20210830102102384" style="zoom:80%;" />
 
 <h4 id="TCP连接管理"><a href="#TCP连接管理" class="headerlink" title="TCP连接管理"></a>TCP连接管理</h4><ol>
 <li>连接建立：三次握手<ul>
-<li><img src="../images/image-20210830102326027.png" alt="image-20210830102326027" style="zoom:80%;"></li>
+<li><img src="../images/image-20210830102326027.png" alt="image-20210830102326027" style="zoom:80%;" /></li>
 <li>第二次握手服务端分配好资源（分配TCP缓存和变量）；第三次握手分配客户端资源。</li>
 <li>前两次握手不携带应用数据，但是需要消耗序号；第三次携带数据则消耗序号，不携带则不消耗。</li>
 </ul>
 </li>
 <li>数据传送</li>
 <li>连接释放：四次握手<ul>
-<li><img src="../images/image-20210830102802926.png" alt="image-20210830102802926" style="zoom:80%;"></li>
+<li><img src="../images/image-20210830102802926.png" alt="image-20210830102802926" style="zoom:80%;" /></li>
 <li><img src="/../images/image-20210830103020413.png" alt="image-20210830103020413"></li>
 </ul>
 </li>
@@ -980,9 +980,9 @@
 <li>发送窗口上限值=$min[rwnd,cwnd]$</li>
 <li>拥塞控制算法：<ol>
 <li>慢开始：拥塞窗口（$cwnd$）慢慢变大，扩大到慢开始门限，就改用拥塞避免算法</li>
-<li>拥塞避免：发送端的拥塞窗口$cwnd$每经过一个往返时延RRT就增加一个MSS（$cwnd+1$）的大小（加法增大）；当出现一次超时，令慢开始门限等于当前$cwnd$的一半（乘法减小）<img src="../images/image-20210830113844616.png" alt="image-20210830113844616" style="zoom:80%;"></li>
+<li>拥塞避免：发送端的拥塞窗口$cwnd$每经过一个往返时延RRT就增加一个MSS（$cwnd+1$）的大小（加法增大）；当出现一次超时，令慢开始门限等于当前$cwnd$的一半（乘法减小）<img src="../images/image-20210830113844616.png" alt="image-20210830113844616" style="zoom:80%;" /></li>
 <li>快重传：收到3个重复的ACK报文的时候，就重传。</li>
-<li>快恢复：收到3个重复的ACK的时候，执行”乘法减小“，将$cwnd$设置成慢开始门限改变后的数值，然后执行拥塞避免算法。<img src="../images/image-20210830114321303.png" alt="image-20210830114321303" style="zoom:80%;"></li>
+<li>快恢复：收到3个重复的ACK的时候，执行”乘法减小“，将$cwnd$设置成慢开始门限改变后的数值，然后执行拥塞避免算法。<img src="../images/image-20210830114321303.png" alt="image-20210830114321303" style="zoom:80%;" /></li>
 <li>实际应用中，检测到超时，就采用慢开始和拥塞避免；接受到冗余ACK，就采用快重传和快恢复。</li>
 </ol>
 </li>
@@ -1014,7 +1014,7 @@
 </li>
 </ol>
 <h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><ol>
-<li>层次域名空间<img src="../images/image-20210830134000472.png" alt="image-20210830134000472" style="zoom: 50%;"><ol>
+<li>层次域名空间<img src="../images/image-20210830134000472.png" alt="image-20210830134000472" style="zoom: 50%;" /><ol>
 <li>国家顶级域名：cn,us</li>
 <li>通用顶级域名：.com, .org, .gov</li>
 <li>基础结构域名：arpa，反向域名解析</li>
@@ -1151,7 +1151,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

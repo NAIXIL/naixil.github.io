@@ -229,7 +229,7 @@
         <p>能够在最小化安装的Centos8显示matplotlib图片</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">centos8服务端安装Xterm终端模拟器</span></span><br><span class="line">yum install xterm</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在客户端Xstart建立连接，在命令那一块输入</span></span><br><span class="line">/usr/bin/xterm -ls -display $DISPLAY</span><br><span class="line">yum install PyQt5</span><br><span class="line">python test.py # test.py见下文</span><br></pre></td></tr></table></figure>
 
-<img src="../images/image-20210305111141873.png" alt="image-20210305111141873" style="zoom:33%;">
+<img src="../images/image-20210305111141873.png" alt="image-20210305111141873" style="zoom:33%;" />
 
 <p>测试程序test.py：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line">matplotlib.use(<span class="string">&#x27;Qt5Agg&#x27;</span>) <span class="comment"># 必需</span></span><br><span class="line">x = np.arange(<span class="number">1</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br><span class="line">y = np.arange(<span class="number">1</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br><span class="line">plt.plot(x, y,<span class="string">&#x27;bo&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
@@ -257,7 +257,7 @@
 <p>可以正常运行。</p>
 <p><img src="/../images/image-20210305112507456.png" alt="image-20210305112507456"></p>
 <h1 id="VSCODE"><a href="#VSCODE" class="headerlink" title="VSCODE"></a>VSCODE</h1><p><strong>Windows端：</strong></p>
-<img src="../images/image-20210309174944612.png" alt="image-20210309174944612" style="zoom:50%;">
+<img src="../images/image-20210309174944612.png" alt="image-20210309174944612" style="zoom:50%;" />
 
 <p><img src="/../images/image-20210309175024566.png" alt="image-20210309175024566"></p>
 <p><strong>Centos端：</strong></p>
@@ -384,7 +384,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -266,7 +266,7 @@
 </li>
 <li><p>SamplePairing</p>
 <ol>
-<li>原理：从训练集中随机抽取两张图片分别经过基础数据增强操作（如随机翻转）处理后经像素以取平均值的形式叠加合成一个新的样本，标签为原来样本标签中的一种。这两张图片甚至不限制为同一类别，对于医学图像比较有效<img src="../images/image-20210811155308006.png" alt="image-20210811155308006" style="zoom: 50%;"></li>
+<li>原理：从训练集中随机抽取两张图片分别经过基础数据增强操作（如随机翻转）处理后经像素以取平均值的形式叠加合成一个新的样本，标签为原来样本标签中的一种。这两张图片甚至不限制为同一类别，对于医学图像比较有效<img src="../images/image-20210811155308006.png" alt="image-20210811155308006" style="zoom: 50%;" /></li>
 <li>**评价:**实验结果表明，因SamplePairing数据增强操作可能引入不同标签的训练样本，导致在各数据集上使用SamplePairing训练的误差明显增加，而在验证集上误差则有较大幅度降低。</li>
 </ol>
 </li>
@@ -283,9 +283,9 @@
 <li>通过模型学习数据的分布，随机生成与训练数据集分布一致的图片，代表为GAN。</li>
 <li>通过模型，学习出适合当前任务的数据增强方法，代表方法AutoAugment。</li>
 </ul>
-<h2 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h2><img src="../images/image-20210705205508924.png" alt="image-20210705205508924" style="zoom: 33%;">
+<h2 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h2><img src="../images/image-20210705205508924.png" alt="image-20210705205508924" style="zoom: 33%;" />
 
-<img src="../images/image-20210705205516553.png" alt="image-20210705205516553" style="zoom: 25%;">
+<img src="../images/image-20210705205516553.png" alt="image-20210705205516553" style="zoom: 25%;" />
 
 <h2 id="AutoAugmentation"><a href="#AutoAugmentation" class="headerlink" title="AutoAugmentation"></a>AutoAugmentation</h2><p>AutoAugment是Google提出的自动选择最优数据增强方案的研究，这是无监督数据增强的重要研究方向。它的基本思路是<strong>使用增强学习从数据本身寻找最佳图像变换策略，对于不同的任务学习不同的增强方法</strong>，流程如下：</p>
 <ol>
@@ -413,7 +413,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

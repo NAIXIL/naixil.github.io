@@ -234,7 +234,7 @@
 <h2 id="Windows安装nodejs"><a href="#Windows安装nodejs" class="headerlink" title="Windows安装nodejs"></a>Windows安装nodejs</h2><p><strong>进行下一步骤之前应该已经在github里面新建了repo并且设置为GithubPages，操作简单，不在赘述，仅仅记录使用Hexo搭配GithubPages的踩的坑。</strong></p>
 <p><a target="_blank" rel="noopener" href="https://nodejs.org/">官网</a>下载之后双击安装即可。</p>
 <p>安装之后新打开终端输入<code>node -v</code>，显示版本号则表示安装成功</p>
-<img src="../images/image-20210831215424408.png" alt="image-20210831215424408" style="zoom:50%;">
+<img src="../images/image-20210831215424408.png" alt="image-20210831215424408" style="zoom:50%;" />
 
 <h2 id="安装Hexo并部署"><a href="#安装Hexo并部署" class="headerlink" title="安装Hexo并部署"></a>安装Hexo并部署</h2><h3 id="使用npm安装hexo"><a href="#使用npm安装hexo" class="headerlink" title="使用npm安装hexo"></a>使用npm安装hexo</h3><p>“# “后为注释</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli  # 在终端里安装hexo</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在你想要写博客的文件夹（空文件夹）路径下输入，此处假设为c:/blog/</span></span><br><span class="line">hexo init # 运行这句在生成c:/blog/Hexo/文件夹，文件夹里有很多文件</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装下面的，才能部署到github</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
@@ -243,29 +243,29 @@
 <li>推荐用markdown写</li>
 <li>步骤<ul>
 <li><code>hexo new test</code>，输入这个命令之后在路径c:/blog/Hexo/source/_posts里会生成“test文件夹”和“test.md文件”，将图片（比如“1.png”放到test文件夹里）</li>
-<li><img src="../images/image-20210831220917898.png" alt="image-20210831220917898" style="zoom:50%;"></li>
-<li><img src="../images/image-20210831220955997.png" alt="image-20210831220955997" style="zoom: 50%;"></li>
+<li><img src="../images/image-20210831220917898.png" alt="image-20210831220917898" style="zoom:50%;" /></li>
+<li><img src="../images/image-20210831220955997.png" alt="image-20210831220955997" style="zoom: 50%;" /></li>
 <li>markdown文件里面图片引用路径<code>![这里是图片说明](./test/1.png)</code>，不要直接<code>(1.png)</code>否则显示不到github.io上。</li>
-<li><img src="../images/image-20210831221414837.png" alt="image-20210831221414837" style="zoom:50%;"></li>
+<li><img src="../images/image-20210831221414837.png" alt="image-20210831221414837" style="zoom:50%;" /></li>
 </ul>
 </li>
 </ul>
 <h3 id="部署博客三件套"><a href="#部署博客三件套" class="headerlink" title="部署博客三件套"></a>部署博客三件套</h3><p>写完markdown文件之后按照以下步骤发布到GithubPages</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean # 清除缓存</span><br><span class="line">hexo generate # 可以简写`hexo g`。这一句的作用是生成相关的html文件，为后续发布做准备</span><br><span class="line">hexo deploy # 可以简写`hexo d`。这一句作用是部署文件到GithubPages</span><br><span class="line"><span class="meta">#</span><span class="bash"> 第5,6行也可以合并成`hexo d -g`</span></span><br></pre></td></tr></table></figure>
 
-<img src="../images/image-20210831222511692.png" alt="image-20210831222511692" style="zoom: 50%;">
+<img src="../images/image-20210831222511692.png" alt="image-20210831222511692" style="zoom: 50%;" />
 
-<img src="../images/image-20210831222727610.png" alt="image-20210831222727610" style="zoom:50%;">
+<img src="../images/image-20210831222727610.png" alt="image-20210831222727610" style="zoom:50%;" />
 
-<img src="../images/image-20210831222803312.png" alt="image-20210831222803312" style="zoom:50%;">
+<img src="../images/image-20210831222803312.png" alt="image-20210831222803312" style="zoom:50%;" />
 
 <p>一般在deploy到GithubPages上之前最好在本地运行一下，看一看没啥问题再推送到远程。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server <span class="comment"># 或者是hexo s,运行完打开http://localhost:4000就能看自己博客了</span></span><br></pre></td></tr></table></figure>
 
-<img src="../images/image-20210831222551400.png" alt="image-20210831222551400" style="zoom:50%;">
+<img src="../images/image-20210831222551400.png" alt="image-20210831222551400" style="zoom:50%;" />
 
 <p>效果如下：（不能显示latex，不知道为啥）</p>
-<img src="../images/image-20210831222630352.png" alt="image-20210831222630352" style="zoom: 33%;">
+<img src="../images/image-20210831222630352.png" alt="image-20210831222630352" style="zoom: 33%;" />
 
 <h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>本文写就时使用的主题是butterfly</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 在项目的根目录下执行</span></span><br><span class="line">git clone -b dev https://github.com/jerryc127/hexo-theme-butterfly.git themes/Butterfly</span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改项目根目录下的_config.yml的theme为butterfly即可。</span></span><br></pre></td></tr></table></figure>
@@ -387,7 +387,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
