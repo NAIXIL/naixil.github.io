@@ -251,10 +251,14 @@
 <h1 id="3-内网穿透"><a href="#3-内网穿透" class="headerlink" title="3. 内网穿透"></a>3. 内网穿透</h1><p>Sakurafrp官网：<br><a target="_blank" rel="noopener" href="https://www.natfrp.com/">https://www.natfrp.com/</a><br>注册登录之后点击软件下载，下载可执行文件，不建议用脚本，试了几次效果不好，感觉不如可执行文件直观<br>下载链接：<br><a target="_blank" rel="noopener" href="https://getfrp.sh/d/frpc_linux_386">https://getfrp.sh/d/frpc_linux_386</a><br>下载出来是<code>frpc_linux_386</code><br><code>./frpc_linux_386</code>运行程序，就可以输入访问密钥，然后选择事先设置好的线路即可运行。  </p>
 <p><strong>设置线路</strong>是用<code>ip addr</code>命令查看IP地址（CentOS的eno3/4后边的就是IP地址），在Sakurafrp创建隧道即可，本地端口选择3389，不用22。</p>
 <h1 id="4-设置Sakurafrp后台自启动"><a href="#4-设置Sakurafrp后台自启动" class="headerlink" title="4. 设置Sakurafrp后台自启动"></a>4. 设置Sakurafrp后台自启动</h1><ol>
-<li>安装screen  <code>yum install -y screen</code></li>
-<li><code>screen -S sakurafrp</code></li>
-<li>在第二步之后跳出来的终端进入frpc_linux_386所在目录，运行<code>./frpc_linux_386</code></li>
-<li>Ctrl+A+D隐藏screen窗口，即可后台运行，不用独占一个终端。</li>
+<li><p>安装screen  <code>yum install -y screen</code></p>
+</li>
+<li><p><code>screen -S sakurafrp</code></p>
+</li>
+<li><p>在第二步之后跳出来的终端进入frpc_linux_386所在目录，运行<code>./frpc_linux_386</code></p>
+</li>
+<li><p>Ctrl+A+D隐藏screen窗口，即可后台运行，不用独占一个终端。</p>
+</li>
 <li><p>即使关闭终端后仍然在后台运行，终端中输入<code>screen -ls</code>命令即可查看当前运行的session，如下：</p>
 <p> There are screens on:<br> 14882.sakurafrp    (Attached)<br> 14577.pts-1.localhost    (Detached)<br> 2 Sockets in /var/run/screen/S-lixian.</p>
 </li>
@@ -385,7 +389,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
@@ -430,13 +434,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">146k</span>
+    <span title="站点总字数">137k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:13</span>
+    <span title="站点阅读时长">2:05</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
