@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"naixil.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="服务器Info用作AIS的服务器： Administrator 123.60.85.88:6000 .DMGNBN4BOSS   test001 AIS密码：tyut@667788 tyut@10045      HWSliver1 密码信息： Administrator 101.7.186.125:2022 Lx2020      Centos开发环境  1jupyter: ssh -p 476">
+  <meta name="description" content="服务器Info用作AIS的服务器： Administrator 123.60.85.88:6000 .DMGNBN4BOSS   test001 AIS密码：tyut@667788 tyut@10045     HWSliver1 密码信息： Administrator 101.7.186.125:2022 Lx2020      Centos开发环境  1jupyter: ssh -p 4763">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LiXian&#39;s Blog">
 <meta property="og:url" content="https://naixil.github.io/2021/09/01/2%E6%9D%82%E9%A1%B9/Lab-2-AIS%E5%8F%8AECS%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="LiXian&#39;s Blog">
-<meta property="og:description" content="服务器Info用作AIS的服务器： Administrator 123.60.85.88:6000 .DMGNBN4BOSS   test001 AIS密码：tyut@667788 tyut@10045      HWSliver1 密码信息： Administrator 101.7.186.125:2022 Lx2020      Centos开发环境  1jupyter: ssh -p 476">
+<meta property="og:description" content="服务器Info用作AIS的服务器： Administrator 123.60.85.88:6000 .DMGNBN4BOSS   test001 AIS密码：tyut@667788 tyut@10045     HWSliver1 密码信息： Administrator 101.7.186.125:2022 Lx2020      Centos开发环境  1jupyter: ssh -p 4763">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://naixil.github.io/2021/09/01/2%E6%9D%82%E9%A1%B9/images/image-20210727125933372.png">
 <meta property="og:image" content="https://naixil.github.io/2021/09/01/2%E6%9D%82%E9%A1%B9/images/image-20210630221013245.png">
@@ -79,7 +79,9 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -235,8 +237,7 @@
 </ul>
 </li>
 </ul>
-<img src="../images/image-20210727125933372.png" alt="image-20210727125933372" style="zoom:33%;">
-
+<p><img src="../images/image-20210727125933372.png" alt="image-20210727125933372" style="zoom:33%;"></p>
 <h2 id="HWSliver1"><a href="#HWSliver1" class="headerlink" title="HWSliver1"></a>HWSliver1</h2><ul>
 <li>密码信息：<ul>
 <li>Administrator<ul>
@@ -249,7 +250,6 @@
 </ul>
 <p>Centos开发环境 </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter: ssh -p 47633 -N -f -L localhost:8888:localhost:8888 root@101.7.186.128</span><br></pre></td></tr></table></figure>
-
 <h2 id="群晖"><a href="#群晖" class="headerlink" title="群晖"></a>群晖</h2><p>共享文件夹密码：dmg@2022;Lx2020</p>
 <h1 id="2-Windows-Server2012R2管理员配置相关"><a href="#2-Windows-Server2012R2管理员配置相关" class="headerlink" title="2. Windows Server2012R2管理员配置相关"></a>2. Windows Server2012R2管理员配置相关</h1><h2 id="新增用户典型步骤"><a href="#新增用户典型步骤" class="headerlink" title="新增用户典型步骤"></a>新增用户典型步骤</h2><ol>
 <li>从<strong>计算机管理\系统工具\本地用户和组\用户</strong>新建用户</li>
@@ -259,12 +259,8 @@
 </ol>
 <h2 id="设置计划任务"><a href="#设置计划任务" class="headerlink" title="设置计划任务"></a>设置计划任务</h2><p><strong>任务计划程序$\rightarrow$创建任务$\rightarrow$设置触发器（可以设置开机时、隔固定时间）$\rightarrow$设置操作（导入脚本、程序）$\rightarrow$​如有必要进行其他设置</strong></p>
 <h2 id="设置静态IP"><a href="#设置静态IP" class="headerlink" title="设置静态IP"></a>设置静态IP</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">IP地址：101.7.186.XXX  # 除了128、129、126、125、1、200都可以试试</span><br><span class="line">子网掩码：255.255.255.0</span><br><span class="line">默认网关：101.7.186.1</span><br><span class="line">DNS1: 202.207.247.227</span><br><span class="line">DNS2: 202.207.240.225</span><br></pre></td></tr></table></figure>
-
-
-
 <h1 id="3-杂项"><a href="#3-杂项" class="headerlink" title="3 杂项"></a>3 杂项</h1><h2 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h2><p>小米路由器管理密码：tyutcsdb407, 无线网络密码12341234。以下为一个有效的路由器静态IP配置。</p>
-<img src="../images/image-20210630221013245.png" alt="image-20210630221013245" style="zoom: 33%;">
-
+<p><img src="../images/image-20210630221013245.png" alt="image-20210630221013245" style="zoom: 33%;"></p>
 <h2 id="打印机"><a href="#打印机" class="headerlink" title="打印机"></a>打印机</h2><p>竖着打印就是长边翻转，横着打印就是短边翻转。</p>
 
     </div>
@@ -387,7 +383,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
@@ -432,13 +428,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">NaNm</span>
+    <span title="站点总字数">146k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">NaN:aN</span>
+    <span title="站点阅读时长">2:13</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"naixil.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="有监督的数据增强单样本数据增强 几何变换类 翻转、旋转：适用于对方向不敏感的任务，如图像分类 裁剪、变形： 缩放：会失真，效果一般比较差   颜色变换类 噪声：增加高斯噪声，Coarse Dropout噪声（图像的随机位置丢弃像素产生黑色矩形块） 模糊 颜色变换 擦除 填充    多样本数据增强以下三者相同点：将离散样本点连续化来拟合真实的样本分布。 缺点：增加的样本点在特征空间中仍位于已知的小样">
+  <meta name="description" content="有监督的数据增强　单样本数据增强 几何变换类 翻转、旋转：适用于对方向不敏感的任务，如图像分类 裁剪、变形： 缩放：会失真，效果一般比较差   颜色变换类 噪声：增加高斯噪声，Coarse Dropout噪声（图像的随机位置丢弃像素产生黑色矩形块） 模糊 颜色变换 擦除 填充    多样本数据增强以下三者相同点：将离散样本点连续化来拟合真实的样本分布。 缺点：增加的样本点在特征空间中仍位于已知的小">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LiXian&#39;s Blog">
 <meta property="og:url" content="https://naixil.github.io/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/1-1-%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="LiXian&#39;s Blog">
-<meta property="og:description" content="有监督的数据增强单样本数据增强 几何变换类 翻转、旋转：适用于对方向不敏感的任务，如图像分类 裁剪、变形： 缩放：会失真，效果一般比较差   颜色变换类 噪声：增加高斯噪声，Coarse Dropout噪声（图像的随机位置丢弃像素产生黑色矩形块） 模糊 颜色变换 擦除 填充    多样本数据增强以下三者相同点：将离散样本点连续化来拟合真实的样本分布。 缺点：增加的样本点在特征空间中仍位于已知的小样">
+<meta property="og:description" content="有监督的数据增强　单样本数据增强 几何变换类 翻转、旋转：适用于对方向不敏感的任务，如图像分类 裁剪、变形： 缩放：会失真，效果一般比较差   颜色变换类 噪声：增加高斯噪声，Coarse Dropout噪声（图像的随机位置丢弃像素产生黑色矩形块） 模糊 颜色变换 擦除 填充    多样本数据增强以下三者相同点：将离散样本点连续化来拟合真实的样本分布。 缺点：增加的样本点在特征空间中仍位于已知的小">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/images/image-20210811155308006.png">
 <meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/images/image-20210705205508924.png">
@@ -80,7 +80,9 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -224,7 +226,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="有监督的数据增强"><a href="#有监督的数据增强" class="headerlink" title="有监督的数据增强"></a>有监督的数据增强</h1><h2 id="单样本数据增强"><a href="#单样本数据增强" class="headerlink" title="单样本数据增强"></a>单样本数据增强</h2><ol>
+        <h1 id="有监督的数据增强"><a href="#有监督的数据增强" class="headerlink" title="有监督的数据增强　"></a>有监督的数据增强　</h1><h2 id="单样本数据增强"><a href="#单样本数据增强" class="headerlink" title="单样本数据增强"></a>单样本数据增强</h2><ol>
 <li>几何变换类<ol>
 <li>翻转、旋转：适用于对方向不敏感的任务，如图像分类</li>
 <li>裁剪、变形：</li>
@@ -267,7 +269,7 @@
 <li><p>SamplePairing</p>
 <ol>
 <li>原理：从训练集中随机抽取两张图片分别经过基础数据增强操作（如随机翻转）处理后经像素以取平均值的形式叠加合成一个新的样本，标签为原来样本标签中的一种。这两张图片甚至不限制为同一类别，对于医学图像比较有效<img src="../images/image-20210811155308006.png" alt="image-20210811155308006" style="zoom: 50%;"></li>
-<li>**评价:**实验结果表明，因SamplePairing数据增强操作可能引入不同标签的训练样本，导致在各数据集上使用SamplePairing训练的误差明显增加，而在验证集上误差则有较大幅度降低。</li>
+<li><strong>评价:</strong>实验结果表明，因SamplePairing数据增强操作可能引入不同标签的训练样本，导致在各数据集上使用SamplePairing训练的误差明显增加，而在验证集上误差则有较大幅度降低。</li>
 </ol>
 </li>
 <li><p>mixup</p>
@@ -283,10 +285,8 @@
 <li>通过模型学习数据的分布，随机生成与训练数据集分布一致的图片，代表为GAN。</li>
 <li>通过模型，学习出适合当前任务的数据增强方法，代表方法AutoAugment。</li>
 </ul>
-<h2 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h2><img src="../images/image-20210705205508924.png" alt="image-20210705205508924" style="zoom: 33%;">
-
-<img src="../images/image-20210705205516553.png" alt="image-20210705205516553" style="zoom: 25%;">
-
+<h2 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h2><p><img src="../images/image-20210705205508924.png" alt="image-20210705205508924" style="zoom: 33%;"></p>
+<p><img src="../images/image-20210705205516553.png" alt="image-20210705205516553" style="zoom: 25%;"></p>
 <h2 id="AutoAugmentation"><a href="#AutoAugmentation" class="headerlink" title="AutoAugmentation"></a>AutoAugmentation</h2><p>AutoAugment是Google提出的自动选择最优数据增强方案的研究，这是无监督数据增强的重要研究方向。它的基本思路是<strong>使用增强学习从数据本身寻找最佳图像变换策略，对于不同的任务学习不同的增强方法</strong>，流程如下：</p>
 <ol>
 <li>准备16个常用的数据增强操作。</li>
@@ -399,7 +399,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E7%9B%91%E7%9D%A3%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.</span> <span class="nav-text">有监督的数据增强</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E6%A0%B7%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.1.</span> <span class="nav-text">单样本数据增强</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%A0%B7%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.2.</span> <span class="nav-text">多样本数据增强</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="nav-number">2.</span> <span class="nav-text">无监督数据增强</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GAN"><span class="nav-number">2.1.</span> <span class="nav-text">GAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AutoAugmentation"><span class="nav-number">2.2.</span> <span class="nav-text">AutoAugmentation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">思考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E7%9B%91%E7%9D%A3%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.</span> <span class="nav-text">有监督的数据增强　</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E6%A0%B7%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.1.</span> <span class="nav-text">单样本数据增强</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%A0%B7%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.2.</span> <span class="nav-text">多样本数据增强</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="nav-number">2.</span> <span class="nav-text">无监督数据增强</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GAN"><span class="nav-number">2.1.</span> <span class="nav-text">GAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AutoAugmentation"><span class="nav-number">2.2.</span> <span class="nav-text">AutoAugmentation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">思考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -420,7 +420,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
@@ -465,13 +465,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">NaNm</span>
+    <span title="站点总字数">146k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">NaN:aN</span>
+    <span title="站点阅读时长">2:13</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

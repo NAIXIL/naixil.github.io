@@ -76,7 +76,9 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -201,7 +203,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
+              <span>960</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -249,9 +251,8 @@
 </ul>
 <h2 id="查看文件大小：-ls-lht"><a href="#查看文件大小：-ls-lht" class="headerlink" title="查看文件大小： ls -lht"></a>查看文件大小： ls -lht</h2><h2 id="查看文件夹下的文件个数"><a href="#查看文件夹下的文件个数" class="headerlink" title="查看文件夹下的文件个数"></a>查看文件夹下的文件个数</h2><p>ls -l |grep “^-“|wc -l # 不包括子文件夹</p>
 <p>ls -lR |grep “^-“|wc -l # 包括子文件夹</p>
-<h2 id="查看文件夹大小"><a href="#查看文件夹大小" class="headerlink" title="查看文件夹大小"></a>查看文件夹大小</h2><p> du -h –max-depth=1 xxx(文件夹路径)</p>
+<h2 id="查看文件夹大小"><a href="#查看文件夹大小" class="headerlink" title="查看文件夹大小"></a>查看文件夹大小</h2><p> du -h —max-depth=1 xxx(文件夹路径)</p>
 <h2 id="批量结束进程"><a href="#批量结束进程" class="headerlink" title="批量结束进程"></a>批量结束进程</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux|grep python|grep -v grep|cut -c 9-15|xargs kill -15</span><br></pre></td></tr></table></figure>
-
 <p>管道符“|”用来隔开两个命令，管道符左边命令的输出会作为管道符右边命令的输入。下面说说用管道符联接起来的几个命令： </p>
 <p>“ps aux”是linux 里查看所有进程的命令。这时检索出的进程将作为下一条命令“grep python”的输入。 </p>
 <p>“grep python”的输出结果是，所有含有关键字“python”的进程，这是python程序</p>
@@ -260,9 +261,8 @@
 <p>“xargs kill -15”中的xargs命令是用来把前面命令的输出结果（PID）作为“kill -15”命令的参数，并执行该令。 </p>
 <p>“kill -15”会正常退出指定进程，换成 kill -9强行杀掉</p>
 <h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dnf module list nodejs</span><br><span class="line">dnf module reset nodejs  # 如果不能安装的d</span><br><span class="line">dnf module install nodejs:12</span><br></pre></td></tr></table></figure>
-
 <h2 id="sftp传输文件"><a href="#sftp传输文件" class="headerlink" title="sftp传输文件"></a>sftp传输文件</h2><ul>
-<li>连接 sftp -P 47633 <a href="mailto:&#x72;&#111;&#x6f;&#x74;&#x40;&#49;&#x30;&#x31;&#46;&#x37;&#x2e;&#x31;&#56;&#54;&#x2e;&#x31;&#x32;&#56;">&#x72;&#111;&#x6f;&#x74;&#x40;&#49;&#x30;&#x31;&#46;&#x37;&#x2e;&#x31;&#56;&#54;&#x2e;&#x31;&#x32;&#56;</a></li>
+<li>连接 sftp -P 47633 root@101.7.186.128</li>
 <li>get /home/www/download.txt E:/test/</li>
 <li>put E:/test/upload.txt /home/www/ </li>
 <li>pwd查看远程当前目录；lpwd查看主机当前目录</li>
@@ -390,7 +390,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
@@ -435,13 +435,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">NaNm</span>
+    <span title="站点总字数">146k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">NaN:aN</span>
+    <span title="站点阅读时长">2:13</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
