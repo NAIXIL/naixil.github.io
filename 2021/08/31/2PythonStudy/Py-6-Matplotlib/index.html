@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"naixil.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Matplotlib篇import matplotlib.pyplot as plt 画图的标准流程各种常用参数123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051import matplotlib.pyplot as plt import numpy as np">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Py-6-Matplotlib">
+<meta property="og:url" content="https://naixil.github.io/2021/08/31/2PythonStudy/Py-6-Matplotlib/index.html">
+<meta property="og:site_name" content="LiXian&#39;s Blog">
+<meta property="og:description" content="Matplotlib篇import matplotlib.pyplot as plt 画图的标准流程各种常用参数123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051import matplotlib.pyplot as plt import numpy as np">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://naixil.github.io/2021/08/31/2PythonStudy/images/image-20210312203559198.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m00.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m01.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m02.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m03.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m04.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m05.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m06.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m07.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m08.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m09.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m10.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m11.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m12.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m13.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m23.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m14.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m15.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m16.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m17.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m18.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m24.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m19.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m20.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m21.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m22.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m25.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m26.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m27.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m28.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m29.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m30.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m31.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m32.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m33.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m34.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m35.png">
+<meta property="og:image" content="https://matplotlib.org/stable/_images/m36.png">
+<meta property="article:published_time" content="2021-08-31T08:00:15.000Z">
+<meta property="article:modified_time" content="2021-09-01T13:03:35.880Z">
+<meta property="article:author" content="Li Xian">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://naixil.github.io/2021/08/31/2PythonStudy/images/image-20210312203559198.png">
+
+<link rel="canonical" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-6-Matplotlib/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Py-6-Matplotlib | LiXian's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LiXian's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-6-Matplotlib/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Py-6-Matplotlib
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-01 21:03:35" itemprop="dateModified" datetime="2021-09-01T21:03:35+08:00">2021-09-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Matplotlib篇"><a href="#Matplotlib篇" class="headerlink" title="Matplotlib篇"></a>Matplotlib篇</h1><p>import matplotlib.pyplot as plt</p>
+<h2 id="画图的标准流程"><a href="#画图的标准流程" class="headerlink" title="画图的标准流程"></a>画图的标准流程</h2><h3 id="各种常用参数"><a href="#各种常用参数" class="headerlink" title="各种常用参数"></a>各种常用参数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line">A = np.arange(<span class="number">1</span>,<span class="number">6</span>)</span><br><span class="line">B = A**<span class="number">2</span></span><br><span class="line">C = A**<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># import matplotlib as mpl </span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;axes.titlesize&#x27;] = 10  #子图的标题大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;axes.labelsize&#x27;] = 10  #子图的标签大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;xtick.labelsize&#x27;] = 8  #横轴字体大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;ytick.labelsize&#x27;] = 8  #纵轴字体大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;xtick.major.size&#x27;] = 0  #x轴最大刻度大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;ytick.major.size&#x27;] = 0  #y轴最大刻度大小</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法1：</span></span><br><span class="line"><span class="comment"># fig, ax = plt.subplots()</span></span><br><span class="line"><span class="comment"># 方法2：</span></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 散点图</span></span><br><span class="line"><span class="comment"># p1 = ax.scatter(A, B, label=&#x27;AB&#x27;)</span></span><br><span class="line">p1, = ax.plot(A, B, label=<span class="string">&#x27;AB&#x27;</span>)</span><br><span class="line">p2, = ax.plot(B, A, label=<span class="string">&#x27;BA&#x27;</span>)</span><br><span class="line">ax.set_title(<span class="string">&#x27;Title&#x27;</span>, fontsize=<span class="number">10</span>, loc=<span class="string">&#x27;left&#x27;</span>)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;xlabels&#x27;</span>, loc=<span class="string">&#x27;right&#x27;</span>) <span class="comment"># right, left, center</span></span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;ylabel&#x27;</span>, loc=<span class="string">&#x27;top&#x27;</span>) <span class="comment"># bottom,center,top</span></span><br><span class="line"><span class="comment"># legend有labels赋值的话以此为准，没有的话就以plot的为准</span></span><br><span class="line">ax.legend(handles=[p1, p2], labels=[<span class="string">&#x27;abb&#x27;</span>, <span class="string">&#x27;baa&#x27;</span>], loc=<span class="string">&#x27;best&#x27;</span>) </span><br><span class="line"><span class="comment"># 设置绘图的纵横比。auto,equal(相等),数字（y轴长度是x的几倍）;box,datalim;</span></span><br><span class="line">ax.set_aspect(<span class="string">&#x27;equal&#x27;</span>, adjustable=<span class="string">&#x27;box&#x27;</span>)</span><br><span class="line">ax.minorticks_on() <span class="comment"># 显示更小的尺度</span></span><br><span class="line"><span class="comment"># ax.minorticks_off() # 关闭更小的尺度</span></span><br><span class="line">ax.set_xlim(<span class="number">0</span>, <span class="number">30</span>) <span class="comment"># 设置x轴的取值范围</span></span><br><span class="line">ax.set_ylim(<span class="number">0</span>, <span class="number">27</span>) <span class="comment"># 设置y轴的取值范围</span></span><br><span class="line"><span class="comment"># which&#123;&#x27;major&#x27;(只在标出数字的那显示), &#x27;minor&#x27;（所有的标尺那都显示）, &#x27;both&#x27;&#125;</span></span><br><span class="line"><span class="comment"># axis&#123;&#x27;x&#x27;, &#x27;y&#x27;, &#x27;both&#x27;&#125;</span></span><br><span class="line"><span class="comment"># 还可以定义线的样式，详见</span></span><br><span class="line"><span class="comment"># https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.grid.html</span></span><br><span class="line">ax.grid(which=<span class="string">&#x27;both&#x27;</span>, axis=<span class="string">&#x27;both&#x27;</span>, linewidth=<span class="number">0.5</span>)</span><br><span class="line"><span class="comment"># rotation&#123;旋转多少度&#125;；</span></span><br><span class="line">ax.tick_params(axis=<span class="string">&#x27;both&#x27;</span>, rotation=<span class="number">90</span>, labelsize=<span class="number">10</span>, color=<span class="string">&#x27;green&#x27;</span>)</span><br><span class="line"><span class="comment"># 将标记符号移动到轴的右侧/左侧</span></span><br><span class="line">ax.yaxis.tick_right()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ax2 = fig.add_subplot(<span class="number">122</span>)</span><br><span class="line">p1, = ax2.plot(A, B, label=<span class="string">&#x27;AB&#x27;</span>)</span><br><span class="line">p2, = ax2.plot(B, A, label=<span class="string">&#x27;BA&#x27;</span>)</span><br><span class="line">ax2.invert_yaxis() <span class="comment"># 翻转坐标轴</span></span><br><span class="line"><span class="comment"># 调整间距：wspace:调整左右间距 0.00~1.00</span></span><br><span class="line">plt.subplots_adjust(left=<span class="number">0.15</span>,bottom=<span class="number">0.1</span>,top=<span class="number">0.9</span>,right=<span class="number">0.95</span>,hspace=<span class="number">1</span>,wspace=<span class="number">0.4</span>)</span><br></pre></td></tr></table></figure>
+
+<img src="../images/image-20210312203559198.png" alt="image-20210312203559198" style="zoom:50%;" />
+
+<h3 id="坐标方式画图a-x-y"><a href="#坐标方式画图a-x-y" class="headerlink" title="坐标方式画图a[x][y]"></a>坐标方式画图a[x][y]</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不能用于循环画图</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> math <span class="comment"># 显示中文设置... </span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>] <span class="comment"># 步骤一(替换sans-serif字体) </span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span>   <span class="comment"># 步骤二(解决坐标轴负数的负号显示问题)</span></span><br><span class="line">fig,a =  plt.subplots(<span class="number">2</span>,<span class="number">2</span>)  <span class="comment"># subplots(figsize=(18,18))</span></span><br><span class="line">x = np.arange(<span class="number">1</span>,<span class="number">5</span>) </span><br><span class="line">a[<span class="number">0</span>][<span class="number">0</span>].plot(x,x*x) </span><br><span class="line">a[<span class="number">0</span>][<span class="number">0</span>].set_title(<span class="string">&#x27;平方&#x27;</span>) </span><br><span class="line">a[<span class="number">0</span>][<span class="number">1</span>].plot(x,np.sqrt(x)) </span><br><span class="line">a[<span class="number">0</span>][<span class="number">1</span>].set_title(<span class="string">&#x27;平方根&#x27;</span>) </span><br><span class="line">a[<span class="number">1</span>][<span class="number">0</span>].plot(x,np.exp(x)) </span><br><span class="line">a[<span class="number">1</span>][<span class="number">0</span>].set_title(<span class="string">&#x27;指数&#x27;</span>) </span><br><span class="line">a[<span class="number">1</span>][<span class="number">1</span>].plot(x,np.log10(x)) </span><br><span class="line">a[<span class="number">1</span>][<span class="number">1</span>].set_title(<span class="string">&#x27;log&#x27;</span>) </span><br><span class="line">fig.suptitle(<span class="string">&#x27;acc:%.2f&#x27;</span>%d_loss1)	</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h3 id="循环里面画图：add-subplot"><a href="#循环里面画图：add-subplot" class="headerlink" title="循环里面画图：add_subplot()"></a>循环里面画图：add_subplot()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这种方式可以用于循环画图</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">x = np.arange(<span class="number">0</span>, <span class="number">100</span>)</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax1 = fig.add_subplot(<span class="number">221</span>)</span><br><span class="line">ax1.plot(x, x)</span><br><span class="line">ax2 = fig.add_subplot(<span class="number">222</span>)</span><br><span class="line">ax2.plot(x, -x)</span><br><span class="line">ax3 = fig.add_subplot(<span class="number">223</span>)</span><br><span class="line">ax3.plot(x, x ** <span class="number">2</span>)</span><br><span class="line">ax4 = fig.add_subplot(<span class="number">224</span>)</span><br><span class="line">ax4.plot(x, np.log(x))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">mpl.rcParams[<span class="string">&#x27;legend.fontsize&#x27;</span>] = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(projection=<span class="string">&#x27;3d&#x27;</span>)</span><br><span class="line">theta = np.linspace(-<span class="number">4</span> * np.pi, <span class="number">4</span> * np.pi, <span class="number">100</span>)</span><br><span class="line">z = np.linspace(-<span class="number">2</span>, <span class="number">2</span>, <span class="number">100</span>)</span><br><span class="line">r = z ** <span class="number">2</span> + <span class="number">1</span></span><br><span class="line">x = r * np.sin(theta)</span><br><span class="line">y = r * np.cos(theta)</span><br><span class="line">ax.plot(x, y, z, label=<span class="string">&#x27;parametric curve&#x27;</span>)</span><br><span class="line">ax.legend()</span><br><span class="line"></span><br><span class="line">plt.savefig(<span class="string">&#x27;/home/Projects/TorchStudy/DL实践LHP_02.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="ax-flatten"><a href="#ax-flatten" class="headerlink" title="ax.flatten()"></a>ax.flatten()</h3><p>在用plt.subplots画多个子图中，ax = ax.flatten()将ax由n*m的axes组展平成1*nm的axes组</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots(nrows=<span class="number">2</span>,ncols=<span class="number">2</span>,sharex=<span class="string">&#x27;all&#x27;</span>,sharey=<span class="string">&#x27;all&#x27;</span>)</span><br><span class="line">ax = ax.flatten()  </span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    img = image[i].reshape(<span class="number">28</span>, <span class="number">28</span>)</span><br><span class="line">    ax[i].imshow(img, cmap=<span class="string">&#x27;Greys&#x27;</span>, interpolation=<span class="string">&#x27;nearest&#x27;</span>)  <span class="comment"># 区别：可以直接用ax[i]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots(nrows=<span class="number">2</span>,ncols=<span class="number">2</span>,sharex=<span class="string">&#x27;all&#x27;</span>,sharey=<span class="string">&#x27;all&#x27;</span>) </span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    img = image[i].reshape(<span class="number">28</span>, <span class="number">28</span>)</span><br><span class="line"> </span><br><span class="line">    axs[<span class="number">0</span>, <span class="number">0</span>].imshow(img, cmap=<span class="string">&#x27;Greys&#x27;</span>, interpolation=<span class="string">&#x27;nearest&#x27;</span>)  <span class="comment"># 区别：不能直接使用ax[i]</span></span><br><span class="line"> </span><br><span class="line">    axs[<span class="number">0</span>, <span class="number">1</span>].imshow(img, cmap=<span class="string">&#x27;Greys&#x27;</span>, interpolation=<span class="string">&#x27;nearest&#x27;</span>)</span><br><span class="line"> </span><br><span class="line">    axs[<span class="number">1</span>, <span class="number">0</span>].imshow(img, cmap=<span class="string">&#x27;Greys&#x27;</span>, interpolation=<span class="string">&#x27;nearest&#x27;</span>)</span><br><span class="line"> </span><br><span class="line">    axs[<span class="number">1</span>, <span class="number">1</span>].imshow(img, cmap=<span class="string">&#x27;Greys&#x27;</span>, interpolation=<span class="string">&#x27;nearest&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<table>
+<thead>
+<tr>
+<th align="center">marker</th>
+<th>symbol</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>&quot;.&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m00.png" alt="m00"></td>
+<td>point</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;,&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m01.png" alt="m01"></td>
+<td>pixel</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;o&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m02.png" alt="m02"></td>
+<td>circle</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;v&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m03.png" alt="m03"></td>
+<td>triangle_down</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;^&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m04.png" alt="m04"></td>
+<td>triangle_up</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;&lt;&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m05.png" alt="m05"></td>
+<td>triangle_left</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;&gt;&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m06.png" alt="m06"></td>
+<td>triangle_right</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;1&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m07.png" alt="m07"></td>
+<td>tri_down</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;2&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m08.png" alt="m08"></td>
+<td>tri_up</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;3&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m09.png" alt="m09"></td>
+<td>tri_left</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;4&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m10.png" alt="m10"></td>
+<td>tri_right</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;8&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m11.png" alt="m11"></td>
+<td>octagon</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;s&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m12.png" alt="m12"></td>
+<td>square</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;p&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m13.png" alt="m13"></td>
+<td>pentagon</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;P&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m23.png" alt="m23"></td>
+<td>plus (filled)</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;*&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m14.png" alt="m14"></td>
+<td>star</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;h&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m15.png" alt="m15"></td>
+<td>hexagon1</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;H&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m16.png" alt="m16"></td>
+<td>hexagon2</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;+&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m17.png" alt="m17"></td>
+<td>plus</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;x&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m18.png" alt="m18"></td>
+<td>x</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;X&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m24.png" alt="m24"></td>
+<td>x (filled)</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;D&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m19.png" alt="m19"></td>
+<td>diamond</td>
+</tr>
+<tr>
+<td align="center"><code>&quot;d&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m20.png" alt="m20"></td>
+<td>thin_diamond</td>
+</tr>
+<tr>
+<td align="center">`”</td>
+<td>“`</td>
+<td><img src="https://matplotlib.org/stable/_images/m21.png" alt="m21"></td>
+</tr>
+<tr>
+<td align="center"><code>&quot;_&quot;</code></td>
+<td><img src="https://matplotlib.org/stable/_images/m22.png" alt="m22"></td>
+<td>hline</td>
+</tr>
+<tr>
+<td align="center"><code>0</code> (<code>TICKLEFT</code>)</td>
+<td><img src="https://matplotlib.org/stable/_images/m25.png" alt="m25"></td>
+<td>tickleft</td>
+</tr>
+<tr>
+<td align="center"><code>1</code> (<code>TICKRIGHT</code>)</td>
+<td><img src="https://matplotlib.org/stable/_images/m26.png" alt="m26"></td>
+<td>tickright</td>
+</tr>
+<tr>
+<td align="center"><code>2</code> (<code>TICKUP</code>)</td>
+<td><img src="https://matplotlib.org/stable/_images/m27.png" alt="m27"></td>
+<td>tickup</td>
+</tr>
+<tr>
+<td align="center"><code>3</code> (<code>TICKDOWN</code>)</td>
+<td><img src="https://matplotlib.org/stable/_images/m28.png" alt="m28"></td>
+<td>tickdown</td>
+</tr>
+<tr>
+<td align="center"><code>4</code> (<code>CARETLEFT</code>)</td>
+<td><img src="https://matplotlib.org/stable/_images/m29.png" alt="m29"></td>
+<td>caretleft</td>
+</tr>
+<tr>
+<td align="center"><code>5</code> (<code>CARETRIGHT</code>)</td>
+<td><img src="https://matplotlib.org/stable/_images/m30.png" alt="m30"></td>
+<td>caretright</td>
+</tr>
+<tr>
+<td align="center"><code>6</code> (<code>CARETUP</code>)</td>
+<td><img src="https://matplotlib.org/stable/_images/m31.png" alt="m31"></td>
+<td>caretup</td>
+</tr>
+<tr>
+<td align="center"><code>7</code> (<code>CARETDOWN</code>)</td>
+<td><img src="https://matplotlib.org/stable/_images/m32.png" alt="m32"></td>
+<td>caretdown</td>
+</tr>
+<tr>
+<td align="center"><code>8</code> (<code>CARETLEFTBASE</code>)</td>
+<td><img src="https://matplotlib.org/stable/_images/m33.png" alt="m33"></td>
+<td>caretleft (centered at base)</td>
+</tr>
+<tr>
+<td align="center"><code>9</code> (<code>CARETRIGHTBASE</code>)</td>
+<td><img src="https://matplotlib.org/stable/_images/m34.png" alt="m34"></td>
+<td>caretright (centered at base)</td>
+</tr>
+<tr>
+<td align="center"><code>10</code> (<code>CARETUPBASE</code>)</td>
+<td><img src="https://matplotlib.org/stable/_images/m35.png" alt="m35"></td>
+<td>caretup (centered at base)</td>
+</tr>
+<tr>
+<td align="center"><code>11</code> (<code>CARETDOWNBASE</code>)</td>
+<td><img src="https://matplotlib.org/stable/_images/m36.png" alt="m36"></td>
+<td>caretdown (centered at base)</td>
+</tr>
+</tbody></table>
+<h2 id="plt-imshow-热力图"><a href="#plt-imshow-热力图" class="headerlink" title="plt.imshow() 热力图"></a>plt.imshow() 热力图</h2><h3 id="函数说明"><a href="#函数说明" class="headerlink" title="函数说明"></a>函数说明</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.imshow(X, cmap=<span class="literal">None</span>, norm=<span class="literal">None</span>, aspect=<span class="literal">None</span>, interpolation=<span class="literal">None</span>, alpha=<span class="literal">None</span>, vmin=<span class="literal">None</span>, vmax=<span class="literal">None</span>, origin=<span class="literal">None</span>, extent=<span class="literal">None</span>, shape=<span class="literal">None</span>, filternorm=<span class="number">1</span>, filterrad=<span class="number">4.0</span>, imlim=<span class="literal">None</span>, resample=<span class="literal">None</span>, url=<span class="literal">None</span>, hold=<span class="literal">None</span>, data=<span class="literal">None</span>, **kwargs)</span><br></pre></td></tr></table></figure>
+
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><ul>
+<li><p>X：存储图像，可以是正常图像，也可以是数组</p>
+</li>
+<li><p>cmap: 设置热图的Colormap。</p>
+<ul>
+<li>hot 从黑平滑过度到红、橙色和黄色的背景色，然后到白色。<br>cool 包含青绿色和品红色的阴影色。从青绿色平滑变化到品红色。<br>gray 返回线性灰度色图。<br>bone 具有较高的蓝色成分的灰度色图。该色图用于对灰度图添加电子的视图。<br>white 全白的单色色图。<br>spring 包含品红和黄的阴影颜色。<br>summer 包含绿和黄的阴影颜色。<br>autumn 从红色平滑变化到橙色，然后到黄色。<br>winter 包含蓝和绿的阴影色。</li>
+</ul>
+<p>搭配plt.color(plt.colorbar(cax=None, ax=None, shrink=0.5))</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Li Xian 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Li Xian 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/31/2PythonStudy/Py-7-Keras/" rel="prev" title="Py-7-Keras">
+      <i class="fa fa-chevron-left"></i> Py-7-Keras
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/31/2PythonStudy/Py-5-Numpy/" rel="next" title="Py-5-Numpy">
+      Py-5-Numpy <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Matplotlib%E7%AF%87"><span class="nav-number">1.</span> <span class="nav-text">Matplotlib篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%BB%E5%9B%BE%E7%9A%84%E6%A0%87%E5%87%86%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">画图的标准流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%84%E7%A7%8D%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">各种常用参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%90%E6%A0%87%E6%96%B9%E5%BC%8F%E7%94%BB%E5%9B%BEa-x-y"><span class="nav-number">1.1.2.</span> <span class="nav-text">坐标方式画图a[x][y]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%87%8C%E9%9D%A2%E7%94%BB%E5%9B%BE%EF%BC%9Aadd-subplot"><span class="nav-number">1.1.3.</span> <span class="nav-text">循环里面画图：add_subplot()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ax-flatten"><span class="nav-number">1.1.4.</span> <span class="nav-text">ax.flatten()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plt-imshow-%E7%83%AD%E5%8A%9B%E5%9B%BE"><span class="nav-number">1.2.</span> <span class="nav-text">plt.imshow() 热力图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">1.2.1.</span> <span class="nav-text">函数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">1.2.2.</span> <span class="nav-text">参数说明</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Li Xian</p>
+  <div class="site-description" itemprop="description">与遗忘作斗争</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/naixil" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;naixil" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lixian_shandong@126.com" title="E-Mail → mailto:lixian_shandong@126.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Xian</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">90k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:22</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
