@@ -464,16 +464,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-09-01 11:25:44" itemprop="dateCreated datePublished" datetime="2021-09-01T11:25:44+08:00">2021-09-01</time>
+              <time title="创建时间：2021-09-01 11:25:44 / 修改时间：11:32:21" itemprop="dateCreated datePublished" datetime="2021-09-01T11:25:44+08:00">2021-09-01</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-30 15:21:43" itemprop="dateModified" datetime="2021-07-30T15:21:43+08:00">2021-07-30</time>
-              </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -509,7 +503,7 @@
 </ul>
 </li>
 </ul>
-<img src="../images/image-20210208213617002.png" alt="image-20210208213617002" style="zoom:33%;">
+<img src="/images/image-20210208213617002.png" alt="image-20210208213617002" style="zoom:33%;">
 
 
 
@@ -528,29 +522,29 @@
 </li>
 </ol>
 <h2 id="2-2-Cuda-11-1安装"><a href="#2-2-Cuda-11-1安装" class="headerlink" title="2.2 Cuda-11.1安装"></a>2.2 Cuda-11.1安装</h2><p>编者按:<a target="_blank" rel="noopener" href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html">官方给出的WSL安装Cuda教程</a>给出了两种安装方式,经过亲身实践apt-get方式安装的是行不通的,因为在执行<code>sh -c &#39;echo &quot;deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 /&quot; &gt; /etc/apt/sources.list.d/cuda.list&#39;</code>之后再执行<code>apt-get</code>的时候会报错<code>The repository http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 is not signed</code>以及<code>BAG SIG</code>错误,编者在网络搜索了很多方法(包括导入GPG公钥到<em>keyserver.ubuntu.com</em>等等方法)都是不可行的.</p>
-<img src="../images/image-20210208215808957.png" alt="image-20210208215808957" style="zoom:50%;">
+<img src="/images/image-20210208215808957.png" alt="image-20210208215808957" style="zoom:50%;">
 
 <p>下文给出的是<strong>切实可行的办法</strong>,也就是通过runfile方法进行安装.</p>
 <p>打开<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-11.1.0-download-archive?target_os=Linux&target_arch=x86_64&target_distro=WSLUbuntu&target_version=20&target_type=runfilelocal">这个网址</a>按照下图进行选择</p>
-<img src="../images/image-20210208215949949.png" alt="image-20210208215949949" style="zoom:50%;">
+<img src="/images/image-20210208215949949.png" alt="image-20210208215949949" style="zoom:50%;">
 
 <p>先在shell里面切换到ubuntu的Downloads文件夹,接着在Ubuntu的Shell里面输入:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://developer.download.nvidia.com/compute/cuda/11.1.0/local_installers/cuda_11.1.0_455.23.05_linux.run </span><br><span class="line">sudo sh cuda_11.1.0_455.23.05_linux.run</span><br></pre></td></tr></table></figure>
 
 <p>上面命令第一行会下载一个.run的文件到Downloads,第二行是进行安装.网络上其他教程可能会说在安装的时候不要选安装Driver的选项,但是实际操作过程中并没有让选择安装Driver的教程,猜想可能是因为cuda的版本(11.1)比较新,已经适配了WSL(毕竟在选择的网址那已经有了一个WSL-Ubuntu的选项).</p>
 <p>安装完成之后在电脑的<code>/usr/local</code>目录下应该有一个cuda-11.1的文件夹(其中cuda那个是安装过程自动创建的软连接).</p>
-<img src="../images/image-20210208220927510.png" alt="image-20210208220927510" style="zoom:50%;">
+<img src="/images/image-20210208220927510.png" alt="image-20210208220927510" style="zoom:50%;">
 
 <p>接下来还需要配置环境变量,这里如果是自己的电脑建议直接在<code>/etc/profile</code>里面配置,省的开机后环境变量会失效或者是从bash切换到zsh的时候导致环境变量失效(编者就是因为安装之后又嫌弃WindowsTerminal的终端太难看,又弄的zsh-ohmyzsh-powerline什么的):</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&#x27;$PATH:/usr/local/cuda-11.1/bin/:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin&#x27;</span><br><span class="line">export LD_LIBRARY_PATH=&quot;/usr/local/cuda-11.1/lib64:$LD_LIBRARY_PATH&quot;</span><br></pre></td></tr></table></figure>
 
 <p>完毕之后输入<code>nvcc -V</code>应该显示如下信息.如果没有,那就是没安装成功,卸载重装重新走一遍上面的流程.</p>
-<img src="../images/image-20210208221022268.png" alt="image-20210208221022268" style="zoom:50%;">
+<img src="/images/image-20210208221022268.png" alt="image-20210208221022268" style="zoom:50%;">
 
 <h2 id="2-3-Cudnn安装"><a href="#2-3-Cudnn安装" class="headerlink" title="2.3 Cudnn安装"></a>2.3 Cudnn安装</h2><p>说是安装实际也不是,就是下载文件然后复制到对应的cuda的文件夹就是了.</p>
 <p>网址:<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">https://developer.nvidia.com/rdp/cudnn-download</a></p>
 <p>上面的网址需要注册成为开发者才能下载.cudnn的版本一定要和cuda的版本对应.</p>
-<img src="../images/image-20210208232414929.png" alt="image-20210208232414929" style="zoom:50%;">
+<img src="/images/image-20210208232414929.png" alt="image-20210208232414929" style="zoom:50%;">
 
 <p>下载后得到的文件夹是<code>cudnn-11.2-linux-x64-v8.1.0.77.arj</code>,这里后缀名是arj,原因不详(我是在Windows下载的),但是可以直接把后缀改成tgz,之后移动到Ubuntu对应的文件夹(Windows的盘符比如说D盘在WSL-Ubuntu里面就是<code>/mnt/d/</code>),移动到Ubuntu的里面(此处我移动到了Ubuntu的Downloads文件夹,以下操作也是在Downloads文件夹下进行操作)就可以进行Cudnn文件的安装(其实是复制):</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf cudnn-11.2-linux-x64-v8.1.0.77.tgz</span><br><span class="line">sudo cp cuda/include/cudnn.h /usr/local/cuda-11.1/include/</span><br><span class="line">sudo cp cuda/lib64/libcudnn* /usr/local/cuda-11.1/lib64/</span><br><span class="line">sudo cp /usr/local/cuda-11.1/lib64/libcusolver.so.11 /usr/local/cuda-11.1/lib64/libcusolver.so.10</span><br><span class="line">sudo chmod +x /usr/local/cuda/include/cudnn.h</span><br><span class="line">sudo chmod +x /usr/local/cuda/lib64/libcudnn*</span><br></pre></td></tr></table></figure>
