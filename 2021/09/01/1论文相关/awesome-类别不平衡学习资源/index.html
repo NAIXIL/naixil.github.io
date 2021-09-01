@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"naixil.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="中文对照：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;142692473                              A curated list of awesome imbalanced learning papers, codes, frameworks and libraries. Class-imbalance (also known as the long-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LiXian&#39;s Blog">
+<meta property="og:url" content="https://naixil.github.io/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/awesome-%E7%B1%BB%E5%88%AB%E4%B8%8D%E5%B9%B3%E8%A1%A1%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/index.html">
+<meta property="og:site_name" content="LiXian&#39;s Blog">
+<meta property="og:description" content="中文对照：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;142692473                              A curated list of awesome imbalanced learning papers, codes, frameworks and libraries. Class-imbalance (also known as the long-">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://awesome.re/badge.svg">
+<meta property="og:image" content="https://img.shields.io/badge/ZhiningLiu1998-AwesomeIL-orange">
+<meta property="og:image" content="https://img.shields.io/github/stars/ZhiningLiu1998/awesome-imbalanced-learning">
+<meta property="og:image" content="https://img.shields.io/github/forks/ZhiningLiu1998/awesome-imbalanced-learning">
+<meta property="og:image" content="https://img.shields.io/github/issues/ZhiningLiu1998/awesome-imbalanced-learning">
+<meta property="og:image" content="https://img.shields.io/github/license/ZhiningLiu1998/awesome-imbalanced-learning">
+<meta property="article:published_time" content="2021-09-01T03:25:44.581Z">
+<meta property="article:modified_time" content="2021-08-26T09:05:35.073Z">
+<meta property="article:author" content="Li Xian">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://awesome.re/badge.svg">
+
+<link rel="canonical" href="https://naixil.github.io/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/awesome-%E7%B1%BB%E5%88%AB%E4%B8%8D%E5%B9%B3%E8%A1%A1%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | LiXian's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LiXian's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/awesome-%E7%B1%BB%E5%88%AB%E4%B8%8D%E5%B9%B3%E8%A1%A1%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-01 11:25:44" itemprop="dateCreated datePublished" datetime="2021-09-01T11:25:44+08:00">2021-09-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-26 17:05:35" itemprop="dateModified" datetime="2021-08-26T17:05:35+08:00">2021-08-26</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>16k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>15 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>中文对照：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/142692473">https://zhuanlan.zhihu.com/p/142692473</a></p>
+<p align="center">
+  <img src="https://awesome.re/badge.svg">
+  <a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/awesome-imbalanced-learning">
+    <img src="https://img.shields.io/badge/ZhiningLiu1998-AwesomeIL-orange">
+  </a>
+  <img src="https://img.shields.io/github/stars/ZhiningLiu1998/awesome-imbalanced-learning">
+  <img src="https://img.shields.io/github/forks/ZhiningLiu1998/awesome-imbalanced-learning">
+  <img src="https://img.shields.io/github/issues/ZhiningLiu1998/awesome-imbalanced-learning">
+  <img src="https://img.shields.io/github/license/ZhiningLiu1998/awesome-imbalanced-learning">
+</p>
+
+<p><strong>A curated list of awesome imbalanced learning papers, codes, frameworks and libraries.</strong></p>
+<p><strong>Class-imbalance</strong> (also known as the long-tail problem) is the fact that the classes are not represented equally in a classification problem, which is quite common in practice. For instance, fraud detection, prediction of rare adverse drug reactions and prediction gene families. Failure to account for the class imbalance often causes inaccurate and decreased predictive performance of many classification algorithms. Imbalanced learning aims to tackle the class imbalance problem to learn an unbiased model from imbalanced data.</p>
+<p>Inspired by <a target="_blank" rel="noopener" href="https://github.com/josephmisiti/awesome-machine-learning">awesome-machine-learning</a>. <strong>Contributions are welcomed!</strong></p>
+<ul>
+<li>Frameworks and libraries are grouped by <em>programming language</em>.</li>
+<li>Research papers are grouped by <em>research field</em>.</li>
+<li>There are numerous papers in this field of research, so this list is not intended to be exhaustive. We aim to keep only the “awesome” works that either <em>have a good impact</em> or have been <em>published in reputed top conferences/journals</em>.</li>
+</ul>
+<h3>
+<font color="red">What's new: </font>
+</h3>
+
+<ul>
+<li>[08/2021] Add papers on cost-sensitive ensemble learning.</li>
+<li>[05/2021] Add a scikit-learn-like package <a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/imbalanced-ensemble">imbalanced-ensemble</a> [<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/imbalanced-ensemble">Github</a>][<a target="_blank" rel="noopener" href="https://imbalanced-ensemble.readthedocs.io/">Documentation</a>].</li>
+<li>[05/2021] Add papers from ICLR/CVPR/WSDM/TKDE/TNNLS.</li>
+<li>[11/2020] Add papers from NeurIPS/ICLR.</li>
+</ul>
+<p><strong>Disclosure:</strong> Zhining Liu is an author on the following works: <a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/imbalanced-ensemble">imbalanced-ensemble</a>, <a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/self-paced-ensemble">Self-paced Ensemble</a>, <a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/mesa">MESA</a>.</p>
+<h1 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h1><ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#frameworks-and-libraries">Frameworks and Libraries</a><ul>
+<li><a href="#python">Python</a></li>
+<li><a href="#r">R</a></li>
+<li><a href="#java">Java</a></li>
+<li><a href="#scalar">Scalar</a></li>
+<li><a href="#julia">Julia</a></li>
+</ul>
+</li>
+<li><a href="#research-papers">Research Papers</a><ul>
+<li><a href="#surveys">Surveys</a></li>
+<li><a href="#ensemble-learning">Ensemble Learning</a><ul>
+<li><a href="#general-ensemble"><em>General ensemble</em></a></li>
+<li><a href="#boosting-based"><em>Boosting-based</em></a></li>
+<li><a href="#bagging-based"><em>Bagging-based</em></a></li>
+<li><a href="#cost-sensitive-ensemble"><em>Cost-sensitive ensemble</em></a></li>
+</ul>
+</li>
+<li><a href="#data-resampling">Data resampling</a><ul>
+<li><a href="#over-sampling"><em>Over-sampling</em></a></li>
+<li><a href="#under-sampling"><em>Under-sampling</em></a></li>
+<li><a href="#hybrid-sampling"><em>Hybrid-sampling</em></a></li>
+</ul>
+</li>
+<li><a href="#cost-sensitive-learning">Cost-sensitive Learning</a></li>
+<li><a href="#deep-learning">Deep Learning</a><ul>
+<li><a href="#surveys-1"><em>Surveys</em></a></li>
+<li><a href="#hard-example-mining"><em>Hard example mining</em></a></li>
+<li><a href="#loss-function-engineering"><em>Loss function engineering</em></a></li>
+<li><a href="#meta-learning"><em>Meta-learning</em></a></li>
+<li><a href="#representation-learning"><em>Representation Learning</em></a></li>
+<li><a href="#posterior-recalibration"><em>Posterior Recalibration</em></a></li>
+<li><a href="#semiself-supervised-learning"><em>Semi/Self-supervised Learning</em></a></li>
+<li><a href="#curriculum-learning"><em>Curriculum Learning</em></a></li>
+<li><a href="#two-phase-training"><em>Two-phase Training</em></a></li>
+<li><a href="#network-architecture"><em>Network Architecture</em></a></li>
+<li><a href="#graph-neural-networks"><em>Graph Neural Networks</em></a></li>
+<li><a href="#deep-generative-model"><em>Deep Generative Model</em></a></li>
+<li><a href="#imbalanced-regression"><em>Imbalanced Regression</em></a></li>
+</ul>
+</li>
+<li><a href="#anomaly-detection">Anomaly Detection</a></li>
+</ul>
+</li>
+<li><a href="#miscellaneous">Miscellaneous</a><ul>
+<li><a href="#datasets">Datasets</a></li>
+<li><a href="#github-repositories">Github Repositories</a><ul>
+<li><a href="#algorithms--utilities--jupyter-notebooks"><em>Algorithms &amp; Utilities &amp; Jupyter Notebooks</em></a></li>
+<li><a href="#paper-list"><em>Paper list</em></a></li>
+<li><a href="#slides"><em>Slides</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Frameworks-and-Libraries"><a href="#Frameworks-and-Libraries" class="headerlink" title="Frameworks and Libraries"></a>Frameworks and Libraries</h1><h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://imbalanced-ensemble.readthedocs.io/"><strong>imbalanced-ensemble</strong></a> [<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/imbalanced-ensemble"><strong>Github</strong></a>][<a target="_blank" rel="noopener" href="https://imbalanced-ensemble.readthedocs.io/"><strong>Documentation</strong></a>][<a target="_blank" rel="noopener" href="https://imbalanced-ensemble.readthedocs.io/en/latest/auto_examples/index.html#"><strong>Gallery</strong></a>] </p>
+<blockquote>
+<p><strong>NOTE:</strong> written in python, easy to use.</p>
+</blockquote>
+<ul>
+<li><code>imbalanced-ensemble</code> is a Python toolbox for quick implementing and deploying <em><strong>ensemble learning algorithms</strong></em> on class-imbalanced data. It is featured for: <ul>
+<li>(i) Unified, easy-to-use APIs, detailed <a target="_blank" rel="noopener" href="https://imbalanced-ensemble.readthedocs.io/">documentation</a> and <a target="_blank" rel="noopener" href="https://imbalanced-ensemble.readthedocs.io/en/latest/auto_examples/index.html#">examples</a>. </li>
+<li>(ii) Capable for multi-class imbalanced learning out-of-box. </li>
+<li>(iii) Optimized performance with parallelization when possible using <a target="_blank" rel="noopener" href="https://github.com/joblib/joblib">joblib</a>.</li>
+<li>(iv) Powerful, customizable, interactive training logging and visualizer.</li>
+<li>(v) Full compatibility with other popular packages like <a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/">scikit-learn</a> and <a target="_blank" rel="noopener" href="https://imbalanced-learn.org/stable/">imbalanced-learn</a>.</li>
+</ul>
+</li>
+<li>Currently (v0.1.4), it includes more than 15 ensemble algorithms based on <em><strong>re-sampling</strong></em> and <em><strong>cost-sensitive learning</strong></em> (e.g., <em>SMOTEBoost/Bagging, RUSBoost/Bagging, AdaCost, EasyEnsemble, BalanceCascade, SelfPacedEnsemble</em>, …).</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://imbalanced-learn.org/stable/"><strong>imbalanced-learn</strong></a> [<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn"><strong>Github</strong></a>][<a target="_blank" rel="noopener" href="https://imbalanced-learn.org/stable/"><strong>Documentation</strong></a>][<a target="_blank" rel="noopener" href="http://10.187.70.34/www.jmlr.org/papers/volume18/16-365/16-365.pdf"><strong>Paper</strong></a>] </p>
+<blockquote>
+<p><strong>NOTE:</strong> written in python, easy to use.</p>
+</blockquote>
+<ul>
+<li><code>imbalanced-learn</code> is a python package offering a number of <em><strong>re-sampling</strong></em> techniques commonly used in datasets showing strong between-class imbalance. It is compatible with <a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/">scikit-learn</a> and is part of <a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib">scikit-learn-contrib</a> projects. </li>
+<li>Currently (v0.8.0), it includes 21 different re-sampling techniques, including over-sampling, under-sampling and hybrid ones (e.g., <em>SMOTE, ADASYN, TomekLinks, NearMiss, OneSideSelection</em>, SMOTETomek, …) </li>
+<li>This package also provides many utilities, e.g., <em>Batch generator for Keras/TensorFlow</em>, see <a target="_blank" rel="noopener" href="https://imbalanced-learn.org/stable/references/index.html#api">API reference</a>.</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://smote-variants.readthedocs.io/en/latest/"><strong>smote_variants</strong></a> [<a target="_blank" rel="noopener" href="https://smote-variants.readthedocs.io/en/latest/"><strong>Documentation</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/analyticalmindsltd/smote_variants"><strong>Github</strong></a>] - A collection of 85 minority <em><strong>over-sampling</strong></em> techniques for imbalanced learning with multi-class oversampling and model selection features (All writen in Python, also support R and Julia).</p>
+</li>
+</ul>
+<h3 id="R"><a href="#R" class="headerlink" title="R"></a>R</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://smote-variants.readthedocs.io/en/latest/"><strong>smote_variants</strong></a> [<a target="_blank" rel="noopener" href="https://smote-variants.readthedocs.io/en/latest/"><strong>Documentation</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/analyticalmindsltd/smote_variants"><strong>Github</strong></a>] - A collection of 85 minority <em><strong>over-sampling</strong></em> techniques for imbalanced learning with multi-class oversampling and model selection features (All writen in Python, also support R and Julia).</li>
+<li><a target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/caret/index.html"><strong>caret</strong></a> [<a target="_blank" rel="noopener" href="http://topepo.github.io/caret/index.html"><strong>Documentation</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/topepo/caret"><strong>Github</strong></a>] - Contains the implementation of Random under/over-sampling.</li>
+<li><a target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/ROSE/index.html"><strong>ROSE</strong></a> [<a target="_blank" rel="noopener" href="https://www.rdocumentation.org/packages/ROSE/versions/0.0-3"><strong>Documentation</strong></a>] - Contains the implementation of <a target="_blank" rel="noopener" href="https://journal.r-project.org/archive/2014-1/menardi-lunardon-torelli.pdf">ROSE</a> (Random Over-Sampling Examples).</li>
+<li><a target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/DMwR/index.html"><strong>DMwR</strong></a> [<a target="_blank" rel="noopener" href="https://www.rdocumentation.org/packages/DMwR/versions/0.4.1"><strong>Documentation</strong></a>] - Contains the implementation of <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1106.1813.pdf">SMOTE</a> (Synthetic Minority Over-sampling TEchnique).</li>
+</ul>
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/description.php"><strong>KEEL</strong></a> [<a target="_blank" rel="noopener" href="https://github.com/SCI2SUGR/KEEL"><strong>Github</strong></a>][<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/sites/default/files/ficherosPublicaciones/0758_Alcalaetal-SoftComputing-Keel1.0.pdf"><strong>Paper</strong></a>] - KEEL provides a simple <em><strong>GUI based</strong></em> on data flow to design experiments with different datasets and computational intelligence algorithms (<em><strong>paying special attention to evolutionary algorithms</strong></em>) in order to assess the behavior of the algorithms. This tool includes many widely used imbalanced learning techniques such as (evolutionary) over/under-resampling, cost-sensitive learning, algorithm modification, and ensemble learning methods. <blockquote>
+<p><strong>NOTE:</strong> wide variety of classical classification, regression, preprocessing algorithms included.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Scalar"><a href="#Scalar" class="headerlink" title="Scalar"></a>Scalar</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/NestorRV/undersampling"><strong>undersampling</strong></a> [<a target="_blank" rel="noopener" href="https://nestorrv.github.io/"><strong>Documentation</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/NestorRV/undersampling"><strong>Github</strong></a>] - A Scala library for <em><strong>under-sampling and their ensemble variants</strong></em> in imbalanced classification.</li>
+</ul>
+<h3 id="Julia"><a href="#Julia" class="headerlink" title="Julia"></a>Julia</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://smote-variants.readthedocs.io/en/latest/"><strong>smote_variants</strong></a> [<a target="_blank" rel="noopener" href="https://smote-variants.readthedocs.io/en/latest/"><strong>Documentation</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/analyticalmindsltd/smote_variants"><strong>Github</strong></a>] - A collection of 85 minority <em><strong>over-sampling</strong></em> techniques for imbalanced learning with multi-class oversampling and model selection features (All writen in Python, also support R and Julia).</li>
+</ul>
+<h1 id="Research-Papers"><a href="#Research-Papers" class="headerlink" title="Research Papers"></a>Research Papers</h1><h2 id="Surveys"><a href="#Surveys" class="headerlink" title="Surveys"></a>Surveys</h2><ul>
+<li><p><strong>Learning from imbalanced data (IEEE TKDE, 2009, 6000+ citations) [<a target="_blank" rel="noopener" href="https://www.sci-hub.shop/10.1109/tkde.2008.239"><strong>Paper</strong></a>]</strong></p>
+<ul>
+<li>Highly cited, classic survey paper. It systematically reviewed the popular solutions, evaluation metrics, and challenging problems in future research in this area (as of 2009). </li>
+</ul>
+</li>
+<li><p><strong>Learning from imbalanced data: open challenges and future directions (2016, 900+ citations) [<a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/301596547_Learning_from_imbalanced_data_Open_challenges_and_future_directions"><strong>Paper</strong></a>]</strong></p>
+<ul>
+<li>This paper concentrates on the open issues and challenges in imbalanced learning, i.e., extreme class imbalance, imbalance in online/stream learning, multi-class imbalanced learning, and semi/un-supervised imbalanced learning.</li>
+</ul>
+</li>
+<li><p><strong>Learning from class-imbalanced data: Review of methods and applications (2017, 900+ citations) [<a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/311977198_Learning_from_class-imbalanced_data_Review_of_methods_and_applications"><strong>Paper</strong></a>]</strong></p>
+<ul>
+<li>A recent exhaustive survey of imbalanced learning methods and applications, a total of 527 papers were included in this study. It provides several detailed taxonomies of existing methods and also the recent trend of this research area.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Ensemble-Learning"><a href="#Ensemble-Learning" class="headerlink" title="Ensemble Learning"></a>Ensemble Learning</h2><h4 id="General-ensemble"><a href="#General-ensemble" class="headerlink" title="General ensemble"></a><em>General ensemble</em></h4><!-- - **General ensemble** -->
+
+<ul>
+<li><strong>Self-paced Ensemble (ICDE 2020, 20+ citations) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1909.03500v3.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/self-paced-ensemble"><strong>Code</strong></a>][<a target="_blank" rel="noopener" href="https://zhiningliu.com/files/ICDE_2020_self_paced_ensemble_slides.pdf"><strong>Slides</strong></a>][<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86891438"><strong>Zhihu/知乎</strong></a>][<a target="_blank" rel="noopener" href="https://pypi.org/project/self-paced-ensemble/"><strong>PyPI</strong></a>]</strong><blockquote>
+<p><strong>NOTE:</strong> versatile solution with outstanding performance and computational efficiency.</p>
+</blockquote>
+</li>
+<li><strong>MESA: Boost Ensemble Imbalanced Learning with MEta-SAmpler (NeurIPS 2020) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2010.08830.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/mesa"><strong>Code</strong></a>][<a target="_blank" rel="noopener" href="https://studio.slideslive.com/web_recorder/share/20201020T134559Z__NeurIPS_posters__17343__mesa-effective-ensemble-imbal?s=d3745afc-cfcf-4d60-9f34-63d3d811b55f"><strong>Video</strong></a>][<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/268539195"><strong>Zhihu/知乎</strong></a>]</strong><blockquote>
+<p><strong>NOTE:</strong> learning an optimal sampling policy directly from data.</p>
+</blockquote>
+</li>
+<li><strong>Exploratory Undersampling for Class-Imbalance Learning (IEEE Trans. on SMC, 2008, 1300+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/articulo/2009-IEEE%20TSMCpartB%20Exploratory%20Undersampling%20for%20Class%20Imbalance%20Learning.pdf"><strong>Paper</strong></a>]</strong><blockquote>
+<p><strong>NOTE:</strong> simple but effective solution.</p>
+</blockquote>
+<ul>
+<li>EasyEnsemble [<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/imbalanced-ensemble/blob/main/imbalanced_ensemble/ensemble/under_sampling/easy_ensemble.py"><strong>Code</strong></a>] </li>
+<li>BalanceCascade [<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/imbalanced-ensemble/blob/main/imbalanced_ensemble/ensemble/under_sampling/balance_cascade.py"><strong>Code</strong></a>]</li>
+</ul>
+</li>
+</ul>
+<h4 id="Boosting-based"><a href="#Boosting-based" class="headerlink" title="Boosting-based"></a><em>Boosting-based</em></h4><!-- - **Boosting-based** -->
+
+<ul>
+<li><p><strong>AdaBoost (1995, 18700+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/articulo/1997-JCSS-Schapire-A%20Decision-Theoretic%20Generalization%20of%20On-Line%20Learning%20(AdaBoost).pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/scikit-learn/scikit-learn/blob/95d4f0841/sklearn/ensemble/_weight_boosting.py#L285"><strong>Code</strong></a>]</strong> - Adaptive Boosting with C4.5</p>
+</li>
+<li><p><strong>DataBoost (2004, 570+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/articulo/2004-SIGKDD-GuoViktor.pdf"><strong>Paper</strong></a>]</strong> - Boosting with Data Generation for Imbalanced Data</p>
+</li>
+<li><p><strong>SMOTEBoost (2003, 1100+ citations) <a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/congreso/2003-PKDD-SMOTEBoost-ChawlaLazarevicHallBowyer.pdf">[<strong>Paper</strong>]</a>[<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/imbalanced-ensemble/blob/main/imbalanced_ensemble/ensemble/over_sampling/smote_bagging.py"><strong>Code</strong></a>]</strong> - Synthetic Minority Over-sampling TEchnique Boosting</p>
+</li>
+<li><p><strong>MSMOTEBoost (2011, 1300+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/articulo/2011-IEEE%20TSMC%20partC-%20GalarFdezBarrenecheaBustinceHerrera.pdf"><strong>Paper</strong></a>]</strong> - Modified Synthetic Minority Over-sampling TEchnique Boosting</p>
+</li>
+<li><p><strong>RAMOBoost (2010, 140+ citations) [<a target="_blank" rel="noopener" href="https://www.ele.uri.edu/faculty/he/PDFfiles/ramoboost.pdf"><strong>Paper</strong></a>] [<a target="_blank" rel="noopener" href="https://github.com/dialnd/imbalanced-algorithms/blob/master/ramo.py#L133"><strong>Code</strong></a>]</strong> - Ranked Minority Over-sampling in Boosting</p>
+</li>
+<li><p><strong>RUSBoost (2009, 850+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/articulo/2010-IEEE%20TSMCpartA-RUSBoost%20A%20Hybrid%20Approach%20to%20Alleviating%20Class%20Imbalance.pdf"><strong>Paper</strong></a>] [<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/imbalanced-ensemble/blob/main/imbalanced_ensemble/ensemble/under_sampling/rus_boost.py"><strong>Code</strong></a>]</strong> - Random Under-Sampling Boosting</p>
+</li>
+<li><p><strong>AdaBoostNC (2012, 350+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/articulo/2012-wang-IEEE_SMC_B.pdf"><strong>Paper</strong></a>]</strong> - Adaptive Boosting with Negative Correlation Learning</p>
+</li>
+<li><p><strong>EUSBoost (2013, 210+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/articulo/2013-galar-PR.pdf"><strong>Paper</strong></a>]</strong> - Evolutionary Under-sampling in Boosting</p>
+</li>
+</ul>
+<h4 id="Bagging-based"><a href="#Bagging-based" class="headerlink" title="Bagging-based"></a><em>Bagging-based</em></h4><!-- - **Bagging-based** -->
+
+<ul>
+<li><p><strong>Bagging (1996, 20000+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/articulo/1996-ML-Breiman-Bagging%20Predictors.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/scikit-learn/scikit-learn/blob/95d4f0841/sklearn/ensemble/_bagging.py#L433"><strong>Code</strong></a>]</strong> - Bagging predictor</p>
+</li>
+<li><p><strong>Diversity Analysis on Imbalanced Data Sets by Using Ensemble Models (2009, 400+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/congreso/2009-IEEE%20CIDM-WangYao.pdf"><strong>Paper</strong></a>]</strong></p>
+<ul>
+<li><strong>UnderBagging</strong> [<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/imbalanced-ensemble/blob/main/imbalanced_ensemble/ensemble/under_sampling/under_bagging.py"><strong>Code</strong></a>] </li>
+<li><strong>OverBagging</strong> [<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/imbalanced-ensemble/blob/main/imbalanced_ensemble/ensemble/over_sampling/over_bagging.py"><strong>Code</strong></a>] </li>
+<li><strong>SMOTEBagging</strong> [<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/imbalanced-ensemble/blob/main/imbalanced_ensemble/ensemble/over_sampling/smote_bagging.py"><strong>Code</strong></a>]</li>
+</ul>
+</li>
+</ul>
+<h4 id="Cost-sensitive-ensemble"><a href="#Cost-sensitive-ensemble" class="headerlink" title="Cost-sensitive ensemble"></a><em>Cost-sensitive ensemble</em></h4><!-- - **Cost-sensitive ensemble** -->
+
+<ul>
+<li><strong>AdaCost (ICML 1999, 800+ citations) [<a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Salvatore-Stolfo/publication/2628569_AdaCost_Misclassification_Cost-sensitive_Boosting/links/0fcfd50ca581d7016f000000/AdaCost-Misclassification-Cost-sensitive-Boosting.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/imbalanced-ensemble/blob/main/imbalanced_ensemble/ensemble/reweighting/adacost.py"><strong>Code</strong></a>]</strong> - Misclassification Cost-sensitive boosting</li>
+<li><strong>AdaUBoost (NIPS 1999, 100+ citations) [<a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper/1998/file/df12ecd077efc8c23881028604dbb8cc-Paper.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/imbalanced-ensemble/blob/main/imbalanced_ensemble/ensemble/reweighting/adauboost.py"><strong>Code</strong></a>]</strong> - AdaBoost with Unequal loss functions</li>
+<li><strong>AsymBoost (NIPS 2001, 700+ citations) [<a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Michael-Jones-66/publication/2539888_Fast_and_Robust_Classification_using_Asymmetric_AdaBoost_and_a_Detector_Cascade/links/540731780cf23d9765a83ec1/Fast-and-Robust-Classification-using-Asymmetric-AdaBoost-and-a-Detector-Cascade.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/imbalanced-ensemble/blob/main/imbalanced_ensemble/ensemble/reweighting/asymmetric_boost.py"><strong>Code</strong></a>]</strong> - Asymmetric AdaBoost and detector cascade</li>
+</ul>
+<h2 id="Data-resampling"><a href="#Data-resampling" class="headerlink" title="Data resampling"></a>Data resampling</h2><h4 id="Over-sampling"><a href="#Over-sampling" class="headerlink" title="Over-sampling"></a><em>Over-sampling</em></h4><!-- - **Over-sampling** -->
+
+<ul>
+<li><strong>ROS [<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/over_sampling/_random_over_sampler.py"><strong>Code</strong></a>]</strong> - Random Over-sampling </li>
+<li><strong>SMOTE (2002, 9800+ citations) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1106.1813.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/over_sampling/_smote.py#L36"><strong>Code</strong></a>]</strong> - Synthetic Minority Over-sampling TEchnique </li>
+<li><strong>Borderline-SMOTE (2005, 1400+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/keel-dataset/pdfs/2005-Han-LNCS.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/over_sampling/_smote.py#L220"><strong>Code</strong></a>]</strong> - Borderline-Synthetic Minority Over-sampling TEchnique </li>
+<li><strong>ADASYN (2008, 1100+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/congreso/2008-He-ieee.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/over_sampling/_adasyn.py"><strong>Code</strong></a>]</strong> - ADAptive SYNthetic Sampling</li>
+<li><strong>SPIDER (2008, 150+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/congreso/stefanowski_selective_2008.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/SCI2SUGR/KEEL/blob/master/src/keel/Algorithms/ImbalancedClassification/Resampling/SPIDER/SPIDER.java#L57"><strong>Code(Java)</strong></a>]</strong> - Selective Preprocessing of Imbalanced Data</li>
+<li><strong>Safe-Level-SMOTE (2009, 370+ citations) [<a target="_blank" rel="noopener" href="http://10.187.70.30/150.214.190.154/keel/keel-dataset/pdfs/2009-Bunkhumpornpat-LNCS.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/SCI2SUGR/KEEL/blob/master/src/keel/Algorithms/ImbalancedClassification/Resampling/Safe_Level_SMOTE/Safe_Level_SMOTE.java#L58"><strong>Code(Java)</strong></a>]</strong> - Safe Level Synthetic Minority Over-sampling TEchnique</li>
+<li><strong>SVM-SMOTE (2009, 120+ citations) [<a target="_blank" rel="noopener" href="http://10.187.70.39/ousar.lib.okayama-u.ac.jp/files/public/1/19617/20160528004522391723/IWCIA2009_A1005.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/over_sampling/_smote.py#L417"><strong>Code</strong></a>]</strong> - SMOTE based on Support Vectors of SVM </li>
+<li><strong>MDO (2015, 150+ citations) [<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/7163639"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/analyticalmindsltd/smote_variants/blob/dedbc3d00b266954fedac0ae87775e1643bc920a/smote_variants/_smote_variants.py#L14513"><strong>Code</strong></a>]</strong> - Mahalanobis Distance-based Over-sampling for <em>Multi-Class</em> imbalanced problems.</li>
+</ul>
+<blockquote>
+<p><strong>NOTE:</strong> See more over-sampling methods at <a target="_blank" rel="noopener" href="https://github.com/analyticalmindsltd/smote_variants#references"><strong>smote-variants</strong></a>.</p>
+</blockquote>
+<h4 id="Under-sampling"><a href="#Under-sampling" class="headerlink" title="Under-sampling"></a><em>Under-sampling</em></h4><!-- - **Under-sampling** -->
+
+<ul>
+<li><strong>RUS [<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/under_sampling/_prototype_selection/_random_under_sampler.py"><strong>Code</strong></a>]</strong> - Random Under-sampling</li>
+<li><strong>CNN (1968, 2100+ citations) [<a target="_blank" rel="noopener" href="https://pdfs.semanticscholar.org/7c37/71fd6829630cf450af853df728ecd8da4ab2.pdf?_ga=2.137274553.882046879.1583413150-1712662047.1583413150"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/under_sampling/_prototype_selection/_condensed_nearest_neighbour.py"><strong>Code</strong></a>]</strong> - Condensed Nearest Neighbor</li>
+<li><strong>ENN (1972, 1500+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/dataset/includes/catImbFiles/1972-Wilson-IEEETSMC.pdf"><strong>Paper</strong></a>] [<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/under_sampling/_prototype_selection/_edited_nearest_neighbours.py"><strong>Code</strong></a>]</strong> - Edited Condensed Nearest Neighbor</li>
+<li><strong>TomekLink (1976, 870+ citations) [<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4309452"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/under_sampling/_prototype_selection/_tomek_links.py"><strong>Code</strong></a>]</strong> - Tomek’s modification of Condensed Nearest Neighbor </li>
+<li><strong>NCR (2001, 500+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/congreso/2001-Laurikkala-LNCS.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/under_sampling/_prototype_selection/_neighbourhood_cleaning_rule.py"><strong>Code</strong></a>]</strong> - Neighborhood Cleaning Rule</li>
+<li><strong>NearMiss-1 &amp; 2 &amp; 3 (2003, 420+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/specific/congreso/jzhang.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/under_sampling/_prototype_selection/_nearmiss.py"><strong>Code</strong></a>]</strong> - Several kNN approaches to unbalanced data distributions.</li>
+<li><strong>CNN with TomekLink (2004, 2000+ citations) [<a target="_blank" rel="noopener" href="https://storm.cis.fordham.edu/~gweiss/selected-papers/batista-study-balancing-training-data.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/SCI2SUGR/KEEL/blob/master/src/keel/Algorithms/ImbalancedClassification/Resampling/CNN_TomekLinks/CNN_TomekLinks.java#L58"><strong>Code(Java)</strong></a>]</strong> - Condensed Nearest Neighbor + TomekLink</li>
+<li><strong>OSS (2007, 2100+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/specific/congreso/kubat97addressing.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/under_sampling/_prototype_selection/_one_sided_selection.py"><strong>Code</strong></a>]</strong> - One Side Selection </li>
+<li><strong>EUS (2009, 290+ citations) [<a target="_blank" rel="noopener" href="https://www.mitpressjournals.org/doi/pdfplus/10.1162/evco.2009.17.3.275"><strong>Paper</strong></a>]</strong> - Evolutionary Under-sampling</li>
+<li><strong>IHT (2014, 130+ citations) [<a target="_blank" rel="noopener" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.649.8727&rep=rep1&type=pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/under_sampling/_prototype_selection/_instance_hardness_threshold.py"><strong>Code</strong></a>]</strong> - Instance Hardness Threshold </li>
+</ul>
+<h4 id="Hybrid-sampling"><a href="#Hybrid-sampling" class="headerlink" title="Hybrid-sampling"></a><em>Hybrid-sampling</em></h4><!-- - **Hybrid-sampling** -->
+
+<ul>
+<li><p><strong>A Study of the Behavior of Several Methods for Balancing Training Data (2004, 2000+ citations) [<a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Ronaldo-Prati/publication/220520041_A_Study_of_the_Behavior_of_Several_Methods_for_Balancing_machine_Learning_Training_Data/links/0d22cd91c989507054a2cf3b/A-Study-of-the-Behavior-of-Several-Methods-for-Balancing-machine-Learning-Training-Data.pdf"><strong>Paper</strong></a>]</strong></p>
+<blockquote>
+<p><strong>NOTE:</strong> extensive experimental evaluation involving 10 different over/under-sampling methods.</p>
+</blockquote>
+<ul>
+<li><strong>SMOTE-Tomek [<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/combine/_smote_tomek.py"><strong>Code</strong></a>]</strong></li>
+<li><strong>SMOTE-ENN [<a target="_blank" rel="noopener" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/combine/_smote_enn.py"><strong>Code</strong></a>]</strong></li>
+</ul>
+</li>
+<li><p><strong>SMOTE-RSB (2012, 210+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/sites/default/files/ficherosPublicaciones/1434_2012-Ramentol-KAIS.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://smote-variants.readthedocs.io/en/latest/_modules/smote_variants/_smote_variants.html#SMOTE_RSB"><strong>Code</strong></a>]</strong> - Hybrid Preprocessing using SMOTE and Rough Sets Theory</p>
+</li>
+<li><p><strong>SMOTE-IPF (2015, 180+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/sites/default/files/ficherosPublicaciones/1824_2015-INS-Saez.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://smote-variants.readthedocs.io/en/latest/_modules/smote_variants/_smote_variants.html#SMOTE_IPF"><strong>Code</strong></a>]</strong> - SMOTE with Iterative-Partitioning Filter</p>
+</li>
+</ul>
+<h2 id="Cost-sensitive-Learning"><a href="#Cost-sensitive-Learning" class="headerlink" title="Cost-sensitive Learning"></a>Cost-sensitive Learning</h2><ul>
+<li><p><strong>CSC4.5 (2002, 420+ citations) [<a target="_blank" rel="noopener" href="https://www.sci-hub.shop/10.1109/tkde.2002.1000348"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/SCI2SUGR/KEEL/blob/master/src/keel/Algorithms/ImbalancedClassification/CSMethods/C45CS/C45CS.java#L48"><strong>Code(Java)</strong></a>]</strong> - An instance-weighting method to induce cost-sensitive trees</p>
+</li>
+<li><p><strong>CSSVM (2008, 710+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/articulo/2009-Chawla-IEEE_TSMCB-svm-imbalance.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/SCI2SUGR/KEEL/blob/master/src/keel/Algorithms/ImbalancedClassification/CSMethods/C_SVMCost/svmClassifierCost.java#L60"><strong>Code(Java)</strong></a>]</strong> - Cost-sensitive SVMs for highly imbalanced classification</p>
+</li>
+<li><p><strong>CSNN (2005, 950+ citations) [<a target="_blank" rel="noopener" href="https://sci2s.ugr.es/keel/pdf/algorithm/articulo/2006%20-%20IEEE_TKDE%20-%20Zhou_Liu.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/SCI2SUGR/KEEL/blob/master/src/keel/Algorithms/ImbalancedClassification/CSMethods/MLPerceptronBackpropCS/MLPerceptronBackpropCS.java#L49"><strong>Code(Java)</strong></a>]</strong> - Training cost-sensitive neural networks with methods addressing the class imbalance problem.</p>
+</li>
+</ul>
+<h2 id="Deep-Learning"><a href="#Deep-Learning" class="headerlink" title="Deep Learning"></a>Deep Learning</h2><h4 id="Surveys-1"><a href="#Surveys-1" class="headerlink" title="Surveys"></a><em>Surveys</em></h4><!-- - **Surveys** -->
+
+<ul>
+<li>A systematic study of the class imbalance problem in convolutional neural networks (2018, 330+ citations) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1710.05381.pdf"><strong>Paper</strong></a>]</li>
+<li>Survey on deep learning with class imbalance (2019, 50+ citations) [<a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/332165523_Survey_on_deep_learning_with_class_imbalance"><strong>Paper</strong></a>]<blockquote>
+<p><strong>NOTE:</strong> a recent comprehensive survey of the class imbalance problem in deep learning.</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Hard-example-mining"><a href="#Hard-example-mining" class="headerlink" title="Hard example mining"></a><em>Hard example mining</em></h4><!-- - **Hard example mining** -->
+
+<ul>
+<li>Training region-based object detectors with online hard example mining (CVPR 2016, 840+ citations) [<a target="_blank" rel="noopener" href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Shrivastava_Training_Region-Based_Object_CVPR_2016_paper.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/abhi2610/ohemh"><strong>Code</strong></a>] - In the later phase of NN training, only do gradient back-propagation for “hard examples” (i.e., with large loss value)</li>
+</ul>
+<h4 id="Loss-function-engineering"><a href="#Loss-function-engineering" class="headerlink" title="Loss function engineering"></a><em>Loss function engineering</em></h4><!-- - **Loss function engineering** -->
+
+<ul>
+<li><p>Focal loss for dense object detection (ICCV 2017, 2600+ citations) [<a target="_blank" rel="noopener" href="http://10.187.70.31/openaccess.thecvf.com/content_ICCV_2017/papers/Lin_Focal_Loss_for_ICCV_2017_paper.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/facebookresearch/detectron2"><strong>Code (detectron2)</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/clcarwin/focal_loss_pytorch"><strong>Code (unofficial)</strong></a>] - A uniform loss function that focuses training on a sparse set of hard examples to prevents the vast number of easy negatives from overwhelming the detector during training. </p>
+<blockquote>
+<p><strong>NOTE:</strong> elegant solution, high influence.</p>
+</blockquote>
+</li>
+<li><p>Training deep neural networks on imbalanced data sets (IJCNN 2016, 110+ citations) [<a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/309778930_Training_deep_neural_networks_on_imbalanced_data_sets"><strong>Paper</strong></a>] - Mean (square) false error that can equally capture classification errors from both the majority class and the minority class.</p>
+</li>
+<li><p>Deep imbalanced attribute classification using visual attention aggregation (ECCV 2018, 30+ citation) [<a target="_blank" rel="noopener" href="http://10.187.70.39/openaccess.thecvf.com/content_ECCV_2018/papers/Nikolaos_Sarafianos_Deep_Imbalanced_Attribute_ECCV_2018_paper.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/cvcode18/imbalanced_learning"><strong>Code</strong></a>]</p>
+</li>
+<li><p>Imbalanced deep learning by minority class incremental rectification (TPAMI 2018, 60+ citations) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1804.10851.pdf"><strong>Paper</strong></a>] - Class Rectification Loss for minimizing the dominant effect of majority classes by discovering sparsely sampled boundaries of minority classes in an iterative batch-wise learning process.</p>
+</li>
+<li><p>Learning Imbalanced Datasets with Label-Distribution-Aware Margin Loss (NIPS 2019, 10+ citations) [<a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/8435-learning-imbalanced-datasets-with-label-distribution-aware-margin-loss.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/kaidic/LDAM-DRW"><strong>Code</strong></a>]  - A theoretically-principled label-distribution-aware margin (LDAM) loss motivated by minimizing a margin-based generalization bound.</p>
+</li>
+<li><p>Gradient harmonized single-stage detector (AAAI 2019, 40+ citations) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1811.05181.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/libuyu/GHM_Detection"><strong>Code</strong></a>] - Compared to Focal Loss, which only down-weights “easy” negative examples, GHM also down-weights “very hard” examples as they are likely to be outliers. </p>
+</li>
+<li><p>Class-Balanced Loss Based on Effective Number of Samples (CVPR 2019, 70+ citations) [<a target="_blank" rel="noopener" href="http://10.187.70.34/openaccess.thecvf.com/content_CVPR_2019/papers/Cui_Class-Balanced_Loss_Based_on_Effective_Number_of_Samples_CVPR_2019_paper.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/richardaecn/class-balanced-loss"><strong>Code</strong></a>] - a simple and generic class-reweighting mechanism based on Effective Number of Samples.</p>
+</li>
+</ul>
+<h4 id="Meta-learning"><a href="#Meta-learning" class="headerlink" title="Meta-learning"></a><em>Meta-learning</em></h4><!-- - **Meta-learning** -->
+
+<ul>
+<li><p>Learning to model the tail (NIPS 2017, 70+ citations) [<a target="_blank" rel="noopener" href="http://10.187.70.33/papers.nips.cc/paper/7278-learning-to-model-the-tail.pdf"><strong>Paper</strong></a>] - Transfer meta-knowledge from the data-rich classes in the head of the distribution to the data-poor classes in the tail.</p>
+</li>
+<li><p>Learning to reweight examples for robust deep learning (ICML 2018, 150+ citations) [<a target="_blank" rel="noopener" href="http://10.187.70.24/proceedings.mlr.press/v80/ren18a/ren18a.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/uber-research/learning-to-reweight-examples"><strong>Code</strong></a>] - Implicitly learn a weight function to reweight the samples in gradient updates of DNN.</p>
+<blockquote>
+<p><strong>NOTE:</strong> representative work to solve the class imbalance problem through meta-learning.</p>
+</blockquote>
+</li>
+<li><p>Meta-weight-net: Learning an explicit mapping for sample weighting (NIPS 2019) [<a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/8467-meta-weight-net-learning-an-explicit-mapping-for-sample-weighting.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/xjtushujun/meta-weight-net"><strong>Code</strong></a>] - Explicitly learn a weight function (with an MLP as the function approximator) to reweight the samples in gradient updates of DNN.</p>
+</li>
+<li><p>Learning Data Manipulation for Augmentation and Weighting (NIPS 2019) [<a target="_blank" rel="noopener" href="https://www.cs.cmu.edu/~zhitingh/data/neurips19_data_manip_preprint.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/tanyuqian/learning-data-manipulation"><strong>Code</strong></a>]</p>
+</li>
+<li><p>Learning to Balance: Bayesian Meta-Learning for Imbalanced and Out-of-distribution Tasks (ICLR 2020) [<a target="_blank" rel="noopener" href="https://openreview.net/attachment?id=rkeZIJBYvr&name=original_pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/haebeom-lee/l2b"><strong>Code</strong></a>]</p>
+</li>
+<li><p>MESA: Boost Ensemble Imbalanced Learning with MEta-SAmpler (NeurIPS 2020) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2010.08830.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/ZhiningLiu1998/mesa"><strong>Code</strong></a>][<a target="_blank" rel="noopener" href="https://studio.slideslive.com/web_recorder/share/20201020T134559Z__NeurIPS_posters__17343__mesa-effective-ensemble-imbal?s=d3745afc-cfcf-4d60-9f34-63d3d811b55f"><strong>Video</strong></a>]</p>
+<blockquote>
+<p><strong>NOTE:</strong> meta-learning-powered ensemble learning</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Representation-Learning"><a href="#Representation-Learning" class="headerlink" title="Representation Learning"></a><em>Representation Learning</em></h4><!-- - **Representation Learning** -->
+
+<ul>
+<li><p>Learning deep representation for imbalanced classification (CVPR 2016, 220+ citations) [<a target="_blank" rel="noopener" href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Huang_Learning_Deep_Representation_CVPR_2016_paper.pdf"><strong>Paper</strong></a>]</p>
+</li>
+<li><p>Supervised Class Distribution Learning for GANs-Based Imbalanced Classification (ICDM 2019) [<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.xilesou.top/abstract/document/8970900"><strong>Paper</strong></a>]</p>
+</li>
+<li><p>Decoupling Representation and Classifier for Long-tailed Recognition (ICLR 2020) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1910.09217.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/facebookresearch/classifier-balancing"><strong>Code</strong></a>]</p>
+<blockquote>
+<p><strong>NOTE:</strong> interesting findings on representation learning and classifier learning</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Posterior-Recalibration"><a href="#Posterior-Recalibration" class="headerlink" title="Posterior Recalibration"></a><em>Posterior Recalibration</em></h4><!-- - **Posterior Recalibration** -->
+
+<ul>
+<li><p>Posterior Re-calibration for Imbalanced Datasets (NeurIPS 2020) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2010.11820.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/GT-RIPL/UNO-IC"><strong>Code</strong></a>]</p>
+</li>
+<li><p>Long-tail learning via logit adjustment (ICLR 2021) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2007.07314v1.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/google-research/google-research/tree/master/logit_adjustment"><strong>Code</strong></a>]</p>
+</li>
+</ul>
+<h4 id="Semi-Self-supervised-Learning"><a href="#Semi-Self-supervised-Learning" class="headerlink" title="Semi/Self-supervised Learning"></a><em>Semi/Self-supervised Learning</em></h4><!-- - **Semi/Self-supervised Learning** -->
+
+<ul>
+<li>Rethinking the Value of Labels for Improving Class-Imbalanced Learning (NeurIPS 2020) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2006.07529.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/YyzHarry/imbalanced-semi-self"><strong>Code</strong></a>][<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=XltXZ3OZvyI&feature=youtu.be"><strong>Video</strong></a>]<blockquote>
+<p><strong>NOTE:</strong> semi-supervised training / self-supervised pre-training helps imbalance learning</p>
+</blockquote>
+</li>
+<li>Distribution Aligning Refinery of Pseudo-label for Imbalanced Semi-supervised Learning (NeurIPS 2020) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2007.08844.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/bbuing9/DARP"><strong>Code</strong></a>]</li>
+</ul>
+<h4 id="Curriculum-Learning"><a href="#Curriculum-Learning" class="headerlink" title="Curriculum Learning"></a><em>Curriculum Learning</em></h4><!-- - **Curriculum Learning** -->
+
+<ul>
+<li>Dynamic Curriculum Learning for Imbalanced Data Classification (ICCV 2019) [<a target="_blank" rel="noopener" href="http://10.187.70.15/openaccess.thecvf.com/content_ICCV_2019/papers/Wang_Dynamic_Curriculum_Learning_for_Imbalanced_Data_Classification_ICCV_2019_paper.pdf"><strong>Paper</strong></a>]</li>
+</ul>
+<h4 id="Two-phase-Training"><a href="#Two-phase-Training" class="headerlink" title="Two-phase Training"></a><em>Two-phase Training</em></h4><!-- - **Two-phase Training** -->
+
+<ul>
+<li><p>Brain tumor segmentation with deep neural networks (2017, 1200+ citations) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1505.03540.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/naldeborgh7575/brain_segmentation"><strong>Code (unofficial)</strong></a>]</p>
+<blockquote>
+<p>Pre-training on balanced dataset, fine-tuning the last output layer before softmax on the original, imbalanced data.</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Network-Architecture"><a href="#Network-Architecture" class="headerlink" title="Network Architecture"></a><em>Network Architecture</em></h4><!-- - **Network Architecture** -->
+
+<ul>
+<li>BBN: Bilateral-Branch Network with Cumulative Learning for Long-Tailed Visual Recognition (CVPR 2020) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1912.02413.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/Megvii-Nanjing/BBN"><strong>Code</strong></a>]</li>
+<li>Class-Imbalanced Deep Learning via a Class-Balanced Ensemble (TNNLS 2021) [<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/9416240"><strong>Paper</strong></a>]</li>
+</ul>
+<h4 id="Graph-Neural-Networks"><a href="#Graph-Neural-Networks" class="headerlink" title="Graph Neural Networks"></a><em>Graph Neural Networks</em></h4><!-- - **Graph Neural Networks** -->
+
+<ul>
+<li>GraphSMOTE: Imbalanced Node Classification on Graphs with Graph Neural Networks (WSDM 2021) [<a target="_blank" rel="noopener" href="https://dl.acm.org/doi/pdf/10.1145/3437963.3441720"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/TianxiangZhao/GraphSmote"><strong>Code</strong></a>]</li>
+</ul>
+<h4 id="Deep-Generative-Model"><a href="#Deep-Generative-Model" class="headerlink" title="Deep Generative Model"></a><em>Deep Generative Model</em></h4><!-- - **Deep Generative Model** -->
+
+<ul>
+<li>Deep Generative Model for Robust Imbalance Classification (CVPR 2020) [<a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Wang_Deep_Generative_Model_for_Robust_Imbalance_Classification_CVPR_2020_paper.pdf"><strong>Paper</strong></a>]</li>
+</ul>
+<h4 id="Imbalanced-Regression"><a href="#Imbalanced-Regression" class="headerlink" title="Imbalanced Regression"></a><em>Imbalanced Regression</em></h4><!-- - **Imbalanced Regression** -->
+
+<ul>
+<li>Delving into Deep Imbalanced Regression (ICML 2021) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2102.09554.pdf"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/YyzHarry/imbalanced-regression"><strong>Code</strong></a>][<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=grJGixofQRU"><strong>Video</strong></a>]</li>
+<li>Density-based weighting for imbalanced regression (Machine Learning [J], 2021) [<a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/s10994-021-06023-5"><strong>Paper</strong></a>][<a target="_blank" rel="noopener" href="https://github.com/SteiMi/density-based-weighting-for-imbalanced-regression"><strong>Code</strong></a>] </li>
+</ul>
+<h2 id="Anomaly-Detection"><a href="#Anomaly-Detection" class="headerlink" title="Anomaly Detection"></a>Anomaly Detection</h2><ul>
+<li><p><strong>Surveys</strong></p>
+<ul>
+<li><p>Anomaly detection: A survey (ACM computing surveys, 2009, 9000+ citations) [<a target="_blank" rel="noopener" href="http://10.187.70.15/cinslab.com/wp-content/uploads/2019/03/xiaorong.pdf"><strong>Paper</strong></a>]</p>
+</li>
+<li><p>A survey of network anomaly detection techniques (2017, 700+ citations) [<a target="_blank" rel="noopener" href="https://www.gta.ufrj.br/~alvarenga/files/CPE826/Ahmed2016-Survey.pdf"><strong>Paper</strong></a>]</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Classification-based</strong></p>
+<ul>
+<li><p>One-class SVMs for document classification (JMLR, 2001, 1300+ citations) [<a target="_blank" rel="noopener" href="http://10.187.70.31/www.jmlr.org/papers/volume2/manevitz01a/manevitz01a.pdf"><strong>Paper</strong></a>]</p>
+</li>
+<li><p>One-class Collaborative Filtering (ICDM 2008, 1000+ citations) [<a target="_blank" rel="noopener" href="https://cseweb.ucsd.edu/classes/fa17/cse291-b/reading/04781145.pdf"><strong>Paper</strong></a>]</p>
+</li>
+<li><p>Isolation Forest (ICDM 2008, 1000+ citations) [<a target="_blank" rel="noopener" href="https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf?q=isolation-forest"><strong>Paper</strong></a>]</p>
+</li>
+<li><p>Anomaly Detection using One-Class Neural Networks (2018, 200+ citations) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1802.06360.pdf"><strong>Paper</strong></a>]</p>
+</li>
+<li><p>Anomaly Detection with Robust Deep Autoencoders (KDD 2017, 170+ citations) [<a target="_blank" rel="noopener" href="https://pdfs.semanticscholar.org/c112/b06d3dac590b4cc111e5ec9c805d0b086c6e.pdf"><strong>Paper</strong></a>]</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Miscellaneous"><a href="#Miscellaneous" class="headerlink" title="Miscellaneous"></a>Miscellaneous</h1><h2 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h2><ul>
+<li><p><strong><code>imbalanced-learn</code> datasets</strong></p>
+<blockquote>
+<p>This collection of datasets is from <a target="_blank" rel="noopener" href="https://imbalanced-learn.org/stable/references/generated/imblearn.datasets.fetch_datasets.html"><code>imblearn.datasets.fetch_datasets</code></a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Repository &amp; Target</th>
+<th>Ratio</th>
+<th>#S</th>
+<th>#F</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>ecoli</td>
+<td>UCI, target: imU</td>
+<td>8.6:1</td>
+<td>336</td>
+<td>7</td>
+</tr>
+<tr>
+<td>2</td>
+<td>optical_digits</td>
+<td>UCI, target: 8</td>
+<td>9.1:1</td>
+<td>5,620</td>
+<td>64</td>
+</tr>
+<tr>
+<td>3</td>
+<td>satimage</td>
+<td>UCI, target: 4</td>
+<td>9.3:1</td>
+<td>6,435</td>
+<td>36</td>
+</tr>
+<tr>
+<td>4</td>
+<td>pen_digits</td>
+<td>UCI, target: 5</td>
+<td>9.4:1</td>
+<td>10,992</td>
+<td>16</td>
+</tr>
+<tr>
+<td>5</td>
+<td>abalone</td>
+<td>UCI, target: 7</td>
+<td>9.7:1</td>
+<td>4,177</td>
+<td>10</td>
+</tr>
+<tr>
+<td>6</td>
+<td>sick_euthyroid</td>
+<td>UCI, target: sick euthyroid</td>
+<td>9.8:1</td>
+<td>3,163</td>
+<td>42</td>
+</tr>
+<tr>
+<td>7</td>
+<td>spectrometer</td>
+<td>UCI, target: &gt; =44</td>
+<td>11:1</td>
+<td>531</td>
+<td>93</td>
+</tr>
+<tr>
+<td>8</td>
+<td>car_eval_34</td>
+<td>UCI, target: good, v good</td>
+<td>12:1</td>
+<td>1,728</td>
+<td>21</td>
+</tr>
+<tr>
+<td>9</td>
+<td>isolet</td>
+<td>UCI, target: A, B</td>
+<td>12:1</td>
+<td>7,797</td>
+<td>617</td>
+</tr>
+<tr>
+<td>10</td>
+<td>us_crime</td>
+<td>UCI, target: &gt;0.65</td>
+<td>12:1</td>
+<td>1,994</td>
+<td>100</td>
+</tr>
+<tr>
+<td>11</td>
+<td>yeast_ml8</td>
+<td>LIBSVM, target: 8</td>
+<td>13:1</td>
+<td>2,417</td>
+<td>103</td>
+</tr>
+<tr>
+<td>12</td>
+<td>scene</td>
+<td>LIBSVM, target: &gt;one label</td>
+<td>13:1</td>
+<td>2,407</td>
+<td>294</td>
+</tr>
+<tr>
+<td>13</td>
+<td>libras_move</td>
+<td>UCI, target: 1</td>
+<td>14:1</td>
+<td>360</td>
+<td>90</td>
+</tr>
+<tr>
+<td>14</td>
+<td>thyroid_sick</td>
+<td>UCI, target: sick</td>
+<td>15:1</td>
+<td>3,772</td>
+<td>52</td>
+</tr>
+<tr>
+<td>15</td>
+<td>coil_2000</td>
+<td>KDD, CoIL, target: minority</td>
+<td>16:1</td>
+<td>9,822</td>
+<td>85</td>
+</tr>
+<tr>
+<td>16</td>
+<td>arrhythmia</td>
+<td>UCI, target: 06</td>
+<td>17:1</td>
+<td>452</td>
+<td>278</td>
+</tr>
+<tr>
+<td>17</td>
+<td>solar_flare_m0</td>
+<td>UCI, target: M-&gt;0</td>
+<td>19:1</td>
+<td>1,389</td>
+<td>32</td>
+</tr>
+<tr>
+<td>18</td>
+<td>oil</td>
+<td>UCI, target: minority</td>
+<td>22:1</td>
+<td>937</td>
+<td>49</td>
+</tr>
+<tr>
+<td>19</td>
+<td>car_eval_4</td>
+<td>UCI, target: vgood</td>
+<td>26:1</td>
+<td>1,728</td>
+<td>21</td>
+</tr>
+<tr>
+<td>20</td>
+<td>wine_quality</td>
+<td>UCI, wine, target: &lt;=4</td>
+<td>26:1</td>
+<td>4,898</td>
+<td>11</td>
+</tr>
+<tr>
+<td>21</td>
+<td>letter_img</td>
+<td>UCI, target: Z</td>
+<td>26:1</td>
+<td>20,000</td>
+<td>16</td>
+</tr>
+<tr>
+<td>22</td>
+<td>yeast_me2</td>
+<td>UCI, target: ME2</td>
+<td>28:1</td>
+<td>1,484</td>
+<td>8</td>
+</tr>
+<tr>
+<td>23</td>
+<td>webpage</td>
+<td>LIBSVM, w7a, target: minority</td>
+<td>33:1</td>
+<td>34,780</td>
+<td>300</td>
+</tr>
+<tr>
+<td>24</td>
+<td>ozone_level</td>
+<td>UCI, ozone, data</td>
+<td>34:1</td>
+<td>2,536</td>
+<td>72</td>
+</tr>
+<tr>
+<td>25</td>
+<td>mammography</td>
+<td>UCI, target: minority</td>
+<td>42:1</td>
+<td>11,183</td>
+<td>6</td>
+</tr>
+<tr>
+<td>26</td>
+<td>protein_homo</td>
+<td>KDD CUP 2004, minority</td>
+<td>111:1</td>
+<td>145,751</td>
+<td>74</td>
+</tr>
+<tr>
+<td>27</td>
+<td>abalone_19</td>
+<td>UCI, target: 19</td>
+<td>130:1</td>
+<td>4,177</td>
+<td>10</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>Imbalanced Databases</strong></p>
+<p>Link: <a target="_blank" rel="noopener" href="https://github.com/gykovacs/mldb">https://github.com/gykovacs/mldb</a></p>
+</li>
+</ul>
+<h2 id="Github-Repositories"><a href="#Github-Repositories" class="headerlink" title="Github Repositories"></a>Github Repositories</h2><h3 id="Algorithms-amp-Utilities-amp-Jupyter-Notebooks"><a href="#Algorithms-amp-Utilities-amp-Jupyter-Notebooks" class="headerlink" title="Algorithms &amp; Utilities &amp; Jupyter Notebooks"></a><em>Algorithms &amp; Utilities &amp; Jupyter Notebooks</em></h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/dialnd/imbalanced-algorithms">imbalanced-algorithms</a> - Python-based implementations of algorithms for learning on imbalanced data.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ufoym/imbalanced-dataset-sampler">imbalanced-dataset-sampler</a> - A (PyTorch) imbalanced dataset sampler for oversampling low frequent classes and undersampling high frequent ones.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/wangz10/class_imbalance">class_imbalance</a> - Jupyter Notebook presentation for class imbalance in binary classification.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/javaidnabi31/Multi-class-with-imbalanced-dataset-classification">Multi-class-with-imbalanced-dataset-classification</a> - Perform multi-class classification on imbalanced 20-news-group dataset.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/amueller/ml-workshop-4-of-4">Advanced Machine Learning with scikit-learn: Imbalanced classification and text data</a> - Different approaches to feature selection, and resampling methods for imbalanced data.</li>
+</ul>
+<h3 id="Paper-list"><a href="#Paper-list" class="headerlink" title="Paper list"></a><em>Paper list</em></h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/yzhao062/anomaly-detection-resources">Anomaly Detection Learning Resources</a> by <a target="_blank" rel="noopener" href="https://github.com/yzhao062">yzhao062</a> - Anomaly detection related books, papers, videos, and toolboxes.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/danielgy/Paper-list-on-Imbalanced-Time-series-Classification-with-Deep-Learning">Paper-list-on-Imbalanced-Time-series-Classification-with-Deep-Learning</a> - Imbalanced Time-series Classification</p>
+</li>
+</ul>
+<h3 id="Slides"><a href="#Slides" class="headerlink" title="Slides"></a><em>Slides</em></h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/timgasser/acm_imbalanced_learning">acm_imbalanced_learning</a> - slides and code for the ACM Imbalanced Learning talk on 27th April 2016 in Austin, TX.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Li Xian 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Li Xian 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/1-1-%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/OLD/1-0-SciDICup%E8%AE%BA%E6%96%87%E4%BF%AE%E6%94%B9/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">
+What&#39;s new: 
+</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Table-of-Contents"><span class="nav-number"></span> <span class="nav-text">Table of Contents</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Frameworks-and-Libraries"><span class="nav-number"></span> <span class="nav-text">Frameworks and Libraries</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python"><span class="nav-number">1.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#R"><span class="nav-number">2.</span> <span class="nav-text">R</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java"><span class="nav-number">3.</span> <span class="nav-text">Java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scalar"><span class="nav-number">4.</span> <span class="nav-text">Scalar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Julia"><span class="nav-number">5.</span> <span class="nav-text">Julia</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Research-Papers"><span class="nav-number"></span> <span class="nav-text">Research Papers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Surveys"><span class="nav-number"></span> <span class="nav-text">Surveys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ensemble-Learning"><span class="nav-number"></span> <span class="nav-text">Ensemble Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#General-ensemble"><span class="nav-number">0.1.</span> <span class="nav-text">General ensemble</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Boosting-based"><span class="nav-number">0.2.</span> <span class="nav-text">Boosting-based</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bagging-based"><span class="nav-number">0.3.</span> <span class="nav-text">Bagging-based</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cost-sensitive-ensemble"><span class="nav-number">0.4.</span> <span class="nav-text">Cost-sensitive ensemble</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-resampling"><span class="nav-number"></span> <span class="nav-text">Data resampling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Over-sampling"><span class="nav-number">0.1.</span> <span class="nav-text">Over-sampling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Under-sampling"><span class="nav-number">0.2.</span> <span class="nav-text">Under-sampling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hybrid-sampling"><span class="nav-number">0.3.</span> <span class="nav-text">Hybrid-sampling</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cost-sensitive-Learning"><span class="nav-number"></span> <span class="nav-text">Cost-sensitive Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deep-Learning"><span class="nav-number"></span> <span class="nav-text">Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Surveys-1"><span class="nav-number">0.1.</span> <span class="nav-text">Surveys</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hard-example-mining"><span class="nav-number">0.2.</span> <span class="nav-text">Hard example mining</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Loss-function-engineering"><span class="nav-number">0.3.</span> <span class="nav-text">Loss function engineering</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Meta-learning"><span class="nav-number">0.4.</span> <span class="nav-text">Meta-learning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Representation-Learning"><span class="nav-number">0.5.</span> <span class="nav-text">Representation Learning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Posterior-Recalibration"><span class="nav-number">0.6.</span> <span class="nav-text">Posterior Recalibration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Semi-Self-supervised-Learning"><span class="nav-number">0.7.</span> <span class="nav-text">Semi&#x2F;Self-supervised Learning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Curriculum-Learning"><span class="nav-number">0.8.</span> <span class="nav-text">Curriculum Learning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Two-phase-Training"><span class="nav-number">0.9.</span> <span class="nav-text">Two-phase Training</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Network-Architecture"><span class="nav-number">0.10.</span> <span class="nav-text">Network Architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Graph-Neural-Networks"><span class="nav-number">0.11.</span> <span class="nav-text">Graph Neural Networks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deep-Generative-Model"><span class="nav-number">0.12.</span> <span class="nav-text">Deep Generative Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Imbalanced-Regression"><span class="nav-number">0.13.</span> <span class="nav-text">Imbalanced Regression</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anomaly-Detection"><span class="nav-number"></span> <span class="nav-text">Anomaly Detection</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Miscellaneous"><span class="nav-number"></span> <span class="nav-text">Miscellaneous</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Datasets"><span class="nav-number"></span> <span class="nav-text">Datasets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github-Repositories"><span class="nav-number"></span> <span class="nav-text">Github Repositories</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Algorithms-amp-Utilities-amp-Jupyter-Notebooks"><span class="nav-number">1.</span> <span class="nav-text">Algorithms &amp; Utilities &amp; Jupyter Notebooks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Paper-list"><span class="nav-number">2.</span> <span class="nav-text">Paper list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Slides"><span class="nav-number">3.</span> <span class="nav-text">Slides</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Li Xian</p>
+  <div class="site-description" itemprop="description">与遗忘作斗争</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/naixil" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;naixil" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lixian_shandong@126.com" title="E-Mail → mailto:lixian_shandong@126.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Xian</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">NaNm</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">NaN:aN</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

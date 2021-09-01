@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"naixil.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="数据结构（王道考研，笔记）绪论 数据结构（三要素） 逻辑结构 线性结构：线性表、栈、队列 非线性结构：树、图、集合   存储结构（物理结构） 顺序存储：逻辑上相邻，物理上也相邻 优点：可以实现随机存取，占用存储少 缺点：只能使用相邻的存储单元，因此可能产生较多的外部碎片   链式存储：用指针表示元素之间的逻辑关系 优点：不会出现碎片现象 缺点：指针的存储会占用额外的存储空间；只能实现顺序存取">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LiXian&#39;s Blog">
+<meta property="og:url" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="LiXian&#39;s Blog">
+<meta property="og:description" content="数据结构（王道考研，笔记）绪论 数据结构（三要素） 逻辑结构 线性结构：线性表、栈、队列 非线性结构：树、图、集合   存储结构（物理结构） 顺序存储：逻辑上相邻，物理上也相邻 优点：可以实现随机存取，占用存储少 缺点：只能使用相邻的存储单元，因此可能产生较多的外部碎片   链式存储：用指针表示元素之间的逻辑关系 优点：不会出现碎片现象 缺点：指针的存储会占用额外的存储空间；只能实现顺序存取">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210826214602800.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210826214718110.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210826214804310.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210826234556739.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827000056901.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827000514532.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827000537045.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827001051969.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827001204423.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827001301728.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827001324400.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827001510029.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827152052317.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827153544608.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827160758537.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827162041861.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827164603030.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827175236848.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827175336538.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827204015500.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827204232677.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827204713413.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827205000283.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827205127787.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827205302957.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210827220457719.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210828160705069.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210828160720498.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210828160736311.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210828161939448.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210828162520063.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210828162533557.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210828162846177.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210829204330257.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210829204652633.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210829205204112.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210829205822091.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210829210103605.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210829210846951.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210829211304063.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210829211925513.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210829213048611.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210829212959912.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210831121412395.png">
+<meta property="article:published_time" content="2021-09-01T03:25:44.591Z">
+<meta property="article:modified_time" content="2021-08-31T04:15:45.534Z">
+<meta property="article:author" content="Li Xian">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/images/image-20210826214602800.png">
+
+<link rel="canonical" href="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | LiXian's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LiXian's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-01 11:25:44" itemprop="dateCreated datePublished" datetime="2021-09-01T11:25:44+08:00">2021-09-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-31 12:15:45" itemprop="dateModified" datetime="2021-08-31T12:15:45+08:00">2021-08-31</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="数据结构（王道考研，笔记）"><a href="#数据结构（王道考研，笔记）" class="headerlink" title="数据结构（王道考研，笔记）"></a>数据结构（王道考研，笔记）</h1><h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><ol>
+<li>数据结构（三要素）<ol>
+<li><strong>逻辑结构</strong><ol>
+<li>线性结构：线性表、栈、队列</li>
+<li>非线性结构：树、图、集合</li>
+</ol>
+</li>
+<li><strong>存储结构</strong>（物理结构）<ol>
+<li>顺序存储：逻辑上相邻，物理上也相邻<ul>
+<li>优点：可以实现随机存取，占用存储少</li>
+<li>缺点：只能使用相邻的存储单元，因此可能产生较多的外部碎片</li>
+</ul>
+</li>
+<li>链式存储：用指针表示元素之间的逻辑关系<ol>
+<li>优点：不会出现碎片现象</li>
+<li>缺点：指针的存储会占用额外的存储空间；只能实现顺序存取</li>
+</ol>
+</li>
+<li>索引存储：建立索引表<ol>
+<li>优点：检索速度快</li>
+<li>缺点：索引表占据存储空间；增删数据耗时多</li>
+</ol>
+</li>
+<li>散列存储<ol>
+<li>优点：检索、增删操作很快</li>
+<li>缺点：散列函数不好的话，可能出现元素单元的地址冲突，解决冲突会耗费时间和空间开销</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong>数据的运算：</strong>定义根据逻辑结构；实现根据存储结构<ul>
+<li>数据类型：一个值的集合，和定义在此集合上的一组操作的总称。<ol>
+<li>原子类型</li>
+<li>结构类型</li>
+</ol>
+</li>
+<li>抽象数据类型，ADT：抽象数据组织及与之相关的操作</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>五个特征<ol>
+<li>算法定义：对特定问题</li>
+<li>五个特征：有穷性、确定性、可行性、输入（0或多）、输出（1或多）</li>
+<li>好算法的特质：正确性、可读性、健壮性、高效率与低存储需求。</li>
+<li>效率度量<ol>
+<li>时间复杂度<ul>
+<li>常见的渐进时间复杂度：常对幂指阶</li>
+<li>计算：分析最深循环里面的基本操作</li>
+</ul>
+</li>
+<li>空间复杂度<ul>
+<li>原地工作：辅助空间为常量，即$O(1)$</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>$O(1)\lt O(log_2n)\lt O(n)\lt O(nlog_2n)\lt O(n^2)\lt O(n^3)\lt O(2^n)\lt O(n!)\lt O(n^n)$</p>
+<h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><h3 id="线性表的定义和基本操作"><a href="#线性表的定义和基本操作" class="headerlink" title="线性表的定义和基本操作"></a>线性表的定义和基本操作</h3><h4 id="线性表的定义"><a href="#线性表的定义" class="headerlink" title="线性表的定义"></a>线性表的定义</h4><p>具有相同数据类型的$n(n\ge 0)$个数据元素的<strong>有限</strong>序列。</p>
+<p>常用$L$表示线性表，$L=(a_1,a_2,…,a_i, a_{i+1},…a_n)$。</p>
+<h4 id="线性表的基本操作"><a href="#线性表的基本操作" class="headerlink" title="线性表的基本操作"></a>线性表的基本操作</h4><p>基本操作：创建销毁、增删改查<br>$$<br>\begin{flalign*}<br>&amp; InitList(&amp;L):初始化表。构造一个空的线性表\<br>&amp; Length(L):求表长，也就是元素的个数\<br>&amp; LocateElem(L,e):按值查找元素\<br>&amp; GetElem(L,i):按位查找元素\<br>&amp; ListInsert(&amp;L, i, e):插入操作，插入第i个位置的元素，并用e返回值\<br>&amp; ListDelete(&amp;L, i, &amp;e):删除操作\<br>&amp; PrintList(L):输出表\<br>&amp; Empty(L):判空操作\<br>&amp; DestoryList(L):销毁操作\<br>\end{flalign*}<br>$$</p>
+<h3 id="顺序表示"><a href="#顺序表示" class="headerlink" title="顺序表示"></a>顺序表示</h3><h4 id="顺序表的定义"><a href="#顺序表的定义" class="headerlink" title="顺序表的定义"></a>顺序表的定义</h4><p>线性表的顺序存储又称<strong>顺序表</strong>。</p>
+<p>特点：逻辑顺序与物理顺序相同。</p>
+<p>顺序表的长度可以静态分配，也可以动态分配（通过<strong>指针</strong>实现）。</p>
+<h4 id="顺序表顺序表上基本操作"><a href="#顺序表顺序表上基本操作" class="headerlink" title="顺序表顺序表上基本操作"></a>顺序表顺序表上基本操作</h4><p>线性表的元素位序是从1开始的，数组是从0开始的。</p>
+<ol>
+<li>插入<ul>
+<li><img src="../images/image-20210826214602800.png" alt="image-20210826214602800"></li>
+<li>时间复杂度$O(n)$</li>
+</ul>
+</li>
+<li>删除<ul>
+<li><img src="../images/image-20210826214718110.png" alt="image-20210826214718110"></li>
+<li>时间复杂度$O(n)$</li>
+</ul>
+</li>
+<li>查找<ul>
+<li><img src="../images/image-20210826214804310.png" alt="image-20210826214804310"></li>
+<li>时间复杂度$O(n)$</li>
+</ul>
+</li>
+</ol>
+<h3 id="链式表示"><a href="#链式表示" class="headerlink" title="链式表示"></a>链式表示</h3><h4 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h4><ol>
+<li>定义：每个节点除了存放数据元素之外，还要存储指向下一个节点的指针。<ol>
+<li>优点：不要求大片连续空间，改变容量方便。</li>
+<li>缺点：不可随机存取，要耗费一定空间存放指针。</li>
+</ol>
+</li>
+<li>实现<ol>
+<li>使用<strong>头指针</strong>来标识一个单链表，在单链表第一个节点之前添加一个结点，称为<strong>头结点</strong>。<ol>
+<li>区别：不管带不带头结点，头指针时钟指向链表的第一个节点；头结点通常不存储信息。</li>
+<li><strong>头结点的优点</strong>：使得对第一个位置的节点的操作和表的其他位置上的操作一致，无须进行特殊处理；无论链表是否为空，其头指针都指向头结点的非空指针，统一了空表与非空表。</li>
+</ol>
+</li>
+<li>建立<ol>
+<li>头插法：<ol>
+<li>新的结点插入到表头</li>
+<li>新的结点插入到表尾（需要添加尾指针）</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="单链表上基本操作"><a href="#单链表上基本操作" class="headerlink" title="单链表上基本操作"></a>单链表上基本操作</h4><h4 id="双链表"><a href="#双链表" class="headerlink" title="双链表"></a>双链表</h4><p>单链表只有一个指向其后继的指针，因此只能从头结点依次顺序地向后遍历。</p>
+<p>为了克服单链表的缺点，引入了双链表。双链表有两个指针$prior、next$，分别指向其前驱结点与后继结点。</p>
+<h4 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h4><ol>
+<li>循环单链表<ul>
+<li>表中最后一个结点的指针不指向NULL，而是指向头结点。</li>
+<li>判空条件：头结点的指针是否等于头指针。</li>
+</ul>
+</li>
+<li>循环双链表<ul>
+<li>头结点的$prior$指向表尾结点</li>
+</ul>
+</li>
+</ol>
+<h4 id="静态链表"><a href="#静态链表" class="headerlink" title="静态链表"></a>静态链表</h4><img src="../images/image-20210826234556739.png" alt="image-20210826234556739" style="zoom:50%;">
+
+<h4 id="顺序表和链表的比较"><a href="#顺序表和链表的比较" class="headerlink" title="顺序表和链表的比较"></a>顺序表和链表的比较</h4><table>
+<thead>
+<tr>
+<th align="center">链表</th>
+<th align="center">存取方式</th>
+<th>逻辑结构与物理结构</th>
+<th align="center">增删查</th>
+<th>空间分配</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">顺序表</td>
+<td align="center">顺序+随机</td>
+<td>相邻</td>
+<td align="center">按值查找，无序，$O(n)$，有序，$O(log_2n)$；按序号，$O(1)$</td>
+<td>固定</td>
+</tr>
+<tr>
+<td align="center">链表</td>
+<td align="center">只能从头</td>
+<td>不相邻，由指针表示</td>
+<td align="center">按值查找，无序，$O(n)$，有序，$O(log_2n)$；按序号，$O(1)$</td>
+<td>灵活</td>
+</tr>
+</tbody></table>
+<ul>
+<li>选择<ul>
+<li>存储优先<ul>
+<li>链表</li>
+</ul>
+</li>
+<li>运算优先<ul>
+<li>按序号访问频繁，则顺序表</li>
+<li>插入删除频繁，则链表</li>
+</ul>
+</li>
+<li>环境优先<ul>
+<li>顺序表容易实现；链表基于指针。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="栈和队列"><a href="#栈和队列" class="headerlink" title="栈和队列"></a>栈和队列</h2><h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><ol>
+<li>定义：只允许在一端进行插入或删除操作的线性表。</li>
+<li>数学性质：$n$个不同的元素进栈，出栈不同排列的个数$\frac 1 {n+1} C_{2n}^n$。卡特兰数。</li>
+<li>基本操作<ul>
+<li><img src="../images/image-20210827000056901.png" alt="image-20210827000056901"></li>
+</ul>
+</li>
+<li>分类<ol>
+<li>顺序栈<ul>
+<li><img src="../images/image-20210827000514532.png" alt="image-20210827000514532" style="zoom: 33%;"></li>
+<li>共享栈：两个栈的栈底分别设置在共享空间的两端。优点，有效利用存取空间，避免上溢。</li>
+</ul>
+</li>
+<li>链式栈<ul>
+<li><img src="../images/image-20210827000537045.png" alt="image-20210827000537045" style="zoom:33%;"></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><ol>
+<li>定义：只允许在表的一端进行插入，而在表的另一端进行删除。</li>
+<li>分类<ol>
+<li>顺序队列<img src="../images/image-20210827001051969.png" alt="image-20210827001051969" style="zoom: 33%;"></li>
+<li>循环队列<img src="../images/image-20210827001204423.png" alt="image-20210827001204423" style="zoom: 33%;"></li>
+<li>链式队列<ul>
+<li><img src="../images/image-20210827001301728.png" alt="image-20210827001301728" style="zoom: 33%;"><img src="../images/image-20210827001324400.png" alt="image-20210827001324400" style="zoom: 33%;"></li>
+</ul>
+</li>
+<li>双端队列<ul>
+<li><img src="../images/image-20210827001510029.png" alt="image-20210827001510029" style="zoom:33%;"></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="串"><a href="#串" class="headerlink" title="串"></a>串</h2><ol>
+<li>定义：0个或者多个字符组成的有限序列。</li>
+<li>串的匹配：<ol>
+<li>暴力模式匹配</li>
+<li>KMP算法<ol>
+<li>由子串的<strong>最长相等前后缀长度</strong>构成部分匹配值（PM）表；</li>
+<li>发现不匹配的时候移动位置=已匹配位数-对应的部分匹配值</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="树与二叉树"><a href="#树与二叉树" class="headerlink" title="树与二叉树"></a>树与二叉树</h2><h3 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h3><ol>
+<li>特点<ol>
+<li>树的根节点没有前驱，除了根节点之外所有节点只有一个后继。</li>
+<li>树中的所有结点可以有0个或者多个后继</li>
+</ol>
+</li>
+<li>性质：<ol>
+<li>结点数等于所有节点的出度+1</li>
+<li>度为m的树中第$i$层至多有$m^{i-1}$个结点</li>
+<li>高度为h的m叉树至多由$\frac {m^h-1} {n-1}$个结点</li>
+<li>具有n个结点的m叉树最小高度为$\lceil log_m(n(m-1)+1)\rceil$</li>
+</ol>
+</li>
+</ol>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p>分叉$\le $2</p>
+<ol>
+<li><p>特殊的二叉树</p>
+<ol>
+<li>满二叉树<ul>
+<li>高度为h，具有$2^h-1$个结点的二叉树    </li>
+</ul>
+</li>
+<li>完全二叉树<ul>
+<li>高度为h，有n个结点的二叉树，n与满二叉树中$1\sim n$对应</li>
+</ul>
+</li>
+<li>二叉排序树<ol>
+<li>左子树上所有结点的关键字均小于根</li>
+<li>右子树所有结点关键字均大于根</li>
+<li>左子树和右子树均是二叉排序树</li>
+</ol>
+</li>
+<li>平衡二叉树<ol>
+<li>任一节点的左子树右子树深度之差不超过1</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>二叉树性质</p>
+<ol>
+<li>非空二叉树叶子结点数等于度为2的结点数+1</li>
+<li>非空二叉树第k层至多$2^{k-1}$个结点</li>
+<li>高度为h的二叉树至多$2^{h}-1$个结点</li>
+<li>具有n个结点的完全2叉树最小高度为$\lceil log_2(n+1)\rceil$</li>
+</ol>
+</li>
+<li><p>二叉树的遍历（根节点N，左子树L，右子树R）</p>
+<ul>
+<li><p>方法</p>
+<ul>
+<li><img src="../images/image-20210827152052317.png" alt="image-20210827152052317" style="zoom:50%;"></li>
+<li><p>先序遍历NLR：124635</p>
+<ol>
+<li>访问根节点</li>
+<li>先序遍历左子树</li>
+<li>先序遍历右子树</li>
+</ol>
+</li>
+<li><p>中序遍历LNR：264135</p>
+<ol>
+<li>中序遍历左子树</li>
+<li>访问根节点</li>
+<li>中序遍历右子树</li>
+</ol>
+</li>
+<li><p>后序遍历LRN：642531</p>
+<ol>
+<li>后序遍历左子树</li>
+<li>后序遍历右子树</li>
+<li>访问根节点</li>
+</ol>
+</li>
+<li><p>层次遍历:123456</p>
+<ul>
+<li>将根入队，根出队；</li>
+<li>若根有左子树，左子树根节点入队；有右子树，右子树根节点入队；</li>
+<li>左子树/右子树出队，分别执行2，3</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>由遍历序列构建二叉树</p>
+<ul>
+<li>由先序序列和中序序列可以唯一确定一颗二叉树</li>
+<li>由后序序列和中序序列可以唯一确定一颗二叉树</li>
+<li>由层序序列和中序序列也可以唯一确定一颗二叉树</li>
+<li><strong>先序后序不能确定二叉树</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>线索二叉树</p>
+<ol>
+<li>定义：二叉树的基础上，若无左子树，令$lchild$指向其前驱结点；若无右子树，令其$rchild$指向其后继结点。还需要添加标志位，用来判定指针指向的是孩子结点（$0$）还是前驱后继结点（$1$）。</li>
+<li>中序线索二叉树<ol>
+<li><img src="../images/image-20210827153544608.png" alt="image-20210827153544608" style="zoom:67%;"></li>
+</ol>
+</li>
+<li>相应有先序线索二叉树，后续线索二叉树<ul>
+<li><img src="../images/image-20210827160758537.png" alt="image-20210827160758537"></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="树、森林"><a href="#树、森林" class="headerlink" title="树、森林"></a>树、森林</h3><ol>
+<li>树的存储结构<ol>
+<li>双亲表示法<ul>
+<li>每个结点设置一个伪指针，指示其双亲结点在数组中的位置</li>
+<li><img src="../images/image-20210827162041861.png" alt="image-20210827162041861"></li>
+<li>评价：<ul>
+<li>优点：很快得到每个结点的双亲结点</li>
+<li>缺点：求结点的孩子的时候需要遍历整个结构</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>孩子表示法<ol>
+<li>每个结点的孩子结点都用单链表链接起来形成一个线性结构。</li>
+<li><u><em>见下图5-15(a)，原图是5-13(a)的情况，修改后的是5-15（b）的对应孩子表示法</em></u></li>
+<li>评价：<ol>
+<li>优点：寻找子女快</li>
+<li>缺点：寻找双亲需要遍历n个结点中孩子链表指针域所指向的n个孩子链表</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>孩子兄弟表示法/二叉树表示法<ol>
+<li>每个结点包括：<ol>
+<li>结点值</li>
+<li>指向结点第一个孩子结点的指针</li>
+<li>指向结点下一个兄弟结点的指针</li>
+</ol>
+</li>
+<li><img src="../images/image-20210827164603030.png" alt="image-20210827164603030"></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>树、森林和二叉树的转换<ol>
+<li>树转换成二叉树规则<ul>
+<li><strong>左孩子右兄弟：</strong>每个结点<strong>左指针</strong>指向它的<strong>第一个孩子</strong>，<strong>右指针</strong>指向<strong>它在树的相邻右兄弟</strong>，</li>
+</ul>
+</li>
+<li>画法<ol>
+<li>在兄弟之间加连线</li>
+<li>对每个结点只保留它与第一个孩子的连线，与其它孩子的连线都抹去</li>
+<li>以树根为轴心，顺时针旋转45度</li>
+<li><img src="../images/image-20210827175236848.png" alt="image-20210827175236848" style="zoom:50%;"></li>
+</ol>
+</li>
+<li>森林与二叉树：<img src="../images/image-20210827175336538.png" alt="image-20210827175336538"></li>
+</ol>
+</li>
+<li>树和森林的遍历<ol>
+<li>树的遍历<ol>
+<li>先根遍历<ol>
+<li>树非空则访问根节点，再依次遍历根节点的每棵子树，遍历子树是仍然先根后子树。<strong>遍历顺序与这棵树相应二叉树的==先序序列==相同</strong></li>
+</ol>
+</li>
+<li>后根遍历<ol>
+<li>树非空则先依次遍历根结点的子树，再访问根节点，遍历子树是仍然先子树后根。<strong>遍历顺序与这棵树相应二叉树的==中序序列==相同</strong></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>森林<ol>
+<li>先序遍历<ol>
+<li>访问第一棵树的根节点</li>
+<li>先序遍历第一棵树中根节点的子树森林</li>
+<li>先序遍历除去第一棵树之后剩余的树构成的森林</li>
+<li>图5.17：$ABCDEFGHI$(与对应二叉树先序相同)</li>
+</ol>
+</li>
+<li>中序遍历<ol>
+<li>中序遍历第一棵树中根节点的子树森林</li>
+<li>访问第一棵树的根节点</li>
+<li>中序遍历除去第一棵树之后剩余的树构成的森林</li>
+<li>图5.17：$BCDAFEHIG$</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="树与二叉树应用"><a href="#树与二叉树应用" class="headerlink" title="树与二叉树应用"></a>树与二叉树应用</h3><h4 id="二叉排序树（-BST-）"><a href="#二叉排序树（-BST-）" class="headerlink" title="二叉排序树（$BST$）"></a>二叉排序树（$BST$）</h4><ol>
+<li>定义：或者是空树，或者非空；若非空<ol>
+<li>若左子树非空，左子树所有结点的值均小于根结点的值</li>
+<li>若右子树非空，右子树所有结点的值均大于根结点的值</li>
+<li>左右子树 分别是一颗二叉排序树</li>
+</ol>
+</li>
+<li>性质：对二叉排序树进行中序遍历，得到一个递增的有序序列。</li>
+<li>二叉排序树的查找<ul>
+<li>与根比较大小，如果大于根，则去右子树；如果小于根，则去左子树。</li>
+</ul>
+</li>
+<li>二叉排序树的插入<ul>
+<li>空树直接插入。非空则和排序类似，插入的节点一定是一个新添加的叶结点，且是查找失败时查找路径上访问的最后一个结点的左海子或者右孩子。</li>
+</ul>
+</li>
+<li>二叉排序树的构造：就是不断的进行插入</li>
+<li>二叉树的删除<ol>
+<li>叶结点直接删除</li>
+<li>若被删除结点z只有一颗左子树或右子树，则让z的直接后继或者直接前驱成为z父节点的子树</li>
+<li>若z有两棵子树，令z的直接后继或者直接前驱代替z，然后从二叉树中删除这个直接前驱或直接后继。</li>
+<li>图示：<img src="../images/image-20210827204015500.png" alt="image-20210827204015500"></li>
+</ol>
+</li>
+<li>二叉树查找效率分析<ol>
+<li>若左右子树高度之差不超过1，称为平衡二叉树。其平均查找长度为$O(log_2n)$。若二叉排序树是只有一个左/右孩子的单支树，平均查找长度为$O(n)$</li>
+<li>图示：<img src="../images/image-20210827204232677.png" alt="image-20210827204232677"></li>
+<li><strong>如果只做查询操作，用顺序表，方法用二分查找；如果有增删查，用二叉树。</strong></li>
+</ol>
+</li>
+</ol>
+<h4 id="平衡二叉树（Balanced-Binary-Tree）"><a href="#平衡二叉树（Balanced-Binary-Tree）" class="headerlink" title="平衡二叉树（Balanced Binary Tree）"></a>平衡二叉树（Balanced Binary Tree）</h4><ol>
+<li>左右子树高度相差不超过1的二叉排序树。</li>
+<li>插入：<ol>
+<li>LL平衡旋转：在A的左孩子（L）的左子树（L）上插入新的结点。将A的左孩子B向右上旋转成为根节点，A成为B的右孩子，B的原来的右子树作为A的左子树。<img src="../images/image-20210827204713413.png" alt="image-20210827204713413"></li>
+<li>RR平衡旋转：在A的右孩子（R）的右子树（R）插入。<img src="../images/image-20210827205000283.png" alt="image-20210827205000283"></li>
+<li>LR平衡旋转：<img src="../images/image-20210827205127787.png" alt="image-20210827205127787"></li>
+<li>RL平衡旋转：<img src="../images/image-20210827205302957.png" alt="image-20210827205302957"></li>
+</ol>
+</li>
+<li>平衡二叉树查找效率分析<ol>
+<li>n个结点的树的最大深度$O(log_2n)$</li>
+<li>平均查找长度$O(log_2n)$</li>
+</ol>
+</li>
+</ol>
+<h4 id="哈夫曼树与哈夫曼编码"><a href="#哈夫曼树与哈夫曼编码" class="headerlink" title="哈夫曼树与哈夫曼编码"></a>哈夫曼树与哈夫曼编码</h4><ol>
+<li><p>定义：结点常常被赋予值，称为该结点的权。从树的根结点到任意结点的路径长度与该结点上权值的乘积，称为该结点的<strong>带权路径长度</strong>。树中所有**==叶结点==**的带权路径长度之和称为该树的带权路径长度。<br>$$<br>WPL = \sum_{i=1}^nw_il_i<br>$$<br>$WPL$最小的二叉树称为哈夫曼树，也称为最优二叉树。</p>
+</li>
+<li><p>构造方法</p>
+<ol>
+<li>$n$个结点作为一个结点的二叉树，从里选出来权值最小的两个构造成二叉树。</li>
+<li>此时有$n-1$个树，重复步骤1</li>
+</ol>
+</li>
+<li><p><strong>哈夫曼编码</strong></p>
+<ul>
+<li><strong>前缀编码</strong>：没有一个编码是另一个编码的前缀。</li>
+<li>方法：先根据字符的出现次数写出前缀编码，然后根据其出现次数构造哈夫曼树。</li>
+<li><img src="../images/image-20210827220457719.png" alt="image-20210827220457719"><ul>
+<li>$WPL=1<em>45+3</em>(12+13+16)+4*(5+9)=224$</li>
+<li>也就是编码该段数据所需位数。对比定长编码（6个字符，3位二进制表示:<ul>
+<li>$3*(45+12+13+5+9+16)=300$）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><h3 id="图的基本概念"><a href="#图的基本概念" class="headerlink" title="图的基本概念"></a>图的基本概念</h3><ol>
+<li>定义，图$G$由顶点集V和边集E组成，记为$G=(V,E)$，其中$V(G)$表示图$G$顶点的有限非空集；$E(G)$表示图$G$中顶点之间的边集合。$|V|,|G|$分别表示图的顶点个数（也称为阶）、边数。<strong>注意：</strong>图不能是空集，至少有一个顶点。</li>
+<li>分类：<ol>
+<li>有向图</li>
+<li>无向图</li>
+<li>简单图：不存在重复边；不存在顶点到自身的边。</li>
+<li>多重图：两个结点之间的边数多于一条，又允许顶点通过同一条边和自己关联，则G为多重图。</li>
+<li>完全图/简单完全图：边数为$n(n-1)/2$条边的无向图；或者有$n(n-1)$条边的有向图。</li>
+<li>子图：$G=(V,E),G’=(V’,E’),V’$是$V$的子集，$E’$是$E$的子集，称$G’$为$G$的生成子图。</li>
+<li>连通、连通图和连通分量：<ol>
+<li>连通：从顶点v到顶点w有路径存在</li>
+<li>连通图：图$G$中任意两个点都是连通的</li>
+<li>连通分量：无向图中的极大连通子图。</li>
+</ol>
+</li>
+<li>强连通图：<ol>
+<li>顶点$v$到顶点$w$之间和顶点$w$到顶点$v$之间都有路径，称两个顶点之为强连通的。</li>
+<li>若图中的任意一对顶点都是强连通的，称此图为强连通图。</li>
+<li>强连通分量：有向图中的极大强连通子图称为有向图的强连通分量。</li>
+</ol>
+</li>
+<li>生成树：包含图中所有顶点的一个极小连通子图。</li>
+<li>顶点的度<ol>
+<li>无向图：度等于2倍边数</li>
+<li>有向图：入度等于出度等于边数</li>
+</ol>
+</li>
+<li><img src="../images/image-20210828160705069.png" alt="image-20210828160705069" style="zoom: 25%;"></li>
+<li><img src="../images/image-20210828160720498.png" alt="image-20210828160720498" style="zoom: 25%;"></li>
+<li><img src="../images/image-20210828160736311.png" alt="image-20210828160736311" style="zoom: 25%;"></li>
+<li>边的权和网：边可以标上具有含义的数值，称为权值。带权图又称为网。</li>
+<li>路径长度：路径上边的数目；回路，图有$n$个点，如果有大于$n-1$条边，必有回路。</li>
+<li>有向树：一个顶点的入度为0，其它顶点的入度均为1的有向图，称为有向树。</li>
+</ol>
+</li>
+</ol>
+<h3 id="图的存储和基本操作"><a href="#图的存储和基本操作" class="headerlink" title="图的存储和基本操作"></a>图的存储和基本操作</h3><ol>
+<li>邻接矩阵法：<img src="../images/image-20210828161939448.png" alt="image-20210828161939448" style="zoom:33%;"><ul>
+<li>特点：<ul>
+<li>对无向图：每一行的非零元素的个数正好是结点的度；对有向图：每一行非0元素个数正好是结点的出度，每一列非0元素个数正好是结点的入度。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>邻接表法：<ul>
+<li><img src="../images/image-20210828162520063.png" alt="image-20210828162520063" style="zoom:33%;"></li>
+<li><img src="../images/image-20210828162533557.png" alt="image-20210828162533557" style="zoom:33%;"></li>
+<li>评价：<ul>
+<li>对于稀疏图能节省存储空间</li>
+<li>很容易找到所有邻边</li>
+<li>判断两个顶点之间是否有边，邻接矩阵快，邻接表慢。</li>
+<li>出度好算，入度不好算。</li>
+<li>邻接表顺序不唯一</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>十字链表（针对有向图）<ul>
+<li><img src="../images/image-20210828162846177.png" alt="image-20210828162846177"></li>
+<li>画法：<ul>
+<li>先画出来三个格子的每个点</li>
+<li>每个点所在的行按照位置在第二个格子画上并写上对应的弧指向的点，再一行的格子都连起来</li>
+<li>行号如果与其他行四个格子中的第二个格子的一样则连起来；每一列由多于一个相同第二个格子的，按照从上到下的顺序连起来。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>邻接多重表（针对无向图）</li>
+</ol>
+<h3 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h3><ol>
+<li>广度优先搜索（BFS）<ul>
+<li><img src="../images/image-20210829204330257.png" alt="image-20210829204330257" style="zoom:80%;"></li>
+<li>性能分析：<ul>
+<li>空间复杂度$O(|V|)$</li>
+<li>时间复杂度，采用邻接表：$O(|V|+|E|)$；采用邻接矩阵：$O(|V|^2)$</li>
+</ul>
+</li>
+<li><img src="../images/image-20210829204652633.png" alt="image-20210829204652633" style="zoom:50%;"></li>
+</ul>
+</li>
+<li>深度优先搜索(DFS)：<ul>
+<li>过程：首先访问图中的某一起始顶点v，然后由v出发，访问与v邻接且未被访问的任一顶点$w_1$，再访问与$w_1$邻接未被访问的任一顶点$w_2$，重复。当不能再继续向下访问的时候，依次退回到最近被访问的顶点，若它还有邻接结点未被访问过，则从该点开始继续上述搜索过程。</li>
+<li>性能分析：<ul>
+<li>空间复杂度$O(|V|)$</li>
+<li>时间复杂度，采用邻接表：$O(|V|+|E|)$；采用邻接矩阵：$O(|V|^2)$</li>
+</ul>
+</li>
+<li><img src="../images/image-20210829205204112.png" alt="image-20210829205204112" style="zoom:50%;"></li>
+</ul>
+</li>
+</ol>
+<h3 id="图的应用"><a href="#图的应用" class="headerlink" title="图的应用"></a>图的应用</h3><h4 id="最小生成树（MST）"><a href="#最小生成树（MST）" class="headerlink" title="最小生成树（MST）"></a>最小生成树（MST）</h4><ol>
+<li>定义<ol>
+<li>生成树：包含图中所有的顶点，并且只含有尽可能少的边</li>
+<li>权值之和最小的生成树叫最小生成树</li>
+</ol>
+</li>
+<li>性质：<ol>
+<li>可能树形状不唯一（但是权值之和唯一）：当图的边权值互不相等，MST是唯一的；</li>
+<li>MST的边数比顶点数少1，即G本身是一棵树时，G的最小生成树是它本身。</li>
+</ol>
+</li>
+<li>普里姆算法（从顶点开始扩展MST）<ol>
+<li><img src="../images/image-20210829205822091.png" alt="image-20210829205822091" style="zoom: 67%;"></li>
+<li>时间复杂度$O(|V|^2)$</li>
+<li>适用于边稠密的图</li>
+</ol>
+</li>
+<li>克鲁斯卡尔算法（按照权值的递增次序选择合适的边来构造MST）<ol>
+<li>不断选最小的边，直到连起来所有的顶点</li>
+<li><img src="../images/image-20210829210103605.png" alt="image-20210829210103605" style="zoom:67%;"></li>
+<li>时间复杂度$O(|E|log|E|)$，使用堆来存放边集合</li>
+<li>适用于边稀疏而顶点较多的图</li>
+</ol>
+</li>
+</ol>
+<h4 id="最短路径问题"><a href="#最短路径问题" class="headerlink" title="最短路径问题"></a>最短路径问题</h4><ol>
+<li>迪杰斯特拉算法（某一个顶点到其它各顶点）时间复杂度$O(|V|^2)$<ul>
+<li><img src="../images/image-20210829210846951.png" alt="image-20210829210846951" style="zoom: 50%;"></li>
+<li>不能解决边有负的权值的情况</li>
+</ul>
+</li>
+<li>佛洛依德算法（每对顶点间最短路径）时间复杂度$O(|V|^3)$<ol>
+<li><img src="../images/image-20210829211304063.png" alt="image-20210829211304063" style="zoom:67%;"></li>
+</ol>
+</li>
+<li>拓扑排序（AOV网：顶点表示活动，有向边表示先后次序）<ol>
+<li><img src="../images/image-20210829211925513.png" alt="image-20210829211925513" style="zoom:67%;"></li>
+<li>上图顺序为$12435$</li>
+</ol>
+</li>
+<li>关键路径（AOE网：顶点表示事件，边表示活动，权值表示开销）<ol>
+<li>性质：顶点代表的事件发生后，从这个点出发的时间才能开始；进入顶点的活动都结束，顶点才能发生。</li>
+<li><img src="../images/image-20210829213048611.png" alt="image-20210829213048611"></li>
+<li><img src="../images/image-20210829212959912.png" alt="image-20210829212959912" style="zoom:67%;"></li>
+</ol>
+</li>
+</ol>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>平均查找长度($ASL$)</p>
+<ol>
+<li>静态查找变（只适合查询和检索元素属性）<ol>
+<li>顺序查找</li>
+<li>折半查找</li>
+<li>散列查找</li>
+</ol>
+</li>
+<li>动态查找表<ol>
+<li>二叉排序树的查找</li>
+<li>散列查找</li>
+</ol>
+</li>
+</ol>
+<h3 id="顺序查找和折半查找"><a href="#顺序查找和折半查找" class="headerlink" title="顺序查找和折半查找"></a>顺序查找和折半查找</h3><ol>
+<li>顺序查找<ol>
+<li>一般线性表的顺序查找<ol>
+<li>$ASL_{成功}=\sum_{i=1}^n P_i(n-i+1)=\frac{n+1}{2}$ ， 每个元素的查找概率相等</li>
+<li>$ASL_{不成功}=n+1$</li>
+</ol>
+</li>
+<li>有序表的顺序查找<ol>
+<li>$ASL_{成功}=\sum_{i=1}^n P_i(n-i+1)=\frac{n+1}{2}$ </li>
+<li>$ASL_{不成功}=\sum_{j=1}^n q_i(l_j-1)=\frac{1+2+…+n+n}{n+1}=\frac{n}{2}+\frac{n}{n+1}$ ，$q_j$是到达第$j$个失败结点的概率；$l_j$是第$j$个失败结点的层数</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>折半查找/二分查找：适用于有序的顺序表<ol>
+<li>$ASL_{成功}=\frac 1 n(1<em>1+2</em>2+3<em>4+4</em>8+…+h*2^{h-1})=log_2(n+1)-1 $ </li>
+<li>时间复杂度$O(log_2 n)$</li>
+</ol>
+</li>
+<li>分块查找/索引顺序查找<ol>
+<li>块内无序，块间有序<img src="../images/image-20210831121412395.png" alt="image-20210831121412395" style="zoom:67%;"></li>
+<li>平均查找长度等于索引查找长度$L_I$和块内查找长度$L_S$</li>
+<li>查找表有b块，每块有s个记录<ol>
+<li>都采用顺序查找时：$ASL_{成功}=L_I+L_S$</li>
+</ol>
+</li>
+<li></li>
+</ol>
+</li>
+</ol>
+<h3 id="B树和B-树"><a href="#B树和B-树" class="headerlink" title="B树和B+树"></a>B树和B+树</h3><h3 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h3><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><h3 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h3><h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><h3 id="归并排序与基数排序"><a href="#归并排序与基数排序" class="headerlink" title="归并排序与基数排序"></a>归并排序与基数排序</h3><h3 id="内部排序算法比较与应用"><a href="#内部排序算法比较与应用" class="headerlink" title="内部排序算法比较与应用"></a>内部排序算法比较与应用</h3><h3 id="外部排序"><a href="#外部排序" class="headerlink" title="外部排序"></a>外部排序</h3>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Li Xian 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Li Xian 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/0%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94%EF%BC%8C%E7%AC%94%E8%AE%B0%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">数据结构（王道考研，笔记）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%AA%E8%AE%BA"><span class="nav-number">1.1.</span> <span class="nav-text">绪论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="nav-number">1.2.</span> <span class="nav-text">线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.</span> <span class="nav-text">线性表的定义和基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">线性表的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">线性表的基本操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.2.2.</span> <span class="nav-text">顺序表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">顺序表的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%B8%8A%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">顺序表顺序表上基本操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E5%BC%8F%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.2.3.</span> <span class="nav-text">链式表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">单链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E4%B8%8A%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">单链表上基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">双链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">循环链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.3.5.</span> <span class="nav-text">静态链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E5%92%8C%E9%93%BE%E8%A1%A8%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">1.2.3.6.</span> <span class="nav-text">顺序表和链表的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97"><span class="nav-number">1.3.</span> <span class="nav-text">栈和队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88"><span class="nav-number">1.3.1.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%9F%E5%88%97"><span class="nav-number">1.3.2.</span> <span class="nav-text">队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%B2"><span class="nav-number">1.4.</span> <span class="nav-text">串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">1.5.</span> <span class="nav-text">树与二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.5.1.</span> <span class="nav-text">树的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">1.5.2.</span> <span class="nav-text">二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%91%E3%80%81%E6%A3%AE%E6%9E%97"><span class="nav-number">1.5.3.</span> <span class="nav-text">树、森林</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91%E5%BA%94%E7%94%A8"><span class="nav-number">1.5.4.</span> <span class="nav-text">树与二叉树应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%EF%BC%88-BST-%EF%BC%89"><span class="nav-number">1.5.4.1.</span> <span class="nav-text">二叉排序树（$BST$）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%88Balanced-Binary-Tree%EF%BC%89"><span class="nav-number">1.5.4.2.</span> <span class="nav-text">平衡二叉树（Balanced Binary Tree）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E4%B8%8E%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81"><span class="nav-number">1.5.4.3.</span> <span class="nav-text">哈夫曼树与哈夫曼编码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE"><span class="nav-number">1.6.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.6.1.</span> <span class="nav-text">图的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">1.6.2.</span> <span class="nav-text">图的存储和基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-number">1.6.3.</span> <span class="nav-text">图的遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.6.4.</span> <span class="nav-text">图的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%EF%BC%88MST%EF%BC%89"><span class="nav-number">1.6.4.1.</span> <span class="nav-text">最小生成树（MST）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.6.4.2.</span> <span class="nav-text">最短路径问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE"><span class="nav-number">1.7.</span> <span class="nav-text">查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.7.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE%E5%92%8C%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE"><span class="nav-number">1.7.2.</span> <span class="nav-text">顺序查找和折半查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B%E6%A0%91%E5%92%8CB-%E6%A0%91"><span class="nav-number">1.7.3.</span> <span class="nav-text">B树和B+树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%A3%E5%88%97%E8%A1%A8"><span class="nav-number">1.7.4.</span> <span class="nav-text">散列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">1.8.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="nav-number">1.8.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="nav-number">1.8.2.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F"><span class="nav-number">1.8.3.</span> <span class="nav-text">交换排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="nav-number">1.8.4.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E4%B8%8E%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="nav-number">1.8.5.</span> <span class="nav-text">归并排序与基数排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%AF%94%E8%BE%83%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="nav-number">1.8.6.</span> <span class="nav-text">内部排序算法比较与应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F"><span class="nav-number">1.8.7.</span> <span class="nav-text">外部排序</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Li Xian</p>
+  <div class="site-description" itemprop="description">与遗忘作斗争</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/naixil" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;naixil" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lixian_shandong@126.com" title="E-Mail → mailto:lixian_shandong@126.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Xian</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">NaNm</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">NaN:aN</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

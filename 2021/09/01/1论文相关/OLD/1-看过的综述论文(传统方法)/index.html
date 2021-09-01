@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"naixil.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="[TOC] 0想法已经做的是对数据的检测，聚焦于已留存的数据进行检测。几大方向：    保存下来的数据的异常检测&#x2F;历史模式检测     异常数据的实时检测&#x2F;流数据异常检测   常见问题:  概念漂移： 目标变量的统计特性随着时间的推移以不可预见的方式变化的现象。（即每过一段时间序列规律发生变化）解决办法：不同时间段的数据进行训练，对比确定最优。   序列自相关性： 预测值比真实值滞后N个时间。原因">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LiXian&#39;s Blog">
+<meta property="og:url" content="https://naixil.github.io/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/OLD/1-%E7%9C%8B%E8%BF%87%E7%9A%84%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87(%E4%BC%A0%E7%BB%9F%E6%96%B9%E6%B3%95)/index.html">
+<meta property="og:site_name" content="LiXian&#39;s Blog">
+<meta property="og:description" content="[TOC] 0想法已经做的是对数据的检测，聚焦于已留存的数据进行检测。几大方向：    保存下来的数据的异常检测&#x2F;历史模式检测     异常数据的实时检测&#x2F;流数据异常检测   常见问题:  概念漂移： 目标变量的统计特性随着时间的推移以不可预见的方式变化的现象。（即每过一段时间序列规律发生变化）解决办法：不同时间段的数据进行训练，对比确定最优。   序列自相关性： 预测值比真实值滞后N个时间。原因">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/OLD/1-%E7%9C%8B%E8%BF%87%E7%9A%84%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87(%E4%BC%A0%E7%BB%9F%E6%96%B9%E6%B3%95)/images/1_%E8%AE%BA%E6%96%87%E6%80%BB%E8%BF%B0%E5%BA%A6%E9%87%8F%E5%87%BD%E6%95%B0.png">
+<meta property="og:image" content="https://naixil.github.io/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/OLD/1-%E7%9C%8B%E8%BF%87%E7%9A%84%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87(%E4%BC%A0%E7%BB%9F%E6%96%B9%E6%B3%95)/images/image-20201229095235191.png">
+<meta property="article:published_time" content="2021-09-01T03:25:44.586Z">
+<meta property="article:modified_time" content="2021-08-11T02:49:13.853Z">
+<meta property="article:author" content="Li Xian">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://naixil.github.io/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/OLD/1-%E7%9C%8B%E8%BF%87%E7%9A%84%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87(%E4%BC%A0%E7%BB%9F%E6%96%B9%E6%B3%95)/images/1_%E8%AE%BA%E6%96%87%E6%80%BB%E8%BF%B0%E5%BA%A6%E9%87%8F%E5%87%BD%E6%95%B0.png">
+
+<link rel="canonical" href="https://naixil.github.io/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/OLD/1-%E7%9C%8B%E8%BF%87%E7%9A%84%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87(%E4%BC%A0%E7%BB%9F%E6%96%B9%E6%B3%95)/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | LiXian's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LiXian's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/OLD/1-%E7%9C%8B%E8%BF%87%E7%9A%84%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87(%E4%BC%A0%E7%BB%9F%E6%96%B9%E6%B3%95)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-01 11:25:44" itemprop="dateCreated datePublished" datetime="2021-09-01T11:25:44+08:00">2021-09-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-11 10:49:13" itemprop="dateModified" datetime="2021-08-11T10:49:13+08:00">2021-08-11</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>[TOC]</p>
+<h1 id="0想法"><a href="#0想法" class="headerlink" title="0想法"></a>0想法</h1><p>已经做的是对数据的检测，聚焦于已留存的数据进行检测。<br>几大方向：</p>
+<ul>
+<li><p><input disabled type="checkbox">  保存下来的数据的异常检测/历史模式检测 </p>
+</li>
+<li><p><input disabled type="checkbox">  异常数据的实时检测/流数据异常检测</p>
+</li>
+</ul>
+<p><strong>常见问题:</strong></p>
+<ul>
+<li>概念漂移：<ul>
+<li>目标变量的统计特性随着时间的推移以不可预见的方式变化的现象。（即每过一段时间序列规律发生变化）解决办法：不同时间段的数据进行训练，对比确定最优。</li>
+</ul>
+</li>
+<li>序列自相关性：<ul>
+<li>预测值比真实值滞后N个时间。原因：序列存在一阶自相关性。解决方法：进行差分运算。</li>
+</ul>
+</li>
+</ul>
+<h1 id="1-深度学习在天文大数据处理中的应用"><a href="#1-深度学习在天文大数据处理中的应用" class="headerlink" title="1 深度学习在天文大数据处理中的应用"></a>1 深度学习在天文大数据处理中的应用</h1><p>总结了各种深度学习模型在太阳射电频谱图分类任务和太阳耀斑预报以及电离层总电子含量预报任务中的应用。</p>
+<p><strong>下述为分类任务的各项比较：</strong></p>
+<ul>
+<li><p>深度置信网络（Deep Belif Network, DBN）</p>
+<ul>
+<li>先用无标签的频谱图数据对数据进行预训练，然后使用训练数据进行微调方式的训练网络（也就是不断调参）。<blockquote>
+<p>[14] Chen Z, Ma L, Xu L, et al. Imaging and representation learning of solar radio spectrums for classification[J].Multimedia Tools &amp; Applications, 2016, 75(5):2859-2875</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>多模态网络（Multimodal Network, MN）</p>
+<ul>
+<li>自监督网络，网络的标签就是网络的输入。网络的编码器首先将数据进行压缩，解码器将其进行重构，网络目标使得输入与输出之间的误差尽可能小。</li>
+<li>深度多模态网络（DMN）<blockquote>
+<p>[15] Chen Z, Ma L, Xu L, et al. Multimodal Learning for Classification of Solar Radio Spectrum[C]. IEEE International Conference on Systems, Man, and<br>Cybernetics. IEEE, 2015:1035-1040.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>文献 [16] 对于不同深度的多模态网络的分类性能进行了实验研究，以及隐含层数相同时其神经元数量的不同对于分类性能的影响。 </p>
+<blockquote>
+<p>Ma L, Chen Z, Xu L, et al. Multimodal deep learning for solar radio burst classification[J]. Pattern Recoginition,2016,61:573-582.</p>
+</blockquote>
+</li>
+<li><p>卷积神经网络（Convolutional Neural Network, CNN）</p>
+<ul>
+<li>构成<ul>
+<li>卷积层（Convolution layer）</li>
+<li>线性整流层（Rectified Linear Units layer, ReLU）</li>
+<li>池化层（Pooling layer）</li>
+</ul>
+</li>
+<li>研究方法：<ul>
+<li>将太阳频谱视作图像，对其进行分类</li>
+<li>将正方形的卷积核改成矩形。</li>
+<li>给出了具体的网络参数（类型、卷积核大小、步长、输出）<blockquote>
+<p>Chen S, Xu L, Ma L, et al. Convolutional neural network for classification of solar radio spectrum[C]. IEEE International Conference on Multimedia &amp; ExpoWorkshops. IEEE, 2017:198-201.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>长短期记忆网络（Long Short-term Memory, LSTM） 善于处理序列数据</p>
+<ul>
+<li>结构<ul>
+<li>输入门、输出门、遗忘门、记忆单元。</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>提取频谱图同一频率内的特征，进行分类。</li>
+</ul>
+</li>
+<li><blockquote>
+<p>Yu X, Xu L, Ma L, et al. Solar radio spectrum classification with LSTM[C]. IEEE International Conference on Multimedia &amp; Expo Workshops. IEEE,2017:519-524.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>结论:</strong><br>    LSTM、CNN都优于DMN</p>
+<h1 id="2-基于长短期记忆网络和滑动窗口的流数据异常检测方法"><a href="#2-基于长短期记忆网络和滑动窗口的流数据异常检测方法" class="headerlink" title="2 基于长短期记忆网络和滑动窗口的流数据异常检测方法"></a>2 基于长短期记忆网络和滑动窗口的流数据异常检测方法</h1><ul>
+<li><p>采用的方法：</p>
+<ul>
+<li>LSTM进行预测</li>
+<li>根据异常分数对异常分数进行计算。滑动窗口进行异常数据异常分数的计算，大于0.5判定为异常。<ul>
+<li>窗口选择：t时刻之前最后n个异常所在的区间；固定时间的区间长度[t-l,t]。取其区间大者。</li>
+<li>异常分数进行计算：计算差值序列的均值与方差对其进行正态分布建模；计算各项差值的概率密度作为异常分数。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>异常检测的分类：</p>
+<ul>
+<li>异常序列检测</li>
+<li>异常子序列检测</li>
+<li>单个异常点检测<blockquote>
+<p>GUPTA M，GAO J，AGGARWAL C C，et al. Outlier detection for temporal data：a survey［J］. IEEE Transactions on Knowledge and Data Engineering，2014，26（9）：2250-2267</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p>传统的神经网络，如循环神经网络（Recurrent Neural Network，RNN），隐含层只有一个状态，对短期的输入十分敏感，存在梯度消失的问题，不适合处理长序列数据，特别是时间序列数据。LSTM网络在隐含层中层加了一个状态来存储长期状态，避免了RNN的梯度消失。因此，LSTM特别适合处 理时间序列数据，广泛应用于时间序列数据的预测和异常检测。</p>
+<blockquote>
+<p>GREFF K，SRIVASTAVA R K，KOUTNÍK J，et al. LSTM：a search space odyssey［J］. IEEE Transactions on Neural Networks and Learning Systems，2017，28（10）：2222-2232.</p>
+</blockquote>
+<h1 id="3-大数据分析中的计算智能研究现状与展望"><a href="#3-大数据分析中的计算智能研究现状与展望" class="headerlink" title="3 大数据分析中的计算智能研究现状与展望"></a>3 大数据分析中的计算智能研究现状与展望</h1><p>天文数据分析与计算智能的研究问题包括：</p>
+<ul>
+<li>分类</li>
+<li>聚类</li>
+<li>异常（离群）检测</li>
+<li>目标识别与跟踪</li>
+<li>死于数据分析</li>
+<li>天文图像和光谱处理</li>
+</ul>
+<p>大数据的价值密度较低，而往往其中的异常模式具有较高的价值，例如视频监控中的异常现象、日志数据中的错误或故障记录、金融业务中的欺诈行为、舆情分析中的敏感事件、时域天文学中的激变目标等，因此，需要发展快速、可靠的方法来检测异常模式.</p>
+<h1 id="4-多元时间序列相似性搜索研究综述"><a href="#4-多元时间序列相似性搜索研究综述" class="headerlink" title="4 多元时间序列相似性搜索研究综述"></a>4 多元时间序列相似性搜索研究综述</h1><p>时间序列相似模式挖掘主要涉及3个问题：</p>
+<ul>
+<li>特征表示<ul>
+<li>用简洁的形式表达与问题相关的时间序列特征</li>
+</ul>
+</li>
+<li>相似模式度量<ul>
+<li>以特征表示的结果作为输入，定量刻画两条时间序列的显示程序，且能够较好地支持时间序列的多种形变</li>
+</ul>
+</li>
+<li>相似性搜索<ul>
+<li>以某种相似度量方法为基础，在时序数据集中搜索与给定模式相似的时间序列</li>
+</ul>
+</li>
+</ul>
+<p>数据的搜索分为全序列搜索和子序列搜索：</p>
+<ul>
+<li>全序列搜索<ul>
+<li>在数据集$TB={S_1,S_2,S_3…S_t}$中搜索与典型模式$Q$相似的所有序列Si</li>
+</ul>
+</li>
+<li>子序列搜索<ul>
+<li>在数据集$TB={S_1,S_2,S_3…S_t}$中搜索与典型模式$Q$相似的所有序列$S_i[j:k](1\le i \le t, 1 \le j \le k \le len(S_i))$</li>
+</ul>
+</li>
+</ul>
+<h1 id="5-高效时序相似搜索技术"><a href="#5-高效时序相似搜索技术" class="headerlink" title="5 高效时序相似搜索技术"></a><strong>5 高效时序相似搜索技术</strong></h1><p><strong>时序序列数据的定义：</strong></p>
+<p>Time Series:</p>
+<p>时间序列S是指按照时间顺序排列的，具有相等时间间隔的实数数据列表，记为$S={s_1,s_2,s_3…s_n}$，其中时间序列长度为组成S的实数值个数，记为$|S|=n$</p>
+<p>时序相似搜索</p>
+<ul>
+<li>时序相似搜索的分类<ul>
+<li>全序列匹配</li>
+<li>子序列匹配</li>
+</ul>
+</li>
+<li>考虑因素<ul>
+<li>漏报（false negatives/false dismissals）不应出现</li>
+<li>多报（false alarms/false positives）是允许的（可以通过后处理（post processing）可以去除多报。）</li>
+</ul>
+</li>
+<li>时序相似搜索需要解决的关键问题：<ul>
+<li>时序相似度量<ul>
+<li>分类<ul>
+<li>基于形状的相似度量</li>
+<li>基于特征的相似度量</li>
+<li>基于模型的相似度量</li>
+<li>基于数据压缩的相似度量</li>
+</ul>
+</li>
+<li>度量函数<ul>
+<li>$L_p norm$</li>
+<li>DTW</li>
+<li>最长公共子序列（Longest Common Subsequence, LCSS）</li>
+<li>实补偿编辑距离（Edit Distance with Real Penalty, ERP）</li>
+<li>空间装配距离（Spatial Assemble Distance, SpADe）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<img src="images/1_%E8%AE%BA%E6%96%87%E6%80%BB%E8%BF%B0%E5%BA%A6%E9%87%8F%E5%87%BD%E6%95%B0.png" alt="1_论文总述度量函数" style="zoom:75%;">
+
+
+
+
+
+<ul>
+<li><p>时序转换</p>
+<ul>
+<li>离散傅里叶变换（DFT）</li>
+<li>离散小波变换（DWT）</li>
+<li>主成分分析（PCA）</li>
+<li>奇异值分解（SVD）</li>
+<li>等</li>
+</ul>
+</li>
+<li><p>高效的时序索引</p>
+<ul>
+<li>基于向量空间索引技术<ul>
+<li>R-tree</li>
+<li>R*-tree</li>
+<li>SR-tree</li>
+<li>SS-tree</li>
+</ul>
+</li>
+<li>基于度量空间特征值聚类的索引方法<ul>
+<li>VP-tree</li>
+<li>MVP-tree</li>
+<li>M-tree</li>
+<li>SA-tree</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>主要研究内容：(这里分类前后矛盾，日后择其他优秀外文综述细读综述)</p>
+<ul>
+<li>时序模式匹配<ul>
+<li>特定模式匹配<ul>
+<li>FTW算法</li>
+<li>SPRING算法</li>
+</ul>
+</li>
+<li>聚集模式查询与发现</li>
+<li>周期模式发现</li>
+<li>主题模式发现</li>
+<li>异常模式发现（这里和时序异常不是同一个，时序异常主要包括特殊情况的发现,比如说网络入侵等,特定模式时有发生,如恒星耀发）</li>
+</ul>
+</li>
+<li>时序关联分析</li>
+<li>时序聚类</li>
+<li>时序分类<ul>
+<li>机器学习的方法</li>
+</ul>
+</li>
+<li>时序异常</li>
+</ul>
+</li>
+</ul>
+<h1 id="6-时间序列数据挖掘的相似性度量综述，2017"><a href="#6-时间序列数据挖掘的相似性度量综述，2017" class="headerlink" title="6 时间序列数据挖掘的相似性度量综述，2017"></a>6 时间序列数据挖掘的相似性度量综述，2017</h1><p>经典的相似性度量方法(此文对于距离度量的分类):</p>
+<ul>
+<li>锁步度量(lock-step measures):<ul>
+<li>欧几里得距离</li>
+</ul>
+</li>
+<li>弹性度量(elastic measures):<ul>
+<li>DTW距离<ul>
+<li>优点：<ul>
+<li>克服了欧氏距离由于时间序列发生扭曲变形而无法匹配的问题</li>
+<li>支持时间序列平移，可以灵活地处理多相位时间序列</li>
+<li>提高了计算效率和相似性度量精读</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>对噪声非常敏感（需要对匹配过程进行优化）</li>
+<li>不满足三角不等式，不能成为度量函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基于编辑距离的度量方法<ul>
+<li>最长公共子序列(LCSS)<ul>
+<li>两个字符串最大公共字串与最长字符串的比值进行相似性度量（不适用天文数据序列的模式匹配）</li>
+</ul>
+</li>
+<li>实序列编辑距离(EDR)<ul>
+<li>定义：将X转换成Y需要插入删除替换所需要的操作数目</li>
+</ul>
+</li>
+<li>实补偿距离(ERP)<ul>
+<li>两个序列添加一些符号</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="7-时间序列挖掘中的动态时间弯曲研究综述，2018"><a href="#7-时间序列挖掘中的动态时间弯曲研究综述，2018" class="headerlink" title="7 时间序列挖掘中的动态时间弯曲研究综述，2018"></a>7 时间序列挖掘中的动态时间弯曲研究综述，2018</h1><p><strong>DTW缺点：</strong></p>
+<p>动态时间弯曲的“一对多”匹配容易出现一条时间序列上的一个点匹配到另一条时间序列的一大段时间点，影响度量的准确性。<br>$$<br>S_1 = {s_1,s_2,s_3…s_n}\<br>S_2= { s_1,s_2,s_3…s_m }<br>$$</p>
+<p><strong>DTW算法的流程：</strong></p>
+<p>动态规划的方法计算序列的点之间的距离，再反向寻找最优路径。<br>$$<br>\gamma(i,j)=D(i,j)+min<br>\begin{cases}<br>\gamma(i-1,j-1) ;\<br>\gamma(i-1,j) ;\<br>\gamma(i,j-1) .<br>\end{cases}\<br>i=1,2,3…n;j=1,2,3…m.\<br>\gamma(i,0)=\gamma(0,j)=\infin<br>$$</p>
+<table>
+<thead>
+<tr>
+<th align="center">对比</th>
+<th align="center">Euclidean</th>
+<th align="center">DTW</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">序列长度要求</td>
+<td align="center">等长</td>
+<td align="center">不等长</td>
+</tr>
+<tr>
+<td align="center">数据匹配</td>
+<td align="center">同步匹配</td>
+<td align="center">异步匹配</td>
+</tr>
+<tr>
+<td align="center">鲁棒性</td>
+<td align="center">对噪声敏感</td>
+<td align="center">对噪声、振幅、偏移不敏感</td>
+</tr>
+<tr>
+<td align="center">时间复杂度</td>
+<td align="center">O(n)</td>
+<td align="center">O(mn)</td>
+</tr>
+<tr>
+<td align="center">三角不等式</td>
+<td align="center">满足</td>
+<td align="center">不满足</td>
+</tr>
+</tbody></table>
+<h1 id="8-时间序列数据挖掘综述，2007"><a href="#8-时间序列数据挖掘综述，2007" class="headerlink" title="8 时间序列数据挖掘综述，2007"></a>8 时间序列数据挖掘综述，2007</h1><p><strong>时间序列聚类与分类分析流程：</strong></p>
+<ul>
+<li>根据用户指定的模式长度和时间粒度，将原始时间序列数据分割为等长度的子序列集合或不重叠的子序列集合；</li>
+<li>然后再对这些子序列进行聚类与分析</li>
+</ul>
+<p><strong>时间序列分割与模式发现：</strong></p>
+<ul>
+<li>分类：<ul>
+<li>特定模式</li>
+<li>频繁模式</li>
+<li>周期模式</li>
+<li>感兴趣模式</li>
+<li>惊奇模式</li>
+<li>异常模式</li>
+<li>例外模式</li>
+</ul>
+</li>
+<li>方法：<ul>
+<li>分割长序列为短的子序列</li>
+<li>对子序列进行聚类/分类分析，检测变化点</li>
+<li>对分割后的时间序列建立动态模型</li>
+</ul>
+</li>
+</ul>
+<h1 id="9-Paparrizos-J-Gravano-L-k-Shape-Efficient-and-Accurate-Clustering-of-Time-Series-J-ACM-SIGMOD-Record-2016-45-1-69-76"><a href="#9-Paparrizos-J-Gravano-L-k-Shape-Efficient-and-Accurate-Clustering-of-Time-Series-J-ACM-SIGMOD-Record-2016-45-1-69-76" class="headerlink" title="9  Paparrizos J , Gravano L . k- Shape: Efficient and Accurate Clustering of Time Series[J]. ACM SIGMOD Record, 2016, 45(1):69-76."></a>9  Paparrizos J , Gravano L . k- Shape: Efficient and Accurate Clustering of Time Series[J]. ACM SIGMOD Record, 2016, 45(1):69-76.</h1><h2 id="9-1-Introduction"><a href="#9-1-Introduction" class="headerlink" title="9.1 Introduction"></a>9.1 Introduction</h2><p>聚类：最广泛被使用、不依靠人工监督、不依赖对数据进行消耗时间的标注</p>
+<p><strong>使用聚类（Cluster）方法的缺点：</strong></p>
+<p>进行“基于形状的聚类（Shape-based clustering method）”的缺点：在心电图（ECG）数据集中，两个有细微差别（局部时间序列的振幅和相位不同）但是属于不同的类的时间序列可能被划分到相同类。</p>
+<p><strong>距离衡量（distance measure）方法：</strong>忽略相位振幅带来的影响，具有比聚类算法更卓越的性能。</p>
+<p><img src="images/image-20201229095235191.png" alt="image-20201229095235191"></p>
+<p>最前沿的方法（state-of-the-art approaches）的缺点:</p>
+<ul>
+<li>因为需要消耗的算力资源过大，因此不能较好地运用到大规模数据集上</li>
+<li>大多数方法一般针对性强，或者只对几个有限的数据集适用</li>
+</ul>
+<p><strong>k-Shape：</strong></p>
+<ul>
+<li>需要抗移动、缩放的距离衡量方法<ul>
+<li>采用互相关统计量（cross-correlation statistical measure）</li>
+</ul>
+</li>
+</ul>
+<p>作者的实验表明：</p>
+<ul>
+<li>互相关距离比ED性能更好，与最前沿的方法一样具有竞争力，但计算速度更快</li>
+<li>基于ED的K均值方法（k-means algorithm with ED）鲁棒性比较强，但是轻微的修改就会使得性能下降</li>
+<li>聚类方法的选择与距离衡量方法的选择同等重要，而非前人所说的聚类方法没有距离衡量方法重要</li>
+<li>k-Shape方法在准确性方面比所有的scalable方法都要好</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Li Xian 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Li Xian 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/01/1%E8%AE%BA%E6%96%87%E7%9B%B8%E5%85%B3/OLD/1-0-SciDICup%E8%AE%BA%E6%96%87%E4%BF%AE%E6%94%B9/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/01/1%E6%89%BE%E5%B7%A5%E4%BD%9C/0%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0%E6%83%B3%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">0想法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9C%A8%E5%A4%A9%E6%96%87%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">1 深度学习在天文大数据处理中的应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%9F%BA%E4%BA%8E%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86%E7%BD%91%E7%BB%9C%E5%92%8C%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%B5%81%E6%95%B0%E6%8D%AE%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">2 基于长短期记忆网络和滑动窗口的流数据异常检测方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E8%AE%A1%E7%AE%97%E6%99%BA%E8%83%BD%E7%A0%94%E7%A9%B6%E7%8E%B0%E7%8A%B6%E4%B8%8E%E5%B1%95%E6%9C%9B"><span class="nav-number">4.</span> <span class="nav-text">3 大数据分析中的计算智能研究现状与展望</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E5%A4%9A%E5%85%83%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E7%9B%B8%E4%BC%BC%E6%80%A7%E6%90%9C%E7%B4%A2%E7%A0%94%E7%A9%B6%E7%BB%BC%E8%BF%B0"><span class="nav-number">5.</span> <span class="nav-text">4 多元时间序列相似性搜索研究综述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E9%AB%98%E6%95%88%E6%97%B6%E5%BA%8F%E7%9B%B8%E4%BC%BC%E6%90%9C%E7%B4%A2%E6%8A%80%E6%9C%AF"><span class="nav-number">6.</span> <span class="nav-text">5 高效时序相似搜索技术</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9A%84%E7%9B%B8%E4%BC%BC%E6%80%A7%E5%BA%A6%E9%87%8F%E7%BB%BC%E8%BF%B0%EF%BC%8C2017"><span class="nav-number">7.</span> <span class="nav-text">6 时间序列数据挖掘的相似性度量综述，2017</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E6%8C%96%E6%8E%98%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81%E6%97%B6%E9%97%B4%E5%BC%AF%E6%9B%B2%E7%A0%94%E7%A9%B6%E7%BB%BC%E8%BF%B0%EF%BC%8C2018"><span class="nav-number">8.</span> <span class="nav-text">7 时间序列挖掘中的动态时间弯曲研究综述，2018</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%BB%BC%E8%BF%B0%EF%BC%8C2007"><span class="nav-number">9.</span> <span class="nav-text">8 时间序列数据挖掘综述，2007</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-Paparrizos-J-Gravano-L-k-Shape-Efficient-and-Accurate-Clustering-of-Time-Series-J-ACM-SIGMOD-Record-2016-45-1-69-76"><span class="nav-number">10.</span> <span class="nav-text">9  Paparrizos J , Gravano L . k- Shape: Efficient and Accurate Clustering of Time Series[J]. ACM SIGMOD Record, 2016, 45(1):69-76.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-1-Introduction"><span class="nav-number">10.1.</span> <span class="nav-text">9.1 Introduction</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Li Xian</p>
+  <div class="site-description" itemprop="description">与遗忘作斗争</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/naixil" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;naixil" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lixian_shandong@126.com" title="E-Mail → mailto:lixian_shandong@126.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Xian</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">NaNm</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">NaN:aN</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
