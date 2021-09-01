@@ -1043,7 +1043,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-01 21:00:43" itemprop="dateModified" datetime="2021-09-01T21:00:43+08:00">2021-09-01</time>
+                <time title="修改时间：2021-09-01 21:25:52" itemprop="dateModified" datetime="2021-09-01T21:25:52+08:00">2021-09-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1084,8 +1084,7 @@
 <h2 id="Windows安装nodejs"><a href="#Windows安装nodejs" class="headerlink" title="Windows安装nodejs"></a>Windows安装nodejs</h2><p><strong>进行下一步骤之前应该已经在github里面新建了repo并且设置为GithubPages，操作简单，不在赘述，仅仅记录使用Hexo搭配GithubPages的踩的坑。</strong></p>
 <p><a target="_blank" rel="noopener" href="https://nodejs.org/">官网</a>下载之后双击安装即可。</p>
 <p>安装之后新打开终端输入<code>node -v</code>，显示版本号则表示安装成功</p>
-<img src="https://raw.githubusercontent.com/NAIXIL/GithubPagesPics/main/before202109image-20210831215424408.png" alt="image-20210831215424408" style="zoom:50%;" />
-
+<p><img src="https://raw.githubusercontent.com/NAIXIL/GithubPagesPics/main/before202109image-20210831215424408.png" alt="image-20210831215424408" style="zoom:50%;" /></p>
 <h2 id="安装Hexo并部署"><a href="#安装Hexo并部署" class="headerlink" title="安装Hexo并部署"></a>安装Hexo并部署</h2><h3 id="使用npm安装hexo"><a href="#使用npm安装hexo" class="headerlink" title="使用npm安装hexo"></a>使用npm安装hexo</h3><p>“# “后为注释</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli  # 在终端里安装hexo</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在你想要写博客的文件夹（空文件夹）路径下输入，此处假设为c:/blog/</span></span><br><span class="line">hexo init # 运行这句在生成c:/blog/Hexo/文件夹，文件夹里有很多文件</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装下面的，才能部署到github</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <h3 id="使Hexo能上传本地图片"><a href="#使Hexo能上传本地图片" class="headerlink" title="使Hexo能上传本地图片"></a>使Hexo能上传本地图片</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1. c:/blog/Hexo/_config.yml修改post_asset_folder: 属性为<span class="literal">true</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">2. 只能安装这个修改版的，忽略报错即可。实测别的都不行，比如`npm install hexo-asset-image --save`。</span></span><br><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
@@ -1102,23 +1101,17 @@
 </ul>
 <h3 id="部署博客三件套"><a href="#部署博客三件套" class="headerlink" title="部署博客三件套"></a>部署博客三件套</h3><p>写完markdown文件之后按照以下步骤发布到GithubPages</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean # 清除缓存</span><br><span class="line">hexo generate # 可以简写`hexo g`。这一句的作用是生成相关的html文件，为后续发布做准备</span><br><span class="line">hexo deploy # 可以简写`hexo d`。这一句作用是部署文件到GithubPages</span><br><span class="line"><span class="meta">#</span><span class="bash"> 第5,6行也可以合并成`hexo d -g`</span></span><br></pre></td></tr></table></figure>
-
-<img src="https://raw.githubusercontent.com/NAIXIL/GithubPagesPics/main/before202109image-20210831222511692.png" alt="image-20210831222511692" style="zoom: 50%;" />
-
-<img src="https://raw.githubusercontent.com/NAIXIL/GithubPagesPics/main/before202109image-20210831222727610.png" alt="image-20210831222727610" style="zoom:50%;" />
-
-<img src="https://raw.githubusercontent.com/NAIXIL/GithubPagesPics/main/before202109image-20210831222803312.png" alt="image-20210831222803312" style="zoom:50%;" />
-
+<p><img src="https://raw.githubusercontent.com/NAIXIL/GithubPagesPics/main/before202109image-20210831222511692.png" alt="image-20210831222511692" style="zoom: 50%;" /></p>
+<p><img src="https://raw.githubusercontent.com/NAIXIL/GithubPagesPics/main/before202109image-20210831222727610.png" alt="image-20210831222727610" style="zoom:50%;" /></p>
+<p><img src="https://raw.githubusercontent.com/NAIXIL/GithubPagesPics/main/before202109image-20210831222803312.png" alt="image-20210831222803312" style="zoom:50%;" /></p>
 <p>一般在deploy到GithubPages上之前最好在本地运行一下，看一看没啥问题再推送到远程。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server <span class="comment"># 或者是hexo s,运行完打开http://localhost:4000就能看自己博客了</span></span><br></pre></td></tr></table></figure>
-
-<img src="https://raw.githubusercontent.com/NAIXIL/GithubPagesPics/main/before202109image-20210831222551400.png" alt="image-20210831222551400" style="zoom:50%;" />
-
+<p><img src="https://raw.githubusercontent.com/NAIXIL/GithubPagesPics/main/before202109image-20210831222551400.png" alt="image-20210831222551400" style="zoom:50%;" /></p>
 <p>效果如下：（不能显示latex，不知道为啥）</p>
-<img src="https://raw.githubusercontent.com/NAIXIL/GithubPagesPics/main/before202109image-20210831222630352.png" alt="image-20210831222630352" style="zoom: 33%;" />
-
+<p><img src="https://raw.githubusercontent.com/NAIXIL/GithubPagesPics/main/before202109image-20210831222630352.png" alt="image-20210831222630352" style="zoom: 33%;" /></p>
 <h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>本博客使用的主题是butterfly</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 在项目的根目录下执行</span></span><br><span class="line">git clone -b dev https://github.com/jerryc127/hexo-theme-butterfly.git themes/Butterfly</span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改项目根目录下的_config.yml的theme为butterfly即可。</span></span><br></pre></td></tr></table></figure>
+<p><img src="../../images/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210901212552886.png" alt="image-20210901212552886"></p>
 
       
     </div>
