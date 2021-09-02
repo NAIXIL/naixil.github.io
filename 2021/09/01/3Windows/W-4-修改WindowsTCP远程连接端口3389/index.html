@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"naixil.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="更新历史：     时间 更新内容：更新位置 更新人     20210728 网段设置注意事项：点此跳转 李显   20210722 初版 李显     0 先导知识 最终版连接服务器方法：更改端口法  校园网概况  校园网是一个大局域网，理论上连上校园网的所有主机都能够相互ping通（在二者都具有101.7.xxx.xxx网段的IP的情况下）。 平时连接校园网的两台主机无法建立TCP远程连接（">
+  <meta name="description" content="更新历史：    时间 更新内容：更新位置 更新人    20210728 网段设置注意事项：点此跳转 李显   20210722 初版 李显   0 先导知识 最终版连接服务器方法：更改端口法 校园网概况 校园网是一个大局域网，理论上连上校园网的所有主机都能够相互ping通（在二者都具有101.7.xxx.xxx网段的IP的情况下）。 平时连接校园网的两台主机无法建立TCP远程连接（也就是没法直">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows-4-Windows-修改WindowsTCP远程连接端口3389">
 <meta property="og:url" content="https://naixil.github.io/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/index.html">
 <meta property="og:site_name" content="LiXian&#39;s Blog">
-<meta property="og:description" content="更新历史：     时间 更新内容：更新位置 更新人     20210728 网段设置注意事项：点此跳转 李显   20210722 初版 李显     0 先导知识 最终版连接服务器方法：更改端口法  校园网概况  校园网是一个大局域网，理论上连上校园网的所有主机都能够相互ping通（在二者都具有101.7.xxx.xxx网段的IP的情况下）。 平时连接校园网的两台主机无法建立TCP远程连接（">
+<meta property="og:description" content="更新历史：    时间 更新内容：更新位置 更新人    20210728 网段设置注意事项：点此跳转 李显   20210722 初版 李显   0 先导知识 最终版连接服务器方法：更改端口法 校园网概况 校园网是一个大局域网，理论上连上校园网的所有主机都能够相互ping通（在二者都具有101.7.xxx.xxx网段的IP的情况下）。 平时连接校园网的两台主机无法建立TCP远程连接（也就是没法直">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://naixil.github.io/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721195805461.png">
 <meta property="og:image" content="https://naixil.github.io/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721195941872.png">
@@ -262,34 +262,28 @@
 
       
         <p><strong>更新历史：</strong></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:center">时间</th>
-<th style="text-align:center">更新内容：更新位置</th>
-<th style="text-align:center">更新人</th>
+<th align="center">时间</th>
+<th align="center">更新内容：更新位置</th>
+<th align="center">更新人</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">20210728</td>
-<td style="text-align:center">网段设置注意事项：<a href="#jump1">点此跳转</a></td>
-<td style="text-align:center">李显</td>
+<tbody><tr>
+<td align="center">20210728</td>
+<td align="center">网段设置注意事项：<a href="#jump1">点此跳转</a></td>
+<td align="center">李显</td>
 </tr>
 <tr>
-<td style="text-align:center">20210722</td>
-<td style="text-align:center">初版</td>
-<td style="text-align:center">李显</td>
+<td align="center">20210722</td>
+<td align="center">初版</td>
+<td align="center">李显</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h1 id="0-先导知识"><a href="#0-先导知识" class="headerlink" title="0 先导知识"></a>0 先导知识</h1><ul>
-<li><p>最终版连接服务器方法：<strong>更改端口法</strong></p>
-</li>
-<li><p><strong>校园网概况</strong></p>
-<ul>
+<li>最终版连接服务器方法：<strong>更改端口法</strong></li>
+<li><strong>校园网概况</strong><ul>
 <li>校园网是一个大局域网，理论上连上校园网的所有主机都能够相互ping通（在二者都具有101.7.xxx.xxx网段的IP的情况下）。</li>
 <li>平时连接校园网的两台主机无法建立TCP远程连接（也就是没法直接远程桌面），原因有2：<ul>
 <li>两主机跨局域网，且需要被远程的主机IP为私有IP（即10.0.0.0-10.255.255.255 、172.16.0.0—172.31.255.255 、192.168.0.0-192.168.255.255 三个网段）</li>
@@ -299,13 +293,11 @@
 <li>信息与计算机学院网段分布：101.7.186.xxx为实验楼的网段；101.7.187.xxx为北楼的网段（例如607打印机的IP就是101.7.187.235）</li>
 </ul>
 </li>
-<li><p><strong>本文适用</strong></p>
-<ul>
-<li>只要使用人能连上校园网（在家或宿舍可以用motion pro通过VPN连接校园网<a target="_blank" rel="noopener" href="http://iadmin.tyut.edu.cn/info/1155/2280.htm）就能连接上学校的任意已联网服务器，且连接质量远好于向日葵或FRP。">http://iadmin.tyut.edu.cn/info/1155/2280.htm）就能连接上学校的任意已联网服务器，且连接质量远好于向日葵或FRP。</a></li>
+<li><strong>本文适用</strong><ul>
+<li>只要使用人能连上校园网（在家或宿舍可以用motion pro通过VPN连接校园网<a target="_blank" rel="noopener" href="http://iadmin.tyut.edu.cn/info/1155/2280.htm%EF%BC%89%E5%B0%B1%E8%83%BD%E8%BF%9E%E6%8E%A5%E4%B8%8A%E5%AD%A6%E6%A0%A1%E7%9A%84%E4%BB%BB%E6%84%8F%E5%B7%B2%E8%81%94%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E4%B8%94%E8%BF%9E%E6%8E%A5%E8%B4%A8%E9%87%8F%E8%BF%9C%E5%A5%BD%E4%BA%8E%E5%90%91%E6%97%A5%E8%91%B5%E6%88%96FRP%E3%80%82">http://iadmin.tyut.edu.cn/info/1155/2280.htm）就能连接上学校的任意已联网服务器，且连接质量远好于向日葵或FRP。</a></li>
 </ul>
 </li>
-<li><p><strong>远程连接的方法概览</strong>（都是在需要被远程连接的主机上操作）</p>
-<ul>
+<li><strong>远程连接的方法概览</strong>（都是在需要被远程连接的主机上操作）<ul>
 <li><p>首先要保证服务器主机有一个101.7.xxx.xxx网段的IP，上网方式不要设置成DHCP，设置成静态IP。具体到407，就是101.7.186.xxx网段的IP。</p>
 <ul>
 <li><p>设置静态ip相关信息：</p>
@@ -315,8 +307,10 @@
 <li>默认网关：101.7.186.1</li>
 </ul>
 </li>
-<li>DNS为202.207.247.227、202.207.240.225</li>
-<li><span id="jump1"><strong>20210728新增注意</strong></span>：服务器需要登录上自己的ipv6账号，如果插上网线就能上网不需要经过登录的话一般是连接在同一交换机的其他服务器有人登录了，此时自己的服务器仍然是处在小局域网而非校园网这个大局域网下。如ip为101.7.187.123，不经过ipv6登录的情况下，只有当自己电脑的ip是101.7.187.xxx的时候才能连上，而非初衷101.7.xxx.xxx就能连接上。</li>
+<li><p>DNS为202.207.247.227、202.207.240.225</p>
+</li>
+<li><p> <span id="jump1"><strong>20210728新增注意</strong></span>：服务器需要登录上自己的ipv6账号，如果插上网线就能上网不需要经过登录的话一般是连接在同一交换机的其他服务器有人登录了，此时自己的服务器仍然是处在小局域网而非校园网这个大局域网下。如ip为101.7.187.123，不经过ipv6登录的情况下，只有当自己电脑的ip是101.7.187.xxx的时候才能连上，而非初衷101.7.xxx.xxx就能连接上。</p>
+</li>
 </ul>
 </li>
 <li><p>修改服务器主机的远程端口为2000 ~ 3388、3390 ~ 65535之间的任意值，教程见下文。</p>
@@ -341,16 +335,19 @@
 </ol>
 </li>
 </ol>
-<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721195805461.png" alt="image-20210721195805461" style="zoom: 33%;"></p>
-<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721195941872.png" alt="image-20210721195941872" style="zoom: 33%;"></p>
-<ol>
+<img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721195805461.png" alt="image-20210721195805461" style="zoom: 33%;">
+
+<img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721195941872.png" alt="image-20210721195941872" style="zoom: 33%;">
+
+<ol start="3">
 <li>修改注册表值<ol>
 <li>路径：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp</li>
 <li>修改PortNumber</li>
 </ol>
 </li>
 </ol>
-<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721200316807.png" alt="image-20210721200316807" style="zoom:33%;"></p>
+<img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721200316807.png" alt="image-20210721200316807" style="zoom:33%;">
+
 <h2 id="1-2-修改防火墙入站端口"><a href="#1-2-修改防火墙入站端口" class="headerlink" title="1.2 修改防火墙入站端口"></a>1.2 修改防火墙入站端口</h2><ol>
 <li>修改注册表值<ol>
 <li>路径：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Defaults\FirewallPolicy\FirewallRules</li>
@@ -358,29 +355,38 @@
 </ol>
 </li>
 </ol>
-<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721200632669.png" alt="image-20210721200632669" style="zoom:33%;"></p>
-<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721200726685.png" alt="image-20210721200726685" style="zoom:33%;"></p>
-<ol>
+<img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721200632669.png" alt="image-20210721200632669" style="zoom:33%;">
+
+<img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721200726685.png" alt="image-20210721200726685" style="zoom:33%;">
+
+<ol start="2">
 <li>修改注册表值<ol>
 <li>路径：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules</li>
 <li>修改RemoteDesktop-UserMode-In-TCP的LPort=2022</li>
 </ol>
 </li>
 </ol>
-<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721200846745.png" alt="image-20210721200846745" style="zoom:33%;"></p>
-<ol>
+<img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721200846745.png" alt="image-20210721200846745" style="zoom:33%;">
+
+<ol start="3">
 <li>打开控制面板\系统和安全\Windows 防火墙\高级设置</li>
 </ol>
-<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721201034920.png" alt="image-20210721201034920" style="zoom:33%;"></p>
-<ol>
+<img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721201034920.png" alt="image-20210721201034920" style="zoom:33%;">
+
+<ol start="4">
 <li>点击入站规则$\rightarrow$右键远程桌面-用户模式（TCP-In）$\rightarrow$启用规则</li>
 </ol>
-<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721201209917.png" alt="image-20210721201209917" style="zoom:33%;"></p>
-<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721201252363.png" alt="image-20210721201252363" style="zoom:33%;"></p>
-<ol>
+<img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721201209917.png" alt="image-20210721201209917" style="zoom:33%;">
+
+<img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721201252363.png" alt="image-20210721201252363" style="zoom:33%;">
+
+<ol start="5">
 <li>重启服务器即可在自己电脑上连接</li>
 </ol>
-<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721202949425.png" alt="image-20210721202949425" style="zoom:33%;"></p>
+<img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721202949425.png" alt="image-20210721202949425" style="zoom:33%;">
+
+
+
 
     </div>
 
@@ -496,7 +502,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -548,13 +554,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">84k</span>
+    <span title="站点总字数">81k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:17</span>
+    <span title="站点阅读时长">1:13</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

@@ -277,7 +277,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6.8k</span>
+              <span>6.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -360,18 +360,8 @@
 <h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><h3 id="线性表的定义和基本操作"><a href="#线性表的定义和基本操作" class="headerlink" title="线性表的定义和基本操作"></a>线性表的定义和基本操作</h3><h4 id="线性表的定义"><a href="#线性表的定义" class="headerlink" title="线性表的定义"></a>线性表的定义</h4><p>具有相同数据类型的$n(n\ge 0)$个数据元素的<strong>有限</strong>序列。</p>
 <p>常用$L$表示线性表，$L=(a_1,a_2,…,a_i, a_{i+1},…a_n)$。</p>
 <h4 id="线性表的基本操作"><a href="#线性表的基本操作" class="headerlink" title="线性表的基本操作"></a>线性表的基本操作</h4><p>基本操作：创建销毁、增删改查</p>
-<script type="math/tex; mode=display">
-\begin{flalign*}
-& InitList(\&L):初始化表。构造一个空的线性表\\
-& Length(L):求表长，也就是元素的个数\\
-& LocateElem(L,e):按值查找元素\\
-& GetElem(L,i):按位查找元素\\
-& ListInsert(\&L, i, e):插入操作，插入第i个位置的元素，并用e返回值\\
-& ListDelete(\&L, i, \&e):删除操作\\
-& PrintList(L):输出表\\
-& Empty(L):判空操作\\
-& DestoryList(L):销毁操作\\
-\end{flalign*}</script><h3 id="顺序表示"><a href="#顺序表示" class="headerlink" title="顺序表示"></a>顺序表示</h3><h4 id="顺序表的定义"><a href="#顺序表的定义" class="headerlink" title="顺序表的定义"></a>顺序表的定义</h4><p>线性表的顺序存储又称<strong>顺序表</strong>。</p>
+<p>$$<br>\begin{flalign*}<br>&amp; InitList(&amp;L):初始化表。构造一个空的线性表\<br>&amp; Length(L):求表长，也就是元素的个数\<br>&amp; LocateElem(L,e):按值查找元素\<br>&amp; GetElem(L,i):按位查找元素\<br>&amp; ListInsert(&amp;L, i, e):插入操作，插入第i个位置的元素，并用e返回值\<br>&amp; ListDelete(&amp;L, i, &amp;e):删除操作\<br>&amp; PrintList(L):输出表\<br>&amp; Empty(L):判空操作\<br>&amp; DestoryList(L):销毁操作\<br>\end{flalign*}<br>$$</p>
+<h3 id="顺序表示"><a href="#顺序表示" class="headerlink" title="顺序表示"></a>顺序表示</h3><h4 id="顺序表的定义"><a href="#顺序表的定义" class="headerlink" title="顺序表的定义"></a>顺序表的定义</h4><p>线性表的顺序存储又称<strong>顺序表</strong>。</p>
 <p>特点：逻辑顺序与物理顺序相同。</p>
 <p>顺序表的长度可以静态分配，也可以动态分配（通过<strong>指针</strong>实现）。</p>
 <h4 id="顺序表顺序表上基本操作"><a href="#顺序表顺序表上基本操作" class="headerlink" title="顺序表顺序表上基本操作"></a>顺序表顺序表上基本操作</h4><p>线性表的元素位序是从1开始的，数组是从0开始的。</p>
@@ -429,36 +419,33 @@
 </li>
 </ol>
 <h4 id="静态链表"><a href="#静态链表" class="headerlink" title="静态链表"></a>静态链表</h4><p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-20210826214804310.png" alt="image-20210826214804310"></p>
-<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-20210826234556739.png" alt="image-20210826234556739" style="zoom:50%;"></p>
-<h4 id="顺序表和链表的比较"><a href="#顺序表和链表的比较" class="headerlink" title="顺序表和链表的比较"></a>顺序表和链表的比较</h4><div class="table-container">
-<table>
+<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-20210826234556739.png" alt="image-20210826234556739" style="zoom:50%;">
+
+<h4 id="顺序表和链表的比较"><a href="#顺序表和链表的比较" class="headerlink" title="顺序表和链表的比较"></a>顺序表和链表的比较</h4><table>
 <thead>
 <tr>
-<th style="text-align:center">链表</th>
-<th style="text-align:center">存取方式</th>
+<th align="center">链表</th>
+<th align="center">存取方式</th>
 <th>逻辑结构与物理结构</th>
-<th style="text-align:center">增删查</th>
+<th align="center">增删查</th>
 <th>空间分配</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">顺序表</td>
-<td style="text-align:center">顺序+随机</td>
+<tbody><tr>
+<td align="center">顺序表</td>
+<td align="center">顺序+随机</td>
 <td>相邻</td>
-<td style="text-align:center">按值查找，无序，$O(n)$，有序，$O(log_2n)$；按序号，$O(1)$</td>
+<td align="center">按值查找，无序，$O(n)$，有序，$O(log_2n)$；按序号，$O(1)$</td>
 <td>固定</td>
 </tr>
 <tr>
-<td style="text-align:center">链表</td>
-<td style="text-align:center">只能从头</td>
+<td align="center">链表</td>
+<td align="center">只能从头</td>
 <td>不相邻，由指针表示</td>
-<td style="text-align:center">按值查找，无序，$O(n)$，有序，$O(log_2n)$；按序号，$O(1)$</td>
+<td align="center">按值查找，无序，$O(n)$，有序，$O(log_2n)$；按序号，$O(1)$</td>
 <td>灵活</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <ul>
 <li>选择<ul>
 <li>存储优先<ul>
@@ -590,13 +577,15 @@
 <li>中序遍历右子树</li>
 </ol>
 </li>
-<li>后序遍历LRN：642531<ol>
+<li><p>后序遍历LRN：642531</p>
+<ol>
 <li>后序遍历左子树</li>
 <li>后序遍历右子树</li>
 <li>访问根节点</li>
 </ol>
 </li>
-<li>层次遍历:123456<ul>
+<li><p>层次遍历:123456</p>
+<ul>
 <li>将根入队，根出队；</li>
 <li>若根有左子树，左子树根节点入队；有右子树，右子树根节点入队；</li>
 <li>左子树/右子树出队，分别执行2，3</li>
@@ -756,9 +745,7 @@
 </li>
 </ol>
 <h4 id="哈夫曼树与哈夫曼编码"><a href="#哈夫曼树与哈夫曼编码" class="headerlink" title="哈夫曼树与哈夫曼编码"></a>哈夫曼树与哈夫曼编码</h4><ol>
-<li><p>定义：结点常常被赋予值，称为该结点的权。从树的根结点到任意结点的路径长度与该结点上权值的乘积，称为该结点的<strong>带权路径长度</strong>。树中所有<strong>==叶结点==</strong>的带权路径长度之和称为该树的带权路径长度。</p>
-<script type="math/tex; mode=display">
-WPL = \sum_{i=1}^nw_il_i</script><p>$WPL$最小的二叉树称为哈夫曼树，也称为最优二叉树。</p>
+<li><p>定义：结点常常被赋予值，称为该结点的权。从树的根结点到任意结点的路径长度与该结点上权值的乘积，称为该结点的<strong>带权路径长度</strong>。树中所有**==叶结点==**的带权路径长度之和称为该树的带权路径长度。<br>$$<br>WPL = \sum_{i=1}^nw_il_i<br>$$<br>$WPL$最小的二叉树称为哈夫曼树，也称为最优二叉树。</p>
 </li>
 <li><p>构造方法</p>
 <ol>
@@ -1078,7 +1065,7 @@ WPL = \sum_{i=1}^nw_il_i</script><p>$WPL$最小的二叉树称为哈夫曼树，
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1130,13 +1117,13 @@ WPL = \sum_{i=1}^nw_il_i</script><p>$WPL$最小的二叉树称为哈夫曼树，
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">84k</span>
+    <span title="站点总字数">81k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:17</span>
+    <span title="站点阅读时长">1:13</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

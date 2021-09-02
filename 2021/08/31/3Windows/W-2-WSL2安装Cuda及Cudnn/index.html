@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"naixil.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1. 环境 Windows10_insider_preview，必须得是insider_preview版本（OS内部版本开头数字要是20150以上），要不安装好了也是检测不到GPU的，已安装WSL2下的Ubuntu20.04 WSL2 python3.8.5 pip 20.0.2 tensorflow&#x3D;&#x3D;2.4.0     2. 安装步骤　2.1 驱动的安装WSL2的Nvidia驱动安装说明  微">
+  <meta name="description" content="1. 环境 Windows10_insider_preview，必须得是insider_preview版本（OS内部版本开头数字要是20150以上），要不安装好了也是检测不到GPU的，已安装WSL2下的Ubuntu20.04 WSL2 python3.8.5 pip 20.0.2 tensorflow&#x3D;&#x3D;2.4.0        2. 安装步骤2.1 驱动的安装WSL2的Nvidia驱动安装说明">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows-2-WSL2安装Cuda及Cudnn.md">
 <meta property="og:url" content="https://naixil.github.io/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/index.html">
 <meta property="og:site_name" content="LiXian&#39;s Blog">
-<meta property="og:description" content="1. 环境 Windows10_insider_preview，必须得是insider_preview版本（OS内部版本开头数字要是20150以上），要不安装好了也是检测不到GPU的，已安装WSL2下的Ubuntu20.04 WSL2 python3.8.5 pip 20.0.2 tensorflow&#x3D;&#x3D;2.4.0     2. 安装步骤　2.1 驱动的安装WSL2的Nvidia驱动安装说明  微">
+<meta property="og:description" content="1. 环境 Windows10_insider_preview，必须得是insider_preview版本（OS内部版本开头数字要是20150以上），要不安装好了也是检测不到GPU的，已安装WSL2下的Ubuntu20.04 WSL2 python3.8.5 pip 20.0.2 tensorflow&#x3D;&#x3D;2.4.0        2. 安装步骤2.1 驱动的安装WSL2的Nvidia驱动安装说明">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://naixil.github.io/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208213617002.png">
 <meta property="og:image" content="https://naixil.github.io/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208215808957.png">
@@ -267,8 +267,11 @@
 </ul>
 </li>
 </ul>
-<p><img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208213617002.png" alt="image-20210208213617002" style="zoom:33%;"></p>
-<h1 id="2-安装步骤"><a href="#2-安装步骤" class="headerlink" title="2. 安装步骤"></a>2. 安装步骤</h1><h2 id="2-1-驱动的安装"><a href="#2-1-驱动的安装" class="headerlink" title="　2.1 驱动的安装"></a>　2.1 驱动的安装</h2><p>WSL2的Nvidia驱动安装说明</p>
+<img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208213617002.png" alt="image-20210208213617002" style="zoom:33%;">
+
+
+
+<h1 id="2-安装步骤"><a href="#2-安装步骤" class="headerlink" title="2. 安装步骤"></a>2. 安装步骤</h1><h2 id="2-1-驱动的安装"><a href="#2-1-驱动的安装" class="headerlink" title="2.1 驱动的安装"></a>2.1 驱动的安装</h2><p>WSL2的Nvidia驱动安装说明</p>
 <blockquote>
 <p>微软关于WSL安装英伟达驱动的说明：<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/direct3d12/gpu-cuda-in-wsl">https://docs.microsoft.com/en-us/windows/win32/direct3d12/gpu-cuda-in-wsl</a></p>
 </blockquote>
@@ -279,38 +282,54 @@
 <li>WSL2</li>
 </ol>
 </li>
-<li>在<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda/wsl/download">此网址</a>根据显卡类型选择驱动下载，在Windows下安装</li>
+<li><p>在<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda/wsl/download">此网址</a>根据显卡类型选择驱动下载，在Windows下安装</p>
+</li>
 </ol>
 <h2 id="2-2-Cuda-11-1安装"><a href="#2-2-Cuda-11-1安装" class="headerlink" title="2.2 Cuda-11.1安装"></a>2.2 Cuda-11.1安装</h2><p>编者按:<a target="_blank" rel="noopener" href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html">官方给出的WSL安装Cuda教程</a>给出了两种安装方式,经过亲身实践apt-get方式安装的是行不通的,因为在执行<code>sh -c &#39;echo &quot;deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 /&quot; &gt; /etc/apt/sources.list.d/cuda.list&#39;</code>之后再执行<code>apt-get</code>的时候会报错<code>The repository http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 is not signed</code>以及<code>BAG SIG</code>错误,编者在网络搜索了很多方法(包括导入GPG公钥到<em>keyserver.ubuntu.com</em>等等方法)都是不可行的.</p>
-<p><img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208215808957.png" alt="image-20210208215808957" style="zoom:50%;"><br><img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210705154349367.png" alt="image-20210208215808957" style="zoom:50%;"></p>
+<img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208215808957.png" alt="image-20210208215808957" style="zoom:50%;">
+<img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210705154349367.png" alt="image-20210208215808957" style="zoom:50%;">
+
 <p>下文给出的是<strong>切实可行的办法</strong>,也就是通过runfile方法进行安装.</p>
-<p>打开<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-11.1.0-download-archive?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=WSLUbuntu&amp;target_version=20&amp;target_type=runfilelocal">这个网址</a>按照下图进行选择</p>
-<p><img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208215949949.png" alt="image-20210208215949949" style="zoom:50%;"></p>
+<p>打开<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-11.1.0-download-archive?target_os=Linux&target_arch=x86_64&target_distro=WSLUbuntu&target_version=20&target_type=runfilelocal">这个网址</a>按照下图进行选择</p>
+<img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208215949949.png" alt="image-20210208215949949" style="zoom:50%;">
+
 <p>先在shell里面切换到ubuntu的Downloads文件夹,接着在Ubuntu的Shell里面输入:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://developer.download.nvidia.com/compute/cuda/11.1.0/local_installers/cuda_11.1.0_455.23.05_linux.run </span><br><span class="line">sudo sh cuda_11.1.0_455.23.05_linux.run</span><br></pre></td></tr></table></figure>
+
 <p>上面命令第一行会下载一个.run的文件到Downloads,第二行是进行安装.网络上其他教程可能会说在安装的时候不要选安装Driver的选项,但是实际操作过程中并没有让选择安装Driver的教程,猜想可能是因为cuda的版本(11.1)比较新,已经适配了WSL(毕竟在选择的网址那已经有了一个WSL-Ubuntu的选项).</p>
 <p>安装完成之后在电脑的<code>/usr/local</code>目录下应该有一个cuda-11.1的文件夹(其中cuda那个是安装过程自动创建的软连接).</p>
-<p><img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208220927510.png" alt="image-20210208220927510" style="zoom:50%;"></p>
+<img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208220927510.png" alt="image-20210208220927510" style="zoom:50%;">
+
 <p>接下来还需要配置环境变量,这里如果是自己的电脑建议直接在<code>/etc/profile</code>里面配置,省的开机后环境变量会失效或者是从bash切换到zsh的时候导致环境变量失效(编者就是因为安装之后又嫌弃WindowsTerminal的终端太难看,又弄的zsh-ohmyzsh-powerline什么的):</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&#x27;$PATH:/usr/local/cuda-11.1/bin/:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin&#x27;</span><br><span class="line">export LD_LIBRARY_PATH=&quot;/usr/local/cuda-11.1/lib64:$LD_LIBRARY_PATH&quot;</span><br></pre></td></tr></table></figure>
+
 <p>完毕之后输入<code>nvcc -V</code>应该显示如下信息.如果没有,那就是没安装成功,卸载重装重新走一遍上面的流程.</p>
-<p><img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208221022268.png" alt="image-20210208221022268" style="zoom:50%;"></p>
+<img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208221022268.png" alt="image-20210208221022268" style="zoom:50%;">
+
 <h2 id="2-3-Cudnn安装"><a href="#2-3-Cudnn安装" class="headerlink" title="2.3 Cudnn安装"></a>2.3 Cudnn安装</h2><p>说是安装实际也不是,就是下载文件然后复制到对应的cuda的文件夹就是了.</p>
 <p>网址:<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">https://developer.nvidia.com/rdp/cudnn-download</a></p>
 <p>上面的网址需要注册成为开发者才能下载.cudnn的版本一定要和cuda的版本对应.</p>
-<p><img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208232414929.png" alt="image-20210208232414929" style="zoom:50%;"></p>
+<img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208232414929.png" alt="image-20210208232414929" style="zoom:50%;">
+
 <p>下载后得到的文件夹是<code>cudnn-11.2-linux-x64-v8.1.0.77.arj</code>,这里后缀名是arj,原因不详(我是在Windows下载的),但是可以直接把后缀改成tgz,之后移动到Ubuntu对应的文件夹(Windows的盘符比如说D盘在WSL-Ubuntu里面就是<code>/mnt/d/</code>),移动到Ubuntu的里面(此处我移动到了Ubuntu的Downloads文件夹,以下操作也是在Downloads文件夹下进行操作)就可以进行Cudnn文件的安装(其实是复制):</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf cudnn-11.2-linux-x64-v8.1.0.77.tgz</span><br><span class="line">sudo cp cuda/include/cudnn.h /usr/local/cuda-11.1/include/</span><br><span class="line">sudo cp cuda/lib64/libcudnn* /usr/local/cuda-11.1/lib64/</span><br><span class="line">sudo cp /usr/local/cuda-11.1/lib64/libcusolver.so.11 /usr/local/cuda-11.1/lib64/libcusolver.so.10</span><br><span class="line">sudo chmod +x /usr/local/cuda/include/cudnn.h</span><br><span class="line">sudo chmod +x /usr/local/cuda/lib64/libcudnn*</span><br></pre></td></tr></table></figure>
+
 <p>这里<strong>一定要</strong>执行复制libcusolver.so.11的那行命令,不然cuda会无法正常工作报如下错误,找不到GPU.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Could not load dynamic library &#x27;libcusolver.so.10&#x27;; dlerror: libcusolver.so.10: </span><br><span class="line">cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-11.1/lib64</span><br></pre></td></tr></table></figure>
+
 <p>至此,在Windows的WSL-Ubuntu下安装Cuda以及Cudnn已结束.以下代码可以验证GPU的存在(需要已经安装tensorflow).</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">devices = tf.config.list_physical_devices()</span><br><span class="line"><span class="built_in">print</span>(devices)</span><br></pre></td></tr></table></figure>
+
 <p>输出:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[PhysicalDevice(name=<span class="string">&#x27;/physical_device:CPU:0&#x27;</span>, device_type=<span class="string">&#x27;CPU&#x27;</span>), PhysicalDevice(name=<span class="string">&#x27;/physical_device:GPU:0&#x27;</span>, device_type=<span class="string">&#x27;GPU&#x27;</span>)]</span><br></pre></td></tr></table></figure>
-<h1 id="几处容易踩坑的地方"><a href="#几处容易踩坑的地方" class="headerlink" title="几处容易踩坑的地方"></a>几处容易踩坑的地方</h1><h2 id="1-环境变量的配置"><a href="#1-环境变量的配置" class="headerlink" title="1 环境变量的配置"></a>1 环境变量的配置</h2><h3 id="1-1-重启后nvcc-V显示comman-not-found怎么回事"><a href="#1-1-重启后nvcc-V显示comman-not-found怎么回事" class="headerlink" title="1.1 重启后nvcc -V显示comman not found怎么回事"></a>1.1 重启后<code>nvcc -V</code>显示comman not found怎么回事</h3><p>如果是自己的电脑,建议直接将环境变量设置在<code>/etc/profile</code>里面,一劳永逸.也不会因为弃用bash(安装了zsh的情况下),导致~/.bashrc里面的环境变量失效.</p>
-<h2 id="2-Cudnn的安装"><a href="#2-Cudnn的安装" class="headerlink" title="　2 Cudnn的安装"></a>　2 Cudnn的安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /usr/local/cuda-11.1/lib64/libcusolver.so.11 /usr/local/cuda-11.1/lib64/libcusolver.so.10</span><br></pre></td></tr></table></figure>
-<p>上面这行命令可能随着安装的版本不同而改变,在Jupyter里面运行下面这段代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">devices = tf.config.list_physical_devices()</span><br><span class="line"><span class="built_in">print</span>(devices)</span><br></pre></td></tr></table></figure></p>
 
+
+
+<h1 id="几处容易踩坑的地方"><a href="#几处容易踩坑的地方" class="headerlink" title="几处容易踩坑的地方"></a>几处容易踩坑的地方</h1><h2 id="1-环境变量的配置"><a href="#1-环境变量的配置" class="headerlink" title="1 环境变量的配置"></a>1 环境变量的配置</h2><h3 id="1-1-重启后nvcc-V显示comman-not-found怎么回事"><a href="#1-1-重启后nvcc-V显示comman-not-found怎么回事" class="headerlink" title="1.1 重启后nvcc -V显示comman not found怎么回事"></a>1.1 重启后<code>nvcc -V</code>显示comman not found怎么回事</h3><p>如果是自己的电脑,建议直接将环境变量设置在<code>/etc/profile</code>里面,一劳永逸.也不会因为弃用bash(安装了zsh的情况下),导致~/.bashrc里面的环境变量失效.</p>
+<h2 id="2-Cudnn的安装"><a href="#2-Cudnn的安装" class="headerlink" title="2 Cudnn的安装"></a>2 Cudnn的安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /usr/local/cuda-11.1/lib64/libcusolver.so.11 /usr/local/cuda-11.1/lib64/libcusolver.so.10</span><br></pre></td></tr></table></figure>
+
+<p>上面这行命令可能随着安装的版本不同而改变,在Jupyter里面运行下面这段代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">devices = tf.config.list_physical_devices()</span><br><span class="line"><span class="built_in">print</span>(devices)</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -411,7 +430,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">1. 环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text">2. 安装步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">　2.1 驱动的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Cuda-11-1%E5%AE%89%E8%A3%85"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Cuda-11.1安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Cudnn%E5%AE%89%E8%A3%85"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Cudnn安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%A0%E5%A4%84%E5%AE%B9%E6%98%93%E8%B8%A9%E5%9D%91%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-number">3.</span> <span class="nav-text">几处容易踩坑的地方</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">1 环境变量的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E9%87%8D%E5%90%AF%E5%90%8Envcc-V%E6%98%BE%E7%A4%BAcomman-not-found%E6%80%8E%E4%B9%88%E5%9B%9E%E4%BA%8B"><span class="nav-number">3.1.1.</span> <span class="nav-text">1.1 重启后nvcc -V显示comman not found怎么回事</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Cudnn%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">3.2.</span> <span class="nav-text">　2 Cudnn的安装</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">1. 环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text">2. 安装步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 驱动的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Cuda-11-1%E5%AE%89%E8%A3%85"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Cuda-11.1安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Cudnn%E5%AE%89%E8%A3%85"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Cudnn安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%A0%E5%A4%84%E5%AE%B9%E6%98%93%E8%B8%A9%E5%9D%91%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-number">3.</span> <span class="nav-text">几处容易踩坑的地方</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">1 环境变量的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E9%87%8D%E5%90%AF%E5%90%8Envcc-V%E6%98%BE%E7%A4%BAcomman-not-found%E6%80%8E%E4%B9%88%E5%9B%9E%E4%BA%8B"><span class="nav-number">3.1.1.</span> <span class="nav-text">1.1 重启后nvcc -V显示comman not found怎么回事</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Cudnn%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">3.2.</span> <span class="nav-text">2 Cudnn的安装</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -425,7 +444,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -477,13 +496,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">84k</span>
+    <span title="站点总字数">81k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:17</span>
+    <span title="站点阅读时长">1:13</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

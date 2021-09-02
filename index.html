@@ -152,143 +152,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/02/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/02/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/" class="post-title-link" itemprop="url">Docker-2-Docker安装centos8并启动SSH服务</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-09-02 12:08:43 / 修改时间：11:04:24" itemprop="dateCreated datePublished" datetime="2021-09-02T12:08:43+08:00">2021-09-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/09/02/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/" class="post-meta-item leancloud_visitors" data-flag-title="Docker-2-Docker安装centos8并启动SSH服务" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/09/02/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/02/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>适用于基于Docker的人工智能开发平台，或者容器内不能使用service的情况（不能以docker run方式启动容器）</p>
-<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 能够docker run启动容器的建议加一个--privileged 这样就可以在容器内使用systemctl进行服务的启停操作</span></span><br><span class="line">docker run -itd --privileged centos /usr/sbin/init</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装镜像的命令</span></span><br><span class="line">docker pull centos:centos8</span><br></pre></td></tr></table></figure>
-<h1 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h1><h2 id="２-１-基础包的安装"><a href="#２-１-基础包的安装" class="headerlink" title="　２.１　基础包的安装"></a>　２.１　基础包的安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 由于pull的centos是最小化的，因此需要安装一些必要的包</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> centos8yum和dnf并存，dnf是yum的下一代包管理软件，因此下文的yum都可以用dnf试一试</span></span><br><span class="line">yum install -y openssh-server</span><br><span class="line">yum install -y openssh-clients # 安装了这个之后再命令行输入ssh就不会提示‘command not found’</span><br><span class="line">yum install -y initscripts # 这个是能够在容器里面运行service命令</span><br><span class="line">yum install -y net-tools.x86_64</span><br><span class="line">yum install -y vim</span><br><span class="line">yum install -y paswd</span><br></pre></td></tr></table></figure>
-<h2 id="2-2-ssh的配置"><a href="#2-2-ssh的配置" class="headerlink" title="　2.2 ssh的配置"></a>　2.2 ssh的配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line"><span class="meta">#</span><span class="bash"> 确保</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># PermitRootLogin yes</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="2-3-启动SSH服务"><a href="#2-3-启动SSH服务" class="headerlink" title="2.3 启动SSH服务"></a>2.3 启动SSH服务</h2><p>因为不能使用service启动服务，会报错：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Redirecting to /bin/systemctl start sshd.service</span><br><span class="line">System has not been booted with systemd as init system (PID 1). Can&#x27;t operate.</span><br><span class="line">Failed to connect to bus: Host is down</span><br></pre></td></tr></table></figure>
-<p>因此采用手动启动，方式如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /var/run/sshd</span><br><span class="line">/usr/sbin/sshd -D &amp;</span><br></pre></td></tr></table></figure>
-<p>若报错：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Unable to load host key: /etc/ssh/ssh_host_rsa_key</span><br><span class="line">Unable to load host key: /etc/ssh/ssh_host_ecdsa_key</span><br><span class="line">Unable to load host key: /etc/ssh/ssh_host_ed25519_key</span><br><span class="line">sshd: no hostkeys available -- exiting.</span><br></pre></td></tr></table></figure><br>则输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -q -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key -N &#x27;&#x27;  </span><br><span class="line">ssh-keygen -q -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N &#x27;&#x27;</span><br><span class="line">ssh-keygen -t dsa -f /etc/ssh/ssh_host_ed25519_key -N &#x27;&#x27;</span><br><span class="line">/usr/sbin/sshd -D &amp; # 此时应该不会报错</span><br></pre></td></tr></table></figure>
-<p>再输入<code>netstat -apn | grep ssh</code>，则显示：<br><figure class="highlight plaintext"><figcaption><span>-apn | grep ssh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tcp       0      0 0.0.0.0:22   0.0.0.0:*   LISTEN      599/sshd            </span><br><span class="line">tcp6      0      0 :::22         :::*        LISTEN      599/sshd </span><br></pre></td></tr></table></figure></p>
-<p>再输入：<code>passwd</code>设置你想要的密码</p>
-<p>这时就可以通过SSH进行连接这个容器（客户端（如windows）仍然需要安装SSH）</p>
-<p>在客户端的terminal里输入<code>ssh root@&#123;容器的IP&#125; -p &#123;端口号&#125;</code>，密码输入刚才设置的即可。</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43827595/article/details/113810439">https://blog.csdn.net/qq_43827595/article/details/113810439</a></p>
-</blockquote>
-<h1 id="3-跨局域网远程连接docker的CentOS-8"><a href="#3-跨局域网远程连接docker的CentOS-8" class="headerlink" title="3 跨局域网远程连接docker的CentOS 8"></a>3 跨局域网远程连接docker的CentOS 8</h1><p>前提（可有可无）：下载tmux会话管理工具， <code>yum install tmux</code>或者<code>dnf install tmux(仅限CentOS8)</code>都可以，详细使用见下方参考链接。</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/10/tmux.html">https://www.ruanyifeng.com/blog/2019/10/tmux.html</a></p>
-</blockquote>
-<p>简单使用：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 新建会话</span></span><br><span class="line">tmux new -s test</span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入会话</span></span><br><span class="line">tmux attach -t test</span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入之后可以进行操作 按Ctrl+B,再按D退出</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看当前建立的会话（在正常的shell里面输入）</span></span><br><span class="line">tmux ls</span><br><span class="line"><span class="meta">#</span><span class="bash"> 杀死会话</span></span><br><span class="line">tmux kill-session -t test</span><br></pre></td></tr></table></figure>
-<h2 id="3-1-方式1：ngrok"><a href="#3-1-方式1：ngrok" class="headerlink" title="3.1 方式1：ngrok"></a>3.1 方式1：ngrok</h2><p><a target="_blank" rel="noopener" href="https://dashboard.ngrok.com/get-started/setup">注册账号</a>并下载所匹配的安装包（只有命令行的linux系统可以ssh远程的登录然后使用Xtfp7进行文件的传输，下载链接见<a target="_blank" rel="noopener" href="https://www.netsarang.com/zh/free-for-home-school/">Xftp7家庭和学校免费授权官方正版</a>）  </p>
-<p>进入到ngrok压缩包所在目录：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">unzip ngrok-stable-linux-amd64.zip</span><br><span class="line">tmux new -s ngrok</span><br><span class="line">tmux attach -t ngrok</span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入到ngrok所在目录</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 链接你的ngrok账户（其中有个密钥）</span></span><br><span class="line">./ngrok authtoken &#123;密钥&#125;</span><br><span class="line">./ngrok tcp 22 # tcp可以用于SSH远程登录</span><br><span class="line"><span class="meta">#</span><span class="bash"> 成功之后会显示如下内容</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ngrok by @inconshreveable                                                                             </span><br><span class="line">Session Status                online        </span><br><span class="line">Account                       &#123;这里是账户名&#125; (Plan: Free)       </span><br><span class="line">Version                       2.3.35     </span><br><span class="line">Region                        United States (us) </span><br><span class="line">Web Interface                 http://127.0.0.1:4040                                              </span><br><span class="line">Forwarding                    tcp://0.tcp.ngrok.io:&#123;端口号&#125; -&gt; localhost:22 </span><br><span class="line">Connections                   ttl     opn     rt1     rt5     p50     p90                         </span><br><span class="line">                              0       0       0.00    0.00    0.00    0.00  </span><br></pre></td></tr></table></figure>
-<p>之后就可以在另一台电脑使用<code>ssh root@0.tcp.ngrok.io -p &#123;端口号&#125;</code>连接了。</p>
-<p><strong>但是</strong>，ngrok是国外服务器，因此速度较慢，所以连接上能明显感受到延迟  此处推荐sakurafrp，可以选国内节点，速度快。</p>
-<h2 id="3-2-方式2：sakurafrp"><a href="#3-2-方式2：sakurafrp" class="headerlink" title="3.2 方式2：sakurafrp"></a>3.2 方式2：sakurafrp</h2><p><a target="_blank" rel="noopener" href="https://www.natfrp.com/">sakurafrp官网</a></p>
-<ol>
-<li>在浏览器上，打开官网&gt;创建隧道&gt;节点选国内的（需要实名认证 花1￥）&gt;隧道类型选TCP&gt;端口填22（windows做远程桌面的时候需要写3389）&gt;确认创建</li>
-<li>在docker的CentOS8里面，参考sakurafrp的官网的软件下载那一栏安装软件，命令行输入<code>bash &lt;(curl -s https://getfrp.sh)</code>&gt;按提示即可，如果无法设置为系统服务的话不设置也不影响（一般docker容器都不能）</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/02/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -376,12 +239,13 @@
 <h2 id="查看当前运行的容器"><a href="#查看当前运行的容器" class="headerlink" title="查看当前运行的容器"></a>查看当前运行的容器</h2><p><code>docker container ls -a</code>等价于<code>docker ps -a</code></p>
 <h2 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h2><p><code>docker pull centos:latest</code></p>
 <h2 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REPOSITORY          TAG       IMAGE ID       CREATED        SIZE</span><br><span class="line">docker101tutorial   latest    c0fbef3fb08f   6 hours ago    28MB</span><br><span class="line">ubuntu              18.04     7d0d8fa37224   10 days ago    63.1MB</span><br></pre></td></tr></table></figure>
+
 <h3 id="以ID删除：docker-image-rm-IMAGE-ID"><a href="#以ID删除：docker-image-rm-IMAGE-ID" class="headerlink" title="以ID删除：docker image rm IMAGE ID"></a>以ID删除：<code>docker image rm IMAGE ID</code></h3><p><code>docker image rm  7d0</code> </p>
-<h3 id="以镜像名删除：docker-image-rm-REPOSITORY-TAG"><a href="#以镜像名删除：docker-image-rm-REPOSITORY-TAG" class="headerlink" title="以镜像名删除：docker image rm REPOSITORY:TAG"></a>以镜像名删除：<code>docker image rm REPOSITORY:TAG</code></h3><p><code>docker image rm ubuntu:18.04</code></p>
+<h3 id="以镜像名删除：docker-image-rm-REPOSITORY-TAG"><a href="#以镜像名删除：docker-image-rm-REPOSITORY-TAG" class="headerlink" title="以镜像名删除：docker image rm REPOSITORY:TAG  "></a>以镜像名删除：<code>docker image rm REPOSITORY:TAG  </code></h3><p><code>docker image rm ubuntu:18.04</code></p>
 <p>终端返回：</p>
-<p><code>Deleted: sha256:7d0d8fa372249c6a1de9868ad62af9a14aaae2a2b17da867d8fad099a637fd0f
-Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652</code></p>
+<p><code>Deleted: sha256:7d0d8fa372249c6a1de9868ad62af9a14aaae2a2b17da867d8fad099a637fd0f Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652</code></p>
 <h3 id="以摘要删除docker-image-rm-DIGEST"><a href="#以摘要删除docker-image-rm-DIGEST" class="headerlink" title="以摘要删除docker image rm DIGEST"></a>以摘要删除<code>docker image rm DIGEST</code></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker image ls --digests</span><br><span class="line">docker image sha256:139b3846cee2e63de9ced83cee7023a2d95763ee2573e5b0ab6dea9dfbd4db8f</span><br></pre></td></tr></table></figure>
+
 <p>终端返回:</p>
 <p><code>Untagged: ubuntu@sha256:139b3846cee2e63de9ced83cee7023a2d95763ee2573e5b0ab6dea9dfbd4db8f</code></p>
 <p>实质并未删除镜像 只是删除了摘要</p>
@@ -389,7 +253,7 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
 <p><code>docker image rm $(docker image ls -q ubuntu)</code></p>
 <h1 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h1><h2 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h2><p><code>docker run -it --rm centos:latest bash</code></p>
 <h2 id="查看容器信息"><a href="#查看容器信息" class="headerlink" title="查看容器信息"></a>查看容器信息</h2><p><code>docker inspect 容器ID</code></p>
-<h2 id="连接到容器"><a href="#连接到容器" class="headerlink" title="连接到容器"></a>连接到容器</h2><p><code>docker attach 容器ID</code></p>
+<h2 id="连接到容器"><a href="#连接到容器" class="headerlink" title="连接到容器"></a>连接到容器</h2><p><code>docker attach 容器ID </code></p>
 <p><code>docker exec -it 容器ID /bin/bash</code></p>
 <h1 id="docker中运行MYSQL"><a href="#docker中运行MYSQL" class="headerlink" title="docker中运行MYSQL"></a>docker中运行MYSQL</h1><ol>
 <li>拉取容器：docker pull mysql:latest</li>
@@ -435,6 +299,158 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/02/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/02/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/" class="post-title-link" itemprop="url">Docker-2-Docker安装centos8并启动SSH服务</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-09-02 12:08:43 / 修改时间：11:04:24" itemprop="dateCreated datePublished" datetime="2021-09-02T12:08:43+08:00">2021-09-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/09/02/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/" class="post-meta-item leancloud_visitors" data-flag-title="Docker-2-Docker安装centos8并启动SSH服务" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/09/02/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/02/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>适用于基于Docker的人工智能开发平台，或者容器内不能使用service的情况（不能以docker run方式启动容器）</p>
+<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 能够docker run启动容器的建议加一个--privileged 这样就可以在容器内使用systemctl进行服务的启停操作</span></span><br><span class="line">docker run -itd --privileged centos /usr/sbin/init</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装镜像的命令</span></span><br><span class="line">docker pull centos:centos8</span><br></pre></td></tr></table></figure>
+<h1 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h1><h2 id="２-１-基础包的安装"><a href="#２-１-基础包的安装" class="headerlink" title="２.１　基础包的安装"></a>２.１　基础包的安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 由于pull的centos是最小化的，因此需要安装一些必要的包</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> centos8yum和dnf并存，dnf是yum的下一代包管理软件，因此下文的yum都可以用dnf试一试</span></span><br><span class="line">yum install -y openssh-server</span><br><span class="line">yum install -y openssh-clients # 安装了这个之后再命令行输入ssh就不会提示‘command not found’</span><br><span class="line">yum install -y initscripts # 这个是能够在容器里面运行service命令</span><br><span class="line">yum install -y net-tools.x86_64</span><br><span class="line">yum install -y vim</span><br><span class="line">yum install -y paswd</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-ssh的配置"><a href="#2-2-ssh的配置" class="headerlink" title="2.2 ssh的配置"></a>2.2 ssh的配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line"><span class="meta">#</span><span class="bash"> 确保</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># PermitRootLogin yes</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-启动SSH服务"><a href="#2-3-启动SSH服务" class="headerlink" title="2.3 启动SSH服务"></a>2.3 启动SSH服务</h2><p>因为不能使用service启动服务，会报错：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Redirecting to /bin/systemctl start sshd.service</span><br><span class="line">System has not been booted with systemd as init system (PID 1). Can&#x27;t operate.</span><br><span class="line">Failed to connect to bus: Host is down</span><br></pre></td></tr></table></figure>
+
+<p>因此采用手动启动，方式如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /var/run/sshd</span><br><span class="line">/usr/sbin/sshd -D &amp;</span><br></pre></td></tr></table></figure>
+
+<p>若报错：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Unable to load host key: /etc/ssh/ssh_host_rsa_key</span><br><span class="line">Unable to load host key: /etc/ssh/ssh_host_ecdsa_key</span><br><span class="line">Unable to load host key: /etc/ssh/ssh_host_ed25519_key</span><br><span class="line">sshd: no hostkeys available -- exiting.</span><br></pre></td></tr></table></figure>
+<p>则输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -q -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key -N &#x27;&#x27;  </span><br><span class="line">ssh-keygen -q -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N &#x27;&#x27;</span><br><span class="line">ssh-keygen -t dsa -f /etc/ssh/ssh_host_ed25519_key -N &#x27;&#x27;</span><br><span class="line">/usr/sbin/sshd -D &amp; # 此时应该不会报错</span><br></pre></td></tr></table></figure>
+
+<p>再输入<code>netstat -apn | grep ssh</code>，则显示：</p>
+<figure class="highlight plaintext"><figcaption><span>-apn | grep ssh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tcp       0      0 0.0.0.0:22   0.0.0.0:*   LISTEN      599/sshd            </span><br><span class="line">tcp6      0      0 :::22         :::*        LISTEN      599/sshd </span><br></pre></td></tr></table></figure>
+
+<p>再输入：<code>passwd</code>设置你想要的密码</p>
+<p>这时就可以通过SSH进行连接这个容器（客户端（如windows）仍然需要安装SSH）</p>
+<p>在客户端的terminal里输入<code>ssh root@&#123;容器的IP&#125; -p &#123;端口号&#125;</code>，密码输入刚才设置的即可。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43827595/article/details/113810439">https://blog.csdn.net/qq_43827595/article/details/113810439</a></p>
+</blockquote>
+<h1 id="3-跨局域网远程连接docker的CentOS-8"><a href="#3-跨局域网远程连接docker的CentOS-8" class="headerlink" title="3 跨局域网远程连接docker的CentOS 8"></a>3 跨局域网远程连接docker的CentOS 8</h1><p>前提（可有可无）：下载tmux会话管理工具， <code>yum install tmux</code>或者<code>dnf install tmux(仅限CentOS8)</code>都可以，详细使用见下方参考链接。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/10/tmux.html">https://www.ruanyifeng.com/blog/2019/10/tmux.html</a></p>
+</blockquote>
+<p>简单使用：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 新建会话</span></span><br><span class="line">tmux new -s test</span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入会话</span></span><br><span class="line">tmux attach -t test</span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入之后可以进行操作 按Ctrl+B,再按D退出</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看当前建立的会话（在正常的shell里面输入）</span></span><br><span class="line">tmux ls</span><br><span class="line"><span class="meta">#</span><span class="bash"> 杀死会话</span></span><br><span class="line">tmux kill-session -t test</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-1-方式1：ngrok"><a href="#3-1-方式1：ngrok" class="headerlink" title="3.1 方式1：ngrok"></a>3.1 方式1：ngrok</h2><p><a target="_blank" rel="noopener" href="https://dashboard.ngrok.com/get-started/setup">注册账号</a>并下载所匹配的安装包（只有命令行的linux系统可以ssh远程的登录然后使用Xtfp7进行文件的传输，下载链接见<a target="_blank" rel="noopener" href="https://www.netsarang.com/zh/free-for-home-school/">Xftp7家庭和学校免费授权官方正版</a>）  </p>
+<p>进入到ngrok压缩包所在目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">unzip ngrok-stable-linux-amd64.zip</span><br><span class="line">tmux new -s ngrok</span><br><span class="line">tmux attach -t ngrok</span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入到ngrok所在目录</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 链接你的ngrok账户（其中有个密钥）</span></span><br><span class="line">./ngrok authtoken &#123;密钥&#125;</span><br><span class="line">./ngrok tcp 22 # tcp可以用于SSH远程登录</span><br><span class="line"><span class="meta">#</span><span class="bash"> 成功之后会显示如下内容</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ngrok by @inconshreveable                                                                             </span><br><span class="line">Session Status                online        </span><br><span class="line">Account                       &#123;这里是账户名&#125; (Plan: Free)       </span><br><span class="line">Version                       2.3.35     </span><br><span class="line">Region                        United States (us) </span><br><span class="line">Web Interface                 http://127.0.0.1:4040                                              </span><br><span class="line">Forwarding                    tcp://0.tcp.ngrok.io:&#123;端口号&#125; -&gt; localhost:22 </span><br><span class="line">Connections                   ttl     opn     rt1     rt5     p50     p90                         </span><br><span class="line">                              0       0       0.00    0.00    0.00    0.00  </span><br></pre></td></tr></table></figure>
+
+<p>之后就可以在另一台电脑使用<code>ssh root@0.tcp.ngrok.io -p &#123;端口号&#125;</code>连接了。</p>
+<p><strong>但是</strong>，ngrok是国外服务器，因此速度较慢，所以连接上能明显感受到延迟  此处推荐sakurafrp，可以选国内节点，速度快。</p>
+<h2 id="3-2-方式2：sakurafrp"><a href="#3-2-方式2：sakurafrp" class="headerlink" title="3.2 方式2：sakurafrp"></a>3.2 方式2：sakurafrp</h2><p><a target="_blank" rel="noopener" href="https://www.natfrp.com/">sakurafrp官网</a></p>
+<ol>
+<li>在浏览器上，打开官网&gt;创建隧道&gt;节点选国内的（需要实名认证 花1￥）&gt;隧道类型选TCP&gt;端口填22（windows做远程桌面的时候需要写3389）&gt;确认创建</li>
+<li>在docker的CentOS8里面，参考sakurafrp的官网的软件下载那一栏安装软件，命令行输入<code>bash &lt;(curl -s https://getfrp.sh)</code>&gt;按提示即可，如果无法设置为系统服务的话不设置也不影响（一般docker容器都不能）</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -460,7 +476,7 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-09-02 00:54:41 / 修改时间：15:44:40" itemprop="dateCreated datePublished" datetime="2021-09-02T00:54:41+08:00">2021-09-02</time>
+              <time title="创建时间：2021-09-02 00:54:41 / 修改时间：17:25:40" itemprop="dateCreated datePublished" datetime="2021-09-02T00:54:41+08:00">2021-09-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -499,7 +515,7 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>1.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -522,8 +538,11 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
 <h2 id="Windows安装nodejs"><a href="#Windows安装nodejs" class="headerlink" title="Windows安装nodejs"></a>Windows安装nodejs</h2><p><strong>进行下一步骤之前应该已经在github里面新建了repo并且设置为GithubPages，操作简单，不在赘述，仅仅记录使用Hexo搭配GithubPages的踩的坑。</strong></p>
 <p><a target="_blank" rel="noopener" href="https://nodejs.org/">官网</a>下载之后双击安装即可。</p>
 <p>安装之后新打开终端输入<code>node -v</code>，显示版本号则表示安装成功</p>
-<p><img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210831215424408.png" alt="image-20210831215424408" style="zoom:50%;"></p>
-<h2 id="安装Hexo并部署"><a href="#安装Hexo并部署" class="headerlink" title="安装Hexo并部署"></a>安装Hexo并部署</h2><h3 id="使用npm安装hexo"><a href="#使用npm安装hexo" class="headerlink" title="使用npm安装hexo"></a>使用npm安装hexo</h3><p>“# “后为注释</p>
+<img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210831215424408.png" alt="image-20210831215424408" style="zoom:50%;">
+
+<h2 id="安装Hexo5-4-0并部署"><a href="#安装Hexo5-4-0并部署" class="headerlink" title="安装Hexo5.4.0并部署"></a>安装Hexo5.4.0并部署</h2><img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210902172238590.png" alt="image-20210902172238590" style="zoom:33%;">
+
+<h3 id="使用npm安装hexo"><a href="#使用npm安装hexo" class="headerlink" title="使用npm安装hexo"></a>使用npm安装hexo</h3><p>“# “后为注释</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli  # 在终端里安装hexo</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在你想要写博客的文件夹（空文件夹）路径下输入，此处假设为c:/blog/</span></span><br><span class="line">hexo init # 运行这句在生成c:/blog/Hexo/文件夹，文件夹里有很多文件</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装下面的，才能部署到github</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <h3 id="使Hexo能上传本地图片"><a href="#使Hexo能上传本地图片" class="headerlink" title="使Hexo能上传本地图片"></a>使Hexo能上传本地图片</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1. c:/blog/Hexo/_config.yml修改post_asset_folder: 属性为<span class="literal">true</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">2. 只能安装这个修改版的，忽略报错即可。实测别的都不行，比如`npm install hexo-asset-image --save`。</span></span><br><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
 <h3 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h3><ul>
@@ -539,16 +558,33 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
 </ul>
 <h3 id="部署博客三件套"><a href="#部署博客三件套" class="headerlink" title="部署博客三件套"></a>部署博客三件套</h3><p>写完markdown文件之后按照以下步骤发布到GithubPages</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean # 清除缓存</span><br><span class="line">hexo generate # 可以简写`hexo g`。这一句的作用是生成相关的html文件，为后续发布做准备</span><br><span class="line">hexo deploy # 可以简写`hexo d`。这一句作用是部署文件到GithubPages</span><br><span class="line"><span class="meta">#</span><span class="bash"> 第5,6行也可以合并成`hexo d -g`</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210831222511692.png" alt="image-20210831222511692" style="zoom: 50%;"></p>
-<p><img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210831222727610.png" alt="image-20210831222727610" style="zoom:50%;"></p>
-<p><img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210831222803312.png" alt="image-20210831222803312" style="zoom:50%;"></p>
+
+<img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210831222511692.png" alt="image-20210831222511692" style="zoom: 50%;">
+
+<img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210831222727610.png" alt="image-20210831222727610" style="zoom:50%;">
+
+<img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210831222803312.png" alt="image-20210831222803312" style="zoom:50%;">
+
 <p>一般在deploy到GithubPages上之前最好在本地运行一下，看一看没啥问题再推送到远程。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server <span class="comment"># 或者是hexo s,运行完打开http://localhost:4000就能看自己博客了</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210831222551400.png" alt="image-20210831222551400" style="zoom:50%;"></p>
+
+<img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210831222551400.png" alt="image-20210831222551400" style="zoom:50%;">
+
 <p>效果如下：（不能显示latex，不知道为啥）</p>
-<p><img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210831222630352.png" alt="image-20210831222630352" style="zoom: 33%;"></p>
+<img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210831222630352.png" alt="image-20210831222630352" style="zoom: 33%;">
+
 <h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>本博客使用的主题是butterfly</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 在项目的根目录下执行</span></span><br><span class="line">git clone -b dev https://github.com/jerryc127/hexo-theme-butterfly.git themes/Butterfly</span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改项目根目录下的_config.yml的theme为butterfly即可。</span></span><br></pre></td></tr></table></figure>
+
+<p>新更新：推荐使用next主题，配合valine可以添加评论功能</p>
+<p>next主题：7.8.0（/next/package.json文件里面搜索“version”）</p>
+<img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210902172302794.png" alt="image-20210902172302794" style="zoom:33%;">
+
+<h2 id="进阶设置"><a href="#进阶设置" class="headerlink" title="进阶设置"></a>进阶设置</h2><h3 id="文章增加密码访问功能"><a href="#文章增加密码访问功能" class="headerlink" title="文章增加密码访问功能"></a>文章增加密码访问功能</h3><p>在<code>Hexo\themes\next\layout\_partials\head\head.swig</code>的前边添加：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    (function()&#123;</span><br><span class="line">        if(&#x27;&#123;&#123; page.password &#125;&#125;&#x27;)&#123;</span><br><span class="line">            if (prompt(&#x27;请输入文章密码&#x27;) !== &#x27;&#123;&#123; page.password &#125;&#125;&#x27;)&#123;</span><br><span class="line">                alert(&#x27;密码错误！&#x27;);</span><br><span class="line">                history.back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如图所示：</p>
+<p><img src="/2021/09/02/2Hexo/Hexo%E6%90%AD%E9%85%8DGithubPages%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/image-20210902172437431.png" alt="image-20210902172437431"></p>
 
       
     </div>
@@ -792,10 +828,14 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
 <h1 id="3-内网穿透"><a href="#3-内网穿透" class="headerlink" title="3. 内网穿透"></a>3. 内网穿透</h1><p>Sakurafrp官网：<br><a target="_blank" rel="noopener" href="https://www.natfrp.com/">https://www.natfrp.com/</a><br>注册登录之后点击软件下载，下载可执行文件，不建议用脚本，试了几次效果不好，感觉不如可执行文件直观<br>下载链接：<br><a target="_blank" rel="noopener" href="https://getfrp.sh/d/frpc_linux_386">https://getfrp.sh/d/frpc_linux_386</a><br>下载出来是<code>frpc_linux_386</code><br><code>./frpc_linux_386</code>运行程序，就可以输入访问密钥，然后选择事先设置好的线路即可运行。  </p>
 <p><strong>设置线路</strong>是用<code>ip addr</code>命令查看IP地址（CentOS的eno3/4后边的就是IP地址），在Sakurafrp创建隧道即可，本地端口选择3389，不用22。</p>
 <h1 id="4-设置Sakurafrp后台自启动"><a href="#4-设置Sakurafrp后台自启动" class="headerlink" title="4. 设置Sakurafrp后台自启动"></a>4. 设置Sakurafrp后台自启动</h1><ol>
-<li>安装screen  <code>yum install -y screen</code></li>
-<li><code>screen -S sakurafrp</code></li>
-<li>在第二步之后跳出来的终端进入frpc_linux_386所在目录，运行<code>./frpc_linux_386</code></li>
-<li>Ctrl+A+D隐藏screen窗口，即可后台运行，不用独占一个终端。</li>
+<li><p>安装screen  <code>yum install -y screen</code></p>
+</li>
+<li><p><code>screen -S sakurafrp</code></p>
+</li>
+<li><p>在第二步之后跳出来的终端进入frpc_linux_386所在目录，运行<code>./frpc_linux_386</code></p>
+</li>
+<li><p>Ctrl+A+D隐藏screen窗口，即可后台运行，不用独占一个终端。</p>
+</li>
 <li><p>即使关闭终端后仍然在后台运行，终端中输入<code>screen -ls</code>命令即可查看当前运行的session，如下：</p>
 <p> There are screens on:<br> 14882.sakurafrp    (Attached)<br> 14577.pts-1.localhost    (Detached)<br> 2 Sockets in /var/run/screen/S-lixian.</p>
 </li>
@@ -931,19 +971,24 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
 <h2 id="1-2-试用免费限时ECS（1个月、2个月）"><a href="#1-2-试用免费限时ECS（1个月、2个月）" class="headerlink" title="1.2 试用免费限时ECS（1个月、2个月）"></a>1.2 试用免费限时ECS（1个月、2个月）</h2><h3 id="1-2-1-华为云"><a href="#1-2-1-华为云" class="headerlink" title="1.2.1 华为云"></a>1.2.1 华为云</h3><ol>
 <li>点击链接选择0元试用<a target="_blank" rel="noopener" href="https://activity.huaweicloud.com/free_test/index.html?ticket=ST-2919546-OZHZT5vD5c3QxYicYznut4YU-sso&amp;locale=zh-cn">https://activity.huaweicloud.com/free_test/index.html?ticket=ST-2919546-OZHZT5vD5c3QxYicYznut4YU-sso&amp;locale=zh-cn</a></li>
 </ol>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705154349367.png" alt="image-20210705154349367" style="zoom:33%;"></p>
-<ol>
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705154349367.png" alt="image-20210705154349367" style="zoom:33%;">
+
+
+<ol start="2">
 <li>认证、购买。建议选择CentOS，购买的时候设置好ECS的密码。</li>
 </ol>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705154759135.png" alt="image-20210705154759135" style="zoom: 33%;"><br><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705154759135.png" alt="image-20210705154759135" style="zoom: 33%;"></p>
-<h3 id="1-2-2-阿里云高校计划"><a href="#1-2-2-阿里云高校计划" class="headerlink" title="1.2.2 阿里云高校计划"></a>1.2.2 阿里云高校计划</h3><p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/adc/student/，可以试用两个月。">https://developer.aliyun.com/adc/student/，可以试用两个月。</a></p>
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705154759135.png" alt="image-20210705154759135" style="zoom: 33%;">
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705154759135.png" alt="image-20210705154759135" style="zoom: 33%;">
+
+<h3 id="1-2-2-阿里云高校计划"><a href="#1-2-2-阿里云高校计划" class="headerlink" title="1.2.2 阿里云高校计划"></a>1.2.2 阿里云高校计划</h3><p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/adc/student/%EF%BC%8C%E5%8F%AF%E4%BB%A5%E8%AF%95%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%9C%88%E3%80%82">https://developer.aliyun.com/adc/student/，可以试用两个月。</a></p>
 <p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705191256973.png" alt="image-20210705191256973"></p>
 <h1 id="2-frps服务端设置-In-WindosA连接上的ECS的命令行界面"><a href="#2-frps服务端设置-In-WindosA连接上的ECS的命令行界面" class="headerlink" title="2 frps服务端设置(In WindosA连接上的ECS的命令行界面)"></a>2 frps服务端设置(In WindosA连接上的ECS的命令行界面)</h1><p>带有公网IP的ECS是服务端，需要被内网穿透的机器WindowsB是客户端。以下以华为云服务器为例。</p>
 <h2 id="2-1-下载centos版本的frp并设置frps-ini"><a href="#2-1-下载centos版本的frp并设置frps-ini" class="headerlink" title="2.1 下载centos版本的frp并设置frps.ini"></a>2.1 下载centos版本的frp并设置frps.ini</h2><h3 id="2-1-1-连接刚刚购买的ECS"><a href="#2-1-1-连接刚刚购买的ECS" class="headerlink" title="2.1.1 连接刚刚购买的ECS"></a>2.1.1 连接刚刚购买的ECS</h3><p>WindwosA通过SSH连接ECS的弹性公网IP，输入账号密码进入ECS</p>
 <ul>
 <li>连接命令：<code>ssh root@xxx.xxx.xxx.xx</code></li>
 </ul>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705155808969.png" alt="image-20210705155808969" style="zoom:50%;"></p>
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705155808969.png" alt="image-20210705155808969" style="zoom:50%;">
+
 <h3 id="2-1-2-下载frp并设置frps-ini"><a href="#2-1-2-下载frp并设置frps-ini" class="headerlink" title="2.1.2 下载frp并设置frps.ini"></a>2.1.2 下载frp并设置frps.ini</h3><ol>
 <li>下载链接<ol>
 <li><a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a></li>
@@ -960,45 +1005,64 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
 </ol>
 </li>
 </ol>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705160304142.png" alt="image-20210705160304142" style="zoom:33%;"></p>
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705160304142.png" alt="image-20210705160304142" style="zoom:33%;">
+
 <p>假设下载到了<code>/root</code>文件夹下，按步骤执行以下命令。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf frp_0.37.0_linux_amd64.tar.gz</span><br><span class="line">cd frp_0.37.0_linux_amd64</span><br><span class="line">vim frps.ini</span><br></pre></td></tr></table></figure>
+
 <p>为了安全起见，在最后一行加上一句<code>token = xxxx</code>，即设置密码，客户端、服务端密码要对应。</p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705161932954.png" alt="image-20210705161932954" style="zoom:50%;"></p>
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705161932954.png" alt="image-20210705161932954" style="zoom:50%;">
+
 <h3 id="2-1-3-设置后台运行"><a href="#2-1-3-设置后台运行" class="headerlink" title="2.1.3 设置后台运行"></a>2.1.3 设置后台运行</h3><p>可以用<code>nohup</code>命令或者<code>yum install tmux</code>后使用<code>tmux</code>后台运行frps服务。典型的tmux使用流程</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 新建会话<span class="built_in">test</span></span></span><br><span class="line">tmux new -s test</span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入会话</span></span><br><span class="line">tmux attach -t test</span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入之后可以进行操作 按Ctrl+B,再按D退出</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看当前建立的会话（在正常的shell里面输入）</span></span><br><span class="line">tmux ls</span><br><span class="line"><span class="meta">#</span><span class="bash"> 杀死会话</span></span><br><span class="line">tmux kill-session -t test</span><br></pre></td></tr></table></figure>
-<p>进入到会话后进入到frp文件夹：<code>./frps -c ./frps.ini</code>运行frps服务</p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163330003.png" alt="image-20210705163330003" style="zoom: 33%;"></p>
+
+<p>进入到会话后进入到frp文件夹：<code> ./frps -c ./frps.ini</code>运行frps服务</p>
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163330003.png" alt="image-20210705163330003" style="zoom: 33%;">
+
 <h2 id="2-2-ECS防火墙规则设置"><a href="#2-2-ECS防火墙规则设置" class="headerlink" title="2.2 ECS防火墙规则设置"></a>2.2 ECS防火墙规则设置</h2><h3 id="2-2-1-系统设置允许端口"><a href="#2-2-1-系统设置允许端口" class="headerlink" title="2.2.1 系统设置允许端口"></a>2.2.1 系统设置允许端口</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=7000/tcp</span><br><span class="line">firewall-cmd --permanent --add-port=6000/tcp</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
 <h3 id="2-2-2-华为云后台设置"><a href="#2-2-2-华为云后台设置" class="headerlink" title="2.2.2 华为云后台设置"></a>2.2.2 华为云后台设置</h3><p>添加7000端口，及选择的用于远程映射的端口（以6000为例）。如图：</p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163604105.png" alt="image-20210705163604105" style="zoom:33%;"></p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163524878.png" alt="image-20210705163524878" style="zoom: 33%;"></p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163636824.png" alt="image-20210705163636824" style="zoom:33%;"></p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163657088.png" alt="image-20210705163657088" style="zoom:33%;"></p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163731648.png" alt="image-20210705163731648" style="zoom:33%;"></p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163748570.png" alt="image-20210705163748570" style="zoom:33%;"></p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163805926.png" alt="image-20210705163805926" style="zoom:33%;"></p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163837289.png" alt="image-20210705163837289" style="zoom: 50%;"></p>
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163604105.png" alt="image-20210705163604105" style="zoom:33%;">
+
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163524878.png" alt="image-20210705163524878" style="zoom: 33%;">
+
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163636824.png" alt="image-20210705163636824" style="zoom:33%;">
+
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163657088.png" alt="image-20210705163657088" style="zoom:33%;">
+
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163731648.png" alt="image-20210705163731648" style="zoom:33%;">
+
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163748570.png" alt="image-20210705163748570" style="zoom:33%;">
+
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163805926.png" alt="image-20210705163805926" style="zoom:33%;">
+
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163837289.png" alt="image-20210705163837289" style="zoom: 50%;">
+
 <p>添加完毕6000、7000：</p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163949023.png" alt="image-20210705163949023" style="zoom: 33%;"></p>
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705163949023.png" alt="image-20210705163949023" style="zoom: 33%;">
+
 <h2 id="2-3-使TCP连接更快一些（只需要服务端设置）"><a href="#2-3-使TCP连接更快一些（只需要服务端设置）" class="headerlink" title="2.3 使TCP连接更快一些（只需要服务端设置）"></a>2.3 使TCP连接更快一些（只需要服务端设置）</h2><h3 id="2-3-1-CentOS"><a href="#2-3-1-CentOS" class="headerlink" title="2.3.1 CentOS"></a>2.3.1 CentOS</h3><p>BBR 是 Google 提出的一种新型拥塞控制算法，可以使 Linux 服务器显著地提高吞吐量和减少 TCP 连接的延迟。</p>
 <p>以Centos 8 为例:</p>
 <ol>
 <li><code>uname - r</code>查看系统内核版本，要求大于4.9，不满足（如Centos7）需要升级内核</li>
 </ol>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210706200500962.png" alt="image-20210706200500962" style="zoom:33%;"></p>
-<ol>
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210706200500962.png" alt="image-20210706200500962" style="zoom:33%;">
+
+<ol start="2">
 <li>开启BBR</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;net.core.default_qdisc=fq&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">echo &quot;net.ipv4.tcp_congestion_control=bbr&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">sysctl -p</span><br><span class="line">sysctl -n net.ipv4.tcp_congestion_control bbr</span><br><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210706200740093.png" alt="image-20210706200740093" style="zoom:33%;"></p>
+
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210706200740093.png" alt="image-20210706200740093" style="zoom:33%;">
+
 <p>开启后速度会快一点（心理上probably）</p>
 <h3 id="2-3-2-Windows"><a href="#2-3-2-Windows" class="headerlink" title="2.3.2 Windows"></a>2.3.2 Windows</h3><ol>
 <li>在CMD命令行运行</li>
 </ol>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">netsh int tcp show global <span class="comment"># 查询活动状态</span></span><br><span class="line">netsh int tcp <span class="built_in">set</span> global dca=enabled <span class="comment"># 设置直接访问缓存 </span></span><br><span class="line">netsh int tcp <span class="built_in">set</span> global autotuninglevel=normal <span class="comment"># 接收窗口自动谐调级别</span></span><br><span class="line">netsh int tcp <span class="built_in">set</span> global timestamps=enabled <span class="comment"># RFC1323时间戳</span></span><br><span class="line">netsh int tcp <span class="built_in">set</span> supplemental custom <span class="number">20</span> <span class="number">16</span> ctcp enabled <span class="number">10</span> <span class="comment"># 附加拥塞控制提供程序</span></span><br><span class="line">netsh int tcp <span class="built_in">set</span> global ecn=disable <span class="comment"># 显式拥塞通知</span></span><br></pre></td></tr></table></figure>
+
 <p>修改完之后mstsc信号提升了一格</p>
-<ol>
+<ol start="2">
 <li>TCP加速程序(锐速破解版)</li>
 </ol>
 <p>链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1gZwbIov0D7iWG6CrObtwpg">https://pan.baidu.com/s/1gZwbIov0D7iWG6CrObtwpg</a> 提取码: 89fg 复制这段内容后打开百度网盘手机App，操作更方便哦</p>
@@ -1010,24 +1074,32 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/heqiuyong/p/12944224.html">https://www.cnblogs.com/heqiuyong/p/12944224.html</a></p>
 </blockquote>
 <h1 id="3-frpc客户端设置-In-WindowsB"><a href="#3-frpc客户端设置-In-WindowsB" class="headerlink" title="3 frpc客户端设置(In WindowsB)"></a>3 frpc客户端设置(In WindowsB)</h1><p>​       客户端设置同样适用于无界面的linux服务器，可以去服务器所在实验室配置。如果是有界面的Windows服务器，可事先通过向日葵进行连接之后设置。经过实验，一台有界面的多用户服务器通过向日葵连接时，只能有一个人能够进行操作，通过frp连接时，可以同时操作。因此，除了能够应对无界面服务器的远程连接之外，还适用于多用户的WindowsServer服务器。</p>
-<h2 id="3-1-下载windows版本frp"><a href="#3-1-下载windows版本frp" class="headerlink" title="3.1 下载windows版本frp"></a>3.1 下载windows版本frp</h2><p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705164124420.png" alt="image-20210705164124420" style="zoom:50%;"></p>
+<h2 id="3-1-下载windows版本frp"><a href="#3-1-下载windows版本frp" class="headerlink" title="3.1 下载windows版本frp"></a>3.1 下载windows版本frp</h2><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705164124420.png" alt="image-20210705164124420" style="zoom:50%;">
+
 <h2 id="3-2-修改frpc-ini"><a href="#3-2-修改frpc-ini" class="headerlink" title="3.2 修改frpc.ini"></a>3.2 修改frpc.ini</h2><p>这里设置6000为远程端口，意思即把访问ECS的6000端口的请求转发到WindowsB的3389端口。相应地，Centos的local_port要改成22</p>
 <p><strong>Windows:</strong></p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705164702206.png" alt="image-20210705164702206" style="zoom: 50%;"></p>
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705164702206.png" alt="image-20210705164702206" style="zoom: 50%;">
+
 <p><strong>Centos:</strong></p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705174237796.png" alt="image-20210705174237796" style="zoom:67%;"></p>
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705174237796.png" alt="image-20210705174237796" style="zoom:67%;">
+
 <h2 id="3-3-运行"><a href="#3-3-运行" class="headerlink" title="3.3 运行"></a>3.3 运行</h2><ol>
 <li>文件资源管理器路径里面输入cmd打开命令行</li>
 </ol>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705164751948.png" alt="image-20210705164751948" style="zoom: 33%;"></p>
-<ol>
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705164751948.png" alt="image-20210705164751948" style="zoom: 33%;">
+
+<ol start="2">
 <li>输入<code>frpc.exe -c frpc.ini</code>，出现箭头所示输出代表穿透成功</li>
 </ol>
 <p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705165130318.png" alt="image-20210705165130318"></p>
 <p>相应地，ECS服务端会有以下输出:</p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705165238783.png" alt="image-20210705165238783" style="zoom: 33%;"></p>
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705165238783.png" alt="image-20210705165238783" style="zoom: 33%;">
+
 <h1 id="4-连接-（In-Windows-A）"><a href="#4-连接-（In-Windows-A）" class="headerlink" title="4 连接 （In Windows A）"></a>4 连接 （In Windows A）</h1><p>打开WindowsA的远程桌面连接或者MobaXterm输入ECS的<code>ECS&#39;IP:remote_port</code>，如123.123.45.67:6000。输入账号密码进行连接。</p>
-<p><img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705165946736.png" alt="image-20210705165946736" style="zoom: 33%;"></p>
+<img src="/2021/09/01/2FRP/FRP-1-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/image-20210705165946736.png" alt="image-20210705165946736" style="zoom: 33%;">
+
+
+
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>本文参考:</p>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43922901/article/details/109261700">https://blog.csdn.net/weixin_43922901/article/details/109261700</a></p>
@@ -1130,7 +1202,7 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6.8k</span>
+              <span>6.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1213,18 +1285,8 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
 <h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><h3 id="线性表的定义和基本操作"><a href="#线性表的定义和基本操作" class="headerlink" title="线性表的定义和基本操作"></a>线性表的定义和基本操作</h3><h4 id="线性表的定义"><a href="#线性表的定义" class="headerlink" title="线性表的定义"></a>线性表的定义</h4><p>具有相同数据类型的$n(n\ge 0)$个数据元素的<strong>有限</strong>序列。</p>
 <p>常用$L$表示线性表，$L=(a_1,a_2,…,a_i, a_{i+1},…a_n)$。</p>
 <h4 id="线性表的基本操作"><a href="#线性表的基本操作" class="headerlink" title="线性表的基本操作"></a>线性表的基本操作</h4><p>基本操作：创建销毁、增删改查</p>
-<script type="math/tex; mode=display">
-\begin{flalign*}
-& InitList(\&L):初始化表。构造一个空的线性表\\
-& Length(L):求表长，也就是元素的个数\\
-& LocateElem(L,e):按值查找元素\\
-& GetElem(L,i):按位查找元素\\
-& ListInsert(\&L, i, e):插入操作，插入第i个位置的元素，并用e返回值\\
-& ListDelete(\&L, i, \&e):删除操作\\
-& PrintList(L):输出表\\
-& Empty(L):判空操作\\
-& DestoryList(L):销毁操作\\
-\end{flalign*}</script><h3 id="顺序表示"><a href="#顺序表示" class="headerlink" title="顺序表示"></a>顺序表示</h3><h4 id="顺序表的定义"><a href="#顺序表的定义" class="headerlink" title="顺序表的定义"></a>顺序表的定义</h4><p>线性表的顺序存储又称<strong>顺序表</strong>。</p>
+<p>$$<br>\begin{flalign*}<br>&amp; InitList(&amp;L):初始化表。构造一个空的线性表\<br>&amp; Length(L):求表长，也就是元素的个数\<br>&amp; LocateElem(L,e):按值查找元素\<br>&amp; GetElem(L,i):按位查找元素\<br>&amp; ListInsert(&amp;L, i, e):插入操作，插入第i个位置的元素，并用e返回值\<br>&amp; ListDelete(&amp;L, i, &amp;e):删除操作\<br>&amp; PrintList(L):输出表\<br>&amp; Empty(L):判空操作\<br>&amp; DestoryList(L):销毁操作\<br>\end{flalign*}<br>$$</p>
+<h3 id="顺序表示"><a href="#顺序表示" class="headerlink" title="顺序表示"></a>顺序表示</h3><h4 id="顺序表的定义"><a href="#顺序表的定义" class="headerlink" title="顺序表的定义"></a>顺序表的定义</h4><p>线性表的顺序存储又称<strong>顺序表</strong>。</p>
 <p>特点：逻辑顺序与物理顺序相同。</p>
 <p>顺序表的长度可以静态分配，也可以动态分配（通过<strong>指针</strong>实现）。</p>
 <h4 id="顺序表顺序表上基本操作"><a href="#顺序表顺序表上基本操作" class="headerlink" title="顺序表顺序表上基本操作"></a>顺序表顺序表上基本操作</h4><p>线性表的元素位序是从1开始的，数组是从0开始的。</p>
@@ -1282,36 +1344,33 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
 </li>
 </ol>
 <h4 id="静态链表"><a href="#静态链表" class="headerlink" title="静态链表"></a>静态链表</h4><p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-20210826214804310.png" alt="image-20210826214804310"></p>
-<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-20210826234556739.png" alt="image-20210826234556739" style="zoom:50%;"></p>
-<h4 id="顺序表和链表的比较"><a href="#顺序表和链表的比较" class="headerlink" title="顺序表和链表的比较"></a>顺序表和链表的比较</h4><div class="table-container">
-<table>
+<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-20210826234556739.png" alt="image-20210826234556739" style="zoom:50%;">
+
+<h4 id="顺序表和链表的比较"><a href="#顺序表和链表的比较" class="headerlink" title="顺序表和链表的比较"></a>顺序表和链表的比较</h4><table>
 <thead>
 <tr>
-<th style="text-align:center">链表</th>
-<th style="text-align:center">存取方式</th>
+<th align="center">链表</th>
+<th align="center">存取方式</th>
 <th>逻辑结构与物理结构</th>
-<th style="text-align:center">增删查</th>
+<th align="center">增删查</th>
 <th>空间分配</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">顺序表</td>
-<td style="text-align:center">顺序+随机</td>
+<tbody><tr>
+<td align="center">顺序表</td>
+<td align="center">顺序+随机</td>
 <td>相邻</td>
-<td style="text-align:center">按值查找，无序，$O(n)$，有序，$O(log_2n)$；按序号，$O(1)$</td>
+<td align="center">按值查找，无序，$O(n)$，有序，$O(log_2n)$；按序号，$O(1)$</td>
 <td>固定</td>
 </tr>
 <tr>
-<td style="text-align:center">链表</td>
-<td style="text-align:center">只能从头</td>
+<td align="center">链表</td>
+<td align="center">只能从头</td>
 <td>不相邻，由指针表示</td>
-<td style="text-align:center">按值查找，无序，$O(n)$，有序，$O(log_2n)$；按序号，$O(1)$</td>
+<td align="center">按值查找，无序，$O(n)$，有序，$O(log_2n)$；按序号，$O(1)$</td>
 <td>灵活</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <ul>
 <li>选择<ul>
 <li>存储优先<ul>
@@ -1443,13 +1502,15 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
 <li>中序遍历右子树</li>
 </ol>
 </li>
-<li>后序遍历LRN：642531<ol>
+<li><p>后序遍历LRN：642531</p>
+<ol>
 <li>后序遍历左子树</li>
 <li>后序遍历右子树</li>
 <li>访问根节点</li>
 </ol>
 </li>
-<li>层次遍历:123456<ul>
+<li><p>层次遍历:123456</p>
+<ul>
 <li>将根入队，根出队；</li>
 <li>若根有左子树，左子树根节点入队；有右子树，右子树根节点入队；</li>
 <li>左子树/右子树出队，分别执行2，3</li>
@@ -1609,9 +1670,7 @@ Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652
 </li>
 </ol>
 <h4 id="哈夫曼树与哈夫曼编码"><a href="#哈夫曼树与哈夫曼编码" class="headerlink" title="哈夫曼树与哈夫曼编码"></a>哈夫曼树与哈夫曼编码</h4><ol>
-<li><p>定义：结点常常被赋予值，称为该结点的权。从树的根结点到任意结点的路径长度与该结点上权值的乘积，称为该结点的<strong>带权路径长度</strong>。树中所有<strong>==叶结点==</strong>的带权路径长度之和称为该树的带权路径长度。</p>
-<script type="math/tex; mode=display">
-WPL = \sum_{i=1}^nw_il_i</script><p>$WPL$最小的二叉树称为哈夫曼树，也称为最优二叉树。</p>
+<li><p>定义：结点常常被赋予值，称为该结点的权。从树的根结点到任意结点的路径长度与该结点上权值的乘积，称为该结点的<strong>带权路径长度</strong>。树中所有**==叶结点==**的带权路径长度之和称为该树的带权路径长度。<br>$$<br>WPL = \sum_{i=1}^nw_il_i<br>$$<br>$WPL$最小的二叉树称为哈夫曼树，也称为最优二叉树。</p>
 </li>
 <li><p>构造方法</p>
 <ol>
@@ -1928,7 +1987,7 @@ WPL = \sum_{i=1}^nw_il_i</script><p>$WPL$最小的二叉树称为哈夫曼树，
 <h2 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h2><h3 id="普通登录方法"><a href="#普通登录方法" class="headerlink" title="普通登录方法"></a>普通登录方法</h3><p><code>docker exec -it mysql bash</code></p>
 <h3 id="支持中文格式的登录方法"><a href="#支持中文格式的登录方法" class="headerlink" title="支持中文格式的登录方法"></a>支持中文格式的登录方法</h3><p><code>docker exec -it mysql env LANG=C.UTF-8 bash</code></p>
 <h2 id="容器内登录mysql"><a href="#容器内登录mysql" class="headerlink" title="容器内登录mysql"></a>容器内登录mysql</h2><h3 id="普通登录"><a href="#普通登录" class="headerlink" title="普通登录"></a>普通登录</h3><p><code>mysql -u root -p</code>$\rightarrow$输入密码123456即可</p>
-<h3 id="需要导入数据时登录方法"><a href="#需要导入数据时登录方法" class="headerlink" title="需要导入数据时登录方法"></a>需要导入数据时登录方法</h3><p><code>mysql --local-infile=1 -h 127.0.0.1 -u root -p</code></p>
+<h3 id="需要导入数据时登录方法"><a href="#需要导入数据时登录方法" class="headerlink" title="需要导入数据时登录方法"></a>需要导入数据时登录方法</h3><p><code>mysql --local-infile=1 -h 127.0.0.1 -u root -p </code></p>
 <h2 id="容器启停"><a href="#容器启停" class="headerlink" title="容器启停"></a>容器启停</h2><ol>
 <li><code>docker ps -a</code> 获取容器ID和名字，查看状态、<ul>
 <li>如果是Exit<ul>
@@ -1948,7 +2007,10 @@ WPL = \sum_{i=1}^nw_il_i</script><p>$WPL$最小的二叉树称为哈夫曼树，
 </li>
 </ul>
 <h2 id="docker的mysql不支持中文"><a href="#docker的mysql不支持中文" class="headerlink" title="docker的mysql不支持中文"></a>docker的mysql不支持中文</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;export LANG=C.UTF-8&quot; &gt;&gt;/etc/profile &amp;&amp; source /etc/profile</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210822172021597.png" alt="image-20210822172021597" style="zoom: 25%;"></p>
+
+<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210822172021597.png" alt="image-20210822172021597" style="zoom: 25%;">
+
+
 <h1 id="数据库系统概论（王珊、萨师煊）"><a href="#数据库系统概论（王珊、萨师煊）" class="headerlink" title="数据库系统概论（王珊、萨师煊）"></a>数据库系统概论（王珊、萨师煊）</h1><h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><ol>
 <li>4个基本概念：DBS=DBMS+DB+DBA+应用<ol>
 <li>数据库</li>
@@ -2013,16 +2075,32 @@ WPL = \sum_{i=1}^nw_il_i</script><p>$WPL$最小的二叉树称为哈夫曼树，
 </ol>
 </li>
 </ol>
-<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235839.jpg" alt="IMG_20210830_235839" style="zoom: 25%;"></p>
-<h2 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h2><p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235913.jpg" alt="IMG_20210830_235913" style="zoom:25%;"></p>
-<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235929.jpg" alt="IMG_20210830_235929" style="zoom:25%;"></p>
-<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235940.jpg" alt="IMG_20210830_235940" style="zoom:25%;"></p>
-<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210831_000000.jpg" alt="IMG_20210831_000000" style="zoom:25%;"></p>
+<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235839.jpg" alt="IMG_20210830_235839" style="zoom: 25%;">
+
+<h2 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h2><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235913.jpg" alt="IMG_20210830_235913" style="zoom:25%;">
+
+
+
+<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235929.jpg" alt="IMG_20210830_235929" style="zoom:25%;">
+
+
+
+<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235940.jpg" alt="IMG_20210830_235940" style="zoom:25%;">
+
+
+
+
+
+<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210831_000000.jpg" alt="IMG_20210831_000000" style="zoom:25%;">
+
+
+
 <h2 id="SQL语言"><a href="#SQL语言" class="headerlink" title="SQL语言"></a>SQL语言</h2><h3 id="SQL概述"><a href="#SQL概述" class="headerlink" title="SQL概述"></a>SQL概述</h3><h3 id="从mysql导入数据"><a href="#从mysql导入数据" class="headerlink" title="从mysql导入数据"></a>从mysql导入数据</h3><p>命令行界面下：</p>
 <ul>
 <li><code>load data local infile &#39;/usr/student.txt&#39; into table student lines terminated by  &#39;\r\n&#39;;</code>用记事本写，一行为一个元组，分隔符是TAB</li>
 </ul>
 <h3 id="数据定义"><a href="#数据定义" class="headerlink" title="数据定义"></a>数据定义</h3><h4 id="模式的定义与删除"><a href="#模式的定义与删除" class="headerlink" title="模式的定义与删除"></a>模式的定义与删除</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create schema &lt;模式名&gt;;</span><br><span class="line">drop schema &lt;模式名&gt; &lt;CASCADE | RESTRICT&gt;;  -- CASCADE（删除模式的时候把模式下的数据库对象（表、视图）都删除）RESTRICT（模式下有数据库对象则拒绝删除）必须2选1</span><br></pre></td></tr></table></figure>
+
 <h4 id="基本表的定义、删除与修改"><a href="#基本表的定义、删除与修改" class="headerlink" title="基本表的定义、删除与修改"></a>基本表的定义、删除与修改</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><ul>
 <li><p>每个基本表都属于一个模式，一个模式包含多个基本表。</p>
 </li>
@@ -2030,8 +2108,7 @@ WPL = \sum_{i=1}^nw_il_i</script><p>$WPL$最小的二叉树称为哈夫曼树，
 <ul>
 <li><p>在表名中明显的给出模式名</p>
 <ul>
-<li>```<br>CREATE TABLE “S-T”.Student(…)；  —Student表所属的模式是S-T<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">- 创建模式的时候创建表</span><br><span class="line"></span><br><span class="line">    - ```</span><br><span class="line">      CREATE SCHEMA TEST</span><br><span class="line">      CREATE TABLE Student(...)；</span><br></pre></td></tr></table></figure>
-</li>
+<li>```<br>CREATE TABLE “S-T”.Student(…)；  –Student表所属的模式是S-T<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">- 创建模式的时候创建表</span><br><span class="line"></span><br><span class="line">    - ```</span><br><span class="line">      CREATE SCHEMA TEST</span><br><span class="line">      CREATE TABLE Student(...)；</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>设置所属模式（根据设置好的搜索路径</p>
@@ -2040,9 +2117,13 @@ WPL = \sum_{i=1}^nw_il_i</script><p>$WPL$最小的二叉树称为哈夫曼树，
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">create table Student</span><br><span class="line">(Sno CHAR(9) PRIMARY KEY,  -- 设置主键/主码，不能为空</span><br><span class="line">Sname VARCHAR(20) UNIQUE,  -- 不能重复出现</span><br><span class="line">Ssex CHAR(2),</span><br><span class="line">Sage TINYINT,</span><br><span class="line">Sdept VARCHAR(20));</span><br><span class="line">/*</span><br><span class="line">+-----------+-------+------+------+-------+------------+</span><br><span class="line">| Sno       | Sname | Ssex | Sage | Sdept | S_entrance |</span><br><span class="line">+-----------+-------+------+------+-------+------------+</span><br><span class="line">| 201215121 | 李勇  | 男   |   20 | CS    | NULL       |</span><br><span class="line">| 201215122 | 刘晨  | 女   |   19 | CS    | NULL       |</span><br><span class="line">| 201215123 | 王敏  | 女   |   18 | MA    | NULL       |</span><br><span class="line">| 201215125 | 张立  | 男   |   19 | IS    | NULL       |</span><br><span class="line">+-----------+-------+------+------+-------+------------+</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">create table Course</span><br><span class="line">(Cno CHAR(4) PRIMARY KEY,</span><br><span class="line"> Cname CHAR(40) NOT NULL,  -- 不能取空值</span><br><span class="line"> Cpno CHAR(4),</span><br><span class="line"> Ccredit SMALLINT,</span><br><span class="line"> FOREIGN KEY (Cpno) REFERENCES Course(Cno));  -- Cpno是外码，被参照表是Course，被参照列是Cno</span><br><span class="line">/*</span><br><span class="line">+-----+----------+------+---------+</span><br><span class="line">| Cno | Cname    | Cpno | Ccredit |</span><br><span class="line">+-----+----------+------+---------+</span><br><span class="line">| 1   | 数据库   | 5    |       4 |</span><br><span class="line">| 2   | 数学     | NULL |       2 |</span><br><span class="line">| 3   | 信息系统 | 1    |       4 |</span><br><span class="line">| 4   | 操作系统 | 6    |       3 |</span><br><span class="line">| 5   | 数据结构 | 7    |       4 |</span><br><span class="line">| 6   | 数据处理 | NULL |       2 |</span><br><span class="line">| 7   | C语言    | 4    |       6 |</span><br><span class="line">+-----+----------+------+---------+</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">create table SC</span><br><span class="line">(Sno CHAR(9), </span><br><span class="line"> Cpno CHAR(4),</span><br><span class="line"> Grade SMALLINT,</span><br><span class="line"> PRIMARY KEY (Sno,Cno)  -- 两个主码</span><br><span class="line"> FOREIGN KEY (Sno) REFERENCES Student(Sno)),</span><br><span class="line"> FOREIGN KEY (Cpno) REFERENCES Course(Cno)));</span><br><span class="line"> /*</span><br><span class="line"> +-----------+-----+-------+</span><br><span class="line">| Sno       | Cno | Grade |</span><br><span class="line">+-----------+-----+-------+</span><br><span class="line">| 201215121 | 1   |    92 |</span><br><span class="line">| 201215121 | 2   |    85 |</span><br><span class="line">| 201215121 | 3   |    88 |</span><br><span class="line">| 201215122 | 2   |    90 |</span><br><span class="line">| 201215122 | 3   |    80 |</span><br><span class="line">+-----------+-----+-------+</span><br><span class="line">*/ </span><br></pre></td></tr></table></figure>
+
 <h5 id="更改属性的数据类型、值"><a href="#更改属性的数据类型、值" class="headerlink" title="更改属性的数据类型、值"></a>更改属性的数据类型、值</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE &lt;表名&gt;</span><br><span class="line">[ADD [COLUMN] &lt;列名&gt; &lt;数据类型&gt;[完整性约束]]</span><br><span class="line">[ADD &lt;表级完整性约束&gt;]  -- FOREIGN KEY (Sno) REFERENCES &lt;表名&gt;(列名)</span><br><span class="line">[DROP [COLMUN] &lt;列名&gt; [CASCADE|RESTRICT]]</span><br><span class="line">[DROP CONSTRAINT &lt;完整性约束名&gt;[CASCADE|RESTRICT]]</span><br><span class="line">[ALTER COLUMN &lt;列名&gt;&lt;数据类型&gt;];</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alter table student modify Ssex char(2);  -- 修改属性的数据类型</span><br><span class="line">update course set Cpno=NULL where Cno=2;  -- 修改数据的值</span><br><span class="line">alter table Student add S_entrance DATE;  -- 添加一行S_entrance</span><br><span class="line">alter table Course add UNIQUE(Cname);  -- 增加课程名必须取唯一值的约束</span><br></pre></td></tr></table></figure>
+
 <h5 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE &lt;表名&gt; [CASCADE|RESTRICT(默认)];  -- CASCADE相关的依赖都被删掉，如视图；RESTRICT有依赖则不可以</span><br></pre></td></tr></table></figure>
+
 <h4 id="索引的建立与删除（内模式的范畴）"><a href="#索引的建立与删除（内模式的范畴）" class="headerlink" title="索引的建立与删除（内模式的范畴）"></a>索引的建立与删除（内模式的范畴）</h4><ul>
 <li>顺序索引</li>
 <li>B+树索引</li>
@@ -2050,8 +2131,11 @@ WPL = \sum_{i=1}^nw_il_i</script><p>$WPL$最小的二叉树称为哈夫曼树，
 <li>位图索引</li>
 </ul>
 <h5 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create unique index Stusno on Student(Sno);</span><br><span class="line">create unique index SCno on SC(Sno ASC, Cno DESC);  -- ASC升序；DESC降序</span><br></pre></td></tr></table></figure>
+
 <h5 id="修改索引"><a href="#修改索引" class="headerlink" title="修改索引"></a>修改索引</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter index SCno rename to SCSno;  -- 8.0不可用</span><br></pre></td></tr></table></figure>
+
 <h5 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE SC drop index SCno;</span><br></pre></td></tr></table></figure>
+
 <h3 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询"></a>数据查询</h3><ul>
 <li><strong>需要注意的点：</strong><ul>
 <li>聚集函数。只能用于Select子句和group by 中的having子句</li>
@@ -2062,30 +2146,30 @@ WPL = \sum_{i=1}^nw_il_i</script><p>$WPL$最小的二叉树称为哈夫曼树，
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select [all|distinct] &lt;目标列表达式&gt;[,&lt;目标列表达式&gt;]...</span><br><span class="line">from &lt;表名或视图名&gt;[,&lt;表名或视图名&gt;...] | (select语句) [as] &lt;别名&gt;</span><br><span class="line">[where &lt;条件表达式&gt;]</span><br><span class="line">[group by &lt;列名1&gt; [having&lt;条件表达式&gt;]]</span><br><span class="line">[order by &lt;列名2&gt; [ASC|DESC]]</span><br></pre></td></tr></table></figure>
+
+
+
 <h4 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h4><h5 id="查找列"><a href="#查找列" class="headerlink" title="查找列"></a>查找列</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">select Sno,Sname from Student;</span><br><span class="line"></span><br><span class="line">select Sname,Sno,Sdept from Student;  -- 可以不按照定义基本表时候的顺序</span><br><span class="line"></span><br><span class="line">select Sname, 2014-Sage from Student;</span><br><span class="line">/*</span><br><span class="line">+-------+-----------+</span><br><span class="line">| Sname | 2014-Sage |</span><br><span class="line">+-------+-----------+</span><br><span class="line">| 李勇  |      1994 |</span><br><span class="line">| 刘晨  |      1995 |</span><br><span class="line">| 王敏  |      1996 |</span><br><span class="line">| 张立  |      1995 |</span><br><span class="line">+-------+-----------+</span><br><span class="line">4 rows in set (0.08 sec)</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">select Sname,&#x27;Year of birth:&#x27;,2014-Sage, Lower(Sdept) from Student;  -- 查询全体学生的姓名、出生年份、所在院系（小写字母表示）</span><br><span class="line">/*</span><br><span class="line">+-------+----------------+-----------+--------------+</span><br><span class="line">| Sname | Year of birth: | 2014-Sage | Lower(Sdept) |</span><br><span class="line">+-------+----------------+-----------+--------------+</span><br><span class="line">| 李勇  | Year of birth: |      1994 | cs           |</span><br><span class="line">| 刘晨  | Year of birth: |      1995 | cs           |</span><br><span class="line">| 王敏  | Year of birth: |      1996 | ma           |</span><br><span class="line">| 张立  | Year of birth: |      1995 | is           |</span><br><span class="line">+-------+----------------+-----------+--------------+</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">select Sname NAME,&#x27;Year of birth:&#x27;BIRTH, 2014-Sage BIRTHDAY, LOWER(Sdept) DEPARTMENT from Student;</span><br><span class="line">/*</span><br><span class="line">+------+----------------+----------+------------+</span><br><span class="line">| NAME | BIRTH          | BIRTHDAY | DEPARTMENT |</span><br><span class="line">+------+----------------+----------+------------+</span><br><span class="line">| 李勇 | Year of birth: |     1994 | cs         |</span><br><span class="line">| 刘晨 | Year of birth: |     1995 | cs         |</span><br><span class="line">| 王敏 | Year of birth: |     1996 | ma         |</span><br><span class="line">| 张立 | Year of birth: |     1995 | is         |</span><br><span class="line">+------+----------------+----------+------------+</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
 <h5 id="查找行（元组）"><a href="#查找行（元组）" class="headerlink" title="查找行（元组）"></a>查找行（元组）</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">-- 1.消除取值重复的行</span><br><span class="line">select distinct Sno from SC;  -- 取消重复的行，如果没有，则会出现重读的行</span><br><span class="line">/*</span><br><span class="line">+-----------+</span><br><span class="line">| Sno       |</span><br><span class="line">+-----------+</span><br><span class="line">| 201215121 |</span><br><span class="line">| 201215122 |</span><br><span class="line">+-----------+</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">-- 2.查询满足条件的元组</span><br><span class="line">-- 2.1 比较大小=,&gt;,&lt;,&gt;=,&lt;=,!=/&lt;&gt;,!&gt;,!&lt;</span><br><span class="line">select Sname from Student where Sdept=&#x27;CS&#x27;;</span><br><span class="line">/*</span><br><span class="line">+-------+</span><br><span class="line">| Sname |</span><br><span class="line">+-------+</span><br><span class="line">| 李勇  |</span><br><span class="line">| 刘晨  |</span><br><span class="line">+-------+</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">select distinct Sno from SC where Grade&lt;60;  -- 去除重复学号</span><br><span class="line">-- 2.2 确定范围</span><br><span class="line">select Sname,Sdept,Sage from Student where Sage between 20 and 23;  -- 20~23之间的人</span><br><span class="line">select Sname,Sdept,Sage from Student where Sage not between 20 and 23;</span><br><span class="line">-- 2.3 确定集合</span><br><span class="line">select Sname,Ssex from Student where Sdept in (&#x27;CS&#x27;,&#x27;MA&#x27;);</span><br><span class="line">-- 2.4 字符匹配 通配符%(任意长度字符串)；_(单个字符)</span><br><span class="line">select * from Student where Sno like &#x27;2015%&#x27;;</span><br><span class="line">select Sname,Sno from Student where Sname like &#x27;_勇%&#x27;;  -- 查找名字第二个字带勇</span><br><span class="line">select Cno,Ccredit from Course where Cname like &#x27;DB\_Design&#x27;;  -- mySQL8.0中已经不需要在最后加上ESCAPE&#x27;\&#x27;，甚至都不需要转义符，直接select Cno,Ccredit,Cname from Course where Cname like &#x27;DB_Design&#x27;;</span><br><span class="line">select * from Course where Cname like &#x27;DB\_%i%&#x27;;</span><br><span class="line"></span><br><span class="line">-- 2.5 涉及空值的查询</span><br><span class="line">select Sno,Cno from SC Where Grade is null;  -- is 不可以用空值表示</span><br><span class="line"></span><br><span class="line">-- 2.6 多重条件查询</span><br><span class="line">select Sname from Student where Sdept=&#x27;CS&#x27; and Sage&lt;20;</span><br><span class="line"></span><br><span class="line">-- 3 order by 子句</span><br><span class="line">select * from SC where Cno=&#x27;3&#x27; order by grade DESC; </span><br><span class="line">/*</span><br><span class="line">+-----------+-----+-------+</span><br><span class="line">| Sno       | Cno | Grade |</span><br><span class="line">+-----------+-----+-------+</span><br><span class="line">| 201215121 | 3   |    88 |</span><br><span class="line">| 201215122 | 3   |    80 |</span><br><span class="line">+-----------+-----+-------+</span><br><span class="line">*/</span><br><span class="line">select * from Student order by Sdept,Sage DESC;  -- 按照所在的系号升序排序，同一个系的年龄降序</span><br><span class="line">/*</span><br><span class="line">+-----------+-------+------+------+-------+</span><br><span class="line">| Sno       | Sname | Ssex | Sage | Sdept |</span><br><span class="line">+-----------+-------+------+------+-------+</span><br><span class="line">| 201215121 | 李勇  | 男   |   20 | CS    |</span><br><span class="line">| 201215122 | 刘晨  | 女   |   19 | CS    |</span><br><span class="line">| 201215125 | 张立  | 男   |   19 | IS    |</span><br><span class="line">| 201215123 | 王敏  | 女   |   18 | MA    |</span><br><span class="line">+-----------+-------+------+------+-------+</span><br><span class="line">*/</span><br><span class="line">-- 4 聚集函数。只能用于Select子句和group by 中的having子句</span><br><span class="line">/*</span><br><span class="line">COUNT(*)</span><br><span class="line">count([distinct|all] &lt;列名&gt;)</span><br><span class="line">sum([distinct|all] &lt;列名&gt;)</span><br><span class="line">avg([distinct|all] &lt;列名&gt;)</span><br><span class="line">max([distinct|all] &lt;列名&gt;)</span><br><span class="line">min([distinct|all] &lt;列名&gt;)</span><br><span class="line">*/</span><br><span class="line">select count(*) from Student;  -- 查询学生总人数/表的行数</span><br><span class="line">select count(distinct Sno) from SC; -- 查询选修了课程的总人数</span><br><span class="line">select avg(Grade) from SC where Cno=&#x27;1&#x27;;  -- 算课程号为1的平均分</span><br><span class="line">select max(Grade) from SC where Cno=&#x27;1&#x27;;   -- 最高分</span><br><span class="line">select sum(Ccredit) from SC,Course where Sno=&#x27;201215121&#x27; and SC.Cno=Course.Cno;  -- 查询该学号学生选修课程的总的学分数</span><br><span class="line"></span><br><span class="line">-- 5 group by 子句</span><br><span class="line">select Cno,Count(Sno) from SC group by Cno;  -- 查询各个课程号及其相应的选课人数</span><br><span class="line">/*</span><br><span class="line">+-----+------------+</span><br><span class="line">| Cno | Count(Sno) |</span><br><span class="line">+-----+------------+</span><br><span class="line">| 1   |          1 |</span><br><span class="line">| 2   |          2 |</span><br><span class="line">| 3   |          2 |</span><br><span class="line">+-----+------------+</span><br><span class="line">*/</span><br><span class="line">---- 分组后再进行筛选，可以having指定</span><br><span class="line">select Sno from SC group by Sno Having Count(*)&gt;3;</span><br><span class="line"></span><br><span class="line">---- where子句不能用聚集函数作为条件表达式</span><br><span class="line">select Sno,avg(Grade) from SC group by Sno having avg(grade)&gt;=80;</span><br><span class="line">-- 这个运行不出来</span><br><span class="line">-- select Sno,avg(Grade) from SC where avg(grade)&gt;=80 group by Sno;</span><br></pre></td></tr></table></figure>
+
+
+
 <h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><p>涉及两个表以上的查询，包括：</p>
 <ol>
 <li><p>等值连接查询</p>
 <ul>
-<li>```<br>— where子句的形式：[&lt;表名1&gt;.]&lt;列名2&gt;&lt;比较运算符&gt;[&lt;表名2&gt;.]&lt;列名2&gt;<br>— 或者是[&lt;表名1&gt;.]&lt;列名2&gt;&lt;比较运算符&gt;between[&lt;表名2&gt;.]&lt;列名2&gt;and[&lt;表名2&gt;.]&lt;列名3&gt;<br>select Student.<em>,SC.</em> from Student,SC where Student.Sno=SC.Sno;<br>/<em><br>+—————-+————+———+———+———-+—————-+——-+———-+<br>| Sno       | Sname  | Ssex | Sage | Sdept | Sno       | Cno | Grade |<br>+—————-+————+———+———+———-+—————-+——-+———-+<br>| 201215121 | 李勇   | 男   |   20 | CS    | 201215121 | 1   |    92 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 201215121 | 2   |    85 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 201215121 | 3   |    88 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 201215122 | 2   |    90 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 201215122 | 3   |    80 |<br>+—————-+————+———+———+———-+—————-+——-+———-+
-</em>/<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">2. 自然连接查询</span><br><span class="line"></span><br><span class="line">   - ```</span><br><span class="line">     select Student.Sno,Sname,Ssex,Sage,Sdept,Cno,Grade from Student,SC where Student.Sno=SC.Sno;</span><br><span class="line">     /*</span><br><span class="line">     +-----------+--------+------+------+-------+-----+-------+</span><br><span class="line">     | Sno       | Sname  | Ssex | Sage | Sdept | Cno | Grade |</span><br><span class="line">     +-----------+--------+------+------+-------+-----+-------+</span><br><span class="line">     | 201215121 | 李勇   | 男   |   20 | CS    | 1   |    92 |</span><br><span class="line">     | 201215121 | 李勇   | 男   |   20 | CS    | 2   |    85 |</span><br><span class="line">     | 201215121 | 李勇   | 男   |   20 | CS    | 3   |    88 |</span><br><span class="line">     | 201215122 | 刘晨   | 女   |   19 | CS    | 2   |    90 |</span><br><span class="line">     | 201215122 | 刘晨   | 女   |   19 | CS    | 3   |    80 |</span><br><span class="line">     +-----------+--------+------+------+-------+-----+-------+</span><br><span class="line">     */</span><br></pre></td></tr></table></figure>
-</li>
+<li>```<br>– where子句的形式：[&lt;表名1&gt;.]&lt;列名2&gt;&lt;比较运算符&gt;[&lt;表名2&gt;.]&lt;列名2&gt;<br>– 或者是[&lt;表名1&gt;.]&lt;列名2&gt;&lt;比较运算符&gt;between[&lt;表名2&gt;.]&lt;列名2&gt;and[&lt;表名2&gt;.]&lt;列名3&gt;<br>select Student.<em>,SC.</em> from Student,SC where Student.Sno=SC.Sno;<br>/*<br>+———–+——–+——+——+——-+———–+—–+——-+<br>| Sno       | Sname  | Ssex | Sage | Sdept | Sno       | Cno | Grade |<br>+———–+——–+——+——+——-+———–+—–+——-+<br>| 201215121 | 李勇   | 男   |   20 | CS    | 201215121 | 1   |    92 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 201215121 | 2   |    85 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 201215121 | 3   |    88 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 201215122 | 2   |    90 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 201215122 | 3   |    80 |<br>+———–+——–+——+——+——-+———–+—–+——-+<br>*/<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">2. 自然连接查询</span><br><span class="line"></span><br><span class="line">   - ```</span><br><span class="line">     select Student.Sno,Sname,Ssex,Sage,Sdept,Cno,Grade from Student,SC where Student.Sno=SC.Sno;</span><br><span class="line">     /*</span><br><span class="line">     +-----------+--------+------+------+-------+-----+-------+</span><br><span class="line">     | Sno       | Sname  | Ssex | Sage | Sdept | Cno | Grade |</span><br><span class="line">     +-----------+--------+------+------+-------+-----+-------+</span><br><span class="line">     | 201215121 | 李勇   | 男   |   20 | CS    | 1   |    92 |</span><br><span class="line">     | 201215121 | 李勇   | 男   |   20 | CS    | 2   |    85 |</span><br><span class="line">     | 201215121 | 李勇   | 男   |   20 | CS    | 3   |    88 |</span><br><span class="line">     | 201215122 | 刘晨   | 女   |   19 | CS    | 2   |    90 |</span><br><span class="line">     | 201215122 | 刘晨   | 女   |   19 | CS    | 3   |    80 |</span><br><span class="line">     +-----------+--------+------+------+-------+-----+-------+</span><br><span class="line">     */</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-</ol>
-<ol>
 <li><p>非等值连接查询</p>
 <ul>
-<li>```<br>select Student.Sno,Sname from Student,SC where Student.Sno=SC.Sno and SC.Cno=’2’ and SC.Grade&gt;=90;<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">4. 自身连接查询</span><br><span class="line"></span><br><span class="line">   - ```</span><br><span class="line">     Select first.Cno,second.Cpno from Course first,Course second where first.Cpno=second.Cno;</span><br></pre></td></tr></table></figure>
-</li>
+<li>```<br>select Student.Sno,Sname from Student,SC where Student.Sno=SC.Sno and SC.Cno=’2’ and SC.Grade&gt;=90;<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">4. 自身连接查询</span><br><span class="line"></span><br><span class="line">   - ```</span><br><span class="line">     Select first.Cno,second.Cpno from Course first,Course second where first.Cpno=second.Cno;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>外连接查询</p>
 <ul>
-<li>```<br>select Student.Sno,Sname,Ssex,Sage,Sdept,Cno,Grade from Student left outer join SC on (Student.Sno=SC.Sno);<br>/<em><br>+—————-+————+———+———+———-+———+———-+<br>| Sno       | Sname  | Ssex | Sage | Sdept | Cno  | Grade |<br>+—————-+————+———+———+———-+———+———-+<br>| 201215121 | 李勇   | 男   |   20 | CS    | 3    |    88 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 2    |    85 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 1    |    92 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 3    |    80 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 2    |    90 |<br>| 201215123 | 王敏   | 女   |   18 | MA    | NULL |  NULL |<br>| 201215125 | 张立   | 男   |   19 | IS    | NULL |  NULL |<br>+—————-+————+———+———+———-+———+———-+
-</em>/<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">6. 复合条件查询/多表查询</span><br><span class="line"></span><br><span class="line">   - ```</span><br><span class="line">     select Student.Sno,Sname,Cname,Grade from Student,SC,Course where Student.Sno=SC.Sno and SC.Cno=Course.Cno;</span><br><span class="line">     /*</span><br><span class="line">     +-----------+--------+--------------+-------+</span><br><span class="line">     | Sno       | Sname  | Cname        | Grade |</span><br><span class="line">     +-----------+--------+--------------+-------+</span><br><span class="line">     | 201215121 | 李勇   | 数据库       |    92 |</span><br><span class="line">     | 201215121 | 李勇   | 数学         |    85 |</span><br><span class="line">     | 201215121 | 李勇   | 信息系统     |    88 |</span><br><span class="line">     | 201215122 | 刘晨   | 数学         |    90 |</span><br><span class="line">     | 201215122 | 刘晨   | 信息系统     |    80 |</span><br><span class="line">     +-----------+--------+--------------+-------+</span><br><span class="line">     */</span><br></pre></td></tr></table></figure>
-</li>
+<li>```<br>select Student.Sno,Sname,Ssex,Sage,Sdept,Cno,Grade from Student left outer join SC on (Student.Sno=SC.Sno);<br>/*<br>+———–+——–+——+——+——-+——+——-+<br>| Sno       | Sname  | Ssex | Sage | Sdept | Cno  | Grade |<br>+———–+——–+——+——+——-+——+——-+<br>| 201215121 | 李勇   | 男   |   20 | CS    | 3    |    88 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 2    |    85 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 1    |    92 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 3    |    80 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 2    |    90 |<br>| 201215123 | 王敏   | 女   |   18 | MA    | NULL |  NULL |<br>| 201215125 | 张立   | 男   |   19 | IS    | NULL |  NULL |<br>+———–+——–+——+——+——-+——+——-+<br>*/<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">6. 复合条件查询/多表查询</span><br><span class="line"></span><br><span class="line">   - ```</span><br><span class="line">     select Student.Sno,Sname,Cname,Grade from Student,SC,Course where Student.Sno=SC.Sno and SC.Cno=Course.Cno;</span><br><span class="line">     /*</span><br><span class="line">     +-----------+--------+--------------+-------+</span><br><span class="line">     | Sno       | Sname  | Cname        | Grade |</span><br><span class="line">     +-----------+--------+--------------+-------+</span><br><span class="line">     | 201215121 | 李勇   | 数据库       |    92 |</span><br><span class="line">     | 201215121 | 李勇   | 数学         |    85 |</span><br><span class="line">     | 201215121 | 李勇   | 信息系统     |    88 |</span><br><span class="line">     | 201215122 | 刘晨   | 数学         |    90 |</span><br><span class="line">     | 201215122 | 刘晨   | 信息系统     |    80 |</span><br><span class="line">     +-----------+--------+--------------+-------+</span><br><span class="line">     */</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>
@@ -2096,60 +2180,80 @@ WPL = \sum_{i=1}^nw_il_i</script><p>$WPL$最小的二叉树称为哈夫曼树，
 </li>
 <li><p>```<br>SELECT</p>
 <pre><code>Sname 
-</code></pre><p>FROM</p>
+</code></pre>
+<p>FROM</p>
 <pre><code>Student 
-</code></pre><p>WHERE</p>
+</code></pre>
+<p>WHERE</p>
 <pre><code>Sno IN ( SELECT Sno FROM SC WHERE Cno = &#39;2&#39; );
-</code></pre><p>— 查询和刘晨一个系的人的信息<br>SELECT</p>
+</code></pre>
+<p>– 查询和刘晨一个系的人的信息<br>SELECT</p>
 <pre><code>Student.*
-</code></pre><p>FROM</p>
+</code></pre>
+<p>FROM</p>
 <pre><code>Student 
-</code></pre><p>WHERE</p>
+</code></pre>
+<p>WHERE</p>
 <pre><code>Sdept IN ( SELECT Sdept FROM Student WHERE Sname = &#39;刘晨&#39; );
-</code></pre><p>— 也可以采用外连接的方式<br>select S1.<em> from Student S1, Student S2 where S1.Sdept=S2.Sdept and S2.Sname=’刘晨’<br>/</em><br>李勇    男    20    CS<br>刘晨    女    19    CS<br>*/</p>
-<p>— 查询选修了“信息系统”的学生的姓名学号<br>SELECT Student.Sname, Student.Sno from Student where Sno IN<br>(SELECT Sno FROM SC WHERE Cno IN<br> (SELECT Cno from Course  WHERE Cname=’信息系统’))；<br> — 方法2<br>SELECT *<br>from Student,Course,SC WHERE Course.Cno=SC.Cno AND SC.Sno=Student.Sno AND Course.Cname=’信息系统’</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">- 带有比较运算符的查询</span><br><span class="line"></span><br><span class="line">  - ```</span><br><span class="line">    -- 找出每个学生超过他选修课平均成绩的课程号</span><br><span class="line">    SELECT *</span><br><span class="line">    FROM SC,(SELECT SC.Sno,AVG(SC.Grade) avg FROM SC GROUP BY Sno) AS S1</span><br><span class="line">    WHERE SC.Sno=S1.Sno AND SC.Grade&gt;S1.avg;</span><br><span class="line">    </span><br><span class="line">    SELECT Sno,Cno from SC x WHERE Grade &gt;=(SELECT AVG(Grade) from SC y WHERE y.Sno=x.Sno);</span><br></pre></td></tr></table></figure>
-</li>
+</code></pre>
+<p>– 也可以采用外连接的方式<br>select S1.* from Student S1, Student S2 where S1.Sdept=S2.Sdept and S2.Sname=’刘晨’<br>/*<br>李勇    男    20    CS<br>刘晨    女    19    CS<br>*/</p>
+<p>– 查询选修了“信息系统”的学生的姓名学号<br>SELECT Student.Sname, Student.Sno from Student where Sno IN<br>(SELECT Sno FROM SC WHERE Cno IN<br> (SELECT Cno from Course  WHERE Cname=’信息系统’))；<br> – 方法2<br>SELECT *<br>from Student,Course,SC WHERE Course.Cno=SC.Cno AND SC.Sno=Student.Sno AND Course.Cname=’信息系统’</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">- 带有比较运算符的查询</span><br><span class="line"></span><br><span class="line">  - ```</span><br><span class="line">    -- 找出每个学生超过他选修课平均成绩的课程号</span><br><span class="line">    SELECT *</span><br><span class="line">    FROM SC,(SELECT SC.Sno,AVG(SC.Grade) avg FROM SC GROUP BY Sno) AS S1</span><br><span class="line">    WHERE SC.Sno=S1.Sno AND SC.Grade&gt;S1.avg;</span><br><span class="line">    </span><br><span class="line">    SELECT Sno,Cno from SC x WHERE Grade &gt;=(SELECT AVG(Grade) from SC y WHERE y.Sno=x.Sno);</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>带有any(some)或者all谓词的查询</p>
 <ul>
-<li>```<br>— 查询非CS系比CS系任意一个学生年龄小的学生姓名和年龄<br>SELECT<pre><code>Sname,
+<li>```<br>– 查询非CS系比CS系任意一个学生年龄小的学生姓名和年龄<br>SELECT<pre><code>Sname,
 Sage 
-</code></pre>FROM<pre><code>Student 
-</code></pre>WHERE<pre><code>Student.Sage &lt; ANY ( SELECT Sage FROM Student WHERE Sdept = &#39;CS&#39; ) 
+</code></pre>
+FROM<pre><code>Student 
+</code></pre>
+WHERE<pre><code>Student.Sage &lt; ANY ( SELECT Sage FROM Student WHERE Sdept = &#39;CS&#39; ) 
 AND Student.Sdept &lt;&gt; &#39;CS&#39;
-</code></pre><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 带有exists谓词的子查询</span><br><span class="line"></span><br><span class="line">  - exist谓词的子句查询不反悔任何数据，只产生逻辑真假</span><br><span class="line"></span><br><span class="line">  - ```</span><br><span class="line">    -- 查询所有选修了1号课程的学生姓名</span><br><span class="line">    SELECT Sname,Sno</span><br><span class="line">    FROM Student</span><br><span class="line">    WHERE EXISTS (SELECT * FROM SC,Student where SC.Sno=Student.Sno and Cno=&#x27;1&#x27;);</span><br><span class="line">    </span><br><span class="line">    -- 查询至少选修了学生201215122选的全部课程的学生号码</span><br><span class="line">    SELECT DISTINCT</span><br><span class="line">    	Sno</span><br><span class="line">    FROM</span><br><span class="line">    	SC SCX </span><br><span class="line">    WHERE</span><br><span class="line">    	NOT EXISTS (</span><br><span class="line">    	SELECT</span><br><span class="line">    		* </span><br><span class="line">    	FROM</span><br><span class="line">    		SC SCY </span><br><span class="line">    	WHERE</span><br><span class="line">    	SCY.Sno = &#x27;201215122&#x27; </span><br><span class="line">    	AND NOT EXISTS ( SELECT * FROM SC SCZ WHERE SCZ.Sno = SCX.Sno AND SCZ.Cno = SCY.Cno ))</span><br></pre></td></tr></table></figure>
-</li>
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 带有exists谓词的子查询</span><br><span class="line"></span><br><span class="line">  - exist谓词的子句查询不反悔任何数据，只产生逻辑真假</span><br><span class="line"></span><br><span class="line">  - ```</span><br><span class="line">    -- 查询所有选修了1号课程的学生姓名</span><br><span class="line">    SELECT Sname,Sno</span><br><span class="line">    FROM Student</span><br><span class="line">    WHERE EXISTS (SELECT * FROM SC,Student where SC.Sno=Student.Sno and Cno=&#x27;1&#x27;);</span><br><span class="line">    </span><br><span class="line">    -- 查询至少选修了学生201215122选的全部课程的学生号码</span><br><span class="line">    SELECT DISTINCT</span><br><span class="line">    	Sno</span><br><span class="line">    FROM</span><br><span class="line">    	SC SCX </span><br><span class="line">    WHERE</span><br><span class="line">    	NOT EXISTS (</span><br><span class="line">    	SELECT</span><br><span class="line">    		* </span><br><span class="line">    	FROM</span><br><span class="line">    		SC SCY </span><br><span class="line">    	WHERE</span><br><span class="line">    	SCY.Sno = &#x27;201215122&#x27; </span><br><span class="line">    	AND NOT EXISTS ( SELECT * FROM SC SCZ WHERE SCZ.Sno = SCX.Sno AND SCZ.Cno = SCY.Cno ))</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 <h4 id="集合查询（并-UNION-交-INTERSECT-差-EXCEPT-）"><a href="#集合查询（并-UNION-交-INTERSECT-差-EXCEPT-）" class="headerlink" title="集合查询（并(UNION)交(INTERSECT)差(EXCEPT)）"></a>集合查询（并(UNION)交(INTERSECT)差(EXCEPT)）</h4><ul>
-<li>```<br>— 查询CS系里的学生及年龄不大于19岁的学生<br>SELECT<pre><code>* 
-</code></pre>FROM<pre><code>Student 
-</code></pre>WHERE<pre><code>Sdept = &#39;CS&#39; UNION
-</code></pre>SELECT<pre><code>* 
-</code></pre>FROM<pre><code>Student 
-</code></pre>WHERE<pre><code>Sage &lt;= 19;
-</code></pre><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 基于派生表的查询</span><br><span class="line"></span><br><span class="line">子查询不仅可以出现在WHERE子句中，还可以出现在FROM子句里面，这时候子查询生成的临时派生表成为主查询的查询对象。</span><br><span class="line"></span><br><span class="line">**FROM子句里面的派生表必须要有别名。**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-— 选择每个学生超过他自己平均成绩的课程的课程号<br>SELECT<br>  Sno,<br>  Cno<br>FROM<br>  SC,<br>  ( SELECT Sno, Avg( Grade ) FROM SC GROUP BY Sno ) AS Avg_sc ( avg_sno, avg_grade )<br>WHERE<br>  SC.Sno = Avg_sc.avg_sno<br>  AND SC.Grade &gt;= Avg_sc.avg_grade<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 数据更新</span><br><span class="line"></span><br><span class="line">#### 插入数据</span><br><span class="line"></span><br><span class="line">- 插入元组</span><br><span class="line"></span><br><span class="line">  - ```</span><br><span class="line">    INSERT INTO Student (Sno, Sname, Sage, Sdept, Ssex)</span><br><span class="line">    VALUES(&#x27;201951001&#x27;, &#x27;张三&#x27;, 18, &#x27;CS&#x27;, &#x27;男&#x27;)</span><br></pre></td></tr></table></figure>
+<li><p>```<br>– 查询CS系里的学生及年龄不大于19岁的学生<br>SELECT</p>
+<pre><code>* 
+</code></pre>
+<p>FROM</p>
+<pre><code>Student 
+</code></pre>
+<p>WHERE</p>
+<pre><code>Sdept = &#39;CS&#39; UNION
+</code></pre>
+<p>SELECT</p>
+<pre><code>* 
+</code></pre>
+<p>FROM</p>
+<pre><code>Student 
+</code></pre>
+<p>WHERE</p>
+<pre><code>Sage &lt;= 19;
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 基于派生表的查询</span><br><span class="line"></span><br><span class="line">子查询不仅可以出现在WHERE子句中，还可以出现在FROM子句里面，这时候子查询生成的临时派生表成为主查询的查询对象。</span><br><span class="line"></span><br><span class="line">**FROM子句里面的派生表必须要有别名。**</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><ul>
+<li>选择每个学生超过他自己平均成绩的课程的课程号<br>SELECT<br> Sno,<br> Cno<br>FROM<br> SC,<br> ( SELECT Sno, Avg( Grade ) FROM SC GROUP BY Sno ) AS Avg_sc ( avg_sno, avg_grade )<br>WHERE<br> SC.Sno = Avg_sc.avg_sno<br> AND SC.Grade &gt;= Avg_sc.avg_grade<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 数据更新</span><br><span class="line"></span><br><span class="line">#### 插入数据</span><br><span class="line"></span><br><span class="line">- 插入元组</span><br><span class="line"></span><br><span class="line">  - ```</span><br><span class="line">    INSERT INTO Student (Sno, Sname, Sage, Sdept, Ssex)</span><br><span class="line">    VALUES(&#x27;201951001&#x27;, &#x27;张三&#x27;, 18, &#x27;CS&#x27;, &#x27;男&#x27;)</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<ul>
+</li>
 <li><p>插入子查询的结果</p>
 <ul>
-<li>```<br>— CREATE TABLE Dept_age (Sdept CHAR(15),Avg_age SMALLINT)<br>INSERT INTO Dept_age(Sdept, Avg_age)<br>SELECT Sdept, AVG(Sage) FROM Student GROUP BY Sdept;<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">#### 修改数据</span><br><span class="line"></span><br><span class="line">- 修改某一个元组的值</span><br><span class="line"></span><br><span class="line">  - ```</span><br><span class="line">    -- 修改数据</span><br><span class="line">    UPDATE Student SET Sage=22 WHERE Sno=&#x27;201215121&#x27;</span><br></pre></td></tr></table></figure>
-</li>
+<li>```<br>– CREATE TABLE Dept_age (Sdept CHAR(15),Avg_age SMALLINT)<br>INSERT INTO Dept_age(Sdept, Avg_age)<br>SELECT Sdept, AVG(Sage) FROM Student GROUP BY Sdept;<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">#### 修改数据</span><br><span class="line"></span><br><span class="line">- 修改某一个元组的值</span><br><span class="line"></span><br><span class="line">  - ```</span><br><span class="line">    -- 修改数据</span><br><span class="line">    UPDATE Student SET Sage=22 WHERE Sno=&#x27;201215121&#x27;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>修改多个元组的值</p>
 <ul>
-<li>```<br>— 修改多个元组的值<br>— UPDATE Student SET Sage=Sage+1<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 带子查询的修改</span><br><span class="line"></span><br><span class="line">  - ```</span><br><span class="line">    -- 带子查询的修改语句:CS系的学生成绩设置成0</span><br><span class="line">    UPDATE SC SET Grade=0 WHERE Sno IN(SELECT Sno FROM Student WHERE Sdept=&#x27;CS&#x27;)</span><br></pre></td></tr></table></figure>
-</li>
+<li>```<br>– 修改多个元组的值<br>– UPDATE Student SET Sage=Sage+1<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 带子查询的修改</span><br><span class="line"></span><br><span class="line">  - ```</span><br><span class="line">    -- 带子查询的修改语句:CS系的学生成绩设置成0</span><br><span class="line">    UPDATE SC SET Grade=0 WHERE Sno IN(SELECT Sno FROM Student WHERE Sdept=&#x27;CS&#x27;)</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 <h4 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-- 删除一个元组</span><br><span class="line">DELETE FROM Student WHERE Sno=&#x27;201215128&#x27;</span><br><span class="line">-- 删除多个元组</span><br><span class="line">DELETE FROM SC</span><br><span class="line">-- 带有子查询的删除</span><br><span class="line">DELETE FROM SC WHERE Sno IN (SELECT Sno FROM Student WHERE Sdept=&#x27;DD&#x27;)</span><br></pre></td></tr></table></figure>
+
 <h3 id="空值处理"><a href="#空值处理" class="headerlink" title="空值处理"></a>空值处理</h3><p>空值：不知道、不存在、无意义的值</p>
 <ul>
 <li><p>产生：    </p>
@@ -2160,8 +2264,7 @@ AND Student.Sdept &lt;&gt; &#39;CS&#39;
 <li><p>判断：</p>
 <ul>
 <li><p>IS NULL </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM Student WHERE Sname IS NULL OR Sage IS NULL OR Sdept IS NULL</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM Student WHERE Sname IS NULL OR Sage IS NULL OR Sdept IS NULL</span><br></pre></td></tr></table></figure></li>
 <li><p>IN NOT NULL</p>
 </li>
 </ul>
@@ -2183,10 +2286,12 @@ AND Student.Sdept &lt;&gt; &#39;CS&#39;
 <li>创建视图</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-- WITH CHECK OPTION表示对视图进行插入删除修改的时候，会自动加上Sdept=&#x27;IS&#x27;条件</span><br><span class="line">-- 建立在单个表的视图</span><br><span class="line">CREATE VIEW IS_Student AS SELECT Sno,Sname,Sage FROM Student WHERE Sdept=&#x27;IS&#x27; WITH CHECK OPTION</span><br><span class="line">-- 建立在多个基本表的视图:建立选修了1号课程的学生的视图</span><br><span class="line">CREATE VIEW IS_S1(Sno, Sname, Grade)AS SELECT Student.Sno, Sname, Grade FROM Student, SC WHERE Sdept=&#x27;IS&#x27; AND Student.Sno=SC.Sno AND SC.Cno=&#x27;1&#x27;</span><br><span class="line">-- 建立在视图上的视图</span><br><span class="line">CREATE VIEW IS_S2 as SELECT Sno,Sname,Grade FROM IS_S1 WHERE Grade&gt;=90</span><br><span class="line">-- 带有表达式的视图：存在虚拟列</span><br><span class="line">CREATE VIEW BT_S(Sno, Sname, Sbirth) as SELECT Sno, Sname, 2014-Sage FROM Student</span><br><span class="line">-- 分组视图：用带有聚集函数和GROUP BY子句的查询定义的</span><br><span class="line">CREATE VIEW S_G(Sno, Gavg) AS SELECT Sno, AVG(Grade) FROM SC GROUP BY Sno</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>删除视图</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP VIEW BT_S CASCADE -- 级联删除</span><br></pre></td></tr></table></figure>
+
 <h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p><strong>视图消解：</strong>DBMS在进行对视图的查询的时候：</p>
 <ul>
 <li>首先进行有效性检查，检查中查询中涉及的表或者视图是否存在；</li>
@@ -2253,23 +2358,20 @@ AND Student.Sdept &lt;&gt; &#39;CS&#39;
 <ol>
 <li><p>GRANT</p>
 <ul>
-<li>```<br>GRANT SELECT ON TABLE Student TO LIXIAN — 将查询权限授权给用户<br>GRANT all privileges ON TABLE Student TO LIXIAN,user1<br>GRANT SELECT ON TABLE Student TO PUBLIC — 谁都行<br>GRANT SELECT ON TABLE Student TO PUBLIC WITH GRANT OPTION — 允许权限再授权<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">2. REVOKE</span><br><span class="line"></span><br><span class="line">   - ```</span><br><span class="line">     REVOKE SELECT ON TABLE SC FROM PUBLIC</span><br></pre></td></tr></table></figure>
-</li>
+<li>```<br>GRANT SELECT ON TABLE Student TO LIXIAN – 将查询权限授权给用户<br>GRANT all privileges ON TABLE Student TO LIXIAN,user1<br>GRANT SELECT ON TABLE Student TO PUBLIC – 谁都行<br>GRANT SELECT ON TABLE Student TO PUBLIC WITH GRANT OPTION – 允许权限再授权<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">2. REVOKE</span><br><span class="line"></span><br><span class="line">   - ```</span><br><span class="line">     REVOKE SELECT ON TABLE SC FROM PUBLIC</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>创建数据库模式的权限</p>
 <ul>
-<li><p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210825223248415.png" alt="image-20210825223248415" style="zoom:50%;"></p>
-</li>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210825223248415.png" alt="image-20210825223248415" style="zoom:50%;"></li>
 <li><p>```<br>CREATE USER <username> [WITH][DBA|RESOURCE|CONNECT]</username></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">5. 数据库角色（其实就是用户组）</span><br><span class="line"></span><br><span class="line">   1. 数据库角色是被命名的一组与数据库操作相关的权限，角色是权限的集合。一组具有相同权限的用户创建一个角色</span><br><span class="line"></span><br><span class="line">   2. 角色操作</span><br><span class="line"></span><br><span class="line">      1. 创建：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p> CREATE USER &lt;角色名&gt;</p>
  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 授权同用户的授权</span><br><span class="line"></span><br><span class="line">3. 角色授予用户</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p> GRANT &lt;角色1,2,3&gt; TO &lt;角色n&gt;[&lt;用户1&gt;] WITH ADMIN OPTION  — 可以继续再授权 </p>
+<p> GRANT &lt;角色1,2,3&gt; TO &lt;角色n&gt;[&lt;用户1&gt;] WITH ADMIN OPTION  – 可以继续再授权 </p>
  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">4. 回收</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p> REVOKE &lt;权限&gt; ON &lt;对象类型&gt; FROM &lt;角色&gt;</p>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">         </span><br><span class="line"></span><br><span class="line">6. 强制存取控制方法</span><br><span class="line"></span><br><span class="line">   1. 系统中的活动实体，分为主体和客体。主体包括用户、用户的各个进程；客体包括文本、基本表、索引、视图。</span><br><span class="line">   2. 数据库对主体和客体分配**敏感度标记**，主体的敏感度标记称为许可证级别，客体的称为密级。</span><br><span class="line"></span><br><span class="line">### 视图机制</span><br><span class="line"></span><br><span class="line">1. 建立一个视图，在视图上定义用户的权限，</span><br><span class="line"></span><br><span class="line">### 审计</span><br><span class="line"></span><br><span class="line">对服务器事件、系统权限、SQL语句事件、模式对象事件（对特定模式对象\&lt;表、视图、存储过程、函数\&gt;上进行的SELECT或者DML操作）</span><br><span class="line"></span><br><span class="line">用AUIDIT NOTAUDIT开启、关闭审计功能。</span><br><span class="line"></span><br><span class="line">### 数据加密</span><br><span class="line"></span><br><span class="line">1. 存储加密</span><br><span class="line">2. 传输加密</span><br><span class="line"></span><br><span class="line">### 其它安全性保护</span><br><span class="line"></span><br><span class="line">1. 推理控制（由函数依赖关系推断出高等级信息）</span><br><span class="line">2. 隐蔽信道</span><br><span class="line"></span><br><span class="line">## 数据库完整性（数据库核心支持的功能）</span><br><span class="line"></span><br><span class="line">指的是数据的正确性（correctness，数据符合现实，反映现实）和相容性（compat-ability，数据库同一对象在不同关系表中的数据是符合逻辑的）。</span><br><span class="line"></span><br><span class="line">要求DBMS：提供定义完整性约束条件的机制；提供完整性检查的方法；进行违约处理。</span><br><span class="line"></span><br><span class="line">### 实体完整性</span><br><span class="line"></span><br><span class="line">1. 定义：在CREATE TABLE中用PRIMARY KEY定义。</span><br><span class="line">   - 对单属性构成的码</span><br><span class="line">     - 定义为列级约束条件，例如`(Sno CHAR(9) PRIMARY KEY, ...);`</span><br><span class="line">     - 定义为表级约束条件，例如`(Sno CHAR(9), ..., PRIMARY KEY(Sno));`</span><br><span class="line">   - 对多属性构成的码：</span><br><span class="line">     - 只能定义为表级约束条件，例如`(Sno CHAR(9), ..., PRIMARY KEY(Sno, Cno));`</span><br><span class="line">2. 实体完整性检查和违约处理</span><br><span class="line">   1. 检查是否唯一。一般建立一个B+树的索引，减少耗时</span><br><span class="line">   2. 检查是否为空</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 参照完整性</span><br><span class="line"></span><br><span class="line">1. 定义：用FOREIGN KEY定义外码，用REFERENCE指明外码参照哪些表的主码</span><br><span class="line">   - `(..., PRIMARY KEY (Sno,Cno), FOREIGN KEY (Sno) REFERENCES Student(Sno), FOREIGN KEY (Cno) REFERENCES Course(Cno) )`</span><br><span class="line">2. 参照完整性检查和违约处理</span><br><span class="line">   - &lt;img src=&quot;0数据库/image-20210826001946233.png&quot; alt=&quot;image-20210826001946233&quot; style=&quot;zoom:67%;&quot; /&gt;</span><br><span class="line">   - 处理策略</span><br><span class="line">     - 拒绝</span><br><span class="line">     - 级联：当删除或修改被参照表的一个元组导致与参照表的不一致时，删除或修改参照表中所有导致不一致的元组。</span><br><span class="line">     - 置空</span><br><span class="line"></span><br><span class="line">### 用户定义的完整性</span><br><span class="line"></span><br><span class="line">1. 属性上的约束</span><br><span class="line">   1. NOT NULL，不允许为空值</span><br><span class="line">   2. UNIQUE，列值唯一</span><br><span class="line">   3. CHECK， 指定列满足的条件，例如`Ssex CHAR(2) CHECK(sSEX IN (&#x27;男&#x27;，&#x27;女&#x27;))`</span><br><span class="line">2. 元组上的约束</span><br><span class="line">   1. 在定义完所有属性的类型之后统一集中定义</span><br><span class="line"></span><br><span class="line">### 完整性约束命名子句(CONSTRAINT)</span><br><span class="line"></span><br><span class="line">1. 完整性约束命名子句</span><br><span class="line"></span><br><span class="line">   - ```</span><br><span class="line">     CREATE TABLE Student (Sno NUMERIC(6) CONSTRAINT C1 CHECK(Sno between 90000 AND 99999),..., CONSTRAINT StudentKey PRIMARY KEY(Sno))</span><br></pre></td></tr></table></figure>
-</li>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">         </span><br><span class="line"></span><br><span class="line">6. 强制存取控制方法</span><br><span class="line"></span><br><span class="line">   1. 系统中的活动实体，分为主体和客体。主体包括用户、用户的各个进程；客体包括文本、基本表、索引、视图。</span><br><span class="line">   2. 数据库对主体和客体分配**敏感度标记**，主体的敏感度标记称为许可证级别，客体的称为密级。</span><br><span class="line"></span><br><span class="line">### 视图机制</span><br><span class="line"></span><br><span class="line">1. 建立一个视图，在视图上定义用户的权限，</span><br><span class="line"></span><br><span class="line">### 审计</span><br><span class="line"></span><br><span class="line">对服务器事件、系统权限、SQL语句事件、模式对象事件（对特定模式对象\&lt;表、视图、存储过程、函数\&gt;上进行的SELECT或者DML操作）</span><br><span class="line"></span><br><span class="line">用AUIDIT NOTAUDIT开启、关闭审计功能。</span><br><span class="line"></span><br><span class="line">### 数据加密</span><br><span class="line"></span><br><span class="line">1. 存储加密</span><br><span class="line">2. 传输加密</span><br><span class="line"></span><br><span class="line">### 其它安全性保护</span><br><span class="line"></span><br><span class="line">1. 推理控制（由函数依赖关系推断出高等级信息）</span><br><span class="line">2. 隐蔽信道</span><br><span class="line"></span><br><span class="line">## 数据库完整性（数据库核心支持的功能）</span><br><span class="line"></span><br><span class="line">指的是数据的正确性（correctness，数据符合现实，反映现实）和相容性（compat-ability，数据库同一对象在不同关系表中的数据是符合逻辑的）。</span><br><span class="line"></span><br><span class="line">要求DBMS：提供定义完整性约束条件的机制；提供完整性检查的方法；进行违约处理。</span><br><span class="line"></span><br><span class="line">### 实体完整性</span><br><span class="line"></span><br><span class="line">1. 定义：在CREATE TABLE中用PRIMARY KEY定义。</span><br><span class="line">   - 对单属性构成的码</span><br><span class="line">     - 定义为列级约束条件，例如`(Sno CHAR(9) PRIMARY KEY, ...);`</span><br><span class="line">     - 定义为表级约束条件，例如`(Sno CHAR(9), ..., PRIMARY KEY(Sno));`</span><br><span class="line">   - 对多属性构成的码：</span><br><span class="line">     - 只能定义为表级约束条件，例如`(Sno CHAR(9), ..., PRIMARY KEY(Sno, Cno));`</span><br><span class="line">2. 实体完整性检查和违约处理</span><br><span class="line">   1. 检查是否唯一。一般建立一个B+树的索引，减少耗时</span><br><span class="line">   2. 检查是否为空</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 参照完整性</span><br><span class="line"></span><br><span class="line">1. 定义：用FOREIGN KEY定义外码，用REFERENCE指明外码参照哪些表的主码</span><br><span class="line">   - `(..., PRIMARY KEY (Sno,Cno), FOREIGN KEY (Sno) REFERENCES Student(Sno), FOREIGN KEY (Cno) REFERENCES Course(Cno) )`</span><br><span class="line">2. 参照完整性检查和违约处理</span><br><span class="line">   - &lt;img src=&quot;0数据库/image-20210826001946233.png&quot; alt=&quot;image-20210826001946233&quot; style=&quot;zoom:67%;&quot; /&gt;</span><br><span class="line">   - 处理策略</span><br><span class="line">     - 拒绝</span><br><span class="line">     - 级联：当删除或修改被参照表的一个元组导致与参照表的不一致时，删除或修改参照表中所有导致不一致的元组。</span><br><span class="line">     - 置空</span><br><span class="line"></span><br><span class="line">### 用户定义的完整性</span><br><span class="line"></span><br><span class="line">1. 属性上的约束</span><br><span class="line">   1. NOT NULL，不允许为空值</span><br><span class="line">   2. UNIQUE，列值唯一</span><br><span class="line">   3. CHECK， 指定列满足的条件，例如`Ssex CHAR(2) CHECK(sSEX IN (&#x27;男&#x27;，&#x27;女&#x27;))`</span><br><span class="line">2. 元组上的约束</span><br><span class="line">   1. 在定义完所有属性的类型之后统一集中定义</span><br><span class="line"></span><br><span class="line">### 完整性约束命名子句(CONSTRAINT)</span><br><span class="line"></span><br><span class="line">1. 完整性约束命名子句</span><br><span class="line"></span><br><span class="line">   - ```</span><br><span class="line">     CREATE TABLE Student (Sno NUMERIC(6) CONSTRAINT C1 CHECK(Sno between 90000 AND 99999),..., CONSTRAINT StudentKey PRIMARY KEY(Sno))</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>
@@ -2277,11 +2379,16 @@ AND Student.Sdept &lt;&gt; &#39;CS&#39;
 <li><p>修改表中的完整性限制</p>
 <ul>
 <li>```<br>ALTER TABLE Student DROP CONTRSTRAINT C1<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   - 修改：先删除再新增</span><br><span class="line"></span><br><span class="line">### 域中的完整性限制(DOMAIN)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-CREATE DOMAIN GenderDomain CHAR(2) CHECK (VALUE IN (‘男’,’女’))<br>— 那么新建表的时候，可以 Ssex GenderDoamin<br>— 可以结合CONSTRAINT<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 断言(ASSERTION)</span><br><span class="line"></span><br><span class="line">1. 定义</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-CREATE ASSERTION ASSE_SC_DB_NUM<br>CHECK (60 &gt;= (SELECT COUNT(*) FROM Course, SC WHERE SC.Cno=Course.Cname=’数据库’))<br>— 限制数据库最多60个人选修<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 删除`DROP ASSERTION &lt;断言名&gt;`</span><br><span class="line"></span><br><span class="line">### 触发器（TRIGGER）</span><br><span class="line"></span><br><span class="line">1. 定义：</span><br><span class="line"></span><br><span class="line">   1. ```</span><br><span class="line">      CREATE TRIGGER &lt;触发器名&gt;</span><br><span class="line">      ｛BEFORE|AFTER｝ &lt;触发事件&gt; ON &lt;表名&gt;</span><br><span class="line">      REFERENCING NEW|OLD ROW AS &lt;变量&gt; -- 指出引用的变量</span><br><span class="line">      FOR EACH &#123;ROW|STATEMENT&#125;</span><br><span class="line">      [WHEN &lt;触发条件&gt;]&lt;触发动作&gt;</span><br></pre></td></tr></table></figure>
-</li>
+CREATE DOMAIN GenderDomain CHAR(2) CHECK (VALUE IN (‘男’,’女’))</li>
 </ul>
 </li>
+</ol>
+<p>– 那么新建表的时候，可以 Ssex GenderDoamin<br>– 可以结合CONSTRAINT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 断言(ASSERTION)</span><br><span class="line"></span><br><span class="line">1. 定义</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>CREATE ASSERTION ASSE_SC_DB_NUM<br>CHECK (60 &gt;= (SELECT COUNT(*) FROM Course, SC WHERE SC.Cno=Course.Cname=’数据库’))<br>– 限制数据库最多60个人选修</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 删除`DROP ASSERTION &lt;断言名&gt;`</span><br><span class="line"></span><br><span class="line">### 触发器（TRIGGER）</span><br><span class="line"></span><br><span class="line">1. 定义：</span><br><span class="line"></span><br><span class="line">   1. ```</span><br><span class="line">      CREATE TRIGGER &lt;触发器名&gt;</span><br><span class="line">      ｛BEFORE|AFTER｝ &lt;触发事件&gt; ON &lt;表名&gt;</span><br><span class="line">      REFERENCING NEW|OLD ROW AS &lt;变量&gt; -- 指出引用的变量</span><br><span class="line">      FOR EACH &#123;ROW|STATEMENT&#125;</span><br><span class="line">      [WHEN &lt;触发条件&gt;]&lt;触发动作&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
 <li><p>要求：</p>
 <ol>
 <li>创建表的用户才可以创建触发器</li>
@@ -2332,16 +2439,14 @@ CREATE ASSERTION ASSE_SC_DB_NUM<br>CHECK (60 &gt;= (SELECT COUNT(*) FROM Course,
 <li>数据库运行和维护</li>
 </ol>
 </li>
-<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210830204728105.png" alt="image-20210830204728105" style="zoom:80%;"><ol>
-<li>概念设计阶段形成独立于及其特点和各个DBMS的概念模式，在本篇中就是E-R图；</li>
-<li>逻辑设计阶段将E-R图转换成具体的数据库产品支持的数据模型，形成数据库逻辑模式。然后根据用户处理的要求、安全性的考虑，在基本表的基础上建立必要的视图，形成数据的外模式。</li>
-<li>物理结构设计阶段，根据DBMS的特点和处理的需要进行物理存储安排，建立索引，形成数据库内模式。</li>
-</ol>
-</li>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210830204728105.png" alt="image-20210830204728105" style="zoom:80%;">
+1. 概念设计阶段形成独立于及其特点和各个DBMS的概念模式，在本篇中就是E-R图；
+2. 逻辑设计阶段将E-R图转换成具体的数据库产品支持的数据模型，形成数据库逻辑模式。然后根据用户处理的要求、安全性的考虑，在基本表的基础上建立必要的视图，形成数据的外模式。
+3. 物理结构设计阶段，根据DBMS的特点和处理的需要进行物理存储安排，建立索引，形成数据库内模式。</li>
 </ol>
 <h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><h3 id="概念结构设计"><a href="#概念结构设计" class="headerlink" title="概念结构设计"></a>概念结构设计</h3><h3 id="逻辑结构设计"><a href="#逻辑结构设计" class="headerlink" title="逻辑结构设计"></a>逻辑结构设计</h3><h3 id="物理结构设计"><a href="#物理结构设计" class="headerlink" title="物理结构设计"></a>物理结构设计</h3><h3 id="数据库实施与维护"><a href="#数据库实施与维护" class="headerlink" title="数据库实施与维护"></a>数据库实施与维护</h3><h2 id="数据库编程"><a href="#数据库编程" class="headerlink" title="数据库编程"></a>数据库编程</h2><h3 id="嵌入式SQL"><a href="#嵌入式SQL" class="headerlink" title="嵌入式SQL"></a>嵌入式SQL</h3><p>数据库工作单元与源程序工作单元之间的通信：</p>
 <ol>
-<li><p>向主语句传递SQL语句的执行状态信息，使主语言根据信息控制程序流程，主要通过<strong>SQL通信区($SQLCA$)</strong>实现。</p>
+<li><p>向主语句传递SQL语句的执行状态信息，使主语言根据信息控制程序流程，主要通过**SQL通信区($SQLCA$)**实现。</p>
 <ul>
 <li>SQL通信区用$EXEC\ SQL\ INCIUDE\ SQLCA$定义。$SQLCODE$用来存放每次执行SQL语句后返回的代码</li>
 </ul>
@@ -2352,7 +2457,8 @@ CREATE ASSERTION ASSE_SC_DB_NUM<br>CHECK (60 &gt;= (SELECT COUNT(*) FROM Course,
 </li>
 <li><p>通过$BEGIN\ DECLARE\ SECTION$与$END\ DECLARE\ SECTION$之间进行说明</p>
 </li>
-<li>主变量和指示变量前要加冒号作为标志</li>
+<li><p>主变量和指示变量前要加冒号作为标志</p>
+</li>
 </ul>
 </li>
 <li><p>将SQL语句查询数据库的结构交主语言处理，主要用<strong>主变量和游标（cursor）</strong>实现。</p>
@@ -2377,7 +2483,7 @@ CREATE ASSERTION ASSE_SC_DB_NUM<br>CHECK (60 &gt;= (SELECT COUNT(*) FROM Course,
 <li>用游标的SQL语句：<ol>
 <li>查询结果为多条记录的SELECET语句<ul>
 <li>使用游标步骤<ul>
-<li>说明游标$EXEC\ SQL\ DECLARE\ &lt;游标名&gt;\ CURSOR\ FOR <SELECT语句>$</SELECT语句></li>
+<li>说明游标$EXEC\ SQL\ DECLARE\ &lt;游标名&gt;\ CURSOR\ FOR &lt;SELECT语句&gt;$</li>
 <li>打开游标$EXEC\ SQL\ OPEN\ &lt;游标名&gt;$</li>
 <li>推进游标指针并取当前记录$EXEC\ SQL\ FETCH\ &lt;游标名&gt;\ INTO\ &lt;主变量&gt;[&lt;指示变量&gt;]$</li>
 <li>关闭游标$EXEC\ SQL\ CLOSE\ &lt;游标名&gt;$</li>
@@ -2394,8 +2500,12 @@ CREATE ASSERTION ASSE_SC_DB_NUM<br>CHECK (60 &gt;= (SELECT COUNT(*) FROM Course,
 </ol>
 </li>
 </ol>
-<h3 id="过程化SQL"><a href="#过程化SQL" class="headerlink" title="过程化SQL"></a>过程化SQL</h3><p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210830212226698.png" alt="image-20210830212226698" style="zoom: 50%;"></p>
-<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210830212244848.png" alt="image-20210830212244848" style="zoom: 50%;"></p>
+<h3 id="过程化SQL"><a href="#过程化SQL" class="headerlink" title="过程化SQL"></a>过程化SQL</h3><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210830212226698.png" alt="image-20210830212226698" style="zoom: 50%;">
+
+<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210830212244848.png" alt="image-20210830212244848" style="zoom: 50%;">
+
+
+
 <h3 id="存储过程和函数"><a href="#存储过程和函数" class="headerlink" title="存储过程和函数"></a>存储过程和函数</h3><h3 id="开放数据库互连（ODBC）"><a href="#开放数据库互连（ODBC）" class="headerlink" title="开放数据库互连（ODBC）"></a>开放数据库互连（ODBC）</h3><p>不同DBMS之间共享数据</p>
 <h3 id="OLE-DB"><a href="#OLE-DB" class="headerlink" title="OLE DB"></a>OLE DB</h3><h3 id="Java数据库连接（JDBC）"><a href="#Java数据库连接（JDBC）" class="headerlink" title="Java数据库连接（JDBC）"></a>Java数据库连接（JDBC）</h3><h2 id="关系查询处理和查询优化"><a href="#关系查询处理和查询优化" class="headerlink" title="关系查询处理和查询优化"></a>关系查询处理和查询优化</h2><h2 id="数据库恢复技术"><a href="#数据库恢复技术" class="headerlink" title="数据库恢复技术"></a>数据库恢复技术</h2><h3 id="事务基本概念"><a href="#事务基本概念" class="headerlink" title="事务基本概念"></a>事务基本概念</h3><ol>
 <li>定义：用户定义的一个数据库操作序列，这些操作要么全做，要么全不做，是一个不可分割的工作单位</li>
@@ -2650,24 +2760,24 @@ CREATE ASSERTION ASSE_SC_DB_NUM<br>CHECK (60 &gt;= (SELECT COUNT(*) FROM Course,
 
       
           <ul>
-<li><a href="#1-本文摘要及说明">1 本文摘要及说明</a></li>
-<li><a href="#2-windows配置远程登录的几种常见方法">2 Windows配置远程登录的几种常见方法</a><ul>
-<li><a href="#21-windows-powershell-方式">2.1 Windows PowerShell 方式</a><ul>
-<li><a href="#211-检查">2.1.1 检查</a></li>
-<li><a href="#212-生成密钥">2.1.2 生成密钥</a></li>
-<li><a href="#213-新建config文件">2.1.3 新建config文件</a></li>
-<li><a href="#214-连接远程ecs实例">2.1.4 连接远程ECS实例</a></li>
+<li><a href="#1-%E6%9C%AC%E6%96%87%E6%91%98%E8%A6%81%E5%8F%8A%E8%AF%B4%E6%98%8E">1 本文摘要及说明</a></li>
+<li><a href="#2-windows%E9%85%8D%E7%BD%AE%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E7%9A%84%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95">2 Windows配置远程登录的几种常见方法</a><ul>
+<li><a href="#21-windows-powershell-%E6%96%B9%E5%BC%8F">2.1 Windows PowerShell 方式</a><ul>
+<li><a href="#211-%E6%A3%80%E6%9F%A5">2.1.1 检查</a></li>
+<li><a href="#212-%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5">2.1.2 生成密钥</a></li>
+<li><a href="#213-%E6%96%B0%E5%BB%BAconfig%E6%96%87%E4%BB%B6">2.1.3 新建config文件</a></li>
+<li><a href="#214-%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8Becs%E5%AE%9E%E4%BE%8B">2.1.4 连接远程ECS实例</a></li>
 </ul>
 </li>
-<li><a href="#22-git-bash-方式">2.2 Git Bash 方式</a></li>
-<li><a href="#23-vscode插件remote-ssh方式">2.3 VSCode插件（Remote-SSH）方式</a><ul>
-<li><a href="#231-安装插件">2.3.1 安装插件：</a></li>
-<li><a href="#232-连接">2.3.2 连接</a></li>
+<li><a href="#22-git-bash-%E6%96%B9%E5%BC%8F">2.2 Git Bash 方式</a></li>
+<li><a href="#23-vscode%E6%8F%92%E4%BB%B6remote-ssh%E6%96%B9%E5%BC%8F">2.3 VSCode插件（Remote-SSH）方式</a><ul>
+<li><a href="#231-%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6">2.3.1 安装插件：</a></li>
+<li><a href="#232-%E8%BF%9E%E6%8E%A5">2.3.2 连接</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#参考文献">参考文献</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">参考文献</a></li>
 </ul>
 <h1 id="1-本文摘要及说明"><a href="#1-本文摘要及说明" class="headerlink" title="1 本文摘要及说明"></a>1 本文摘要及说明</h1><p>小白写的小白向教程，错误之处还请指正。</p>
 <p>记录自己Windows采用SSH方式远程登录阿里云ECS虚拟机的配置过程记录及踩的坑。</p>
@@ -2676,9 +2786,9 @@ CREATE ASSERTION ASSE_SC_DB_NUM<br>CHECK (60 &gt;= (SELECT COUNT(*) FROM Course,
 <li>阿里云ECS实例需要时开启状态</li>
 <li>阿里云ECS实例中“本实例安全组”的“内网入方向全部规则”中要保持22/22端口的开启。（其实这个端口默认是开启的，笔者前段时间进行过设置，导致该端口并未开启，从而受到阻碍，故提出此处注意的点。）</li>
 </ul>
-<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-23-48-35.png" alt></p>
-<h1 id="2-Windows配置远程登录的几种常见方法"><a href="#2-Windows配置远程登录的几种常见方法" class="headerlink" title="2 Windows配置远程登录的几种常见方法"></a>2 Windows配置远程登录的几种常见方法</h1><h2 id="2-1-Windows-PowerShell-方式"><a href="#2-1-Windows-PowerShell-方式" class="headerlink" title="2.1 Windows PowerShell 方式"></a>2.1 Windows PowerShell 方式</h2><h3 id="2-1-1-检查"><a href="#2-1-1-检查" class="headerlink" title="2.1.1 检查"></a>2.1.1 检查</h3><p>首先检查自己是不是系统已经安装了SSH，笔者电脑Win 10版本是2004，发现已经安装了SSH，若读者电脑未安装，则可通过<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse">此处</a>查看如何安装<br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-21-45-48.png" alt></p>
-<h3 id="2-1-2-生成密钥"><a href="#2-1-2-生成密钥" class="headerlink" title="2.1.2 生成密钥"></a>2.1.2 生成密钥</h3><p>输入命令<code>ssh-keygen</code>生成公私钥，这一步一路回车即可。<br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-23-41-51.png" alt></p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-23-48-35.png"></p>
+<h1 id="2-Windows配置远程登录的几种常见方法"><a href="#2-Windows配置远程登录的几种常见方法" class="headerlink" title="2 Windows配置远程登录的几种常见方法"></a>2 Windows配置远程登录的几种常见方法</h1><h2 id="2-1-Windows-PowerShell-方式"><a href="#2-1-Windows-PowerShell-方式" class="headerlink" title="2.1 Windows PowerShell 方式"></a>2.1 Windows PowerShell 方式</h2><h3 id="2-1-1-检查"><a href="#2-1-1-检查" class="headerlink" title="2.1.1 检查"></a>2.1.1 检查</h3><p>首先检查自己是不是系统已经安装了SSH，笔者电脑Win 10版本是2004，发现已经安装了SSH，若读者电脑未安装，则可通过<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse">此处</a>查看如何安装<br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-21-45-48.png"></p>
+<h3 id="2-1-2-生成密钥"><a href="#2-1-2-生成密钥" class="headerlink" title="2.1.2 生成密钥"></a>2.1.2 生成密钥</h3><p>输入命令<code>ssh-keygen</code>生成公私钥，这一步一路回车即可。<br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-23-41-51.png"></p>
 <p>由于笔者已经生成过，所以有提示是否覆写，正常情况下一路回车即可。啥都不用填写，直接回车。</p>
 <h3 id="2-1-3-新建config文件"><a href="#2-1-3-新建config文件" class="headerlink" title="2.1.3 新建config文件"></a>2.1.3 新建config文件</h3><p>打开密钥存储的路径文件夹<code>C:\User\lihua/.ssh</code>（名字以lihua为例）新建一个config文件（文件无后缀名），其内容如下所示：</p>
 <pre><code>Host root
@@ -2686,46 +2796,51 @@ CREATE ASSERTION ASSE_SC_DB_NUM<br>CHECK (60 &gt;= (SELECT COUNT(*) FROM Course,
   User xxxx
   Port xx
   IdentityFile ~/.ssh/id_rsa
-</code></pre><p>说明：  </p>
+</code></pre>
+<p>说明：  </p>
 <ul>
-<li>Host: 这个地方随便写，笔者这写的<code>root</code>，故意与$User$不一致，是为了与GitBash方式区分开。</li>
-<li><p>HostName: 此处填写阿里云ECS实例的公网IP地址，如下图：<br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-23-45-31.png" alt></p>
+<li><p>Host: 这个地方随便写，笔者这写的<code>root</code>，故意与$User$不一致，是为了与GitBash方式区分开。</p>
+</li>
+<li><p>HostName: 此处填写阿里云ECS实例的公网IP地址，如下图：<br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-23-45-31.png"></p>
 </li>
 <li><p>User: 这是阿里云ECS实例的用户名，有的教程可能写的是root但是笔者试了并不能成功，可能需要进行别的设置才行吧。笔者这里经过反复验证发现是虚拟机的账户名才成功连接。比如：lihua, wanglei 这种当初设置的账户名称</p>
 </li>
-<li>Port: 端口号，笔者这里是22</li>
-<li>最后一行<code>IdentityFile</code>照抄即可</li>
+<li><p>Port: 端口号，笔者这里是22</p>
+</li>
+<li><p>最后一行<code>IdentityFile</code>照抄即可</p>
+</li>
 </ul>
-<p>最后查看自己windows电脑的文件路径，应该如下所示（know_hosts可以没有，这个应该是后期连接服务器才生成的，确保前三个文件是有的话即可）<br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-23-30-33.png" alt></p>
+<p>最后查看自己windows电脑的文件路径，应该如下所示（know_hosts可以没有，这个应该是后期连接服务器才生成的，确保前三个文件是有的话即可）<br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-23-30-33.png"></p>
 <h3 id="2-1-4-连接远程ECS实例"><a href="#2-1-4-连接远程ECS实例" class="headerlink" title="2.1.4 连接远程ECS实例"></a>2.1.4 连接远程ECS实例</h3><p>打开PowerShell并进入到<code>C:\User\lihua/.ssh</code>文件下输入如下命令</p>
 <pre><code>ssh lihua@xx.xx.xxx.xxx -p 22
-</code></pre><p>再输入密码（如果读者的ECS安装了图形化界面的话，密码是图形化界面登录的密码，而不是ECS自带VNC远程连接的密码。）</p>
-<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-04-58.png" alt></p>
+</code></pre>
+<p>再输入密码（如果读者的ECS安装了图形化界面的话，密码是图形化界面登录的密码，而不是ECS自带VNC远程连接的密码。）</p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-04-58.png"></p>
 <p>登录成功之后应该是这样的，同时邮件还会受到阿里云的提示：</p>
-<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-02-49.png" alt><br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-08-00.png" alt></p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-02-49.png"><br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-08-00.png"></p>
 <h2 id="2-2-Git-Bash-方式"><a href="#2-2-Git-Bash-方式" class="headerlink" title="2.2 Git Bash 方式"></a>2.2 Git Bash 方式</h2><p>前三步和上一节一样，只有连接上有一处需要注意的地方。打开<code>C:\User\lihua/.ssh</code>直接Git Bash Here：</p>
-<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-16-25.png" alt></p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-16-25.png"></p>
 <p>然后输入箭头所指的内容：</p>
-<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-17-50.png" alt></p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-17-50.png"></p>
 <p>可以发现，<strong>这里是<code>ssh root</code>，root是$config$文件里的Host，而不是User</strong>，此处是需要注意的。</p>
-<h2 id="2-3-VSCode插件（Remote-SSH）方式"><a href="#2-3-VSCode插件（Remote-SSH）方式" class="headerlink" title="2.3 VSCode插件（Remote-SSH）方式"></a>2.3 VSCode插件（Remote-SSH）方式</h2><h3 id="2-3-1-安装插件："><a href="#2-3-1-安装插件：" class="headerlink" title="2.3.1 安装插件："></a>2.3.1 安装插件：</h3><p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-21-01.png" alt></p>
+<h2 id="2-3-VSCode插件（Remote-SSH）方式"><a href="#2-3-VSCode插件（Remote-SSH）方式" class="headerlink" title="2.3 VSCode插件（Remote-SSH）方式"></a>2.3 VSCode插件（Remote-SSH）方式</h2><h3 id="2-3-1-安装插件："><a href="#2-3-1-安装插件：" class="headerlink" title="2.3.1 安装插件："></a>2.3.1 安装插件：</h3><p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-21-01.png"></p>
 <h3 id="2-3-2-连接"><a href="#2-3-2-连接" class="headerlink" title="2.3.2 连接"></a>2.3.2 连接</h3><ol>
 <li>点击+号</li>
 </ol>
-<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-30-03.png" alt></p>
-<ol>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-30-03.png"></p>
+<ol start="2">
 <li><p>输入<code>ssh lihua@xx.xx.xxx.xxx -p 22</code></p>
 </li>
 <li><p>右键连接：</p>
 </li>
 </ol>
-<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-31-58.png" alt>  </p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-31-58.png">  </p>
 <p>然后：</p>
-<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-32-36.png" alt></p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-32-36.png"></p>
 <p>再然后：</p>
-<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-33-18.png" alt></p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-33-18.png"></p>
 <p>左下角这样就说明成功连接了：</p>
-<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-36-52.png" alt></p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-36-52.png"></p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><blockquote>
 <p>[1] <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse">https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse</a><br>[2] <a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/remote/ssh">https://code.visualstudio.com/docs/remote/ssh</a><br>[3] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenzhaoyu/p/9898679.html">https://www.cnblogs.com/chenzhaoyu/p/9898679.html</a><br>[4] <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/68577071">https://zhuanlan.zhihu.com/p/68577071</a>  </p>
 </blockquote>
@@ -2922,7 +3037,7 @@ CREATE ASSERTION ASSE_SC_DB_NUM<br>CHECK (60 &gt;= (SELECT COUNT(*) FROM Course,
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2974,13 +3089,13 @@ CREATE ASSERTION ASSE_SC_DB_NUM<br>CHECK (60 &gt;= (SELECT COUNT(*) FROM Course,
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">84k</span>
+    <span title="站点总字数">81k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:17</span>
+    <span title="站点阅读时长">1:13</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
