@@ -255,23 +255,19 @@ wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
 tar xvf Python-3.7.2.tar.xz 
 cd Python-3.7.2
 ./configure &amp;&amp; make &amp;&amp; make install 
-</code></pre>
-<h2 id="创建软链接"><a href="#创建软链接" class="headerlink" title="创建软链接"></a>创建软链接</h2><p>执行完2.1之后，终端输入python发现仍然是2.7.6的版本，只有输入python3才显示python3.7.2版本。这是因为系统默认输入python就是指向2。<br>解决办法：</p>
+</code></pre><h2 id="创建软链接"><a href="#创建软链接" class="headerlink" title="创建软链接"></a>创建软链接</h2><p>执行完2.1之后，终端输入python发现仍然是2.7.6的版本，只有输入python3才显示python3.7.2版本。这是因为系统默认输入python就是指向2。<br>解决办法：</p>
 <pre><code>whereis python # 此处/usr/bin/python就是输入python链接向的python版本
 mv /usr/bin/python /usr/bin/python.bak # 备份原先的
 ln -s /usr/local/Python3 /usr/bin/python # 创建软链接
-</code></pre>
-<p>至此可达成输入python显示python3.7.2版本</p>
+</code></pre><p>至此可达成输入python显示python3.7.2版本</p>
 <h2 id="修改yum配置"><a href="#修改yum配置" class="headerlink" title="修改yum配置"></a><strong>修改yum配置</strong></h2><pre><code>vim /usr/bin/yum
 # /usr/bin/python2.7 #第一行改成这个，保证yum可用
 vim /usr/libexec/urlgrabber-ext-down 
 # /usr/bin/python2.7 # 该第一行，保证yum能用
-</code></pre>
-<h2 id="安装pip3"><a href="#安装pip3" class="headerlink" title="安装pip3"></a><strong>安装pip3</strong></h2><pre><code>yum install pip3
+</code></pre><h2 id="安装pip3"><a href="#安装pip3" class="headerlink" title="安装pip3"></a><strong>安装pip3</strong></h2><pre><code>yum install pip3
 # 此时pip2 pip3同时存在。创建链接的方法与python相同
 # 可以先用whereis pip查看路径
-</code></pre>
-<h2 id="python升级过程报错总结"><a href="#python升级过程报错总结" class="headerlink" title="python升级过程报错总结"></a>python升级过程报错总结</h2><p><strong>下载编译过程：</strong></p>
+</code></pre><h2 id="python升级过程报错总结"><a href="#python升级过程报错总结" class="headerlink" title="python升级过程报错总结"></a>python升级过程报错总结</h2><p><strong>下载编译过程：</strong></p>
 <ul>
 <li>ModuleNotFoundError: No module named ‘_ctypes’<ul>
 <li>执行<code>yum install libffi-devel</code>再执行<code>./configure &amp;&amp; make &amp;&amp; make install</code></li>
@@ -291,8 +287,8 @@ vim /usr/libexec/urlgrabber-ext-down
 <ol>
 <li>主要按照上边的这个链接需要修改其第三步编译那句，最好改成（安装完python3再升级vim）：</li>
 </ol>
-<p><code>./configure --with-features=huge --enable-multibyte --enable-rubyinterp=yes --enable-python3interp=yes --with-python3-config-dir=$(python3-config --configdir) --enable-perlinterp=yes --enable-luainterp=yes --enable-gui=gtk2 --enable-cscope --prefix=/usr/local/bin </code></p>
-<ol start="2">
+<p><code>./configure --with-features=huge --enable-multibyte --enable-rubyinterp=yes --enable-python3interp=yes --with-python3-config-dir=$(python3-config --configdir) --enable-perlinterp=yes --enable-luainterp=yes --enable-gui=gtk2 --enable-cscope --prefix=/usr/local/bin</code></p>
+<ol>
 <li><p>极度表扬这个链接里面的<br><code>alias vim=&#39;usr/local/bin/vim&#39;</code><br>本人在升级的时候只能当前用户使用vim8.2，但是root用户输入<code>vim --version</code>仍然是vim7，在尝试过修改 </p>
 <ul>
 <li><strong>全局配置</strong> /etc/profile</li>
@@ -342,8 +338,8 @@ vim /usr/libexec/urlgrabber-ext-down
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/" rel="prev" title="Linux-2-Centos命令行远程显示图片">
-      <i class="fa fa-chevron-left"></i> Linux-2-Centos命令行远程显示图片
+    <a href="/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" rel="prev" title="Linux-4-环境变量">
+      <i class="fa fa-chevron-left"></i> Linux-4-环境变量
     </a></div>
       <div class="post-nav-item">
     <a href="/2021/08/31/3Linux/L-1-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" rel="next" title="Linux-1-基本命令">
@@ -422,7 +418,7 @@ vim /usr/libexec/urlgrabber-ext-down
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -474,7 +470,7 @@ vim /usr/libexec/urlgrabber-ext-down
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">81k</span>
+    <span title="站点总字数">82k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>

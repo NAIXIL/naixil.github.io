@@ -251,47 +251,50 @@
 
       
         <h1 id="Pandas篇"><a href="#Pandas篇" class="headerlink" title="Pandas篇"></a>Pandas篇</h1><h2 id="读取txt文件"><a href="#读取txt文件" class="headerlink" title="读取txt文件"></a>读取txt文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取文件 sep为分隔符</span></span><br><span class="line">FlareTimeSeries = pd.read_table(Datasets_path + file, sep=<span class="string">&#x27;\s+&#x27;</span>)</span><br><span class="line"><span class="comment"># 设置列名</span></span><br><span class="line">FlareTimeSeries.columns = [<span class="string">&#x27;JD&#x27;</span>, <span class="string">&#x27;Magnorm&#x27;</span>, <span class="string">&#x27;Error&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(FlareTimeSeries[<span class="string">&#x27;Magnorm&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">通配符</th>
-<th align="center">描述</th>
+<th style="text-align:center">通配符</th>
+<th style="text-align:center">描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"><code>.</code></td>
-<td align="center">除换行符（\n、\r）之外的任何单个字符</td>
+<tbody>
+<tr>
+<td style="text-align:center"><code>.</code></td>
+<td style="text-align:center">除换行符（\n、\r）之外的任何单个字符</td>
 </tr>
 <tr>
-<td align="center"><code>\d</code></td>
-<td align="center">一个数字字符，等价于<code>[0-9]</code></td>
+<td style="text-align:center"><code>\d</code></td>
+<td style="text-align:center">一个数字字符，等价于<code>[0-9]</code></td>
 </tr>
 <tr>
-<td align="center"><code>\D</code></td>
-<td align="center">一个非数字字符，等价于 <code>[^0-9]</code></td>
+<td style="text-align:center"><code>\D</code></td>
+<td style="text-align:center">一个非数字字符，等价于 <code>[^0-9]</code></td>
 </tr>
 <tr>
-<td align="center"><code>\s</code></td>
-<td align="center">任何空白字符，包括空格、制表符、换页符等等，等价于 <code>[\f\n\r\t\v]</code></td>
+<td style="text-align:center"><code>\s</code></td>
+<td style="text-align:center">任何空白字符，包括空格、制表符、换页符等等，等价于 <code>[\f\n\r\t\v]</code></td>
 </tr>
 <tr>
-<td align="center"><code>\S</code></td>
-<td align="center">任何非空白字符，等价于 <code>[^ \f\n\r\t\v]</code></td>
+<td style="text-align:center"><code>\S</code></td>
+<td style="text-align:center">任何非空白字符，等价于 <code>[^ \f\n\r\t\v]</code></td>
 </tr>
 <tr>
-<td align="center"><code>\n</code></td>
-<td align="center">换行符</td>
+<td style="text-align:center"><code>\n</code></td>
+<td style="text-align:center">换行符</td>
 </tr>
 <tr>
-<td align="center"><code>\t</code></td>
-<td align="center">制表符</td>
+<td style="text-align:center"><code>\t</code></td>
+<td style="text-align:center">制表符</td>
 </tr>
 <tr>
-<td align="center"><code>\uxxxx</code></td>
-<td align="center">用十六进制数字xxxx表示的Unicode字符</td>
+<td style="text-align:center"><code>\uxxxx</code></td>
+<td style="text-align:center">用十六进制数字xxxx表示的Unicode字符</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 
     </div>
 
@@ -327,8 +330,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/08/31/3Linux/L-1-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" rel="prev" title="Linux-1-基本命令">
-      <i class="fa fa-chevron-left"></i> Linux-1-基本命令
+    <a href="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/" rel="prev" title="Linux-2-Centos命令行远程显示图片">
+      <i class="fa fa-chevron-left"></i> Linux-2-Centos命令行远程显示图片
     </a></div>
       <div class="post-nav-item">
     <a href="/2021/08/31/2PythonStudy/Py-7-Keras/" rel="next" title="Py-7-Keras">
@@ -407,7 +410,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -459,7 +462,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">81k</span>
+    <span title="站点总字数">82k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>

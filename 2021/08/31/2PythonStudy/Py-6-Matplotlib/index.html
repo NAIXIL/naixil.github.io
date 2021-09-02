@@ -291,220 +291,213 @@
       
         <h1 id="Matplotlib篇"><a href="#Matplotlib篇" class="headerlink" title="Matplotlib篇"></a>Matplotlib篇</h1><p>import matplotlib.pyplot as plt</p>
 <h2 id="画图的标准流程"><a href="#画图的标准流程" class="headerlink" title="画图的标准流程"></a>画图的标准流程</h2><h3 id="各种常用参数"><a href="#各种常用参数" class="headerlink" title="各种常用参数"></a>各种常用参数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line">A = np.arange(<span class="number">1</span>,<span class="number">6</span>)</span><br><span class="line">B = A**<span class="number">2</span></span><br><span class="line">C = A**<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># import matplotlib as mpl </span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;axes.titlesize&#x27;] = 10  #子图的标题大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;axes.labelsize&#x27;] = 10  #子图的标签大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;xtick.labelsize&#x27;] = 8  #横轴字体大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;ytick.labelsize&#x27;] = 8  #纵轴字体大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;xtick.major.size&#x27;] = 0  #x轴最大刻度大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;ytick.major.size&#x27;] = 0  #y轴最大刻度大小</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法1：</span></span><br><span class="line"><span class="comment"># fig, ax = plt.subplots()</span></span><br><span class="line"><span class="comment"># 方法2：</span></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 散点图</span></span><br><span class="line"><span class="comment"># p1 = ax.scatter(A, B, label=&#x27;AB&#x27;)</span></span><br><span class="line">p1, = ax.plot(A, B, label=<span class="string">&#x27;AB&#x27;</span>)</span><br><span class="line">p2, = ax.plot(B, A, label=<span class="string">&#x27;BA&#x27;</span>)</span><br><span class="line">ax.set_title(<span class="string">&#x27;Title&#x27;</span>, fontsize=<span class="number">10</span>, loc=<span class="string">&#x27;left&#x27;</span>)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;xlabels&#x27;</span>, loc=<span class="string">&#x27;right&#x27;</span>) <span class="comment"># right, left, center</span></span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;ylabel&#x27;</span>, loc=<span class="string">&#x27;top&#x27;</span>) <span class="comment"># bottom,center,top</span></span><br><span class="line"><span class="comment"># legend有labels赋值的话以此为准，没有的话就以plot的为准</span></span><br><span class="line">ax.legend(handles=[p1, p2], labels=[<span class="string">&#x27;abb&#x27;</span>, <span class="string">&#x27;baa&#x27;</span>], loc=<span class="string">&#x27;best&#x27;</span>) </span><br><span class="line"><span class="comment"># 设置绘图的纵横比。auto,equal(相等),数字（y轴长度是x的几倍）;box,datalim;</span></span><br><span class="line">ax.set_aspect(<span class="string">&#x27;equal&#x27;</span>, adjustable=<span class="string">&#x27;box&#x27;</span>)</span><br><span class="line">ax.minorticks_on() <span class="comment"># 显示更小的尺度</span></span><br><span class="line"><span class="comment"># ax.minorticks_off() # 关闭更小的尺度</span></span><br><span class="line">ax.set_xlim(<span class="number">0</span>, <span class="number">30</span>) <span class="comment"># 设置x轴的取值范围</span></span><br><span class="line">ax.set_ylim(<span class="number">0</span>, <span class="number">27</span>) <span class="comment"># 设置y轴的取值范围</span></span><br><span class="line"><span class="comment"># which&#123;&#x27;major&#x27;(只在标出数字的那显示), &#x27;minor&#x27;（所有的标尺那都显示）, &#x27;both&#x27;&#125;</span></span><br><span class="line"><span class="comment"># axis&#123;&#x27;x&#x27;, &#x27;y&#x27;, &#x27;both&#x27;&#125;</span></span><br><span class="line"><span class="comment"># 还可以定义线的样式，详见</span></span><br><span class="line"><span class="comment"># https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.grid.html</span></span><br><span class="line">ax.grid(which=<span class="string">&#x27;both&#x27;</span>, axis=<span class="string">&#x27;both&#x27;</span>, linewidth=<span class="number">0.5</span>)</span><br><span class="line"><span class="comment"># rotation&#123;旋转多少度&#125;；</span></span><br><span class="line">ax.tick_params(axis=<span class="string">&#x27;both&#x27;</span>, rotation=<span class="number">90</span>, labelsize=<span class="number">10</span>, color=<span class="string">&#x27;green&#x27;</span>)</span><br><span class="line"><span class="comment"># 将标记符号移动到轴的右侧/左侧</span></span><br><span class="line">ax.yaxis.tick_right()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ax2 = fig.add_subplot(<span class="number">122</span>)</span><br><span class="line">p1, = ax2.plot(A, B, label=<span class="string">&#x27;AB&#x27;</span>)</span><br><span class="line">p2, = ax2.plot(B, A, label=<span class="string">&#x27;BA&#x27;</span>)</span><br><span class="line">ax2.invert_yaxis() <span class="comment"># 翻转坐标轴</span></span><br><span class="line"><span class="comment"># 调整间距：wspace:调整左右间距 0.00~1.00</span></span><br><span class="line">plt.subplots_adjust(left=<span class="number">0.15</span>,bottom=<span class="number">0.1</span>,top=<span class="number">0.9</span>,right=<span class="number">0.95</span>,hspace=<span class="number">1</span>,wspace=<span class="number">0.4</span>)</span><br></pre></td></tr></table></figure>
-
-<img src="/2021/08/31/2PythonStudy/Py-6-Matplotlib/image-20210312203559198.png" alt="image-20210312203559198" style="zoom:50%;">
-
+<p><img src="/2021/08/31/2PythonStudy/Py-6-Matplotlib/image-20210312203559198.png" alt="image-20210312203559198" style="zoom:50%;"></p>
 <h3 id="坐标方式画图a-x-y"><a href="#坐标方式画图a-x-y" class="headerlink" title="坐标方式画图a[x][y]"></a>坐标方式画图a[x][y]</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不能用于循环画图</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> math <span class="comment"># 显示中文设置... </span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>] <span class="comment"># 步骤一(替换sans-serif字体) </span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span>   <span class="comment"># 步骤二(解决坐标轴负数的负号显示问题)</span></span><br><span class="line">fig,a =  plt.subplots(<span class="number">2</span>,<span class="number">2</span>)  <span class="comment"># subplots(figsize=(18,18))</span></span><br><span class="line">x = np.arange(<span class="number">1</span>,<span class="number">5</span>) </span><br><span class="line">a[<span class="number">0</span>][<span class="number">0</span>].plot(x,x*x) </span><br><span class="line">a[<span class="number">0</span>][<span class="number">0</span>].set_title(<span class="string">&#x27;平方&#x27;</span>) </span><br><span class="line">a[<span class="number">0</span>][<span class="number">1</span>].plot(x,np.sqrt(x)) </span><br><span class="line">a[<span class="number">0</span>][<span class="number">1</span>].set_title(<span class="string">&#x27;平方根&#x27;</span>) </span><br><span class="line">a[<span class="number">1</span>][<span class="number">0</span>].plot(x,np.exp(x)) </span><br><span class="line">a[<span class="number">1</span>][<span class="number">0</span>].set_title(<span class="string">&#x27;指数&#x27;</span>) </span><br><span class="line">a[<span class="number">1</span>][<span class="number">1</span>].plot(x,np.log10(x)) </span><br><span class="line">a[<span class="number">1</span>][<span class="number">1</span>].set_title(<span class="string">&#x27;log&#x27;</span>) </span><br><span class="line">fig.suptitle(<span class="string">&#x27;acc:%.2f&#x27;</span>%d_loss1)	</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <h3 id="循环里面画图：add-subplot"><a href="#循环里面画图：add-subplot" class="headerlink" title="循环里面画图：add_subplot()"></a>循环里面画图：add_subplot()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这种方式可以用于循环画图</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">x = np.arange(<span class="number">0</span>, <span class="number">100</span>)</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax1 = fig.add_subplot(<span class="number">221</span>)</span><br><span class="line">ax1.plot(x, x)</span><br><span class="line">ax2 = fig.add_subplot(<span class="number">222</span>)</span><br><span class="line">ax2.plot(x, -x)</span><br><span class="line">ax3 = fig.add_subplot(<span class="number">223</span>)</span><br><span class="line">ax3.plot(x, x ** <span class="number">2</span>)</span><br><span class="line">ax4 = fig.add_subplot(<span class="number">224</span>)</span><br><span class="line">ax4.plot(x, np.log(x))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">mpl.rcParams[<span class="string">&#x27;legend.fontsize&#x27;</span>] = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(projection=<span class="string">&#x27;3d&#x27;</span>)</span><br><span class="line">theta = np.linspace(-<span class="number">4</span> * np.pi, <span class="number">4</span> * np.pi, <span class="number">100</span>)</span><br><span class="line">z = np.linspace(-<span class="number">2</span>, <span class="number">2</span>, <span class="number">100</span>)</span><br><span class="line">r = z ** <span class="number">2</span> + <span class="number">1</span></span><br><span class="line">x = r * np.sin(theta)</span><br><span class="line">y = r * np.cos(theta)</span><br><span class="line">ax.plot(x, y, z, label=<span class="string">&#x27;parametric curve&#x27;</span>)</span><br><span class="line">ax.legend()</span><br><span class="line"></span><br><span class="line">plt.savefig(<span class="string">&#x27;/home/Projects/TorchStudy/DL实践LHP_02.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
 <h3 id="ax-flatten"><a href="#ax-flatten" class="headerlink" title="ax.flatten()"></a>ax.flatten()</h3><p>在用plt.subplots画多个子图中，ax = ax.flatten()将ax由n*m的axes组展平成1*nm的axes组</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots(nrows=<span class="number">2</span>,ncols=<span class="number">2</span>,sharex=<span class="string">&#x27;all&#x27;</span>,sharey=<span class="string">&#x27;all&#x27;</span>)</span><br><span class="line">ax = ax.flatten()  </span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    img = image[i].reshape(<span class="number">28</span>, <span class="number">28</span>)</span><br><span class="line">    ax[i].imshow(img, cmap=<span class="string">&#x27;Greys&#x27;</span>, interpolation=<span class="string">&#x27;nearest&#x27;</span>)  <span class="comment"># 区别：可以直接用ax[i]</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots(nrows=<span class="number">2</span>,ncols=<span class="number">2</span>,sharex=<span class="string">&#x27;all&#x27;</span>,sharey=<span class="string">&#x27;all&#x27;</span>) </span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    img = image[i].reshape(<span class="number">28</span>, <span class="number">28</span>)</span><br><span class="line"> </span><br><span class="line">    axs[<span class="number">0</span>, <span class="number">0</span>].imshow(img, cmap=<span class="string">&#x27;Greys&#x27;</span>, interpolation=<span class="string">&#x27;nearest&#x27;</span>)  <span class="comment"># 区别：不能直接使用ax[i]</span></span><br><span class="line"> </span><br><span class="line">    axs[<span class="number">0</span>, <span class="number">1</span>].imshow(img, cmap=<span class="string">&#x27;Greys&#x27;</span>, interpolation=<span class="string">&#x27;nearest&#x27;</span>)</span><br><span class="line"> </span><br><span class="line">    axs[<span class="number">1</span>, <span class="number">0</span>].imshow(img, cmap=<span class="string">&#x27;Greys&#x27;</span>, interpolation=<span class="string">&#x27;nearest&#x27;</span>)</span><br><span class="line"> </span><br><span class="line">    axs[<span class="number">1</span>, <span class="number">1</span>].imshow(img, cmap=<span class="string">&#x27;Greys&#x27;</span>, interpolation=<span class="string">&#x27;nearest&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">marker</th>
+<th style="text-align:center">marker</th>
 <th>symbol</th>
 <th>description</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"><code>&quot;.&quot;</code></td>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&quot;.&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m00.png" alt="m00"></td>
 <td>point</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;,&quot;</code></td>
+<td style="text-align:center"><code>&quot;,&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m01.png" alt="m01"></td>
 <td>pixel</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;o&quot;</code></td>
+<td style="text-align:center"><code>&quot;o&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m02.png" alt="m02"></td>
 <td>circle</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;v&quot;</code></td>
+<td style="text-align:center"><code>&quot;v&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m03.png" alt="m03"></td>
 <td>triangle_down</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;^&quot;</code></td>
+<td style="text-align:center"><code>&quot;^&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m04.png" alt="m04"></td>
 <td>triangle_up</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;&lt;&quot;</code></td>
+<td style="text-align:center"><code>&quot;&lt;&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m05.png" alt="m05"></td>
 <td>triangle_left</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;&gt;&quot;</code></td>
+<td style="text-align:center"><code>&quot;&gt;&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m06.png" alt="m06"></td>
 <td>triangle_right</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;1&quot;</code></td>
+<td style="text-align:center"><code>&quot;1&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m07.png" alt="m07"></td>
 <td>tri_down</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;2&quot;</code></td>
+<td style="text-align:center"><code>&quot;2&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m08.png" alt="m08"></td>
 <td>tri_up</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;3&quot;</code></td>
+<td style="text-align:center"><code>&quot;3&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m09.png" alt="m09"></td>
 <td>tri_left</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;4&quot;</code></td>
+<td style="text-align:center"><code>&quot;4&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m10.png" alt="m10"></td>
 <td>tri_right</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;8&quot;</code></td>
+<td style="text-align:center"><code>&quot;8&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m11.png" alt="m11"></td>
 <td>octagon</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;s&quot;</code></td>
+<td style="text-align:center"><code>&quot;s&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m12.png" alt="m12"></td>
 <td>square</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;p&quot;</code></td>
+<td style="text-align:center"><code>&quot;p&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m13.png" alt="m13"></td>
 <td>pentagon</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;P&quot;</code></td>
+<td style="text-align:center"><code>&quot;P&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m23.png" alt="m23"></td>
 <td>plus (filled)</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;*&quot;</code></td>
+<td style="text-align:center"><code>&quot;*&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m14.png" alt="m14"></td>
 <td>star</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;h&quot;</code></td>
+<td style="text-align:center"><code>&quot;h&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m15.png" alt="m15"></td>
 <td>hexagon1</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;H&quot;</code></td>
+<td style="text-align:center"><code>&quot;H&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m16.png" alt="m16"></td>
 <td>hexagon2</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;+&quot;</code></td>
+<td style="text-align:center"><code>&quot;+&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m17.png" alt="m17"></td>
 <td>plus</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;x&quot;</code></td>
+<td style="text-align:center"><code>&quot;x&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m18.png" alt="m18"></td>
 <td>x</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;X&quot;</code></td>
+<td style="text-align:center"><code>&quot;X&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m24.png" alt="m24"></td>
 <td>x (filled)</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;D&quot;</code></td>
+<td style="text-align:center"><code>&quot;D&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m19.png" alt="m19"></td>
 <td>diamond</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;d&quot;</code></td>
+<td style="text-align:center"><code>&quot;d&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m20.png" alt="m20"></td>
 <td>thin_diamond</td>
 </tr>
 <tr>
-<td align="center">`”</td>
+<td style="text-align:center">`”</td>
 <td>“`</td>
 <td><img src="https://matplotlib.org/stable/_images/m21.png" alt="m21"></td>
+<td>vline</td>
 </tr>
 <tr>
-<td align="center"><code>&quot;_&quot;</code></td>
+<td style="text-align:center"><code>&quot;_&quot;</code></td>
 <td><img src="https://matplotlib.org/stable/_images/m22.png" alt="m22"></td>
 <td>hline</td>
 </tr>
 <tr>
-<td align="center"><code>0</code> (<code>TICKLEFT</code>)</td>
+<td style="text-align:center"><code>0</code> (<code>TICKLEFT</code>)</td>
 <td><img src="https://matplotlib.org/stable/_images/m25.png" alt="m25"></td>
 <td>tickleft</td>
 </tr>
 <tr>
-<td align="center"><code>1</code> (<code>TICKRIGHT</code>)</td>
+<td style="text-align:center"><code>1</code> (<code>TICKRIGHT</code>)</td>
 <td><img src="https://matplotlib.org/stable/_images/m26.png" alt="m26"></td>
 <td>tickright</td>
 </tr>
 <tr>
-<td align="center"><code>2</code> (<code>TICKUP</code>)</td>
+<td style="text-align:center"><code>2</code> (<code>TICKUP</code>)</td>
 <td><img src="https://matplotlib.org/stable/_images/m27.png" alt="m27"></td>
 <td>tickup</td>
 </tr>
 <tr>
-<td align="center"><code>3</code> (<code>TICKDOWN</code>)</td>
+<td style="text-align:center"><code>3</code> (<code>TICKDOWN</code>)</td>
 <td><img src="https://matplotlib.org/stable/_images/m28.png" alt="m28"></td>
 <td>tickdown</td>
 </tr>
 <tr>
-<td align="center"><code>4</code> (<code>CARETLEFT</code>)</td>
+<td style="text-align:center"><code>4</code> (<code>CARETLEFT</code>)</td>
 <td><img src="https://matplotlib.org/stable/_images/m29.png" alt="m29"></td>
 <td>caretleft</td>
 </tr>
 <tr>
-<td align="center"><code>5</code> (<code>CARETRIGHT</code>)</td>
+<td style="text-align:center"><code>5</code> (<code>CARETRIGHT</code>)</td>
 <td><img src="https://matplotlib.org/stable/_images/m30.png" alt="m30"></td>
 <td>caretright</td>
 </tr>
 <tr>
-<td align="center"><code>6</code> (<code>CARETUP</code>)</td>
+<td style="text-align:center"><code>6</code> (<code>CARETUP</code>)</td>
 <td><img src="https://matplotlib.org/stable/_images/m31.png" alt="m31"></td>
 <td>caretup</td>
 </tr>
 <tr>
-<td align="center"><code>7</code> (<code>CARETDOWN</code>)</td>
+<td style="text-align:center"><code>7</code> (<code>CARETDOWN</code>)</td>
 <td><img src="https://matplotlib.org/stable/_images/m32.png" alt="m32"></td>
 <td>caretdown</td>
 </tr>
 <tr>
-<td align="center"><code>8</code> (<code>CARETLEFTBASE</code>)</td>
+<td style="text-align:center"><code>8</code> (<code>CARETLEFTBASE</code>)</td>
 <td><img src="https://matplotlib.org/stable/_images/m33.png" alt="m33"></td>
 <td>caretleft (centered at base)</td>
 </tr>
 <tr>
-<td align="center"><code>9</code> (<code>CARETRIGHTBASE</code>)</td>
+<td style="text-align:center"><code>9</code> (<code>CARETRIGHTBASE</code>)</td>
 <td><img src="https://matplotlib.org/stable/_images/m34.png" alt="m34"></td>
 <td>caretright (centered at base)</td>
 </tr>
 <tr>
-<td align="center"><code>10</code> (<code>CARETUPBASE</code>)</td>
+<td style="text-align:center"><code>10</code> (<code>CARETUPBASE</code>)</td>
 <td><img src="https://matplotlib.org/stable/_images/m35.png" alt="m35"></td>
 <td>caretup (centered at base)</td>
 </tr>
 <tr>
-<td align="center"><code>11</code> (<code>CARETDOWNBASE</code>)</td>
+<td style="text-align:center"><code>11</code> (<code>CARETDOWNBASE</code>)</td>
 <td><img src="https://matplotlib.org/stable/_images/m36.png" alt="m36"></td>
 <td>caretdown (centered at base)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="plt-imshow-热力图"><a href="#plt-imshow-热力图" class="headerlink" title="plt.imshow() 热力图"></a>plt.imshow() 热力图</h2><h3 id="函数说明"><a href="#函数说明" class="headerlink" title="函数说明"></a>函数说明</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.imshow(X, cmap=<span class="literal">None</span>, norm=<span class="literal">None</span>, aspect=<span class="literal">None</span>, interpolation=<span class="literal">None</span>, alpha=<span class="literal">None</span>, vmin=<span class="literal">None</span>, vmax=<span class="literal">None</span>, origin=<span class="literal">None</span>, extent=<span class="literal">None</span>, shape=<span class="literal">None</span>, filternorm=<span class="number">1</span>, filterrad=<span class="number">4.0</span>, imlim=<span class="literal">None</span>, resample=<span class="literal">None</span>, url=<span class="literal">None</span>, hold=<span class="literal">None</span>, data=<span class="literal">None</span>, **kwargs)</span><br></pre></td></tr></table></figure>
-
 <h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><ul>
 <li><p>X：存储图像，可以是正常图像，也可以是数组</p>
 </li>
@@ -550,12 +543,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/08/31/2PythonStudy/Py-5-Numpy/" rel="prev" title="Py-5-Numpy">
-      <i class="fa fa-chevron-left"></i> Py-5-Numpy
+    <a href="/2021/08/31/2PythonStudy/Py-7-Keras/" rel="prev" title="Py-7-Keras">
+      <i class="fa fa-chevron-left"></i> Py-7-Keras
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/08/31/2PythonStudy/Py-4-Torch/" rel="next" title="Py-4-Torch">
-      Py-4-Torch <i class="fa fa-chevron-right"></i>
+    <a href="/2021/08/31/2PythonStudy/Py-5-Numpy/" rel="next" title="Py-5-Numpy">
+      Py-5-Numpy <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -630,7 +623,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -682,7 +675,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">81k</span>
+    <span title="站点总字数">82k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
