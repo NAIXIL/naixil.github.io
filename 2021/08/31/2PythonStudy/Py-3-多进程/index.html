@@ -230,6 +230,7 @@
 
       
         <h1 id="多进程的典型方法"><a href="#多进程的典型方法" class="headerlink" title="多进程的典型方法"></a>多进程的典型方法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Pool</span><br><span class="line">pool = Pool(Processes)</span><br><span class="line">pool.apply_async(Excute_one_program, args=(index, <span class="built_in">int</span>(Processes), <span class="built_in">list</span>(py_file_name), file_slice_single,))</span><br><span class="line">pool.close()</span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure>
+
 <p>当想要提高一个任务的执行效率时，我们可以通过拆分任务，把这个任务拆分成多个子任务，然后利用多进程进行异步执行，即同时处理，缩短整体的任务时间。在python的multiprocessing包中，有两个可以构造异步执行的进程任务方法，apply_async()和map_async()，两者都可以分别添加任务，然后多进程同时执行。但是两者有着重要区别，下面进行说明。  </p>
 <p>对于apply_async(func,args)，func为要执行任务的函数名，args为一个列表或元组这样的可迭代对象，里面包含的是要传递给func的参数，对于多个子任务，要分别多次调用apply_async()一一添加，不过这可以通过列表解析实现，以让多个进程的结果返回保存在一个列表中。而对于map_async(func,iterable,chunksize)，如果多个子任务通过同一函数执行，只是参数不同，那么可以把拆分后的参数以列表形式通过iterable传入，并通过chunksize参数指定进程数（实际上这里的chunksize表示的是对iterable的拆分数，但最好让其等于进程数），这样就不需要一一添加。  以上只是两者细微的差别，更重要的差别在于，若是通过apply_async()方法，由于是手动指定进程并添加任务，这样每个进程的执行结果之间是独立的，会分别保存，这样的好处在于，尽管可能其中某几个进程出现了错误，抛出异常，但是并不会导致其他的进程也失败，其他的进程并不会受影响，而且当获取这个抛出异常的进程的结果时，还会返回异常信息；但是如果是map_async()方法，其子参数任务并不是独立的，如果其中的某个子参数任务抛出异常，同时也会导致其他的子参数任务停止，也就是说，并不是通过独立线程来执行不同的子参数任务的。  通过上述的对比，可知当拆分任务一提高执行效率时，通过列表解析使用apply_async()方法添加子任务，使用独立多进程去执行是比map_async()方法更好的，因此这种情况下，apply_async()是最优选择。</p>
 
@@ -346,7 +347,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -210,7 +210,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>960</span>
+              <span>1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -258,8 +258,9 @@
 </ul>
 <h2 id="查看文件大小：-ls-lht"><a href="#查看文件大小：-ls-lht" class="headerlink" title="查看文件大小： ls -lht"></a>查看文件大小： ls -lht</h2><h2 id="查看文件夹下的文件个数"><a href="#查看文件夹下的文件个数" class="headerlink" title="查看文件夹下的文件个数"></a>查看文件夹下的文件个数</h2><p>ls -l |grep “^-“|wc -l # 不包括子文件夹</p>
 <p>ls -lR |grep “^-“|wc -l # 包括子文件夹</p>
-<h2 id="查看文件夹大小"><a href="#查看文件夹大小" class="headerlink" title="查看文件夹大小"></a>查看文件夹大小</h2><p> du -h —max-depth=1 xxx(文件夹路径)</p>
+<h2 id="查看文件夹大小"><a href="#查看文件夹大小" class="headerlink" title="查看文件夹大小"></a>查看文件夹大小</h2><p> du -h –max-depth=1 xxx(文件夹路径)</p>
 <h2 id="批量结束进程"><a href="#批量结束进程" class="headerlink" title="批量结束进程"></a>批量结束进程</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux|grep python|grep -v grep|cut -c 9-15|xargs kill -15</span><br></pre></td></tr></table></figure>
+
 <p>管道符“|”用来隔开两个命令，管道符左边命令的输出会作为管道符右边命令的输入。下面说说用管道符联接起来的几个命令： </p>
 <p>“ps aux”是linux 里查看所有进程的命令。这时检索出的进程将作为下一条命令“grep python”的输入。 </p>
 <p>“grep python”的输出结果是，所有含有关键字“python”的进程，这是python程序</p>
@@ -268,8 +269,9 @@
 <p>“xargs kill -15”中的xargs命令是用来把前面命令的输出结果（PID）作为“kill -15”命令的参数，并执行该令。 </p>
 <p>“kill -15”会正常退出指定进程，换成 kill -9强行杀掉</p>
 <h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dnf module list nodejs</span><br><span class="line">dnf module reset nodejs  # 如果不能安装的d</span><br><span class="line">dnf module install nodejs:12</span><br></pre></td></tr></table></figure>
+
 <h2 id="sftp传输文件"><a href="#sftp传输文件" class="headerlink" title="sftp传输文件"></a>sftp传输文件</h2><ul>
-<li>连接 sftp -P 47633 root@101.7.186.128</li>
+<li>连接 sftp -P 47633 <a href="mailto:&#x72;&#111;&#111;&#116;&#64;&#49;&#48;&#49;&#x2e;&#x37;&#x2e;&#49;&#x38;&#x36;&#x2e;&#x31;&#50;&#56;">&#x72;&#111;&#111;&#116;&#64;&#49;&#48;&#49;&#x2e;&#x37;&#x2e;&#49;&#x38;&#x36;&#x2e;&#x31;&#50;&#56;</a></li>
 <li>get /home/www/download.txt E:/test/</li>
 <li>put E:/test/upload.txt /home/www/ </li>
 <li>pwd查看远程当前目录；lpwd查看主机当前目录</li>
@@ -311,12 +313,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/" rel="prev" title="Linux-2-Centos命令行远程显示图片">
-      <i class="fa fa-chevron-left"></i> Linux-2-Centos命令行远程显示图片
+    <a href="/2021/08/31/3Linux/L-3-Python2%E5%8D%87%E7%BA%A73%E3%80%81CentOS-Vim-Golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="prev" title="Linux-3-Python2升级3、CentOS-Vim-Golang环境配置.md">
+      <i class="fa fa-chevron-left"></i> Linux-3-Python2升级3、CentOS-Vim-Golang环境配置.md
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/08/31/2PythonStudy/Py-8-Pandas/" rel="next" title="Py-8-Pandas">
-      Py-8-Pandas <i class="fa fa-chevron-right"></i>
+    <a href="/2021/08/31/2Latex/Latex%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="Latex常用命令">
+      Latex常用命令 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -390,7 +392,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
