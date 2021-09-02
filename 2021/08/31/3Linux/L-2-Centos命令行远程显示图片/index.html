@@ -238,7 +238,7 @@
         <p>能够在最小化安装的Centos8显示matplotlib图片</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">centos8服务端安装Xterm终端模拟器</span></span><br><span class="line">yum install xterm</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在客户端Xstart建立连接，在命令那一块输入</span></span><br><span class="line">/usr/bin/xterm -ls -display $DISPLAY</span><br><span class="line">yum install PyQt5</span><br><span class="line">python test.py # test.py见下文</span><br></pre></td></tr></table></figure>
 
-<img src="../images/image-20210305111141873.png" alt="image-20210305111141873" style="zoom:33%;" />
+<img src="../images/image-20210305111141873.png" alt="image-20210305111141873" style="zoom:33%;">
 
 <p>测试程序test.py：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line">matplotlib.use(<span class="string">&#x27;Qt5Agg&#x27;</span>) <span class="comment"># 必需</span></span><br><span class="line">x = np.arange(<span class="number">1</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br><span class="line">y = np.arange(<span class="number">1</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br><span class="line">plt.plot(x, y,<span class="string">&#x27;bo&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
@@ -266,7 +266,7 @@
 <p>可以正常运行。</p>
 <p><img src="/../images/image-20210305112507456.png" alt="image-20210305112507456"></p>
 <h1 id="VSCODE"><a href="#VSCODE" class="headerlink" title="VSCODE"></a>VSCODE</h1><p><strong>Windows端：</strong></p>
-<img src="../images/image-20210309174944612.png" alt="image-20210309174944612" style="zoom:50%;" />
+<img src="../images/image-20210309174944612.png" alt="image-20210309174944612" style="zoom:50%;">
 
 <p><img src="/../images/image-20210309175024566.png" alt="image-20210309175024566"></p>
 <p><strong>Centos端：</strong></p>
@@ -318,8 +318,8 @@
       <i class="fa fa-chevron-left"></i> Linux-4-环境变量
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/08/31/3Linux/L-3-Python2%E5%8D%87%E7%BA%A73%E3%80%81CentOS-Vim-Golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="next" title="Linux-3-Python2升级3、CentOS-Vim-Golang环境配置.md">
-      Linux-3-Python2升级3、CentOS-Vim-Golang环境配置.md <i class="fa fa-chevron-right"></i>
+    <a href="/2021/08/31/3Linux/L-1-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" rel="next" title="Linux-1-基本命令">
+      Linux-1-基本命令 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -451,7 +451,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:21</span>
+    <span title="站点阅读时长">1:22</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

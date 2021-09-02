@@ -223,7 +223,7 @@
           <h1 id="Matplotlib篇"><a href="#Matplotlib篇" class="headerlink" title="Matplotlib篇"></a>Matplotlib篇</h1><p>import matplotlib.pyplot as plt</p>
 <h2 id="画图的标准流程"><a href="#画图的标准流程" class="headerlink" title="画图的标准流程"></a>画图的标准流程</h2><h3 id="各种常用参数"><a href="#各种常用参数" class="headerlink" title="各种常用参数"></a>各种常用参数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line">A = np.arange(<span class="number">1</span>,<span class="number">6</span>)</span><br><span class="line">B = A**<span class="number">2</span></span><br><span class="line">C = A**<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># import matplotlib as mpl </span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;axes.titlesize&#x27;] = 10  #子图的标题大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;axes.labelsize&#x27;] = 10  #子图的标签大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;xtick.labelsize&#x27;] = 8  #横轴字体大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;ytick.labelsize&#x27;] = 8  #纵轴字体大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;xtick.major.size&#x27;] = 0  #x轴最大刻度大小</span></span><br><span class="line"><span class="comment"># mpl.rcParams[&#x27;ytick.major.size&#x27;] = 0  #y轴最大刻度大小</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法1：</span></span><br><span class="line"><span class="comment"># fig, ax = plt.subplots()</span></span><br><span class="line"><span class="comment"># 方法2：</span></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 散点图</span></span><br><span class="line"><span class="comment"># p1 = ax.scatter(A, B, label=&#x27;AB&#x27;)</span></span><br><span class="line">p1, = ax.plot(A, B, label=<span class="string">&#x27;AB&#x27;</span>)</span><br><span class="line">p2, = ax.plot(B, A, label=<span class="string">&#x27;BA&#x27;</span>)</span><br><span class="line">ax.set_title(<span class="string">&#x27;Title&#x27;</span>, fontsize=<span class="number">10</span>, loc=<span class="string">&#x27;left&#x27;</span>)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;xlabels&#x27;</span>, loc=<span class="string">&#x27;right&#x27;</span>) <span class="comment"># right, left, center</span></span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;ylabel&#x27;</span>, loc=<span class="string">&#x27;top&#x27;</span>) <span class="comment"># bottom,center,top</span></span><br><span class="line"><span class="comment"># legend有labels赋值的话以此为准，没有的话就以plot的为准</span></span><br><span class="line">ax.legend(handles=[p1, p2], labels=[<span class="string">&#x27;abb&#x27;</span>, <span class="string">&#x27;baa&#x27;</span>], loc=<span class="string">&#x27;best&#x27;</span>) </span><br><span class="line"><span class="comment"># 设置绘图的纵横比。auto,equal(相等),数字（y轴长度是x的几倍）;box,datalim;</span></span><br><span class="line">ax.set_aspect(<span class="string">&#x27;equal&#x27;</span>, adjustable=<span class="string">&#x27;box&#x27;</span>)</span><br><span class="line">ax.minorticks_on() <span class="comment"># 显示更小的尺度</span></span><br><span class="line"><span class="comment"># ax.minorticks_off() # 关闭更小的尺度</span></span><br><span class="line">ax.set_xlim(<span class="number">0</span>, <span class="number">30</span>) <span class="comment"># 设置x轴的取值范围</span></span><br><span class="line">ax.set_ylim(<span class="number">0</span>, <span class="number">27</span>) <span class="comment"># 设置y轴的取值范围</span></span><br><span class="line"><span class="comment"># which&#123;&#x27;major&#x27;(只在标出数字的那显示), &#x27;minor&#x27;（所有的标尺那都显示）, &#x27;both&#x27;&#125;</span></span><br><span class="line"><span class="comment"># axis&#123;&#x27;x&#x27;, &#x27;y&#x27;, &#x27;both&#x27;&#125;</span></span><br><span class="line"><span class="comment"># 还可以定义线的样式，详见</span></span><br><span class="line"><span class="comment"># https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.grid.html</span></span><br><span class="line">ax.grid(which=<span class="string">&#x27;both&#x27;</span>, axis=<span class="string">&#x27;both&#x27;</span>, linewidth=<span class="number">0.5</span>)</span><br><span class="line"><span class="comment"># rotation&#123;旋转多少度&#125;；</span></span><br><span class="line">ax.tick_params(axis=<span class="string">&#x27;both&#x27;</span>, rotation=<span class="number">90</span>, labelsize=<span class="number">10</span>, color=<span class="string">&#x27;green&#x27;</span>)</span><br><span class="line"><span class="comment"># 将标记符号移动到轴的右侧/左侧</span></span><br><span class="line">ax.yaxis.tick_right()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ax2 = fig.add_subplot(<span class="number">122</span>)</span><br><span class="line">p1, = ax2.plot(A, B, label=<span class="string">&#x27;AB&#x27;</span>)</span><br><span class="line">p2, = ax2.plot(B, A, label=<span class="string">&#x27;BA&#x27;</span>)</span><br><span class="line">ax2.invert_yaxis() <span class="comment"># 翻转坐标轴</span></span><br><span class="line"><span class="comment"># 调整间距：wspace:调整左右间距 0.00~1.00</span></span><br><span class="line">plt.subplots_adjust(left=<span class="number">0.15</span>,bottom=<span class="number">0.1</span>,top=<span class="number">0.9</span>,right=<span class="number">0.95</span>,hspace=<span class="number">1</span>,wspace=<span class="number">0.4</span>)</span><br></pre></td></tr></table></figure>
 
-<img src="../images/image-20210312203559198.png" alt="image-20210312203559198" style="zoom:50%;" />
+<img src="../images/image-20210312203559198.png" alt="image-20210312203559198" style="zoom:50%;">
 
 <h3 id="坐标方式画图a-x-y"><a href="#坐标方式画图a-x-y" class="headerlink" title="坐标方式画图a[x][y]"></a>坐标方式画图a[x][y]</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不能用于循环画图</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> math <span class="comment"># 显示中文设置... </span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>] <span class="comment"># 步骤一(替换sans-serif字体) </span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span>   <span class="comment"># 步骤二(解决坐标轴负数的负号显示问题)</span></span><br><span class="line">fig,a =  plt.subplots(<span class="number">2</span>,<span class="number">2</span>)  <span class="comment"># subplots(figsize=(18,18))</span></span><br><span class="line">x = np.arange(<span class="number">1</span>,<span class="number">5</span>) </span><br><span class="line">a[<span class="number">0</span>][<span class="number">0</span>].plot(x,x*x) </span><br><span class="line">a[<span class="number">0</span>][<span class="number">0</span>].set_title(<span class="string">&#x27;平方&#x27;</span>) </span><br><span class="line">a[<span class="number">0</span>][<span class="number">1</span>].plot(x,np.sqrt(x)) </span><br><span class="line">a[<span class="number">0</span>][<span class="number">1</span>].set_title(<span class="string">&#x27;平方根&#x27;</span>) </span><br><span class="line">a[<span class="number">1</span>][<span class="number">0</span>].plot(x,np.exp(x)) </span><br><span class="line">a[<span class="number">1</span>][<span class="number">0</span>].set_title(<span class="string">&#x27;指数&#x27;</span>) </span><br><span class="line">a[<span class="number">1</span>][<span class="number">1</span>].plot(x,np.log10(x)) </span><br><span class="line">a[<span class="number">1</span>][<span class="number">1</span>].set_title(<span class="string">&#x27;log&#x27;</span>) </span><br><span class="line">fig.suptitle(<span class="string">&#x27;acc:%.2f&#x27;</span>%d_loss1)	</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <h3 id="循环里面画图：add-subplot"><a href="#循环里面画图：add-subplot" class="headerlink" title="循环里面画图：add_subplot()"></a>循环里面画图：add_subplot()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这种方式可以用于循环画图</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">x = np.arange(<span class="number">0</span>, <span class="number">100</span>)</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax1 = fig.add_subplot(<span class="number">221</span>)</span><br><span class="line">ax1.plot(x, x)</span><br><span class="line">ax2 = fig.add_subplot(<span class="number">222</span>)</span><br><span class="line">ax2.plot(x, -x)</span><br><span class="line">ax3 = fig.add_subplot(<span class="number">223</span>)</span><br><span class="line">ax3.plot(x, x ** <span class="number">2</span>)</span><br><span class="line">ax4 = fig.add_subplot(<span class="number">224</span>)</span><br><span class="line">ax4.plot(x, np.log(x))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
@@ -465,135 +465,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-8-Pandas/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/31/2PythonStudy/Py-8-Pandas/" class="post-title-link" itemprop="url">Py-8-Pandas</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-01 21:04:01" itemprop="dateModified" datetime="2021-09-01T21:04:01+08:00">2021-09-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>392</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Pandas篇"><a href="#Pandas篇" class="headerlink" title="Pandas篇"></a>Pandas篇</h1><h2 id="读取txt文件"><a href="#读取txt文件" class="headerlink" title="读取txt文件"></a>读取txt文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取文件 sep为分隔符</span></span><br><span class="line">FlareTimeSeries = pd.read_table(Datasets_path + file, sep=<span class="string">&#x27;\s+&#x27;</span>)</span><br><span class="line"><span class="comment"># 设置列名</span></span><br><span class="line">FlareTimeSeries.columns = [<span class="string">&#x27;JD&#x27;</span>, <span class="string">&#x27;Magnorm&#x27;</span>, <span class="string">&#x27;Error&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(FlareTimeSeries[<span class="string">&#x27;Magnorm&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="center">通配符</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>.</code></td>
-<td align="center">除换行符（\n、\r）之外的任何单个字符</td>
-</tr>
-<tr>
-<td align="center"><code>\d</code></td>
-<td align="center">一个数字字符，等价于<code>[0-9]</code></td>
-</tr>
-<tr>
-<td align="center"><code>\D</code></td>
-<td align="center">一个非数字字符，等价于 <code>[^0-9]</code></td>
-</tr>
-<tr>
-<td align="center"><code>\s</code></td>
-<td align="center">任何空白字符，包括空格、制表符、换页符等等，等价于 <code>[\f\n\r\t\v]</code></td>
-</tr>
-<tr>
-<td align="center"><code>\S</code></td>
-<td align="center">任何非空白字符，等价于 <code>[^ \f\n\r\t\v]</code></td>
-</tr>
-<tr>
-<td align="center"><code>\n</code></td>
-<td align="center">换行符</td>
-</tr>
-<tr>
-<td align="center"><code>\t</code></td>
-<td align="center">制表符</td>
-</tr>
-<tr>
-<td align="center"><code>\uxxxx</code></td>
-<td align="center">用十六进制数字xxxx表示的Unicode字符</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-7-Keras/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -740,6 +611,135 @@
 
 <h3 id="堆叠RNN的向量序列二分类"><a href="#堆叠RNN的向量序列二分类" class="headerlink" title="堆叠RNN的向量序列二分类"></a>堆叠RNN的向量序列二分类</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">model = models.Sequential()</span><br><span class="line"></span><br><span class="line">model.add(layers.LSTM(<span class="number">32</span>, return_sequences=<span class="literal">True</span>, input_shape=(num_timesteps, num_features)))</span><br><span class="line">model.add(layers.LSTM(<span class="number">32</span>, return_sequences=<span class="literal">True</span>)) model.add(layers.LSTM(<span class="number">32</span>))</span><br><span class="line">model.add(layers.Dense(num_classes, activation=<span class="string">&#x27;sigmoid&#x27;</span>))</span><br><span class="line"></span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;rmsprop&#x27;</span>, loss=<span class="string">&#x27;binary_crossentropy&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-8-Pandas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/31/2PythonStudy/Py-8-Pandas/" class="post-title-link" itemprop="url">Py-8-Pandas</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-01 21:04:01" itemprop="dateModified" datetime="2021-09-01T21:04:01+08:00">2021-09-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>392</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Pandas篇"><a href="#Pandas篇" class="headerlink" title="Pandas篇"></a>Pandas篇</h1><h2 id="读取txt文件"><a href="#读取txt文件" class="headerlink" title="读取txt文件"></a>读取txt文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取文件 sep为分隔符</span></span><br><span class="line">FlareTimeSeries = pd.read_table(Datasets_path + file, sep=<span class="string">&#x27;\s+&#x27;</span>)</span><br><span class="line"><span class="comment"># 设置列名</span></span><br><span class="line">FlareTimeSeries.columns = [<span class="string">&#x27;JD&#x27;</span>, <span class="string">&#x27;Magnorm&#x27;</span>, <span class="string">&#x27;Error&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(FlareTimeSeries[<span class="string">&#x27;Magnorm&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">通配符</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>.</code></td>
+<td align="center">除换行符（\n、\r）之外的任何单个字符</td>
+</tr>
+<tr>
+<td align="center"><code>\d</code></td>
+<td align="center">一个数字字符，等价于<code>[0-9]</code></td>
+</tr>
+<tr>
+<td align="center"><code>\D</code></td>
+<td align="center">一个非数字字符，等价于 <code>[^0-9]</code></td>
+</tr>
+<tr>
+<td align="center"><code>\s</code></td>
+<td align="center">任何空白字符，包括空格、制表符、换页符等等，等价于 <code>[\f\n\r\t\v]</code></td>
+</tr>
+<tr>
+<td align="center"><code>\S</code></td>
+<td align="center">任何非空白字符，等价于 <code>[^ \f\n\r\t\v]</code></td>
+</tr>
+<tr>
+<td align="center"><code>\n</code></td>
+<td align="center">换行符</td>
+</tr>
+<tr>
+<td align="center"><code>\t</code></td>
+<td align="center">制表符</td>
+</tr>
+<tr>
+<td align="center"><code>\uxxxx</code></td>
+<td align="center">用十六进制数字xxxx表示的Unicode字符</td>
+</tr>
+</tbody></table>
 
       
     </div>
@@ -1401,13 +1401,244 @@
 <h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dnf module list nodejs</span><br><span class="line">dnf module reset nodejs  # 如果不能安装的d</span><br><span class="line">dnf module install nodejs:12</span><br></pre></td></tr></table></figure>
 
 <h2 id="sftp传输文件"><a href="#sftp传输文件" class="headerlink" title="sftp传输文件"></a>sftp传输文件</h2><ul>
-<li>连接 sftp -P 47633 <a href="mailto:&#x72;&#111;&#111;&#x74;&#64;&#x31;&#48;&#49;&#x2e;&#55;&#x2e;&#x31;&#56;&#54;&#x2e;&#x31;&#x32;&#56;">&#x72;&#111;&#111;&#x74;&#64;&#x31;&#48;&#49;&#x2e;&#55;&#x2e;&#x31;&#56;&#54;&#x2e;&#x31;&#x32;&#56;</a></li>
+<li>连接 sftp -P 47633 <a href="mailto:&#114;&#x6f;&#x6f;&#x74;&#x40;&#x31;&#48;&#x31;&#46;&#x37;&#46;&#x31;&#56;&#x36;&#46;&#x31;&#50;&#56;">&#114;&#x6f;&#x6f;&#x74;&#x40;&#x31;&#48;&#x31;&#46;&#x37;&#46;&#x31;&#56;&#x36;&#46;&#x31;&#50;&#56;</a></li>
 <li>get /home/www/download.txt E:/test/</li>
 <li>put E:/test/upload.txt /home/www/ </li>
 <li>pwd查看远程当前目录；lpwd查看主机当前目录</li>
 <li>cd改变远程目录；lcd改变主机目录</li>
 <li>exit或bye或quit退出</li>
 </ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">Linux-2-Centos命令行远程显示图片</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-01 21:05:05" itemprop="dateModified" datetime="2021-09-01T21:05:05+08:00">2021-09-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>能够在最小化安装的Centos8显示matplotlib图片</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">centos8服务端安装Xterm终端模拟器</span></span><br><span class="line">yum install xterm</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在客户端Xstart建立连接，在命令那一块输入</span></span><br><span class="line">/usr/bin/xterm -ls -display $DISPLAY</span><br><span class="line">yum install PyQt5</span><br><span class="line">python test.py # test.py见下文</span><br></pre></td></tr></table></figure>
+
+<img src="../images/image-20210305111141873.png" alt="image-20210305111141873" style="zoom:33%;">
+
+<p>测试程序test.py：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line">matplotlib.use(<span class="string">&#x27;Qt5Agg&#x27;</span>) <span class="comment"># 必需</span></span><br><span class="line">x = np.arange(<span class="number">1</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br><span class="line">y = np.arange(<span class="number">1</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br><span class="line">plt.plot(x, y,<span class="string">&#x27;bo&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>若报错：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qt.qpa.plugin: Could not load the Qt platform plugin &quot;xcb&quot; in &quot;&quot; even though it was found. This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span><br></pre></td></tr></table></figure>
+
+<p>则在终端输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export QT_DEBUG_PLUGINS=1</span><br><span class="line">python test.py</span><br></pre></td></tr></table></figure>
+
+<p>接下来会显示详细报错</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(libxcb-icccm.so.4: cannot open shared object file: No such file or directory)&quot;</span><br><span class="line">qt.qpa.plugin: Could not load the Qt platform plugin &quot;xcb&quot; in &quot;&quot; even though it was found.</span><br><span class="line">This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span><br><span class="line"></span><br><span class="line">Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, xcb.</span><br><span class="line">Aborted (core dumped)</span><br></pre></td></tr></table></figure>
+
+<p>网上说可以缺什么安什么，事实不太可行，比如这个<code>libxcb-icccm.so.4</code>便无法安装。</p>
+<p><strong>解决办法</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-wm-0.4.1-12.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-image-0.4.0-9.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-keysyms-0.4.0-7.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-renderutil-0.3.9-10.el8.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<p>参考链接：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://forum.qt.io/topic/122538/centos-8-qt-dependancy-install-issue/3">https://forum.qt.io/topic/122538/centos-8-qt-dependancy-install-issue/3</a></p>
+</blockquote>
+<p>此时：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py</span><br></pre></td></tr></table></figure>
+
+<p>可以正常运行。</p>
+<p><img src="/../images/image-20210305112507456.png" alt="image-20210305112507456"></p>
+<h1 id="VSCODE"><a href="#VSCODE" class="headerlink" title="VSCODE"></a>VSCODE</h1><p><strong>Windows端：</strong></p>
+<img src="../images/image-20210309174944612.png" alt="image-20210309174944612" style="zoom:50%;">
+
+<p><img src="/../images/image-20210309175024566.png" alt="image-20210309175024566"></p>
+<p><strong>Centos端：</strong></p>
+<ol>
+<li><code>vim /etc/ssh/sshd_config</code></li>
+</ol>
+<p><img src="/../images/image-20210309175143925.png" alt="image-20210309175143925"></p>
+<ol start="2">
+<li>export DISPLAY=localhost:10.0</li>
+</ol>
+<h1 id="MobaXterm"><a href="#MobaXterm" class="headerlink" title="MobaXterm"></a>MobaXterm</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum install xorg-x11-xauth xorg-x11-fonts-* xorg-x11-font-utils xorg-x11-fonts-Type1</span><br><span class="line"></span><br><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line">    X11Forwarding yes</span><br><span class="line">    <span class="comment">#X11DisplayOffset 10</span></span><br><span class="line">    X11UseLocalhost no</span><br><span class="line"><span class="comment"># 手动启动SSH</span></span><br><span class="line">mkdir -p /var/run/sshd</span><br><span class="line">/usr/sbin/sshd -D &amp;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">Linux-4-环境变量</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-01 21:05:50" itemprop="dateModified" datetime="2021-09-01T21:05:50+08:00">2021-09-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>485</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="环境变量永久生效"><a href="#环境变量永久生效" class="headerlink" title="环境变量永久生效"></a>环境变量永久生效</h1><ul>
+<li>要是想永远生效直接在/etc/profile里面</li>
+<li>安装了zsh之后修改变量是在~/.zshrc而不是在/~.bashrc里面</li>
+<li>ls  |wc -w # 查看文件夹下文件总数</li>
+</ul>
+<p>在虚拟机Ubuntu中设置完GO的环境变量之后，打开新的终端输入<code>go version</code>发现go不能用，重新设置环境变量后（<code>export PATH=$PATH:/usr/local/go/bin</code>）可用。这样的话就需要每次使用GO都要设置环境变量，伤不起.jpg</p>
+<p>原因：环境变量设置有关系。</p>
+<p><code>sudo vim ~/.bashrc</code></p>
+<p>把以下内容粘贴到文件最末尾</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export GOROOT=/usr/local/go #GOROOT是系统上安装Go软件包的位置。</span><br><span class="line">export GOBIN=$GOROOT/bin</span><br><span class="line">export PATH=$PATH:$GOBIN</span><br><span class="line">export GOPATH=/home/GOPATH #GOPATH是工作目录的位置。</span><br></pre></td></tr></table></figure>
+
+<p><code>source ~/.bashrc</code></p>
+<p>以上三步之后就可以了，有的可能还有修改~/.profile文件，未尝试，如果上面的行不通可以试一试。推荐自己的电脑设置环境变量在/etc/profile</p>
 
       
     </div>
@@ -1567,237 +1798,6 @@ vim /usr/libexec/urlgrabber-ext-down
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">Linux-2-Centos命令行远程显示图片</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-01 21:05:05" itemprop="dateModified" datetime="2021-09-01T21:05:05+08:00">2021-09-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>能够在最小化安装的Centos8显示matplotlib图片</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">centos8服务端安装Xterm终端模拟器</span></span><br><span class="line">yum install xterm</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在客户端Xstart建立连接，在命令那一块输入</span></span><br><span class="line">/usr/bin/xterm -ls -display $DISPLAY</span><br><span class="line">yum install PyQt5</span><br><span class="line">python test.py # test.py见下文</span><br></pre></td></tr></table></figure>
-
-<img src="../images/image-20210305111141873.png" alt="image-20210305111141873" style="zoom:33%;" />
-
-<p>测试程序test.py：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line">matplotlib.use(<span class="string">&#x27;Qt5Agg&#x27;</span>) <span class="comment"># 必需</span></span><br><span class="line">x = np.arange(<span class="number">1</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br><span class="line">y = np.arange(<span class="number">1</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br><span class="line">plt.plot(x, y,<span class="string">&#x27;bo&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<p>若报错：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qt.qpa.plugin: Could not load the Qt platform plugin &quot;xcb&quot; in &quot;&quot; even though it was found. This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span><br></pre></td></tr></table></figure>
-
-<p>则在终端输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export QT_DEBUG_PLUGINS=1</span><br><span class="line">python test.py</span><br></pre></td></tr></table></figure>
-
-<p>接下来会显示详细报错</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(libxcb-icccm.so.4: cannot open shared object file: No such file or directory)&quot;</span><br><span class="line">qt.qpa.plugin: Could not load the Qt platform plugin &quot;xcb&quot; in &quot;&quot; even though it was found.</span><br><span class="line">This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span><br><span class="line"></span><br><span class="line">Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, xcb.</span><br><span class="line">Aborted (core dumped)</span><br></pre></td></tr></table></figure>
-
-<p>网上说可以缺什么安什么，事实不太可行，比如这个<code>libxcb-icccm.so.4</code>便无法安装。</p>
-<p><strong>解决办法</strong> </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-wm-0.4.1-12.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-image-0.4.0-9.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-keysyms-0.4.0-7.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-renderutil-0.3.9-10.el8.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-<p>参考链接：</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://forum.qt.io/topic/122538/centos-8-qt-dependancy-install-issue/3">https://forum.qt.io/topic/122538/centos-8-qt-dependancy-install-issue/3</a></p>
-</blockquote>
-<p>此时：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py</span><br></pre></td></tr></table></figure>
-
-<p>可以正常运行。</p>
-<p><img src="/../images/image-20210305112507456.png" alt="image-20210305112507456"></p>
-<h1 id="VSCODE"><a href="#VSCODE" class="headerlink" title="VSCODE"></a>VSCODE</h1><p><strong>Windows端：</strong></p>
-<img src="../images/image-20210309174944612.png" alt="image-20210309174944612" style="zoom:50%;" />
-
-<p><img src="/../images/image-20210309175024566.png" alt="image-20210309175024566"></p>
-<p><strong>Centos端：</strong></p>
-<ol>
-<li><code>vim /etc/ssh/sshd_config</code></li>
-</ol>
-<p><img src="/../images/image-20210309175143925.png" alt="image-20210309175143925"></p>
-<ol start="2">
-<li>export DISPLAY=localhost:10.0</li>
-</ol>
-<h1 id="MobaXterm"><a href="#MobaXterm" class="headerlink" title="MobaXterm"></a>MobaXterm</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum install xorg-x11-xauth xorg-x11-fonts-* xorg-x11-font-utils xorg-x11-fonts-Type1</span><br><span class="line"></span><br><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line">    X11Forwarding yes</span><br><span class="line">    <span class="comment">#X11DisplayOffset 10</span></span><br><span class="line">    X11UseLocalhost no</span><br><span class="line"><span class="comment"># 手动启动SSH</span></span><br><span class="line">mkdir -p /var/run/sshd</span><br><span class="line">/usr/sbin/sshd -D &amp;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">Linux-4-环境变量</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-01 21:05:50" itemprop="dateModified" datetime="2021-09-01T21:05:50+08:00">2021-09-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>485</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="环境变量永久生效"><a href="#环境变量永久生效" class="headerlink" title="环境变量永久生效"></a>环境变量永久生效</h1><ul>
-<li>要是想永远生效直接在/etc/profile里面</li>
-<li>安装了zsh之后修改变量是在~/.zshrc而不是在/~.bashrc里面</li>
-<li>ls  |wc -w # 查看文件夹下文件总数</li>
-</ul>
-<p>在虚拟机Ubuntu中设置完GO的环境变量之后，打开新的终端输入<code>go version</code>发现go不能用，重新设置环境变量后（<code>export PATH=$PATH:/usr/local/go/bin</code>）可用。这样的话就需要每次使用GO都要设置环境变量，伤不起.jpg</p>
-<p>原因：环境变量设置有关系。</p>
-<p><code>sudo vim ~/.bashrc</code></p>
-<p>把以下内容粘贴到文件最末尾</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export GOROOT=/usr/local/go #GOROOT是系统上安装Go软件包的位置。</span><br><span class="line">export GOBIN=$GOROOT/bin</span><br><span class="line">export PATH=$PATH:$GOBIN</span><br><span class="line">export GOPATH=/home/GOPATH #GOPATH是工作目录的位置。</span><br></pre></td></tr></table></figure>
-
-<p><code>source ~/.bashrc</code></p>
-<p>以上三步之后就可以了，有的可能还有修改~/.profile文件，未尝试，如果上面的行不通可以试一试。推荐自己的电脑设置环境变量在/etc/profile</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1925,7 +1925,7 @@ vim /usr/libexec/urlgrabber-ext-down
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:21</span>
+    <span title="站点阅读时长">1:22</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
