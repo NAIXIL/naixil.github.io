@@ -152,6 +152,97 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-3-%E5%A4%9A%E8%BF%9B%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/31/2PythonStudy/Py-3-%E5%A4%9A%E8%BF%9B%E7%A8%8B/" class="post-title-link" itemprop="url">Py-2-多进程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-01 21:02:40" itemprop="dateModified" datetime="2021-09-01T21:02:40+08:00">2021-09-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="多进程的典型方法"><a href="#多进程的典型方法" class="headerlink" title="多进程的典型方法"></a>多进程的典型方法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Pool</span><br><span class="line">pool = Pool(Processes)</span><br><span class="line">pool.apply_async(Excute_one_program, args=(index, <span class="built_in">int</span>(Processes), <span class="built_in">list</span>(py_file_name), file_slice_single,))</span><br><span class="line">pool.close()</span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure>
+
+<p>当想要提高一个任务的执行效率时，我们可以通过拆分任务，把这个任务拆分成多个子任务，然后利用多进程进行异步执行，即同时处理，缩短整体的任务时间。在python的multiprocessing包中，有两个可以构造异步执行的进程任务方法，apply_async()和map_async()，两者都可以分别添加任务，然后多进程同时执行。但是两者有着重要区别，下面进行说明。  </p>
+<p>对于apply_async(func,args)，func为要执行任务的函数名，args为一个列表或元组这样的可迭代对象，里面包含的是要传递给func的参数，对于多个子任务，要分别多次调用apply_async()一一添加，不过这可以通过列表解析实现，以让多个进程的结果返回保存在一个列表中。而对于map_async(func,iterable,chunksize)，如果多个子任务通过同一函数执行，只是参数不同，那么可以把拆分后的参数以列表形式通过iterable传入，并通过chunksize参数指定进程数（实际上这里的chunksize表示的是对iterable的拆分数，但最好让其等于进程数），这样就不需要一一添加。  以上只是两者细微的差别，更重要的差别在于，若是通过apply_async()方法，由于是手动指定进程并添加任务，这样每个进程的执行结果之间是独立的，会分别保存，这样的好处在于，尽管可能其中某几个进程出现了错误，抛出异常，但是并不会导致其他的进程也失败，其他的进程并不会受影响，而且当获取这个抛出异常的进程的结果时，还会返回异常信息；但是如果是map_async()方法，其子参数任务并不是独立的，如果其中的某个子参数任务抛出异常，同时也会导致其他的子参数任务停止，也就是说，并不是通过独立线程来执行不同的子参数任务的。  通过上述的对比，可知当拆分任务一提高执行效率时，通过列表解析使用apply_async()方法添加子任务，使用独立多进程去执行是比map_async()方法更好的，因此这种情况下，apply_async()是最优选择。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-4-Torch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -290,6 +381,127 @@
 <li>通过合理的参数初始化</li>
 </ul>
 <h2 id="模型深度与宽度"><a href="#模型深度与宽度" class="headerlink" title="模型深度与宽度"></a>模型深度与宽度</h2><p>深度更好一些。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-5-Numpy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/31/2PythonStudy/Py-5-Numpy/" class="post-title-link" itemprop="url">Py-5-Numpy</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-01 21:03:20" itemprop="dateModified" datetime="2021-09-01T21:03:20+08:00">2021-09-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Numpy篇"><a href="#Numpy篇" class="headerlink" title="Numpy篇"></a>Numpy篇</h1><h2 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h2><h3 id="大小"><a href="#大小" class="headerlink" title="大小"></a>大小</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.size</span><br><span class="line">X.shapo</span><br></pre></td></tr></table></figure>
+
+<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3><ol>
+<li>单行或者区域</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 假设X是一个二维数组</span></span><br><span class="line">X[<span class="number">1</span>,:] <span class="comment"># 第一行的所有</span></span><br><span class="line">X[<span class="number">1</span>, <span class="number">2</span>:<span class="number">5</span>]</span><br><span class="line">X[<span class="number">1</span> : ] <span class="comment"># 第一行到往下的所有行</span></span><br><span class="line"><span class="comment"># X是一个三维数组</span></span><br><span class="line">X[<span class="number">1</span>] <span class="comment"># X的第一个矩阵，编号从0开始，下同</span></span><br><span class="line"><span class="built_in">print</span>(x[<span class="number">1</span>,<span class="number">2</span>]) <span class="comment"># X的第一个矩阵，第2行</span></span><br><span class="line">x[::-<span class="number">1</span>] <span class="comment"># 数组逆序取出来</span></span><br><span class="line"></span><br><span class="line">x[::<span class="number">3</span>, ::<span class="number">2</span>] <span class="comment"># 行隔3行取，列是隔2列取</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>任意多行</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 取想要的行</span></span><br><span class="line"></span><br><span class="line">x = np.random.randint(<span class="number">0</span>, <span class="number">10</span>, size=(<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line">y = <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">4</span>,<span class="number">2</span>) <span class="comment"># 0,2</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="built_in">print</span>(y)</span><br><span class="line"><span class="built_in">print</span>(x[[<span class="number">0</span>,<span class="number">2</span>]])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line">[[<span class="number">1</span> <span class="number">2</span> <span class="number">7</span> <span class="number">8</span>]</span><br><span class="line"> [<span class="number">5</span> <span class="number">0</span> <span class="number">8</span> <span class="number">5</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">5</span> <span class="number">5</span> <span class="number">9</span>]]</span><br><span class="line">range(<span class="number">0</span>, <span class="number">4</span>, <span class="number">2</span>)</span><br><span class="line">[[<span class="number">1</span> <span class="number">2</span> <span class="number">7</span> <span class="number">8</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">5</span> <span class="number">5</span> <span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="生成数组"><a href="#生成数组" class="headerlink" title="生成数组"></a>生成数组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.randint(<span class="number">0</span>, <span class="number">10</span>, size=(<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 生成随机二维数组</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.arange(<span class="number">1</span>,<span class="number">10</span>,<span class="number">1</span>, dtype=<span class="string">&#x27;float&#x27;</span>) <span class="comment"># 1~10步长为1</span></span><br><span class="line">np.linspace(<span class="number">0</span>, <span class="number">19</span>, <span class="number">300</span>, endpoint=<span class="literal">True</span>, dtype=<span class="string">&#x27;float&#x27;</span>) <span class="comment"># 0~19之间生成300个数组,endpoint包不包括19</span></span><br><span class="line">np.random.randn(<span class="number">3</span>)  <span class="comment"># 生成一个1*3随机数组</span></span><br><span class="line">np.random.randn(<span class="number">9</span>,<span class="number">3</span>)  <span class="comment"># 生成一个9*3随机数组</span></span><br><span class="line">np.random.randint(<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>)  <span class="comment"># 随机生成整型数组（起始， 结束， 数组大小）</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="展平数组"><a href="#展平数组" class="headerlink" title="展平数组"></a>展平数组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arrayX.ravel() <span class="comment"># 将一个数组展平成一个1x*的数组</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="函数的拟合"><a href="#函数的拟合" class="headerlink" title="函数的拟合"></a>函数的拟合</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">x = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>,<span class="number">70</span>,<span class="number">80</span>]</span><br><span class="line">x = np.array(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;x is :\n&#x27;</span>,x)</span><br><span class="line">num = [<span class="number">174</span>,<span class="number">236</span>,<span class="number">305</span>,<span class="number">334</span>,<span class="number">349</span>,<span class="number">351</span>,<span class="number">342</span>,<span class="number">323</span>]</span><br><span class="line">y = np.array(num)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;y is :\n&#x27;</span>,y)</span><br><span class="line"><span class="comment"># f1 为各项的系数，3 表示想要拟合的最高次项是多少。</span></span><br><span class="line">f1 = np.polyfit(x, y, <span class="number">3</span>)</span><br><span class="line"><span class="comment"># p1 为拟合的多项式表达式</span></span><br><span class="line">p1 = np.poly1d(f1)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;p1 is :\n&#x27;</span>,p1)</span><br><span class="line"></span><br><span class="line">plt.plot(x, y, <span class="string">&#x27;s&#x27;</span>,label=<span class="string">&#x27;original values&#x27;</span>)</span><br><span class="line">yvals = p1(x) <span class="comment">#拟合y值</span></span><br><span class="line">plt.plot(x, yvals, <span class="string">&#x27;r&#x27;</span>,label=<span class="string">&#x27;polyfit values&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> curve_fit</span><br><span class="line">x = [<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>,<span class="number">70</span>]</span><br><span class="line">x = np.array(x)</span><br><span class="line">num = [<span class="number">453</span>,<span class="number">482</span>,<span class="number">503</span>,<span class="number">508</span>,<span class="number">498</span>,<span class="number">479</span>]</span><br><span class="line">y = np.array(num)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里的函数可以自定义任意形式。</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">x, a, b,c</span>):</span></span><br><span class="line">    <span class="keyword">return</span> a*np.sqrt(x)*(b*np.square(x)+c)</span><br><span class="line"></span><br><span class="line"><span class="comment"># popt返回的是给定模型的最优参数。我们可以使用pcov的值检测拟合的质量，其对角线元素值代表着每个参数的方差。</span></span><br><span class="line">popt, pcov = curve_fit(func, x, y)</span><br><span class="line">a = popt[<span class="number">0</span>] </span><br><span class="line">b = popt[<span class="number">1</span>]</span><br><span class="line">c = popt[<span class="number">2</span>]</span><br><span class="line">yvals = func(x,a,b,c) <span class="comment">#拟合y值</span></span><br><span class="line">plot1 = plt.plot(x, y, <span class="string">&#x27;s&#x27;</span>,label=<span class="string">&#x27;original values&#x27;</span>)</span><br><span class="line">plot2 = plt.plot(x, yvals, <span class="string">&#x27;r&#x27;</span>,label=<span class="string">&#x27;polyfit values&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="加载txt文件"><a href="#加载txt文件" class="headerlink" title="加载txt文件"></a>加载txt文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># delimiter：选择分隔符；skiprows：选择跳过的行数；</span></span><br><span class="line">wineq_numpy = np.loadtxt(wine_path, dtype=np.float32, delimiter=<span class="string">&#x27;;&#x27;</span>, skiprows=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组扩维"><a href="#数组扩维" class="headerlink" title="数组扩维"></a>数组扩维</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.array(np.random.randn(8, 3))</span><br><span class="line">x.shape  # (8, 3)</span><br><span class="line">x[None].shape  #(1, 8, 3)</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除数组中nan值"><a href="#删除数组中nan值" class="headerlink" title="删除数组中nan值"></a>删除数组中nan值</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">importy numpy <span class="keyword">as</span> np</span><br><span class="line">tem0 = tem0[~np.isnan(tem0)]</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -622,256 +834,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-5-Numpy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/31/2PythonStudy/Py-5-Numpy/" class="post-title-link" itemprop="url">Py-5-Numpy</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-01 21:03:20" itemprop="dateModified" datetime="2021-09-01T21:03:20+08:00">2021-09-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Numpy篇"><a href="#Numpy篇" class="headerlink" title="Numpy篇"></a>Numpy篇</h1><h2 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h2><h3 id="大小"><a href="#大小" class="headerlink" title="大小"></a>大小</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.size</span><br><span class="line">X.shapo</span><br></pre></td></tr></table></figure>
-
-<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3><ol>
-<li>单行或者区域</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 假设X是一个二维数组</span></span><br><span class="line">X[<span class="number">1</span>,:] <span class="comment"># 第一行的所有</span></span><br><span class="line">X[<span class="number">1</span>, <span class="number">2</span>:<span class="number">5</span>]</span><br><span class="line">X[<span class="number">1</span> : ] <span class="comment"># 第一行到往下的所有行</span></span><br><span class="line"><span class="comment"># X是一个三维数组</span></span><br><span class="line">X[<span class="number">1</span>] <span class="comment"># X的第一个矩阵，编号从0开始，下同</span></span><br><span class="line"><span class="built_in">print</span>(x[<span class="number">1</span>,<span class="number">2</span>]) <span class="comment"># X的第一个矩阵，第2行</span></span><br><span class="line">x[::-<span class="number">1</span>] <span class="comment"># 数组逆序取出来</span></span><br><span class="line"></span><br><span class="line">x[::<span class="number">3</span>, ::<span class="number">2</span>] <span class="comment"># 行隔3行取，列是隔2列取</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>任意多行</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 取想要的行</span></span><br><span class="line"></span><br><span class="line">x = np.random.randint(<span class="number">0</span>, <span class="number">10</span>, size=(<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line">y = <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">4</span>,<span class="number">2</span>) <span class="comment"># 0,2</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="built_in">print</span>(y)</span><br><span class="line"><span class="built_in">print</span>(x[[<span class="number">0</span>,<span class="number">2</span>]])</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line">[[<span class="number">1</span> <span class="number">2</span> <span class="number">7</span> <span class="number">8</span>]</span><br><span class="line"> [<span class="number">5</span> <span class="number">0</span> <span class="number">8</span> <span class="number">5</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">5</span> <span class="number">5</span> <span class="number">9</span>]]</span><br><span class="line">range(<span class="number">0</span>, <span class="number">4</span>, <span class="number">2</span>)</span><br><span class="line">[[<span class="number">1</span> <span class="number">2</span> <span class="number">7</span> <span class="number">8</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">5</span> <span class="number">5</span> <span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="生成数组"><a href="#生成数组" class="headerlink" title="生成数组"></a>生成数组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.randint(<span class="number">0</span>, <span class="number">10</span>, size=(<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 生成随机二维数组</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.arange(<span class="number">1</span>,<span class="number">10</span>,<span class="number">1</span>, dtype=<span class="string">&#x27;float&#x27;</span>) <span class="comment"># 1~10步长为1</span></span><br><span class="line">np.linspace(<span class="number">0</span>, <span class="number">19</span>, <span class="number">300</span>, endpoint=<span class="literal">True</span>, dtype=<span class="string">&#x27;float&#x27;</span>) <span class="comment"># 0~19之间生成300个数组,endpoint包不包括19</span></span><br><span class="line">np.random.randn(<span class="number">3</span>)  <span class="comment"># 生成一个1*3随机数组</span></span><br><span class="line">np.random.randn(<span class="number">9</span>,<span class="number">3</span>)  <span class="comment"># 生成一个9*3随机数组</span></span><br><span class="line">np.random.randint(<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>)  <span class="comment"># 随机生成整型数组（起始， 结束， 数组大小）</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="展平数组"><a href="#展平数组" class="headerlink" title="展平数组"></a>展平数组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arrayX.ravel() <span class="comment"># 将一个数组展平成一个1x*的数组</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="函数的拟合"><a href="#函数的拟合" class="headerlink" title="函数的拟合"></a>函数的拟合</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">x = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>,<span class="number">70</span>,<span class="number">80</span>]</span><br><span class="line">x = np.array(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;x is :\n&#x27;</span>,x)</span><br><span class="line">num = [<span class="number">174</span>,<span class="number">236</span>,<span class="number">305</span>,<span class="number">334</span>,<span class="number">349</span>,<span class="number">351</span>,<span class="number">342</span>,<span class="number">323</span>]</span><br><span class="line">y = np.array(num)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;y is :\n&#x27;</span>,y)</span><br><span class="line"><span class="comment"># f1 为各项的系数，3 表示想要拟合的最高次项是多少。</span></span><br><span class="line">f1 = np.polyfit(x, y, <span class="number">3</span>)</span><br><span class="line"><span class="comment"># p1 为拟合的多项式表达式</span></span><br><span class="line">p1 = np.poly1d(f1)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;p1 is :\n&#x27;</span>,p1)</span><br><span class="line"></span><br><span class="line">plt.plot(x, y, <span class="string">&#x27;s&#x27;</span>,label=<span class="string">&#x27;original values&#x27;</span>)</span><br><span class="line">yvals = p1(x) <span class="comment">#拟合y值</span></span><br><span class="line">plt.plot(x, yvals, <span class="string">&#x27;r&#x27;</span>,label=<span class="string">&#x27;polyfit values&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> curve_fit</span><br><span class="line">x = [<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>,<span class="number">70</span>]</span><br><span class="line">x = np.array(x)</span><br><span class="line">num = [<span class="number">453</span>,<span class="number">482</span>,<span class="number">503</span>,<span class="number">508</span>,<span class="number">498</span>,<span class="number">479</span>]</span><br><span class="line">y = np.array(num)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里的函数可以自定义任意形式。</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">x, a, b,c</span>):</span></span><br><span class="line">    <span class="keyword">return</span> a*np.sqrt(x)*(b*np.square(x)+c)</span><br><span class="line"></span><br><span class="line"><span class="comment"># popt返回的是给定模型的最优参数。我们可以使用pcov的值检测拟合的质量，其对角线元素值代表着每个参数的方差。</span></span><br><span class="line">popt, pcov = curve_fit(func, x, y)</span><br><span class="line">a = popt[<span class="number">0</span>] </span><br><span class="line">b = popt[<span class="number">1</span>]</span><br><span class="line">c = popt[<span class="number">2</span>]</span><br><span class="line">yvals = func(x,a,b,c) <span class="comment">#拟合y值</span></span><br><span class="line">plot1 = plt.plot(x, y, <span class="string">&#x27;s&#x27;</span>,label=<span class="string">&#x27;original values&#x27;</span>)</span><br><span class="line">plot2 = plt.plot(x, yvals, <span class="string">&#x27;r&#x27;</span>,label=<span class="string">&#x27;polyfit values&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="加载txt文件"><a href="#加载txt文件" class="headerlink" title="加载txt文件"></a>加载txt文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># delimiter：选择分隔符；skiprows：选择跳过的行数；</span></span><br><span class="line">wineq_numpy = np.loadtxt(wine_path, dtype=np.float32, delimiter=<span class="string">&#x27;;&#x27;</span>, skiprows=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="数组扩维"><a href="#数组扩维" class="headerlink" title="数组扩维"></a>数组扩维</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.array(np.random.randn(8, 3))</span><br><span class="line">x.shape  # (8, 3)</span><br><span class="line">x[None].shape  #(1, 8, 3)</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除数组中nan值"><a href="#删除数组中nan值" class="headerlink" title="删除数组中nan值"></a>删除数组中nan值</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">importy numpy <span class="keyword">as</span> np</span><br><span class="line">tem0 = tem0[~np.isnan(tem0)]</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-8-Pandas/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/31/2PythonStudy/Py-8-Pandas/" class="post-title-link" itemprop="url">Py-8-Pandas</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-01 21:04:01" itemprop="dateModified" datetime="2021-09-01T21:04:01+08:00">2021-09-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>392</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Pandas篇"><a href="#Pandas篇" class="headerlink" title="Pandas篇"></a>Pandas篇</h1><h2 id="读取txt文件"><a href="#读取txt文件" class="headerlink" title="读取txt文件"></a>读取txt文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取文件 sep为分隔符</span></span><br><span class="line">FlareTimeSeries = pd.read_table(Datasets_path + file, sep=<span class="string">&#x27;\s+&#x27;</span>)</span><br><span class="line"><span class="comment"># 设置列名</span></span><br><span class="line">FlareTimeSeries.columns = [<span class="string">&#x27;JD&#x27;</span>, <span class="string">&#x27;Magnorm&#x27;</span>, <span class="string">&#x27;Error&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(FlareTimeSeries[<span class="string">&#x27;Magnorm&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="center">通配符</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>.</code></td>
-<td align="center">除换行符（\n、\r）之外的任何单个字符</td>
-</tr>
-<tr>
-<td align="center"><code>\d</code></td>
-<td align="center">一个数字字符，等价于<code>[0-9]</code></td>
-</tr>
-<tr>
-<td align="center"><code>\D</code></td>
-<td align="center">一个非数字字符，等价于 <code>[^0-9]</code></td>
-</tr>
-<tr>
-<td align="center"><code>\s</code></td>
-<td align="center">任何空白字符，包括空格、制表符、换页符等等，等价于 <code>[\f\n\r\t\v]</code></td>
-</tr>
-<tr>
-<td align="center"><code>\S</code></td>
-<td align="center">任何非空白字符，等价于 <code>[^ \f\n\r\t\v]</code></td>
-</tr>
-<tr>
-<td align="center"><code>\n</code></td>
-<td align="center">换行符</td>
-</tr>
-<tr>
-<td align="center"><code>\t</code></td>
-<td align="center">制表符</td>
-</tr>
-<tr>
-<td align="center"><code>\uxxxx</code></td>
-<td align="center">用十六进制数字xxxx表示的Unicode字符</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-7-Keras/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1037,7 +999,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2Latex/Latex%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-8-Pandas/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1051,7 +1013,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/31/2Latex/Latex%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Latex常用命令</a>
+            <a href="/2021/08/31/2PythonStudy/Py-8-Pandas/" class="post-title-link" itemprop="url">Py-8-Pandas</a>
         </h2>
 
         <div class="post-meta">
@@ -1060,17 +1022,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-08-31 16:00:15 / 修改时间：23:50:06" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
+              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-01 21:04:01" itemprop="dateModified" datetime="2021-09-01T21:04:01+08:00">2021-09-01</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Latex/" itemprop="url" rel="index"><span itemprop="name">Latex</span></a>
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
                 </span>
             </span>
 
@@ -1080,14 +1048,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
+              <span>392</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -1099,455 +1067,46 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Latex公式速查表"><a href="#Latex公式速查表" class="headerlink" title="Latex公式速查表"></a>Latex公式速查表</h1><h2 id="希腊字母："><a href="#希腊字母：" class="headerlink" title="希腊字母："></a>希腊字母：</h2><table>
+          <h1 id="Pandas篇"><a href="#Pandas篇" class="headerlink" title="Pandas篇"></a>Pandas篇</h1><h2 id="读取txt文件"><a href="#读取txt文件" class="headerlink" title="读取txt文件"></a>读取txt文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取文件 sep为分隔符</span></span><br><span class="line">FlareTimeSeries = pd.read_table(Datasets_path + file, sep=<span class="string">&#x27;\s+&#x27;</span>)</span><br><span class="line"><span class="comment"># 设置列名</span></span><br><span class="line">FlareTimeSeries.columns = [<span class="string">&#x27;JD&#x27;</span>, <span class="string">&#x27;Magnorm&#x27;</span>, <span class="string">&#x27;Error&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(FlareTimeSeries[<span class="string">&#x27;Magnorm&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<table>
 <thead>
 <tr>
-<th align="center">大写</th>
-<th align="center">写法</th>
-<th align="center">小写</th>
-<th align="center">写法</th>
+<th align="center">通配符</th>
+<th align="center">描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">$A$</td>
-<td align="center">A</td>
-<td align="center">$\alpha$</td>
-<td align="center">\alpha</td>
+<td align="center"><code>.</code></td>
+<td align="center">除换行符（\n、\r）之外的任何单个字符</td>
 </tr>
 <tr>
-<td align="center">$B$</td>
-<td align="center">B</td>
-<td align="center">$\beta$</td>
-<td align="center">\beta</td>
+<td align="center"><code>\d</code></td>
+<td align="center">一个数字字符，等价于<code>[0-9]</code></td>
 </tr>
 <tr>
-<td align="center">$\Gamma$</td>
-<td align="center">\Gamma</td>
-<td align="center">$\gamma$</td>
-<td align="center">\gamma</td>
+<td align="center"><code>\D</code></td>
+<td align="center">一个非数字字符，等价于 <code>[^0-9]</code></td>
 </tr>
 <tr>
-<td align="center">$\Delta$</td>
-<td align="center">\Delta</td>
-<td align="center">$\delta$</td>
-<td align="center">\delta</td>
+<td align="center"><code>\s</code></td>
+<td align="center">任何空白字符，包括空格、制表符、换页符等等，等价于 <code>[\f\n\r\t\v]</code></td>
 </tr>
 <tr>
-<td align="center">$H$</td>
-<td align="center">H</td>
-<td align="center">$\eta$</td>
-<td align="center">\eta</td>
+<td align="center"><code>\S</code></td>
+<td align="center">任何非空白字符，等价于 <code>[^ \f\n\r\t\v]</code></td>
 </tr>
 <tr>
-<td align="center">$\Theta$</td>
-<td align="center">\Theta</td>
-<td align="center">$\theta$</td>
-<td align="center">\theta</td>
+<td align="center"><code>\n</code></td>
+<td align="center">换行符</td>
 </tr>
 <tr>
-<td align="center">$\Lambda$</td>
-<td align="center">\Lambda</td>
-<td align="center">$\lambda$</td>
-<td align="center">\lambda</td>
+<td align="center"><code>\t</code></td>
+<td align="center">制表符</td>
 </tr>
 <tr>
-<td align="center">$M$</td>
-<td align="center">M</td>
-<td align="center">$\mu$</td>
-<td align="center">\mu</td>
-</tr>
-<tr>
-<td align="center">$N$</td>
-<td align="center">N</td>
-<td align="center">$\nu$</td>
-<td align="center">\nu</td>
-</tr>
-<tr>
-<td align="center">$\Xi$</td>
-<td align="center">\Xi</td>
-<td align="center">$\xi$</td>
-<td align="center">\xi</td>
-</tr>
-<tr>
-<td align="center">$\Pi$</td>
-<td align="center">\Pi</td>
-<td align="center">$\pi$</td>
-<td align="center">\pi</td>
-</tr>
-<tr>
-<td align="center">$P$</td>
-<td align="center">P</td>
-<td align="center">$\rho$</td>
-<td align="center">\rho</td>
-</tr>
-<tr>
-<td align="center">$\Sigma$</td>
-<td align="center">\Sigma</td>
-<td align="center">$\sigma$</td>
-<td align="center">\sigma</td>
-</tr>
-<tr>
-<td align="center">$T$</td>
-<td align="center">T</td>
-<td align="center">$\tau$</td>
-<td align="center">\tau</td>
-</tr>
-<tr>
-<td align="center">$Y$</td>
-<td align="center">Y</td>
-<td align="center">$\upsilon$</td>
-<td align="center">\upsilon</td>
-</tr>
-<tr>
-<td align="center">$\Phi$</td>
-<td align="center">\Phi</td>
-<td align="center">$\phi$</td>
-<td align="center">\phi</td>
-</tr>
-<tr>
-<td align="center">$\Psi$</td>
-<td align="center">\Psi</td>
-<td align="center">$\psi$</td>
-<td align="center">\psi</td>
-</tr>
-<tr>
-<td align="center">$\Omega$</td>
-<td align="center">\Omega</td>
-<td align="center">$\omega$</td>
-<td align="center">\omega</td>
-</tr>
-</tbody></table>
-<h2 id="括号与位置标定"><a href="#括号与位置标定" class="headerlink" title="括号与位置标定"></a>括号与位置标定</h2><ul>
-<li>上标、下标：^ _ ：x_2^3   $x_2^3$</li>
-<li>求和：\sum下标~上标，例如：$\sum_{i=0}^n$ :    $\sum_{i=0}^n$</li>
-<li>积分：<ul>
-<li>\int下标~上标，例如：$\int_1^\infty$ :    $\int_1^\infty$</li>
-<li>\iint下标~上标，例如：$\iint_1^\infty$:     $\iint_1^\infty$</li>
-</ul>
-</li>
-<li>连乘：$\prod\lbrace a+b \rbrace$:     $\prod\lbrace a+b \rbrace$</li>
-<li>$\max_{c_k}$:      $\max_{c_k}$</li>
-</ul>
-<h2 id="特殊函数与符号"><a href="#特殊函数与符号" class="headerlink" title="特殊函数与符号"></a>特殊函数与符号</h2><table>
-<thead>
-<tr>
-<th align="center">形式</th>
-<th align="center">语法</th>
-<th align="center">形式</th>
-<th align="center">语法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">$\lt$</td>
-<td align="center">\lt</td>
-<td align="center">$\gt$</td>
-<td align="center">\gt</td>
-</tr>
-<tr>
-<td align="center">$\le$</td>
-<td align="center">\le</td>
-<td align="center">$\ge$</td>
-<td align="center">\ge</td>
-</tr>
-<tr>
-<td align="center">$\ne$</td>
-<td align="center">\ne</td>
-<td align="center">$\not \ge$</td>
-<td align="center">\not \ge</td>
-</tr>
-<tr>
-<td align="center">$\cup$</td>
-<td align="center">\cup</td>
-<td align="center">$\cap$</td>
-<td align="center">\cap</td>
-</tr>
-<tr>
-<td align="center">$\setminus$:差集</td>
-<td align="center">\setminus</td>
-<td align="center">$\subset$</td>
-<td align="center">\subset</td>
-</tr>
-<tr>
-<td align="center">$\subseteq$</td>
-<td align="center">\subseteq</td>
-<td align="center">$\subsetneq$</td>
-<td align="center">\subsetneq</td>
-</tr>
-<tr>
-<td align="center">$\supset$</td>
-<td align="center">\supset</td>
-<td align="center">$\in$</td>
-<td align="center">\in</td>
-</tr>
-<tr>
-<td align="center">$\notin$</td>
-<td align="center">\notin 、\not \in</td>
-<td align="center">$\emptyset$</td>
-<td align="center">\emptyset</td>
-</tr>
-<tr>
-<td align="center">$\varnothing$</td>
-<td align="center">\varnothing</td>
-<td align="center">$\mapsto$</td>
-<td align="center">\mapsto</td>
-</tr>
-<tr>
-<td align="center">$\to$</td>
-<td align="center">\to</td>
-<td align="center">$\rightarrow$</td>
-<td align="center">\rightarrow</td>
-</tr>
-<tr>
-<td align="center">$\leftarrow$</td>
-<td align="center">\leftarrow</td>
-<td align="center">$\Leftarrow$</td>
-<td align="center">\Leftarrow</td>
-</tr>
-<tr>
-<td align="center">$\Rightarrow$</td>
-<td align="center">\Rightarrow</td>
-<td align="center">$\lnot$</td>
-<td align="center">\lont</td>
-</tr>
-<tr>
-<td align="center">$\land$</td>
-<td align="center">\land</td>
-<td align="center">$\lor$</td>
-<td align="center">\lor</td>
-</tr>
-<tr>
-<td align="center">$\forall$</td>
-<td align="center">\forall</td>
-<td align="center">$\exists$</td>
-<td align="center">\exists</td>
-</tr>
-<tr>
-<td align="center">$\top$</td>
-<td align="center">\top</td>
-<td align="center">$\bot$</td>
-<td align="center">\bot</td>
-</tr>
-<tr>
-<td align="center">$\vdash$</td>
-<td align="center">\vdash</td>
-<td align="center">$\vDash$</td>
-<td align="center">\vDash</td>
-</tr>
-<tr>
-<td align="center">$\star$</td>
-<td align="center">\star</td>
-<td align="center">$\ast$</td>
-<td align="center">\ast</td>
-</tr>
-<tr>
-<td align="center">$\oplus$</td>
-<td align="center">\oplus</td>
-<td align="center">$\circ$</td>
-<td align="center">\circ</td>
-</tr>
-<tr>
-<td align="center">$\bullet$</td>
-<td align="center">\bullet</td>
-<td align="center">$\approx$</td>
-<td align="center">\approx</td>
-</tr>
-<tr>
-<td align="center">$\sim$</td>
-<td align="center">\sim</td>
-<td align="center">$\equiv$</td>
-<td align="center">\equiv</td>
-</tr>
-<tr>
-<td align="center">$\prec$</td>
-<td align="center">\prec</td>
-<td align="center">$\infty$</td>
-<td align="center">\infty</td>
-</tr>
-<tr>
-<td align="center">$\aleph_o$</td>
-<td align="center">\aleph_o</td>
-<td align="center">$\nabla$</td>
-<td align="center">\nabla</td>
-</tr>
-<tr>
-<td align="center">$\Im$</td>
-<td align="center">\Im</td>
-<td align="center">$\R$</td>
-<td align="center">\R</td>
-</tr>
-<tr>
-<td align="center">$\Re$</td>
-<td align="center">\Re</td>
-<td align="center">$a\pmod b$</td>
-<td align="center">\pmod</td>
-</tr>
-<tr>
-<td align="center">$\ldots$</td>
-<td align="center">\ldots  （low）</td>
-<td align="center">$\cdots$</td>
-<td align="center">\cdots （center）</td>
-</tr>
-<tr>
-<td align="center">$\cdot$</td>
-<td align="center">\cdot</td>
-<td align="center">$\dot x$</td>
-<td align="center">\dot x</td>
-</tr>
-<tr>
-<td align="center">$\hatｘ$</td>
-<td align="center">\hat x</td>
-<td align="center">$\widehat {xyz}$</td>
-<td align="center">\widehat {xyz}</td>
-</tr>
-<tr>
-<td align="center">$\overline x$</td>
-<td align="center">\overline x</td>
-<td align="center">$\vec x$</td>
-<td align="center">\vec x</td>
-</tr>
-<tr>
-<td align="center">$\overrightarrow x$</td>
-<td align="center">\overrightarrow x</td>
-<td align="center">$\mathbf {sasd}$</td>
-<td align="center">\mathbf {} 黑体</td>
-</tr>
-<tr>
-<td align="center">$\mathtt {ACBD}$</td>
-<td align="center">\mathtt{ABCD}</td>
-<td align="center">$\Bbb{ABCDR}$</td>
-<td align="center">\Bbb{ABCDR}</td>
-</tr>
-</tbody></table>
-<h2 id="括号："><a href="#括号：" class="headerlink" title="括号："></a>括号：</h2><table>
-<thead>
-<tr>
-<th align="center">形式</th>
-<th align="center">写法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">$(x)$</td>
-<td align="center">$(x)$</td>
-</tr>
-<tr>
-<td align="center">$[x]$</td>
-<td align="center">$[x]$</td>
-</tr>
-<tr>
-<td align="center">$\lbrace x \rbrace$</td>
-<td align="center">$\lbrace x \rbrace$</td>
-</tr>
-<tr>
-<td align="center">$\langle x \rangle$</td>
-<td align="center">$\langle x \rangle$</td>
-</tr>
-<tr>
-<td align="center">$\lceil x \rceil$</td>
-<td align="center">$\lceil x \rceil$</td>
-</tr>
-<tr>
-<td align="center">$\lfloor x \rfloor$</td>
-<td align="center">$\lfloor x \rfloor$</td>
-</tr>
-</tbody></table>
-<h2 id="分数与根式"><a href="#分数与根式" class="headerlink" title="分数与根式"></a>分数与根式</h2><table>
-<thead>
-<tr>
-<th align="center">形式</th>
-<th align="center">写法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">$\frac a{b+1}$</td>
-<td align="center">$\frac a {b+1}$</td>
-</tr>
-<tr>
-<td align="center">${a+1} \over {b}$</td>
-<td align="center">${a+1} \over {b}$</td>
-</tr>
-<tr>
-<td align="center">$x = a_0 + \frac {1^2}{a_1 + \frac {a_2}{2}}$</td>
-<td align="center">$x = a_0 + \frac {1^2} {a_1 + \frac {a_2}{2}}$</td>
-</tr>
-<tr>
-<td align="center">$\sqrt [2] {\frac x y}$</td>
-<td align="center">$\sqrt [2] {\frac x y}$</td>
-</tr>
-</tbody></table>
-<h2 id="分段函数、多行算式"><a href="#分段函数、多行算式" class="headerlink" title="分段函数、多行算式"></a>分段函数、多行算式</h2><table>
-<thead>
-<tr>
-<th align="center">形式</th>
-<th align="center">写法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">$f(n) \begin{cases} \cfrac n2, &amp;if\ n\ =\ 9\ 3n+1, &amp;if\ n\ \neq 9 \end{cases}$</td>
-<td align="center">$f(n) \begin{cases} \cfrac n2, &amp;if\ n\ =\ 9\ 3n+1, &amp;if\ n\ \neq 9 \end{cases}$</td>
-</tr>
-<tr>
-<td align="center">$ \begin{equation}\begin{split} a&amp;= b+c-d&amp;\quad +e+f\ &amp;=g+h \end{split}\end{equation}$</td>
-<td align="center">$ \begin{equation}\begin{split} a&amp;= b+c-d&amp;\quad +e+f\ &amp;=g+h \end{split}\end{equation}$</td>
-</tr>
-</tbody></table>
-<h2 id="方程组"><a href="#方程组" class="headerlink" title="方程组"></a>方程组</h2><table>
-<thead>
-<tr>
-<th align="center">形式</th>
-<th align="center">语法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"></td>
-<td align="center">\left { \begin{array}{c} …… \end{array} \right.</td>
-</tr>
-<tr>
-<td align="center">$\left {\begin{array}{c} a_1x+b_1y+c_1z = d_1\a_2x+b_2y-c_2z=d_2^2 \end{array} \right.$</td>
-<td align="center">$\left {\begin{array}{c} a_1x+b_1y+c_1z = d_1\\a_2x+b_2y-c_2z=d_2^2 \end{array} \right.$</td>
-</tr>
-</tbody></table>
-<h2 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h2><table>
-<thead>
-<tr>
-<th align="center">形式</th>
-<th align="center">语法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">$\begin{matrix}1 &amp; x &amp; x^2\1 &amp; y &amp; y^2\1 &amp; z &amp; z^2\\end{matrix}$</td>
-<td align="center">\begin{matrix}1 &amp; x &amp; x^2\\1 &amp; y &amp; y^2\\1 &amp; z &amp; z^2\\ end{matrix}</td>
-</tr>
-<tr>
-<td align="center">$\begin{pmatrix}1 &amp; x &amp; x^2\1 &amp; y &amp; y^2\1 &amp; z &amp; z^2\\end{pmatrix}$</td>
-<td align="center">\begin{pmatrix}1 &amp; x &amp; x^2\1 &amp; y &amp; y^2\1 &amp; z &amp; z^2\\end{pmatrix}</td>
-</tr>
-<tr>
-<td align="center">$\begin{bmatrix}1 &amp; x &amp; x^2\1 &amp; y &amp; y^2\1 &amp; z &amp; z^2\\end{bmatrix}$</td>
-<td align="center">\begin{bmatrix}1 &amp; x &amp; x^2\1 &amp; y &amp; y^2\1 &amp; z &amp; z^2\\end{bmatrix}</td>
-</tr>
-<tr>
-<td align="center">$\begin{vmatrix}1 &amp; x &amp; x^2\1 &amp; y &amp; y^2\1 &amp; z &amp; z^2\\end{vmatrix}$</td>
-<td align="center">\begin{vmatrix}1 &amp; x &amp; x^2\1 &amp; y &amp; y^2\1 &amp; z &amp; z^2\\end{vmatrix}</td>
-</tr>
-<tr>
-<td align="center">$\begin{Vmatrix}1 &amp; x &amp; x^2\1 &amp; y &amp; y^2\1 &amp; z &amp; z^2\\end{Vmatrix}$</td>
-<td align="center">\begin{Vmatrix}1 &amp; x &amp; x^2\1 &amp; y &amp; y^2\1 &amp; z &amp; z^2\\end{Vmatrix}</td>
-</tr>
-<tr>
-<td align="center">$\left[\begin{array} {c c | c} 1 &amp; 2 &amp; 3\1 &amp; 3 &amp; 9\ \hline 1 &amp; 4 &amp; 16\\end{array} \right]$</td>
-<td align="center">\left[\begin{array} {c c |c} 1 &amp; 2 &amp; 3\1 &amp; 3 &amp; 9\ \hline 1 &amp; 4 &amp; 16\\end{array} \right]</td>
-</tr>
-</tbody></table>
-<h2 id="公式标号"><a href="#公式标号" class="headerlink" title="公式标号"></a>公式标号</h2><table>
-<thead>
-<tr>
-<th align="center">形式</th>
-<th align="center">语法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">$x+y=z \tag{1.2}$</td>
-<td align="center">x+y=z \tag{1.2}</td>
+<td align="center"><code>\uxxxx</code></td>
+<td align="center">用十六进制数字xxxx表示的Unicode字符</td>
 </tr>
 </tbody></table>
 
@@ -1679,13 +1238,144 @@
 <h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dnf module list nodejs</span><br><span class="line">dnf module reset nodejs  # 如果不能安装的d</span><br><span class="line">dnf module install nodejs:12</span><br></pre></td></tr></table></figure>
 
 <h2 id="sftp传输文件"><a href="#sftp传输文件" class="headerlink" title="sftp传输文件"></a>sftp传输文件</h2><ul>
-<li>连接 sftp -P 47633 <a href="mailto:&#x72;&#111;&#111;&#116;&#64;&#49;&#48;&#49;&#x2e;&#x37;&#x2e;&#49;&#x38;&#x36;&#x2e;&#x31;&#50;&#56;">&#x72;&#111;&#111;&#116;&#64;&#49;&#48;&#49;&#x2e;&#x37;&#x2e;&#49;&#x38;&#x36;&#x2e;&#x31;&#50;&#56;</a></li>
+<li>连接 sftp -P 47633 <a href="mailto:&#114;&#x6f;&#x6f;&#116;&#64;&#x31;&#x30;&#49;&#x2e;&#55;&#46;&#x31;&#56;&#54;&#x2e;&#49;&#50;&#x38;">&#114;&#x6f;&#x6f;&#116;&#64;&#x31;&#x30;&#49;&#x2e;&#55;&#46;&#x31;&#56;&#54;&#x2e;&#49;&#50;&#x38;</a></li>
 <li>get /home/www/download.txt E:/test/</li>
 <li>put E:/test/upload.txt /home/www/ </li>
 <li>pwd查看远程当前目录；lpwd查看主机当前目录</li>
 <li>cd改变远程目录；lcd改变主机目录</li>
 <li>exit或bye或quit退出</li>
 </ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">Linux-2-Centos命令行远程显示图片</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-02 11:19:33" itemprop="dateModified" datetime="2021-09-02T11:19:33+08:00">2021-09-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>能够在最小化安装的Centos8显示matplotlib图片</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">centos8服务端安装Xterm终端模拟器</span></span><br><span class="line">yum install xterm</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在客户端Xstart建立连接，在命令那一块输入</span></span><br><span class="line">/usr/bin/xterm -ls -display $DISPLAY</span><br><span class="line">yum install PyQt5</span><br><span class="line">python test.py # test.py见下文</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210305111141873.png" alt="image-20210305111141873" style="zoom:33%;">
+
+<p>测试程序test.py：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line">matplotlib.use(<span class="string">&#x27;Qt5Agg&#x27;</span>) <span class="comment"># 必需</span></span><br><span class="line">x = np.arange(<span class="number">1</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br><span class="line">y = np.arange(<span class="number">1</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br><span class="line">plt.plot(x, y,<span class="string">&#x27;bo&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>若报错：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qt.qpa.plugin: Could not load the Qt platform plugin &quot;xcb&quot; in &quot;&quot; even though it was found. This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span><br></pre></td></tr></table></figure>
+
+<p>则在终端输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export QT_DEBUG_PLUGINS=1</span><br><span class="line">python test.py</span><br></pre></td></tr></table></figure>
+
+<p>接下来会显示详细报错</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(libxcb-icccm.so.4: cannot open shared object file: No such file or directory)&quot;</span><br><span class="line">qt.qpa.plugin: Could not load the Qt platform plugin &quot;xcb&quot; in &quot;&quot; even though it was found.</span><br><span class="line">This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span><br><span class="line"></span><br><span class="line">Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, xcb.</span><br><span class="line">Aborted (core dumped)</span><br></pre></td></tr></table></figure>
+
+<p>网上说可以缺什么安什么，事实不太可行，比如这个<code>libxcb-icccm.so.4</code>便无法安装。</p>
+<p><strong>解决办法</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-wm-0.4.1-12.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-image-0.4.0-9.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-keysyms-0.4.0-7.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-renderutil-0.3.9-10.el8.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<p>参考链接：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://forum.qt.io/topic/122538/centos-8-qt-dependancy-install-issue/3">https://forum.qt.io/topic/122538/centos-8-qt-dependancy-install-issue/3</a></p>
+</blockquote>
+<p>此时：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py</span><br></pre></td></tr></table></figure>
+
+<p>可以正常运行。</p>
+<p><img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210305112507456.png" alt="image-20210305112507456"></p>
+<h1 id="VSCODE"><a href="#VSCODE" class="headerlink" title="VSCODE"></a>VSCODE</h1><p><strong>Windows端：</strong></p>
+<img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210309174944612.png" alt="image-20210309174944612" style="zoom:50%;">
+
+<p><img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210309175024566.png" alt="image-20210309175024566"></p>
+<p><strong>Centos端：</strong></p>
+<ol>
+<li><code>vim /etc/ssh/sshd_config</code></li>
+</ol>
+<p><img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210309175143925.png" alt="image-20210309175143925"></p>
+<ol start="2">
+<li>export DISPLAY=localhost:10.0</li>
+</ol>
+<h1 id="MobaXterm"><a href="#MobaXterm" class="headerlink" title="MobaXterm"></a>MobaXterm</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum install xorg-x11-xauth xorg-x11-fonts-* xorg-x11-font-utils xorg-x11-fonts-Type1</span><br><span class="line"></span><br><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line">    X11Forwarding yes</span><br><span class="line">    <span class="comment">#X11DisplayOffset 10</span></span><br><span class="line">    X11UseLocalhost no</span><br><span class="line"><span class="comment"># 手动启动SSH</span></span><br><span class="line">mkdir -p /var/run/sshd</span><br><span class="line">/usr/sbin/sshd -D &amp;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -1831,137 +1521,6 @@ vim /usr/libexec/urlgrabber-ext-down
 </blockquote>
 <h2 id="Vim配置基础知识"><a href="#Vim配置基础知识" class="headerlink" title="Vim配置基础知识"></a>Vim配置基础知识</h2><p>vim的配置文件有两处：<code>/etc/vimrc</code>及每个用户下的<code>~/.vimrc</code>（root下有一个，个人用户（如ABC也有一个，改变<code>~/.vimrc</code>不对另一个有改变）），</p>
 <h2 id="https-github-com-amix-vimrc"><a href="#https-github-com-amix-vimrc" class="headerlink" title="https://github.com/amix/vimrc"></a><a target="_blank" rel="noopener" href="https://github.com/amix/vimrc">https://github.com/amix/vimrc</a></h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">Linux-2-Centos命令行远程显示图片</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-02 11:19:33" itemprop="dateModified" datetime="2021-09-02T11:19:33+08:00">2021-09-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>能够在最小化安装的Centos8显示matplotlib图片</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">centos8服务端安装Xterm终端模拟器</span></span><br><span class="line">yum install xterm</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在客户端Xstart建立连接，在命令那一块输入</span></span><br><span class="line">/usr/bin/xterm -ls -display $DISPLAY</span><br><span class="line">yum install PyQt5</span><br><span class="line">python test.py # test.py见下文</span><br></pre></td></tr></table></figure>
-
-<img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210305111141873.png" alt="image-20210305111141873" style="zoom:33%;">
-
-<p>测试程序test.py：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line">matplotlib.use(<span class="string">&#x27;Qt5Agg&#x27;</span>) <span class="comment"># 必需</span></span><br><span class="line">x = np.arange(<span class="number">1</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br><span class="line">y = np.arange(<span class="number">1</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br><span class="line">plt.plot(x, y,<span class="string">&#x27;bo&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<p>若报错：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qt.qpa.plugin: Could not load the Qt platform plugin &quot;xcb&quot; in &quot;&quot; even though it was found. This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span><br></pre></td></tr></table></figure>
-
-<p>则在终端输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export QT_DEBUG_PLUGINS=1</span><br><span class="line">python test.py</span><br></pre></td></tr></table></figure>
-
-<p>接下来会显示详细报错</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(libxcb-icccm.so.4: cannot open shared object file: No such file or directory)&quot;</span><br><span class="line">qt.qpa.plugin: Could not load the Qt platform plugin &quot;xcb&quot; in &quot;&quot; even though it was found.</span><br><span class="line">This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span><br><span class="line"></span><br><span class="line">Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, xcb.</span><br><span class="line">Aborted (core dumped)</span><br></pre></td></tr></table></figure>
-
-<p>网上说可以缺什么安什么，事实不太可行，比如这个<code>libxcb-icccm.so.4</code>便无法安装。</p>
-<p><strong>解决办法</strong> </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-wm-0.4.1-12.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-image-0.4.0-9.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-keysyms-0.4.0-7.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-renderutil-0.3.9-10.el8.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-<p>参考链接：</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://forum.qt.io/topic/122538/centos-8-qt-dependancy-install-issue/3">https://forum.qt.io/topic/122538/centos-8-qt-dependancy-install-issue/3</a></p>
-</blockquote>
-<p>此时：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py</span><br></pre></td></tr></table></figure>
-
-<p>可以正常运行。</p>
-<p><img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210305112507456.png" alt="image-20210305112507456"></p>
-<h1 id="VSCODE"><a href="#VSCODE" class="headerlink" title="VSCODE"></a>VSCODE</h1><p><strong>Windows端：</strong></p>
-<img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210309174944612.png" alt="image-20210309174944612" style="zoom:50%;">
-
-<p><img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210309175024566.png" alt="image-20210309175024566"></p>
-<p><strong>Centos端：</strong></p>
-<ol>
-<li><code>vim /etc/ssh/sshd_config</code></li>
-</ol>
-<p><img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210309175143925.png" alt="image-20210309175143925"></p>
-<ol start="2">
-<li>export DISPLAY=localhost:10.0</li>
-</ol>
-<h1 id="MobaXterm"><a href="#MobaXterm" class="headerlink" title="MobaXterm"></a>MobaXterm</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum install xorg-x11-xauth xorg-x11-fonts-* xorg-x11-font-utils xorg-x11-fonts-Type1</span><br><span class="line"></span><br><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line">    X11Forwarding yes</span><br><span class="line">    <span class="comment">#X11DisplayOffset 10</span></span><br><span class="line">    X11UseLocalhost no</span><br><span class="line"><span class="comment"># 手动启动SSH</span></span><br><span class="line">mkdir -p /var/run/sshd</span><br><span class="line">/usr/sbin/sshd -D &amp;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
       
     </div>
 
