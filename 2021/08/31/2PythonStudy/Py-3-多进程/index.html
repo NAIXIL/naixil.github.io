@@ -198,13 +198,34 @@
             </span>
 
           
+            <span id="/2021/08/31/2PythonStudy/Py-3-%E5%A4%9A%E8%BF%9B%E7%A8%8B/" class="post-meta-item leancloud_visitors" data-flag-title="Py-2-多进程" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
-            </span><br>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/08/31/2PythonStudy/Py-3-%E5%A4%9A%E8%BF%9B%E7%A8%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/31/2PythonStudy/Py-3-%E5%A4%9A%E8%BF%9B%E7%A8%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -230,7 +251,6 @@
 
       
         <h1 id="多进程的典型方法"><a href="#多进程的典型方法" class="headerlink" title="多进程的典型方法"></a>多进程的典型方法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Pool</span><br><span class="line">pool = Pool(Processes)</span><br><span class="line">pool.apply_async(Excute_one_program, args=(index, <span class="built_in">int</span>(Processes), <span class="built_in">list</span>(py_file_name), file_slice_single,))</span><br><span class="line">pool.close()</span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure>
-
 <p>当想要提高一个任务的执行效率时，我们可以通过拆分任务，把这个任务拆分成多个子任务，然后利用多进程进行异步执行，即同时处理，缩短整体的任务时间。在python的multiprocessing包中，有两个可以构造异步执行的进程任务方法，apply_async()和map_async()，两者都可以分别添加任务，然后多进程同时执行。但是两者有着重要区别，下面进行说明。  </p>
 <p>对于apply_async(func,args)，func为要执行任务的函数名，args为一个列表或元组这样的可迭代对象，里面包含的是要传递给func的参数，对于多个子任务，要分别多次调用apply_async()一一添加，不过这可以通过列表解析实现，以让多个进程的结果返回保存在一个列表中。而对于map_async(func,iterable,chunksize)，如果多个子任务通过同一函数执行，只是参数不同，那么可以把拆分后的参数以列表形式通过iterable传入，并通过chunksize参数指定进程数（实际上这里的chunksize表示的是对iterable的拆分数，但最好让其等于进程数），这样就不需要一一添加。  以上只是两者细微的差别，更重要的差别在于，若是通过apply_async()方法，由于是手动指定进程并添加任务，这样每个进程的执行结果之间是独立的，会分别保存，这样的好处在于，尽管可能其中某几个进程出现了错误，抛出异常，但是并不会导致其他的进程也失败，其他的进程并不会受影响，而且当获取这个抛出异常的进程的结果时，还会返回异常信息；但是如果是map_async()方法，其子参数任务并不是独立的，如果其中的某个子参数任务抛出异常，同时也会导致其他的子参数任务停止，也就是说，并不是通过独立线程来执行不同的子参数任务的。  通过上述的对比，可知当拆分任务一提高执行效率时，通过列表解析使用apply_async()方法添加子任务，使用独立多进程去执行是比map_async()方法更好的，因此这种情况下，apply_async()是最优选择。</p>
 
@@ -287,6 +307,7 @@
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -437,6 +458,92 @@
 
 
 
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"L0cX6ObLkHnV1ydxDWqlN8Ys-gzGzoHsz","app_key":"wsWU6zzETUob4rOLeRJBp0sv","server_url":null,"security":true};
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
 
 
       </div>
@@ -482,6 +589,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'L0cX6ObLkHnV1ydxDWqlN8Ys-gzGzoHsz',
+      appKey     : 'wsWU6zzETUob4rOLeRJBp0sv',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
 
 </body>
 </html>
