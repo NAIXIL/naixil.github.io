@@ -22,17 +22,17 @@
 
   <meta name="description" content="镜像操作查看当前存在的镜像 docker images -a或者docker image ls -a 查看当前运行的容器docker container ls -a等价于docker ps -a 获取镜像docker pull centos:latest 删除镜像123REPOSITORY          TAG       IMAGE ID       CREATED        SIZEd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LiXian&#39;s Blog">
-<meta property="og:url" content="https://naixil.github.io/2021/09/01/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:title" content="Docker-1-Docker常用命令">
+<meta property="og:url" content="https://naixil.github.io/2021/09/02/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="LiXian&#39;s Blog">
 <meta property="og:description" content="镜像操作查看当前存在的镜像 docker images -a或者docker image ls -a 查看当前运行的容器docker container ls -a等价于docker ps -a 获取镜像docker pull centos:latest 删除镜像123REPOSITORY          TAG       IMAGE ID       CREATED        SIZEd">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-01T03:25:44.602Z">
-<meta property="article:modified_time" content="2021-08-22T07:43:58.817Z">
+<meta property="article:published_time" content="2021-09-02T04:08:43.000Z">
+<meta property="article:modified_time" content="2021-09-02T03:04:06.016Z">
 <meta property="article:author" content="Li Xian">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://naixil.github.io/2021/09/01/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+<link rel="canonical" href="https://naixil.github.io/2021/09/02/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title> | LiXian's Blog</title>
+  <title>Docker-1-Docker常用命令 | LiXian's Blog</title>
   
 
 
@@ -155,7 +155,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/02/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -168,7 +168,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          Docker-1-Docker常用命令
         </h1>
 
         <div class="post-meta">
@@ -177,16 +177,19 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-09-01 11:25:44" itemprop="dateCreated datePublished" datetime="2021-09-01T11:25:44+08:00">2021-09-01</time>
+              <time title="创建时间：2021-09-02 12:08:43 / 修改时间：11:04:06" itemprop="dateCreated datePublished" datetime="2021-09-02T12:08:43+08:00">2021-09-02</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-22 15:43:58" itemprop="dateModified" datetime="2021-08-22T15:43:58+08:00">2021-08-22</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
               </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                </span>
+            </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -224,13 +227,12 @@
 <h2 id="查看当前运行的容器"><a href="#查看当前运行的容器" class="headerlink" title="查看当前运行的容器"></a>查看当前运行的容器</h2><p><code>docker container ls -a</code>等价于<code>docker ps -a</code></p>
 <h2 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h2><p><code>docker pull centos:latest</code></p>
 <h2 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REPOSITORY          TAG       IMAGE ID       CREATED        SIZE</span><br><span class="line">docker101tutorial   latest    c0fbef3fb08f   6 hours ago    28MB</span><br><span class="line">ubuntu              18.04     7d0d8fa37224   10 days ago    63.1MB</span><br></pre></td></tr></table></figure>
-
 <h3 id="以ID删除：docker-image-rm-IMAGE-ID"><a href="#以ID删除：docker-image-rm-IMAGE-ID" class="headerlink" title="以ID删除：docker image rm IMAGE ID"></a>以ID删除：<code>docker image rm IMAGE ID</code></h3><p><code>docker image rm  7d0</code> </p>
-<h3 id="以镜像名删除：docker-image-rm-REPOSITORY-TAG"><a href="#以镜像名删除：docker-image-rm-REPOSITORY-TAG" class="headerlink" title="以镜像名删除：docker image rm REPOSITORY:TAG  "></a>以镜像名删除：<code>docker image rm REPOSITORY:TAG  </code></h3><p><code>docker image rm ubuntu:18.04</code></p>
+<h3 id="以镜像名删除：docker-image-rm-REPOSITORY-TAG"><a href="#以镜像名删除：docker-image-rm-REPOSITORY-TAG" class="headerlink" title="以镜像名删除：docker image rm REPOSITORY:TAG"></a>以镜像名删除：<code>docker image rm REPOSITORY:TAG</code></h3><p><code>docker image rm ubuntu:18.04</code></p>
 <p>终端返回：</p>
-<p><code>Deleted: sha256:7d0d8fa372249c6a1de9868ad62af9a14aaae2a2b17da867d8fad099a637fd0f Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652</code></p>
+<p><code>Deleted: sha256:7d0d8fa372249c6a1de9868ad62af9a14aaae2a2b17da867d8fad099a637fd0f
+Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652</code></p>
 <h3 id="以摘要删除docker-image-rm-DIGEST"><a href="#以摘要删除docker-image-rm-DIGEST" class="headerlink" title="以摘要删除docker image rm DIGEST"></a>以摘要删除<code>docker image rm DIGEST</code></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker image ls --digests</span><br><span class="line">docker image sha256:139b3846cee2e63de9ced83cee7023a2d95763ee2573e5b0ab6dea9dfbd4db8f</span><br></pre></td></tr></table></figure>
-
 <p>终端返回:</p>
 <p><code>Untagged: ubuntu@sha256:139b3846cee2e63de9ced83cee7023a2d95763ee2573e5b0ab6dea9dfbd4db8f</code></p>
 <p>实质并未删除镜像 只是删除了摘要</p>
@@ -238,7 +240,7 @@
 <p><code>docker image rm $(docker image ls -q ubuntu)</code></p>
 <h1 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h1><h2 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h2><p><code>docker run -it --rm centos:latest bash</code></p>
 <h2 id="查看容器信息"><a href="#查看容器信息" class="headerlink" title="查看容器信息"></a>查看容器信息</h2><p><code>docker inspect 容器ID</code></p>
-<h2 id="连接到容器"><a href="#连接到容器" class="headerlink" title="连接到容器"></a>连接到容器</h2><p><code>docker attach 容器ID </code></p>
+<h2 id="连接到容器"><a href="#连接到容器" class="headerlink" title="连接到容器"></a>连接到容器</h2><p><code>docker attach 容器ID</code></p>
 <p><code>docker exec -it 容器ID /bin/bash</code></p>
 <h1 id="docker中运行MYSQL"><a href="#docker中运行MYSQL" class="headerlink" title="docker中运行MYSQL"></a>docker中运行MYSQL</h1><ol>
 <li>拉取容器：docker pull mysql:latest</li>
@@ -300,13 +302,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/" rel="prev" title="Windows-1-Windows下SSH登录阿里云ECSlinux.md">
-      <i class="fa fa-chevron-left"></i> Windows-1-Windows下SSH登录阿里云ECSlinux.md
+    <a href="/2021/09/02/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/" rel="prev" title="Docker-2-Docker安装centos8并启动SSH服务">
+      <i class="fa fa-chevron-left"></i> Docker-2-Docker安装centos8并启动SSH服务
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/09/01/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/" rel="next" title="">
-       <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -365,7 +364,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">镜像操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E9%95%9C%E5%83%8F"><span class="nav-number">1.1.</span> <span class="nav-text">查看当前存在的镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E8%BF%90%E8%A1%8C%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">查看当前运行的容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E9%95%9C%E5%83%8F"><span class="nav-number">1.3.</span> <span class="nav-text">获取镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E9%95%9C%E5%83%8F"><span class="nav-number">1.4.</span> <span class="nav-text">删除镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5ID%E5%88%A0%E9%99%A4%EF%BC%9Adocker-image-rm-IMAGE-ID"><span class="nav-number">1.4.1.</span> <span class="nav-text">以ID删除：docker image rm IMAGE ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E9%95%9C%E5%83%8F%E5%90%8D%E5%88%A0%E9%99%A4%EF%BC%9Adocker-image-rm-REPOSITORY-TAG"><span class="nav-number">1.4.2.</span> <span class="nav-text">以镜像名删除：docker image rm REPOSITORY:TAG  </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E6%91%98%E8%A6%81%E5%88%A0%E9%99%A4docker-image-rm-DIGEST"><span class="nav-number">1.4.3.</span> <span class="nav-text">以摘要删除docker image rm DIGEST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4"><span class="nav-number">1.4.4.</span> <span class="nav-text">批量删除</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">容器操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">启动容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.</span> <span class="nav-text">查看容器信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%88%B0%E5%AE%B9%E5%99%A8"><span class="nav-number">2.3.</span> <span class="nav-text">连接到容器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker%E4%B8%AD%E8%BF%90%E8%A1%8CMYSQL"><span class="nav-number">3.</span> <span class="nav-text">docker中运行MYSQL</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">镜像操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E9%95%9C%E5%83%8F"><span class="nav-number">1.1.</span> <span class="nav-text">查看当前存在的镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E8%BF%90%E8%A1%8C%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">查看当前运行的容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E9%95%9C%E5%83%8F"><span class="nav-number">1.3.</span> <span class="nav-text">获取镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E9%95%9C%E5%83%8F"><span class="nav-number">1.4.</span> <span class="nav-text">删除镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5ID%E5%88%A0%E9%99%A4%EF%BC%9Adocker-image-rm-IMAGE-ID"><span class="nav-number">1.4.1.</span> <span class="nav-text">以ID删除：docker image rm IMAGE ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E9%95%9C%E5%83%8F%E5%90%8D%E5%88%A0%E9%99%A4%EF%BC%9Adocker-image-rm-REPOSITORY-TAG"><span class="nav-number">1.4.2.</span> <span class="nav-text">以镜像名删除：docker image rm REPOSITORY:TAG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E6%91%98%E8%A6%81%E5%88%A0%E9%99%A4docker-image-rm-DIGEST"><span class="nav-number">1.4.3.</span> <span class="nav-text">以摘要删除docker image rm DIGEST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4"><span class="nav-number">1.4.4.</span> <span class="nav-text">批量删除</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">容器操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">启动容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.</span> <span class="nav-text">查看容器信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%88%B0%E5%AE%B9%E5%99%A8"><span class="nav-number">2.3.</span> <span class="nav-text">连接到容器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker%E4%B8%AD%E8%BF%90%E8%A1%8CMYSQL"><span class="nav-number">3.</span> <span class="nav-text">docker中运行MYSQL</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -379,14 +378,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
@@ -431,13 +430,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">90k</span>
+    <span title="站点总字数">84k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:22</span>
+    <span title="站点阅读时长">1:16</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
@@ -512,6 +511,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

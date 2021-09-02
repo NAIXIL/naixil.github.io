@@ -226,7 +226,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>19k</span>
+              <span>20k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
 <h2 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h2><h3 id="普通登录方法"><a href="#普通登录方法" class="headerlink" title="普通登录方法"></a>普通登录方法</h3><p><code>docker exec -it mysql bash</code></p>
 <h3 id="支持中文格式的登录方法"><a href="#支持中文格式的登录方法" class="headerlink" title="支持中文格式的登录方法"></a>支持中文格式的登录方法</h3><p><code>docker exec -it mysql env LANG=C.UTF-8 bash</code></p>
 <h2 id="容器内登录mysql"><a href="#容器内登录mysql" class="headerlink" title="容器内登录mysql"></a>容器内登录mysql</h2><h3 id="普通登录"><a href="#普通登录" class="headerlink" title="普通登录"></a>普通登录</h3><p><code>mysql -u root -p</code>$\rightarrow$输入密码123456即可</p>
-<h3 id="需要导入数据时登录方法"><a href="#需要导入数据时登录方法" class="headerlink" title="需要导入数据时登录方法"></a>需要导入数据时登录方法</h3><p><code>mysql --local-infile=1 -h 127.0.0.1 -u root -p </code></p>
+<h3 id="需要导入数据时登录方法"><a href="#需要导入数据时登录方法" class="headerlink" title="需要导入数据时登录方法"></a>需要导入数据时登录方法</h3><p><code>mysql --local-infile=1 -h 127.0.0.1 -u root -p</code></p>
 <h2 id="容器启停"><a href="#容器启停" class="headerlink" title="容器启停"></a>容器启停</h2><ol>
 <li><code>docker ps -a</code> 获取容器ID和名字，查看状态、<ul>
 <li>如果是Exit<ul>
@@ -269,10 +269,7 @@
 </li>
 </ul>
 <h2 id="docker的mysql不支持中文"><a href="#docker的mysql不支持中文" class="headerlink" title="docker的mysql不支持中文"></a>docker的mysql不支持中文</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;export LANG=C.UTF-8&quot; &gt;&gt;/etc/profile &amp;&amp; source /etc/profile</span><br></pre></td></tr></table></figure>
-
-<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210822172021597.png" alt="image-20210822172021597" style="zoom: 25%;">
-
-
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210822172021597.png" alt="image-20210822172021597" style="zoom: 25%;"></p>
 <h1 id="数据库系统概论（王珊、萨师煊）"><a href="#数据库系统概论（王珊、萨师煊）" class="headerlink" title="数据库系统概论（王珊、萨师煊）"></a>数据库系统概论（王珊、萨师煊）</h1><h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><ol>
 <li>4个基本概念：DBS=DBMS+DB+DBA+应用<ol>
 <li>数据库</li>
@@ -337,31 +334,17 @@
 </ol>
 </li>
 </ol>
-<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235839.jpg" alt="IMG_20210830_235839" style="zoom: 25%;">
-
-<h2 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h2><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235913.jpg" alt="IMG_20210830_235913" style="zoom:25%;">
-
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235839.jpg" alt="IMG_20210830_235839" style="zoom: 25%;"></p>
+<h2 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h2><p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235913.jpg" alt="IMG_20210830_235913" style="zoom:25%;"></p>
 <p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235913.jpg" alt="img"></p>
-<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235929.jpg" alt="IMG_20210830_235929" style="zoom:25%;">
-
-
-
-<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235940.jpg" alt="IMG_20210830_235940" style="zoom:25%;">
-
-
-
-
-
-<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210831_000000.jpg" alt="IMG_20210831_000000" style="zoom:25%;">
-
-
-
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235929.jpg" alt="IMG_20210830_235929" style="zoom:25%;"></p>
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210830_235940.jpg" alt="IMG_20210830_235940" style="zoom:25%;"></p>
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/IMG_20210831_000000.jpg" alt="IMG_20210831_000000" style="zoom:25%;"></p>
 <h2 id="SQL语言"><a href="#SQL语言" class="headerlink" title="SQL语言"></a>SQL语言</h2><h3 id="SQL概述"><a href="#SQL概述" class="headerlink" title="SQL概述"></a>SQL概述</h3><h3 id="从mysql导入数据"><a href="#从mysql导入数据" class="headerlink" title="从mysql导入数据"></a>从mysql导入数据</h3><p>命令行界面下：</p>
 <ul>
 <li><code>load data local infile &#39;/usr/student.txt&#39; into table student lines terminated by  &#39;\r\n&#39;;</code>用记事本写，一行为一个元组，分隔符是TAB</li>
 </ul>
 <h3 id="数据定义"><a href="#数据定义" class="headerlink" title="数据定义"></a>数据定义</h3><h4 id="模式的定义与删除"><a href="#模式的定义与删除" class="headerlink" title="模式的定义与删除"></a>模式的定义与删除</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create schema &lt;模式名&gt;;</span><br><span class="line">drop schema &lt;模式名&gt; &lt;CASCADE | RESTRICT&gt;;  # CASCADE（删除模式的时候把模式下的数据库对象（表、视图）都删除）RESTRICT（模式下有数据库对象则拒绝删除）必须2选1</span><br></pre></td></tr></table></figure>
-
 <h4 id="基本表的定义、删除与修改"><a href="#基本表的定义、删除与修改" class="headerlink" title="基本表的定义、删除与修改"></a>基本表的定义、删除与修改</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><ul>
 <li><p>每个基本表都属于一个模式，一个模式包含多个基本表。</p>
 </li>
@@ -369,7 +352,8 @@
 <ul>
 <li><p>在表名中明显的给出模式名</p>
 <ul>
-<li>```mysql<br>CREATE TABLE “S-T”.Student(…)；  #Student表所属的模式是S-T<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">- 创建模式的时候创建表</span><br><span class="line"></span><br><span class="line">    - ```mysql</span><br><span class="line">      CREATE SCHEMA TEST</span><br><span class="line">      CREATE TABLE Student(...)；</span><br></pre></td></tr></table></figure></li>
+<li>```mysql<br>CREATE TABLE “S-T”.Student(…)；  #Student表所属的模式是S-T<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">- 创建模式的时候创建表</span><br><span class="line"></span><br><span class="line">    - ```mysql</span><br><span class="line">      CREATE SCHEMA TEST</span><br><span class="line">      CREATE TABLE Student(...)；</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 <li><p>设置所属模式（根据设置好的搜索路径</p>
@@ -378,13 +362,9 @@
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">create table Student</span><br><span class="line">(Sno CHAR(9) PRIMARY KEY,  # 设置主键/主码，不能为空</span><br><span class="line">Sname VARCHAR(20) UNIQUE,  # 不能重复出现</span><br><span class="line">Ssex CHAR(2),</span><br><span class="line">Sage TINYINT,</span><br><span class="line">Sdept VARCHAR(20));</span><br><span class="line">/*</span><br><span class="line">+-----------+-------+------+------+-------+------------+</span><br><span class="line">| Sno       | Sname | Ssex | Sage | Sdept | S_entrance |</span><br><span class="line">+-----------+-------+------+------+-------+------------+</span><br><span class="line">| 201215121 | 李勇  | 男   |   20 | CS    | NULL       |</span><br><span class="line">| 201215122 | 刘晨  | 女   |   19 | CS    | NULL       |</span><br><span class="line">| 201215123 | 王敏  | 女   |   18 | MA    | NULL       |</span><br><span class="line">| 201215125 | 张立  | 男   |   19 | IS    | NULL       |</span><br><span class="line">+-----------+-------+------+------+-------+------------+</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">create table Course</span><br><span class="line">(Cno CHAR(4) PRIMARY KEY,</span><br><span class="line"> Cname CHAR(40) NOT NULL,  # 不能取空值</span><br><span class="line"> Cpno CHAR(4),</span><br><span class="line"> Ccredit SMALLINT,</span><br><span class="line"> FOREIGN KEY (Cpno) REFERENCES Course(Cno));  # Cpno是外码，被参照表是Course，被参照列是Cno</span><br><span class="line">/*</span><br><span class="line">+-----+----------+------+---------+</span><br><span class="line">| Cno | Cname    | Cpno | Ccredit |</span><br><span class="line">+-----+----------+------+---------+</span><br><span class="line">| 1   | 数据库   | 5    |       4 |</span><br><span class="line">| 2   | 数学     | NULL |       2 |</span><br><span class="line">| 3   | 信息系统 | 1    |       4 |</span><br><span class="line">| 4   | 操作系统 | 6    |       3 |</span><br><span class="line">| 5   | 数据结构 | 7    |       4 |</span><br><span class="line">| 6   | 数据处理 | NULL |       2 |</span><br><span class="line">| 7   | C语言    | 4    |       6 |</span><br><span class="line">+-----+----------+------+---------+</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">create table SC</span><br><span class="line">(Sno CHAR(9), </span><br><span class="line"> Cpno CHAR(4),</span><br><span class="line"> Grade SMALLINT,</span><br><span class="line"> PRIMARY KEY (Sno,Cno)  # 两个主码</span><br><span class="line"> FOREIGN KEY (Sno) REFERENCES Student(Sno)),</span><br><span class="line"> FOREIGN KEY (Cpno) REFERENCES Course(Cno)));</span><br><span class="line"> /*</span><br><span class="line"> +-----------+-----+-------+</span><br><span class="line">| Sno       | Cno | Grade |</span><br><span class="line">+-----------+-----+-------+</span><br><span class="line">| 201215121 | 1   |    92 |</span><br><span class="line">| 201215121 | 2   |    85 |</span><br><span class="line">| 201215121 | 3   |    88 |</span><br><span class="line">| 201215122 | 2   |    90 |</span><br><span class="line">| 201215122 | 3   |    80 |</span><br><span class="line">+-----------+-----+-------+</span><br><span class="line">*/ </span><br></pre></td></tr></table></figure>
-
 <h5 id="更改属性的数据类型、值"><a href="#更改属性的数据类型、值" class="headerlink" title="更改属性的数据类型、值"></a>更改属性的数据类型、值</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE &lt;表名&gt;</span><br><span class="line">[ADD [COLUMN] &lt;列名&gt; &lt;数据类型&gt;[完整性约束]]</span><br><span class="line">[ADD &lt;表级完整性约束&gt;]  # FOREIGN KEY (Sno) REFERENCES &lt;表名&gt;(列名)</span><br><span class="line">[DROP [COLMUN] &lt;列名&gt; [CASCADE|RESTRICT]]</span><br><span class="line">[DROP CONSTRAINT &lt;完整性约束名&gt;[CASCADE|RESTRICT]]</span><br><span class="line">[ALTER COLUMN &lt;列名&gt;&lt;数据类型&gt;];</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alter table student modify Ssex char(2);  # 修改属性的数据类型</span><br><span class="line">update course set Cpno=NULL where Cno=2;  # 修改数据的值</span><br><span class="line">alter table Student add S_entrance DATE;  # 添加一行S_entrance</span><br><span class="line">alter table Course add UNIQUE(Cname);  # 增加课程名必须取唯一值的约束</span><br></pre></td></tr></table></figure>
-
 <h5 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE &lt;表名&gt; [CASCADE|RESTRICT(默认)];  # CASCADE相关的依赖都被删掉，如视图；RESTRICT有依赖则不可以</span><br></pre></td></tr></table></figure>
-
 <h4 id="索引的建立与删除（内模式的范畴）"><a href="#索引的建立与删除（内模式的范畴）" class="headerlink" title="索引的建立与删除（内模式的范畴）"></a>索引的建立与删除（内模式的范畴）</h4><ul>
 <li>顺序索引</li>
 <li>B+树索引</li>
@@ -392,11 +372,8 @@
 <li>位图索引</li>
 </ul>
 <h5 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create unique index Stusno on Student(Sno);</span><br><span class="line">create unique index SCno on SC(Sno ASC, Cno DESC);  # ASC升序；DESC降序</span><br></pre></td></tr></table></figure>
-
 <h5 id="修改索引"><a href="#修改索引" class="headerlink" title="修改索引"></a>修改索引</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter index SCno rename to SCSno;  # 8.0不可用</span><br></pre></td></tr></table></figure>
-
 <h5 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE SC drop index SCno;</span><br></pre></td></tr></table></figure>
-
 <h3 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询"></a>数据查询</h3><ul>
 <li><strong>需要注意的点：</strong><ul>
 <li>聚集函数。只能用于Select子句和group by 中的having子句</li>
@@ -407,30 +384,30 @@
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select [all|distinct] &lt;目标列表达式&gt;[,&lt;目标列表达式&gt;]...</span><br><span class="line">from &lt;表名或视图名&gt;[,&lt;表名或视图名&gt;...] | (select语句) [as] &lt;别名&gt;</span><br><span class="line">[where &lt;条件表达式&gt;]</span><br><span class="line">[group by &lt;列名1&gt; [having&lt;条件表达式&gt;]]</span><br><span class="line">[order by &lt;列名2&gt; [ASC|DESC]]</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h4><h5 id="查找列"><a href="#查找列" class="headerlink" title="查找列"></a>查找列</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">select Sno,Sname from Student;</span><br><span class="line"></span><br><span class="line">select Sname,Sno,Sdept from Student;  # 可以不按照定义基本表时候的顺序</span><br><span class="line"></span><br><span class="line">select Sname, 2014-Sage from Student;</span><br><span class="line">/*</span><br><span class="line">+-------+-----------+</span><br><span class="line">| Sname | 2014-Sage |</span><br><span class="line">+-------+-----------+</span><br><span class="line">| 李勇  |      1994 |</span><br><span class="line">| 刘晨  |      1995 |</span><br><span class="line">| 王敏  |      1996 |</span><br><span class="line">| 张立  |      1995 |</span><br><span class="line">+-------+-----------+</span><br><span class="line">4 rows in set (0.08 sec)</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">select Sname,&#x27;Year of birth:&#x27;,2014-Sage, Lower(Sdept) from Student;  # 查询全体学生的姓名、出生年份、所在院系（小写字母表示）</span><br><span class="line">/*</span><br><span class="line">+-------+----------------+-----------+--------------+</span><br><span class="line">| Sname | Year of birth: | 2014-Sage | Lower(Sdept) |</span><br><span class="line">+-------+----------------+-----------+--------------+</span><br><span class="line">| 李勇  | Year of birth: |      1994 | cs           |</span><br><span class="line">| 刘晨  | Year of birth: |      1995 | cs           |</span><br><span class="line">| 王敏  | Year of birth: |      1996 | ma           |</span><br><span class="line">| 张立  | Year of birth: |      1995 | is           |</span><br><span class="line">+-------+----------------+-----------+--------------+</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">select Sname NAME,&#x27;Year of birth:&#x27;BIRTH, 2014-Sage BIRTHDAY, LOWER(Sdept) DEPARTMENT from Student;</span><br><span class="line">/*</span><br><span class="line">+------+----------------+----------+------------+</span><br><span class="line">| NAME | BIRTH          | BIRTHDAY | DEPARTMENT |</span><br><span class="line">+------+----------------+----------+------------+</span><br><span class="line">| 李勇 | Year of birth: |     1994 | cs         |</span><br><span class="line">| 刘晨 | Year of birth: |     1995 | cs         |</span><br><span class="line">| 王敏 | Year of birth: |     1996 | ma         |</span><br><span class="line">| 张立 | Year of birth: |     1995 | is         |</span><br><span class="line">+------+----------------+----------+------------+</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
-
 <h5 id="查找行（元组）"><a href="#查找行（元组）" class="headerlink" title="查找行（元组）"></a>查找行（元组）</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"># 1.消除取值重复的行</span><br><span class="line">select distinct Sno from SC;  # 取消重复的行，如果没有，则会出现重读的行</span><br><span class="line">/*</span><br><span class="line">+-----------+</span><br><span class="line">| Sno       |</span><br><span class="line">+-----------+</span><br><span class="line">| 201215121 |</span><br><span class="line">| 201215122 |</span><br><span class="line">+-----------+</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line"># 2.查询满足条件的元组</span><br><span class="line"># 2.1 比较大小=,&gt;,&lt;,&gt;=,&lt;=,!=/&lt;&gt;,!&gt;,!&lt;</span><br><span class="line">select Sname from Student where Sdept=&#x27;CS&#x27;;</span><br><span class="line">/*</span><br><span class="line">+-------+</span><br><span class="line">| Sname |</span><br><span class="line">+-------+</span><br><span class="line">| 李勇  |</span><br><span class="line">| 刘晨  |</span><br><span class="line">+-------+</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">select distinct Sno from SC where Grade&lt;60;  # 去除重复学号</span><br><span class="line"># 2.2 确定范围</span><br><span class="line">select Sname,Sdept,Sage from Student where Sage between 20 and 23;  # 20~23之间的人</span><br><span class="line">select Sname,Sdept,Sage from Student where Sage not between 20 and 23;</span><br><span class="line"># 2.3 确定集合</span><br><span class="line">select Sname,Ssex from Student where Sdept in (&#x27;CS&#x27;,&#x27;MA&#x27;);</span><br><span class="line"># 2.4 字符匹配 通配符%(任意长度字符串)；_(单个字符)</span><br><span class="line">select * from Student where Sno like &#x27;2015%&#x27;;</span><br><span class="line">select Sname,Sno from Student where Sname like &#x27;_勇%&#x27;;  # 查找名字第二个字带勇</span><br><span class="line">select Cno,Ccredit from Course where Cname like &#x27;DB\_Design&#x27;;  # mySQL8.0中已经不需要在最后加上ESCAPE&#x27;\&#x27;，甚至都不需要转义符，直接select Cno,Ccredit,Cname from Course where Cname like &#x27;DB_Design&#x27;;</span><br><span class="line">select * from Course where Cname like &#x27;DB\_%i%&#x27;;</span><br><span class="line"></span><br><span class="line"># 2.5 涉及空值的查询</span><br><span class="line">select Sno,Cno from SC Where Grade is null;  # is 不可以用空值表示</span><br><span class="line"></span><br><span class="line"># 2.6 多重条件查询</span><br><span class="line">select Sname from Student where Sdept=&#x27;CS&#x27; and Sage&lt;20;</span><br><span class="line"></span><br><span class="line"># 3 order by 子句</span><br><span class="line">select * from SC where Cno=&#x27;3&#x27; order by grade DESC; </span><br><span class="line">/*</span><br><span class="line">+-----------+-----+-------+</span><br><span class="line">| Sno       | Cno | Grade |</span><br><span class="line">+-----------+-----+-------+</span><br><span class="line">| 201215121 | 3   |    88 |</span><br><span class="line">| 201215122 | 3   |    80 |</span><br><span class="line">+-----------+-----+-------+</span><br><span class="line">*/</span><br><span class="line">select * from Student order by Sdept,Sage DESC;  # 按照所在的系号升序排序，同一个系的年龄降序</span><br><span class="line">/*</span><br><span class="line">+-----------+-------+------+------+-------+</span><br><span class="line">| Sno       | Sname | Ssex | Sage | Sdept |</span><br><span class="line">+-----------+-------+------+------+-------+</span><br><span class="line">| 201215121 | 李勇  | 男   |   20 | CS    |</span><br><span class="line">| 201215122 | 刘晨  | 女   |   19 | CS    |</span><br><span class="line">| 201215125 | 张立  | 男   |   19 | IS    |</span><br><span class="line">| 201215123 | 王敏  | 女   |   18 | MA    |</span><br><span class="line">+-----------+-------+------+------+-------+</span><br><span class="line">*/</span><br><span class="line"># 4 聚集函数。只能用于Select子句和group by 中的having子句</span><br><span class="line">/*</span><br><span class="line">COUNT(*)</span><br><span class="line">count([distinct|all] &lt;列名&gt;)</span><br><span class="line">sum([distinct|all] &lt;列名&gt;)</span><br><span class="line">avg([distinct|all] &lt;列名&gt;)</span><br><span class="line">max([distinct|all] &lt;列名&gt;)</span><br><span class="line">min([distinct|all] &lt;列名&gt;)</span><br><span class="line">*/</span><br><span class="line">select count(*) from Student;  # 查询学生总人数/表的行数</span><br><span class="line">select count(distinct Sno) from SC; # 查询选修了课程的总人数</span><br><span class="line">select avg(Grade) from SC where Cno=&#x27;1&#x27;;  # 算课程号为1的平均分</span><br><span class="line">select max(Grade) from SC where Cno=&#x27;1&#x27;;   # 最高分</span><br><span class="line">select sum(Ccredit) from SC,Course where Sno=&#x27;201215121&#x27; and SC.Cno=Course.Cno;  # 查询该学号学生选修课程的总的学分数</span><br><span class="line"></span><br><span class="line"># 5 group by 子句</span><br><span class="line">select Cno,Count(Sno) from SC group by Cno;  # 查询各个课程号及其相应的选课人数</span><br><span class="line">/*</span><br><span class="line">+-----+------------+</span><br><span class="line">| Cno | Count(Sno) |</span><br><span class="line">+-----+------------+</span><br><span class="line">| 1   |          1 |</span><br><span class="line">| 2   |          2 |</span><br><span class="line">| 3   |          2 |</span><br><span class="line">+-----+------------+</span><br><span class="line">*/</span><br><span class="line">## 分组后再进行筛选，可以having指定</span><br><span class="line">select Sno from SC group by Sno Having Count(*)&gt;3;</span><br><span class="line"></span><br><span class="line">## where子句不能用聚集函数作为条件表达式</span><br><span class="line">select Sno,avg(Grade) from SC group by Sno having avg(grade)&gt;=80;</span><br><span class="line"># 这个运行不出来</span><br><span class="line"># select Sno,avg(Grade) from SC where avg(grade)&gt;=80 group by Sno;</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><p>涉及两个表以上的查询，包括：</p>
 <ol>
 <li><p>等值连接查询</p>
 <ul>
-<li>```mysql<br>– where子句的形式：[&lt;表名1&gt;.]&lt;列名2&gt;&lt;比较运算符&gt;[&lt;表名2&gt;.]&lt;列名2&gt;<br>– 或者是[&lt;表名1&gt;.]&lt;列名2&gt;&lt;比较运算符&gt;between[&lt;表名2&gt;.]&lt;列名2&gt;and[&lt;表名2&gt;.]&lt;列名3&gt;<br>select Student.<em>,SC.</em> from Student,SC where Student.Sno=SC.Sno;<br>/*<br>+———–+——–+——+——+——-+———–+—–+——-+<br>| Sno       | Sname  | Ssex | Sage | Sdept | Sno       | Cno | Grade |<br>+———–+——–+——+——+——-+———–+—–+——-+<br>| 201215121 | 李勇   | 男   |   20 | CS    | 201215121 | 1   |    92 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 201215121 | 2   |    85 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 201215121 | 3   |    88 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 201215122 | 2   |    90 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 201215122 | 3   |    80 |<br>+———–+——–+——+——+——-+———–+—–+——-+<br>*/<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">2. 自然连接查询</span><br><span class="line"></span><br><span class="line">   - ```mysql</span><br><span class="line">     select Student.Sno,Sname,Ssex,Sage,Sdept,Cno,Grade from Student,SC where Student.Sno=SC.Sno;</span><br><span class="line">     /*</span><br><span class="line">     +-----------+--------+------+------+-------+-----+-------+</span><br><span class="line">     | Sno       | Sname  | Ssex | Sage | Sdept | Cno | Grade |</span><br><span class="line">     +-----------+--------+------+------+-------+-----+-------+</span><br><span class="line">     | 201215121 | 李勇   | 男   |   20 | CS    | 1   |    92 |</span><br><span class="line">     | 201215121 | 李勇   | 男   |   20 | CS    | 2   |    85 |</span><br><span class="line">     | 201215121 | 李勇   | 男   |   20 | CS    | 3   |    88 |</span><br><span class="line">     | 201215122 | 刘晨   | 女   |   19 | CS    | 2   |    90 |</span><br><span class="line">     | 201215122 | 刘晨   | 女   |   19 | CS    | 3   |    80 |</span><br><span class="line">     +-----------+--------+------+------+-------+-----+-------+</span><br><span class="line">     */</span><br></pre></td></tr></table></figure></li>
+<li>```mysql<br>— where子句的形式：[&lt;表名1&gt;.]&lt;列名2&gt;&lt;比较运算符&gt;[&lt;表名2&gt;.]&lt;列名2&gt;<br>— 或者是[&lt;表名1&gt;.]&lt;列名2&gt;&lt;比较运算符&gt;between[&lt;表名2&gt;.]&lt;列名2&gt;and[&lt;表名2&gt;.]&lt;列名3&gt;<br>select Student.<em>,SC.</em> from Student,SC where Student.Sno=SC.Sno;<br>/<em><br>+—————-+————+———+———+———-+—————-+——-+———-+<br>| Sno       | Sname  | Ssex | Sage | Sdept | Sno       | Cno | Grade |<br>+—————-+————+———+———+———-+—————-+——-+———-+<br>| 201215121 | 李勇   | 男   |   20 | CS    | 201215121 | 1   |    92 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 201215121 | 2   |    85 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 201215121 | 3   |    88 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 201215122 | 2   |    90 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 201215122 | 3   |    80 |<br>+—————-+————+———+———+———-+—————-+——-+———-+
+</em>/<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">2. 自然连接查询</span><br><span class="line"></span><br><span class="line">   - ```mysql</span><br><span class="line">     select Student.Sno,Sname,Ssex,Sage,Sdept,Cno,Grade from Student,SC where Student.Sno=SC.Sno;</span><br><span class="line">     /*</span><br><span class="line">     +-----------+--------+------+------+-------+-----+-------+</span><br><span class="line">     | Sno       | Sname  | Ssex | Sage | Sdept | Cno | Grade |</span><br><span class="line">     +-----------+--------+------+------+-------+-----+-------+</span><br><span class="line">     | 201215121 | 李勇   | 男   |   20 | CS    | 1   |    92 |</span><br><span class="line">     | 201215121 | 李勇   | 男   |   20 | CS    | 2   |    85 |</span><br><span class="line">     | 201215121 | 李勇   | 男   |   20 | CS    | 3   |    88 |</span><br><span class="line">     | 201215122 | 刘晨   | 女   |   19 | CS    | 2   |    90 |</span><br><span class="line">     | 201215122 | 刘晨   | 女   |   19 | CS    | 3   |    80 |</span><br><span class="line">     +-----------+--------+------+------+-------+-----+-------+</span><br><span class="line">     */</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
+</ol>
+<ol>
 <li><p>非等值连接查询</p>
 <ul>
-<li>```mysql<br>select Student.Sno,Sname from Student,SC where Student.Sno=SC.Sno and SC.Cno=’2’ and SC.Grade&gt;=90;<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">4. 自身连接查询</span><br><span class="line"></span><br><span class="line">   - ```mysql</span><br><span class="line">     Select first.Cno,second.Cpno from Course first,Course second where first.Cpno=second.Cno;</span><br></pre></td></tr></table></figure></li>
+<li>```mysql<br>select Student.Sno,Sname from Student,SC where Student.Sno=SC.Sno and SC.Cno=’2’ and SC.Grade&gt;=90;<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">4. 自身连接查询</span><br><span class="line"></span><br><span class="line">   - ```mysql</span><br><span class="line">     Select first.Cno,second.Cpno from Course first,Course second where first.Cpno=second.Cno;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 <li><p>外连接查询</p>
 <ul>
-<li>```mysql<br>select Student.Sno,Sname,Ssex,Sage,Sdept,Cno,Grade from Student left outer join SC on (Student.Sno=SC.Sno);<br>/*<br>+———–+——–+——+——+——-+——+——-+<br>| Sno       | Sname  | Ssex | Sage | Sdept | Cno  | Grade |<br>+———–+——–+——+——+——-+——+——-+<br>| 201215121 | 李勇   | 男   |   20 | CS    | 3    |    88 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 2    |    85 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 1    |    92 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 3    |    80 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 2    |    90 |<br>| 201215123 | 王敏   | 女   |   18 | MA    | NULL |  NULL |<br>| 201215125 | 张立   | 男   |   19 | IS    | NULL |  NULL |<br>+———–+——–+——+——+——-+——+——-+<br>*/<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">6. 复合条件查询/多表查询</span><br><span class="line"></span><br><span class="line">   - ```mysql</span><br><span class="line">     select Student.Sno,Sname,Cname,Grade from Student,SC,Course where Student.Sno=SC.Sno and SC.Cno=Course.Cno;</span><br><span class="line">     /*</span><br><span class="line">     +-----------+--------+--------------+-------+</span><br><span class="line">     | Sno       | Sname  | Cname        | Grade |</span><br><span class="line">     +-----------+--------+--------------+-------+</span><br><span class="line">     | 201215121 | 李勇   | 数据库       |    92 |</span><br><span class="line">     | 201215121 | 李勇   | 数学         |    85 |</span><br><span class="line">     | 201215121 | 李勇   | 信息系统     |    88 |</span><br><span class="line">     | 201215122 | 刘晨   | 数学         |    90 |</span><br><span class="line">     | 201215122 | 刘晨   | 信息系统     |    80 |</span><br><span class="line">     +-----------+--------+--------------+-------+</span><br><span class="line">     */</span><br></pre></td></tr></table></figure></li>
+<li>```mysql<br>select Student.Sno,Sname,Ssex,Sage,Sdept,Cno,Grade from Student left outer join SC on (Student.Sno=SC.Sno);<br>/<em><br>+—————-+————+———+———+———-+———+———-+<br>| Sno       | Sname  | Ssex | Sage | Sdept | Cno  | Grade |<br>+—————-+————+———+———+———-+———+———-+<br>| 201215121 | 李勇   | 男   |   20 | CS    | 3    |    88 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 2    |    85 |<br>| 201215121 | 李勇   | 男   |   20 | CS    | 1    |    92 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 3    |    80 |<br>| 201215122 | 刘晨   | 女   |   19 | CS    | 2    |    90 |<br>| 201215123 | 王敏   | 女   |   18 | MA    | NULL |  NULL |<br>| 201215125 | 张立   | 男   |   19 | IS    | NULL |  NULL |<br>+—————-+————+———+———+———-+———+———-+
+</em>/<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">6. 复合条件查询/多表查询</span><br><span class="line"></span><br><span class="line">   - ```mysql</span><br><span class="line">     select Student.Sno,Sname,Cname,Grade from Student,SC,Course where Student.Sno=SC.Sno and SC.Cno=Course.Cno;</span><br><span class="line">     /*</span><br><span class="line">     +-----------+--------+--------------+-------+</span><br><span class="line">     | Sno       | Sname  | Cname        | Grade |</span><br><span class="line">     +-----------+--------+--------------+-------+</span><br><span class="line">     | 201215121 | 李勇   | 数据库       |    92 |</span><br><span class="line">     | 201215121 | 李勇   | 数学         |    85 |</span><br><span class="line">     | 201215121 | 李勇   | 信息系统     |    88 |</span><br><span class="line">     | 201215122 | 刘晨   | 数学         |    90 |</span><br><span class="line">     | 201215122 | 刘晨   | 信息系统     |    80 |</span><br><span class="line">     +-----------+--------+--------------+-------+</span><br><span class="line">     */</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 </ol>
@@ -441,73 +418,64 @@
 </li>
 <li><p>```mysql<br>SELECT</p>
 <pre><code>Sname 
-</code></pre>
-<p>FROM</p>
+</code></pre><p>FROM</p>
 <pre><code>Student 
-</code></pre>
-<p>WHERE</p>
+</code></pre><p>WHERE</p>
 <pre><code>Sno IN ( SELECT Sno FROM SC WHERE Cno = &#39;2&#39; );
-</code></pre>
-<h1 id="查询和刘晨一个系的人的信息"><a href="#查询和刘晨一个系的人的信息" class="headerlink" title="查询和刘晨一个系的人的信息"></a>查询和刘晨一个系的人的信息</h1><p>SELECT</p>
+</code></pre><h1 id="查询和刘晨一个系的人的信息"><a href="#查询和刘晨一个系的人的信息" class="headerlink" title="查询和刘晨一个系的人的信息"></a>查询和刘晨一个系的人的信息</h1><p>SELECT</p>
 <pre><code>Student.*
-</code></pre>
-<p>FROM</p>
+</code></pre><p>FROM</p>
 <pre><code>Student 
-</code></pre>
-<p>WHERE</p>
+</code></pre><p>WHERE</p>
 <pre><code>Sdept IN ( SELECT Sdept FROM Student WHERE Sname = &#39;刘晨&#39; );
-</code></pre>
-<h1 id="也可以采用外连接的方式"><a href="#也可以采用外连接的方式" class="headerlink" title="也可以采用外连接的方式"></a>也可以采用外连接的方式</h1><p>select S1.* from Student S1, Student S2 where S1.Sdept=S2.Sdept and S2.Sname=’刘晨’<br>/*<br>李勇    男    20    CS<br>刘晨    女    19    CS<br>*/</p>
+</code></pre><h1 id="也可以采用外连接的方式"><a href="#也可以采用外连接的方式" class="headerlink" title="也可以采用外连接的方式"></a>也可以采用外连接的方式</h1><p>select S1.<em> from Student S1, Student S2 where S1.Sdept=S2.Sdept and S2.Sname=’刘晨’<br>/</em><br>李勇    男    20    CS<br>刘晨    女    19    CS<br>*/</p>
 <h1 id="查询选修了“信息系统”的学生的姓名学号"><a href="#查询选修了“信息系统”的学生的姓名学号" class="headerlink" title="查询选修了“信息系统”的学生的姓名学号"></a>查询选修了“信息系统”的学生的姓名学号</h1><p>SELECT Student.Sname, Student.Sno from Student where Sno IN<br>(SELECT Sno FROM SC WHERE Cno IN<br> (SELECT Cno from Course  WHERE Cname=’信息系统’))；</p>
 <h1 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h1><p>SELECT *<br>from Student,Course,SC WHERE Course.Cno=SC.Cno AND SC.Sno=Student.Sno AND Course.Cname=’信息系统’</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">- 带有比较运算符的查询</span><br><span class="line"></span><br><span class="line">  - ```mysql</span><br><span class="line">    # 找出每个学生超过他选修课平均成绩的课程号</span><br><span class="line">    SELECT *</span><br><span class="line">    FROM SC,(SELECT SC.Sno,AVG(SC.Grade) avg FROM SC GROUP BY Sno) AS S1</span><br><span class="line">    WHERE SC.Sno=S1.Sno AND SC.Grade&gt;S1.avg;</span><br><span class="line">    </span><br><span class="line">    SELECT Sno,Cno from SC x WHERE Grade &gt;=(SELECT AVG(Grade) from SC y WHERE y.Sno=x.Sno);</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">- 带有比较运算符的查询</span><br><span class="line"></span><br><span class="line">  - ```mysql</span><br><span class="line">    # 找出每个学生超过他选修课平均成绩的课程号</span><br><span class="line">    SELECT *</span><br><span class="line">    FROM SC,(SELECT SC.Sno,AVG(SC.Grade) avg FROM SC GROUP BY Sno) AS S1</span><br><span class="line">    WHERE SC.Sno=S1.Sno AND SC.Grade&gt;S1.avg;</span><br><span class="line">    </span><br><span class="line">    SELECT Sno,Cno from SC x WHERE Grade &gt;=(SELECT AVG(Grade) from SC y WHERE y.Sno=x.Sno);</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 <li><p>带有any(some)或者all谓词的查询</p>
 <ul>
 <li>```mysql<h1 id="查询非CS系比CS系任意一个学生年龄小的学生姓名和年龄"><a href="#查询非CS系比CS系任意一个学生年龄小的学生姓名和年龄" class="headerlink" title="查询非CS系比CS系任意一个学生年龄小的学生姓名和年龄"></a>查询非CS系比CS系任意一个学生年龄小的学生姓名和年龄</h1>SELECT<pre><code>Sname,
 Sage 
-</code></pre>
-FROM<pre><code>Student 
-</code></pre>
-WHERE<pre><code>Student.Sage &lt; ANY ( SELECT Sage FROM Student WHERE Sdept = &#39;CS&#39; ) 
+</code></pre>FROM<pre><code>Student 
+</code></pre>WHERE<pre><code>Student.Sage &lt; ANY ( SELECT Sage FROM Student WHERE Sdept = &#39;CS&#39; ) 
 AND Student.Sdept &lt;&gt; &#39;CS&#39;
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 带有exists谓词的子查询</span><br><span class="line"></span><br><span class="line">  - exist谓词的子句查询不反悔任何数据，只产生逻辑真假</span><br><span class="line"></span><br><span class="line">  - ```mysql</span><br><span class="line">    # 查询所有选修了1号课程的学生姓名</span><br><span class="line">    SELECT Sname,Sno</span><br><span class="line">    FROM Student</span><br><span class="line">    WHERE EXISTS (SELECT * FROM SC,Student where SC.Sno=Student.Sno and Cno=&#x27;1&#x27;);</span><br><span class="line">    </span><br><span class="line">    # 查询至少选修了学生201215122选的全部课程的学生号码</span><br><span class="line">    SELECT DISTINCT</span><br><span class="line">    	Sno</span><br><span class="line">    FROM</span><br><span class="line">    	SC SCX </span><br><span class="line">    WHERE</span><br><span class="line">    	NOT EXISTS (</span><br><span class="line">    	SELECT</span><br><span class="line">    		* </span><br><span class="line">    	FROM</span><br><span class="line">    		SC SCY </span><br><span class="line">    	WHERE</span><br><span class="line">    	SCY.Sno = &#x27;201215122&#x27; </span><br><span class="line">    	AND NOT EXISTS ( SELECT * FROM SC SCZ WHERE SCZ.Sno = SCX.Sno AND SCZ.Cno = SCY.Cno ))</span><br></pre></td></tr></table></figure></li>
+</code></pre><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 带有exists谓词的子查询</span><br><span class="line"></span><br><span class="line">  - exist谓词的子句查询不反悔任何数据，只产生逻辑真假</span><br><span class="line"></span><br><span class="line">  - ```mysql</span><br><span class="line">    # 查询所有选修了1号课程的学生姓名</span><br><span class="line">    SELECT Sname,Sno</span><br><span class="line">    FROM Student</span><br><span class="line">    WHERE EXISTS (SELECT * FROM SC,Student where SC.Sno=Student.Sno and Cno=&#x27;1&#x27;);</span><br><span class="line">    </span><br><span class="line">    # 查询至少选修了学生201215122选的全部课程的学生号码</span><br><span class="line">    SELECT DISTINCT</span><br><span class="line">    	Sno</span><br><span class="line">    FROM</span><br><span class="line">    	SC SCX </span><br><span class="line">    WHERE</span><br><span class="line">    	NOT EXISTS (</span><br><span class="line">    	SELECT</span><br><span class="line">    		* </span><br><span class="line">    	FROM</span><br><span class="line">    		SC SCY </span><br><span class="line">    	WHERE</span><br><span class="line">    	SCY.Sno = &#x27;201215122&#x27; </span><br><span class="line">    	AND NOT EXISTS ( SELECT * FROM SC SCZ WHERE SCZ.Sno = SCX.Sno AND SCZ.Cno = SCY.Cno ))</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 </ul>
 <h4 id="集合查询（并-UNION-交-INTERSECT-差-EXCEPT-）"><a href="#集合查询（并-UNION-交-INTERSECT-差-EXCEPT-）" class="headerlink" title="集合查询（并(UNION)交(INTERSECT)差(EXCEPT)）"></a>集合查询（并(UNION)交(INTERSECT)差(EXCEPT)）</h4><ul>
 <li>```mysql<h1 id="查询CS系里的学生及年龄不大于19岁的学生"><a href="#查询CS系里的学生及年龄不大于19岁的学生" class="headerlink" title="查询CS系里的学生及年龄不大于19岁的学生"></a>查询CS系里的学生及年龄不大于19岁的学生</h1>SELECT<pre><code>* 
-</code></pre>
-FROM<pre><code>Student 
-</code></pre>
-WHERE<pre><code>Sdept = &#39;CS&#39; UNION
-</code></pre>
-SELECT<pre><code>* 
-</code></pre>
-FROM<pre><code>Student 
-</code></pre>
-WHERE<pre><code>Sage &lt;= 19;
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 基于派生表的查询</span><br><span class="line"></span><br><span class="line">子查询不仅可以出现在WHERE子句中，还可以出现在FROM子句里面，这时候子查询生成的临时派生表成为主查询的查询对象。</span><br><span class="line"></span><br><span class="line">**FROM子句里面的派生表必须要有别名。**</span><br><span class="line"></span><br><span class="line">```mysql</span><br><span class="line"># 选择每个学生超过他自己平均成绩的课程的课程号</span><br><span class="line">SELECT</span><br><span class="line">	Sno,</span><br><span class="line">	Cno </span><br><span class="line">FROM</span><br><span class="line">	SC,</span><br><span class="line">	( SELECT Sno, Avg( Grade ) FROM SC GROUP BY Sno ) AS Avg_sc ( avg_sno, avg_grade ) </span><br><span class="line">WHERE</span><br><span class="line">	SC.Sno = Avg_sc.avg_sno </span><br><span class="line">	AND SC.Grade &gt;= Avg_sc.avg_grade</span><br></pre></td></tr></table></figure></li>
+</code></pre>FROM<pre><code>Student 
+</code></pre>WHERE<pre><code>Sdept = &#39;CS&#39; UNION
+</code></pre>SELECT<pre><code>* 
+</code></pre>FROM<pre><code>Student 
+</code></pre>WHERE<pre><code>Sage &lt;= 19;
+</code></pre><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 基于派生表的查询</span><br><span class="line"></span><br><span class="line">子查询不仅可以出现在WHERE子句中，还可以出现在FROM子句里面，这时候子查询生成的临时派生表成为主查询的查询对象。</span><br><span class="line"></span><br><span class="line">**FROM子句里面的派生表必须要有别名。**</span><br><span class="line"></span><br><span class="line">```mysql</span><br><span class="line"># 选择每个学生超过他自己平均成绩的课程的课程号</span><br><span class="line">SELECT</span><br><span class="line">	Sno,</span><br><span class="line">	Cno </span><br><span class="line">FROM</span><br><span class="line">	SC,</span><br><span class="line">	( SELECT Sno, Avg( Grade ) FROM SC GROUP BY Sno ) AS Avg_sc ( avg_sno, avg_grade ) </span><br><span class="line">WHERE</span><br><span class="line">	SC.Sno = Avg_sc.avg_sno </span><br><span class="line">	AND SC.Grade &gt;= Avg_sc.avg_grade</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="数据更新"><a href="#数据更新" class="headerlink" title="数据更新"></a>数据更新</h3><h4 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h4><ul>
 <li><p>插入元组</p>
 <ul>
-<li>```mysql<br>INSERT INTO Student (Sno, Sname, Sage, Sdept, Ssex)<br>VALUES(‘201951001’, ‘张三’, 18, ‘CS’, ‘男’)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">- 插入子查询的结果</span><br><span class="line"></span><br><span class="line">  - ```mysql</span><br><span class="line">    -- CREATE TABLE Dept_age (Sdept CHAR(15),Avg_age SMALLINT)</span><br><span class="line">    INSERT INTO Dept_age(Sdept, Avg_age)</span><br><span class="line">    SELECT Sdept, AVG(Sage) FROM Student GROUP BY Sdept;</span><br></pre></td></tr></table></figure></li>
+<li>```mysql<br>INSERT INTO Student (Sno, Sname, Sage, Sdept, Ssex)<br>VALUES(‘201951001’, ‘张三’, 18, ‘CS’, ‘男’)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">- 插入子查询的结果</span><br><span class="line"></span><br><span class="line">  - ```mysql</span><br><span class="line">    -- CREATE TABLE Dept_age (Sdept CHAR(15),Avg_age SMALLINT)</span><br><span class="line">    INSERT INTO Dept_age(Sdept, Avg_age)</span><br><span class="line">    SELECT Sdept, AVG(Sage) FROM Student GROUP BY Sdept;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 </ul>
 <h4 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h4><ul>
 <li><p>修改某一个元组的值</p>
 <ul>
-<li>```mysql<br>– 修改数据<br>UPDATE Student SET Sage=22 WHERE Sno=’201215121’<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 修改多个元组的值</span><br><span class="line"></span><br><span class="line">  - ```mysql</span><br><span class="line">    -- 修改多个元组的值</span><br><span class="line">    -- UPDATE Student SET Sage=Sage+1</span><br></pre></td></tr></table></figure></li>
+<li>```mysql<br>— 修改数据<br>UPDATE Student SET Sage=22 WHERE Sno=’201215121’<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 修改多个元组的值</span><br><span class="line"></span><br><span class="line">  - ```mysql</span><br><span class="line">    -- 修改多个元组的值</span><br><span class="line">    -- UPDATE Student SET Sage=Sage+1</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 <li><p>带子查询的修改</p>
 <ul>
-<li>```mysql<br>– 带子查询的修改语句:CS系的学生成绩设置成0<br>UPDATE SC SET Grade=0 WHERE Sno IN(SELECT Sno FROM Student WHERE Sdept=’CS’)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 删除数据</span><br><span class="line"></span><br><span class="line">```mysql</span><br><span class="line">-- 删除一个元组</span><br><span class="line">DELETE FROM Student WHERE Sno=&#x27;201215128&#x27;</span><br><span class="line">-- 删除多个元组</span><br><span class="line">DELETE FROM SC</span><br><span class="line">-- 带有子查询的删除</span><br><span class="line">DELETE FROM SC WHERE Sno IN (SELECT Sno FROM Student WHERE Sdept=&#x27;DD&#x27;)</span><br></pre></td></tr></table></figure></li>
+<li>```mysql<br>— 带子查询的修改语句:CS系的学生成绩设置成0<br>UPDATE SC SET Grade=0 WHERE Sno IN(SELECT Sno FROM Student WHERE Sdept=’CS’)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 删除数据</span><br><span class="line"></span><br><span class="line">```mysql</span><br><span class="line">-- 删除一个元组</span><br><span class="line">DELETE FROM Student WHERE Sno=&#x27;201215128&#x27;</span><br><span class="line">-- 删除多个元组</span><br><span class="line">DELETE FROM SC</span><br><span class="line">-- 带有子查询的删除</span><br><span class="line">DELETE FROM SC WHERE Sno IN (SELECT Sno FROM Student WHERE Sdept=&#x27;DD&#x27;)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 </ul>
@@ -521,7 +489,8 @@ WHERE<pre><code>Sage &lt;= 19;
 <li><p>判断：</p>
 <ul>
 <li><p>IS NULL </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM Student WHERE Sname IS NULL OR Sage IS NULL OR Sdept IS NULL</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM Student WHERE Sname IS NULL OR Sage IS NULL OR Sdept IS NULL</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>IN NOT NULL</p>
 </li>
 </ul>
@@ -543,12 +512,10 @@ WHERE<pre><code>Sage &lt;= 19;
 <li>创建视图</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># WITH CHECK OPTION表示对视图进行插入删除修改的时候，会自动加上Sdept=&#x27;IS&#x27;条件</span><br><span class="line">-- 建立在单个表的视图</span><br><span class="line">CREATE VIEW IS_Student AS SELECT Sno,Sname,Sage FROM Student WHERE Sdept=&#x27;IS&#x27; WITH CHECK OPTION</span><br><span class="line">-- 建立在多个基本表的视图:建立选修了1号课程的学生的视图</span><br><span class="line">CREATE VIEW IS_S1(Sno, Sname, Grade)AS SELECT Student.Sno, Sname, Grade FROM Student, SC WHERE Sdept=&#x27;IS&#x27; AND Student.Sno=SC.Sno AND SC.Cno=&#x27;1&#x27;</span><br><span class="line">-- 建立在视图上的视图</span><br><span class="line">CREATE VIEW IS_S2 as SELECT Sno,Sname,Grade FROM IS_S1 WHERE Grade&gt;=90</span><br><span class="line">-- 带有表达式的视图：存在虚拟列</span><br><span class="line">CREATE VIEW BT_S(Sno, Sname, Sbirth) as SELECT Sno, Sname, 2014-Sage FROM Student</span><br><span class="line">-- 分组视图：用带有聚集函数和GROUP BY子句的查询定义的</span><br><span class="line">CREATE VIEW S_G(Sno, Gavg) AS SELECT Sno, AVG(Grade) FROM SC GROUP BY Sno</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>删除视图</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP VIEW BT_S CASCADE # 级联删除</span><br></pre></td></tr></table></figure>
-
 <h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p><strong>视图消解：</strong>DBMS在进行对视图的查询的时候：</p>
 <ul>
 <li>首先进行有效性检查，检查中查询中涉及的表或者视图是否存在；</li>
@@ -615,26 +582,33 @@ WHERE<pre><code>Sage &lt;= 19;
 <ol>
 <li><p>GRANT</p>
 <ul>
-<li>```mysql<br>GRANT SELECT ON TABLE Student TO LIXIAN # 将查询权限授权给用户<br>GRANT all privileges ON TABLE Student TO LIXIAN,user1<br>GRANT SELECT ON TABLE Student TO PUBLIC # 谁都行<br>GRANT SELECT ON TABLE Student TO PUBLIC WITH GRANT OPTION # 允许权限再授权<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">2. REVOKE</span><br><span class="line"></span><br><span class="line">   - ```mysql</span><br><span class="line">     REVOKE SELECT ON TABLE SC FROM PUBLIC</span><br></pre></td></tr></table></figure></li>
+<li>```mysql<br>GRANT SELECT ON TABLE Student TO LIXIAN # 将查询权限授权给用户<br>GRANT all privileges ON TABLE Student TO LIXIAN,user1<br>GRANT SELECT ON TABLE Student TO PUBLIC # 谁都行<br>GRANT SELECT ON TABLE Student TO PUBLIC WITH GRANT OPTION # 允许权限再授权<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">2. REVOKE</span><br><span class="line"></span><br><span class="line">   - ```mysql</span><br><span class="line">     REVOKE SELECT ON TABLE SC FROM PUBLIC</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 <li><p>创建数据库模式的权限</p>
 <ul>
-<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210825223248415.png" alt="image-20210825223248415" style="zoom:50%;"></li>
+<li><p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210825223248415.png" alt="image-20210825223248415" style="zoom:50%;"></p>
+</li>
 <li><p>```mysql<br>CREATE USER <username> [WITH][DBA|RESOURCE|CONNECT]</username></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">5. 数据库角色（其实就是用户组）</span><br><span class="line"></span><br><span class="line">   1. 数据库角色是被命名的一组与数据库操作相关的权限，角色是权限的集合。一组具有相同权限的用户创建一个角色</span><br><span class="line"></span><br><span class="line">   2. 角色操作</span><br><span class="line"></span><br><span class="line">      1. 创建：</span><br><span class="line"></span><br><span class="line">         ```mysql</span><br><span class="line">         CREATE USER &lt;角色名&gt;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">5. 数据库角色（其实就是用户组）</span><br><span class="line"></span><br><span class="line">   1. 数据库角色是被命名的一组与数据库操作相关的权限，角色是权限的集合。一组具有相同权限的用户创建一个角色</span><br><span class="line"></span><br><span class="line">   2. 角色操作</span><br><span class="line"></span><br><span class="line">      1. 创建：</span><br><span class="line"></span><br><span class="line">         ```mysql</span><br><span class="line">         CREATE USER &lt;角色名&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<ol start="2">
+<ol>
 <li><p>授权同用户的授权</p>
 </li>
 <li><p>角色授予用户</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT &lt;角色1,2,3&gt; TO &lt;角色n&gt;[&lt;用户1&gt;] WITH ADMIN OPTION  # 可以继续再授权 </span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT &lt;角色1,2,3&gt; TO &lt;角色n&gt;[&lt;用户1&gt;] WITH ADMIN OPTION  # 可以继续再授权 </span><br></pre></td></tr></table></figure>
+</li>
 <li><p>回收</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REVOKE &lt;权限&gt; ON &lt;对象类型&gt; FROM &lt;角色&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REVOKE &lt;权限&gt; ON &lt;对象类型&gt; FROM &lt;角色&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
+</ol>
+</li>
+</ol>
+<ol>
 <li><p>强制存取控制方法</p>
 <ol>
 <li>系统中的活动实体，分为主体和客体。主体包括用户、用户的各个进程；客体包括文本、基本表、索引、视图。</li>
@@ -645,7 +619,7 @@ WHERE<pre><code>Sage &lt;= 19;
 <h3 id="视图机制"><a href="#视图机制" class="headerlink" title="视图机制"></a>视图机制</h3><ol>
 <li>建立一个视图，在视图上定义用户的权限，</li>
 </ol>
-<h3 id="审计"><a href="#审计" class="headerlink" title="审计"></a>审计</h3><p>对服务器事件、系统权限、SQL语句事件、模式对象事件（对特定模式对象&lt;表、视图、存储过程、函数&gt;上进行的SELECT或者DML操作）</p>
+<h3 id="审计"><a href="#审计" class="headerlink" title="审计"></a>审计</h3><p>对服务器事件、系统权限、SQL语句事件、模式对象事件（对特定模式对象\&lt;表、视图、存储过程、函数>上进行的SELECT或者DML操作）</p>
 <p>用AUIDIT NOTAUDIT开启、关闭审计功能。</p>
 <h3 id="数据加密"><a href="#数据加密" class="headerlink" title="数据加密"></a>数据加密</h3><ol>
 <li>存储加密</li>
@@ -708,19 +682,18 @@ WHERE<pre><code>Sage &lt;= 19;
 <li><p>完整性约束命名子句</p>
 <ul>
 <li><p>```mysql<br>CREATE TABLE Student (Sno NUMERIC(6) CONSTRAINT C1 CHECK(Sno between 90000 AND 99999),…, CONSTRAINT StudentKey PRIMARY KEY(Sno))</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 修改表中的完整性限制</span><br><span class="line"></span><br><span class="line">   - ```mysql</span><br><span class="line">     ALTER TABLE Student DROP CONTRSTRAINT C1</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 修改表中的完整性限制</span><br><span class="line"></span><br><span class="line">   - ```mysql</span><br><span class="line">     ALTER TABLE Student DROP CONTRSTRAINT C1</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>修改：先删除再新增</p>
 </li>
 </ul>
 </li>
 </ol>
 <h3 id="域中的完整性限制-DOMAIN"><a href="#域中的完整性限制-DOMAIN" class="headerlink" title="域中的完整性限制(DOMAIN)"></a>域中的完整性限制(DOMAIN)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE DOMAIN GenderDomain CHAR(2) CHECK (VALUE IN (&#x27;男&#x27;,&#x27;女&#x27;))</span><br><span class="line"># 那么新建表的时候，可以 Ssex GenderDoamin</span><br><span class="line"># 可以结合CONSTRAINT</span><br></pre></td></tr></table></figure>
-
 <h3 id="断言-ASSERTION"><a href="#断言-ASSERTION" class="headerlink" title="断言(ASSERTION)"></a>断言(ASSERTION)</h3><ol>
 <li>定义</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE ASSERTION ASSE_SC_DB_NUM </span><br><span class="line">CHECK (60 &gt;= (SELECT COUNT(*) FROM Course, SC WHERE SC.Cno=Course.Cname=&#x27;数据库&#x27;))</span><br><span class="line"># 限制数据库最多60个人选修</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>删除<code>DROP ASSERTION &lt;断言名&gt;</code></li>
 </ul>
@@ -732,8 +705,7 @@ WHERE<pre><code>Sage &lt;= 19;
 REFERENCING NEW|OLD ROW AS &lt;变量&gt; # 指出引用的变量
 FOR EACH &#123;ROW|STATEMENT&#125;
 [WHEN &lt;触发条件&gt;]&lt;触发动作&gt;
-</code></pre>
-</li>
+</code></pre></li>
 </ol>
 </li>
 <li><p>要求：</p>
@@ -786,14 +758,16 @@ FOR EACH &#123;ROW|STATEMENT&#125;
 <li>数据库运行和维护</li>
 </ol>
 </li>
-<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210830204728105.png" alt="image-20210830204728105" style="zoom:80%;">
-1. 概念设计阶段形成独立于及其特点和各个DBMS的概念模式，在本篇中就是E-R图；
-2. 逻辑设计阶段将E-R图转换成具体的数据库产品支持的数据模型，形成数据库逻辑模式。然后根据用户处理的要求、安全性的考虑，在基本表的基础上建立必要的视图，形成数据的外模式。
-3. 物理结构设计阶段，根据DBMS的特点和处理的需要进行物理存储安排，建立索引，形成数据库内模式。</li>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210830204728105.png" alt="image-20210830204728105" style="zoom:80%;"><ol>
+<li>概念设计阶段形成独立于及其特点和各个DBMS的概念模式，在本篇中就是E-R图；</li>
+<li>逻辑设计阶段将E-R图转换成具体的数据库产品支持的数据模型，形成数据库逻辑模式。然后根据用户处理的要求、安全性的考虑，在基本表的基础上建立必要的视图，形成数据的外模式。</li>
+<li>物理结构设计阶段，根据DBMS的特点和处理的需要进行物理存储安排，建立索引，形成数据库内模式。</li>
+</ol>
+</li>
 </ol>
 <h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><h3 id="概念结构设计"><a href="#概念结构设计" class="headerlink" title="概念结构设计"></a>概念结构设计</h3><h3 id="逻辑结构设计"><a href="#逻辑结构设计" class="headerlink" title="逻辑结构设计"></a>逻辑结构设计</h3><h3 id="物理结构设计"><a href="#物理结构设计" class="headerlink" title="物理结构设计"></a>物理结构设计</h3><h3 id="数据库实施与维护"><a href="#数据库实施与维护" class="headerlink" title="数据库实施与维护"></a>数据库实施与维护</h3><h2 id="数据库编程"><a href="#数据库编程" class="headerlink" title="数据库编程"></a>数据库编程</h2><h3 id="嵌入式SQL"><a href="#嵌入式SQL" class="headerlink" title="嵌入式SQL"></a>嵌入式SQL</h3><p>数据库工作单元与源程序工作单元之间的通信：</p>
 <ol>
-<li><p>向主语句传递SQL语句的执行状态信息，使主语言根据信息控制程序流程，主要通过**SQL通信区($SQLCA$)**实现。</p>
+<li><p>向主语句传递SQL语句的执行状态信息，使主语言根据信息控制程序流程，主要通过<strong>SQL通信区($SQLCA$)</strong>实现。</p>
 <ul>
 <li>SQL通信区用$EXEC\ SQL\ INCIUDE\ SQLCA$定义。$SQLCODE$用来存放每次执行SQL语句后返回的代码</li>
 </ul>
@@ -804,8 +778,7 @@ FOR EACH &#123;ROW|STATEMENT&#125;
 </li>
 <li><p>通过$BEGIN\ DECLARE\ SECTION$与$END\ DECLARE\ SECTION$之间进行说明</p>
 </li>
-<li><p>主变量和指示变量前要加冒号作为标志</p>
-</li>
+<li>主变量和指示变量前要加冒号作为标志</li>
 </ul>
 </li>
 <li><p>将SQL语句查询数据库的结构交主语言处理，主要用<strong>主变量和游标（cursor）</strong>实现。</p>
@@ -830,7 +803,7 @@ FOR EACH &#123;ROW|STATEMENT&#125;
 <li>用游标的SQL语句：<ol>
 <li>查询结果为多条记录的SELECET语句<ul>
 <li>使用游标步骤<ul>
-<li>说明游标$EXEC\ SQL\ DECLARE\ &lt;游标名&gt;\ CURSOR\ FOR &lt;SELECT语句&gt;$</li>
+<li>说明游标$EXEC\ SQL\ DECLARE\ &lt;游标名&gt;\ CURSOR\ FOR <SELECT语句>$</SELECT语句></li>
 <li>打开游标$EXEC\ SQL\ OPEN\ &lt;游标名&gt;$</li>
 <li>推进游标指针并取当前记录$EXEC\ SQL\ FETCH\ &lt;游标名&gt;\ INTO\ &lt;主变量&gt;[&lt;指示变量&gt;]$</li>
 <li>关闭游标$EXEC\ SQL\ CLOSE\ &lt;游标名&gt;$</li>
@@ -847,12 +820,8 @@ FOR EACH &#123;ROW|STATEMENT&#125;
 </ol>
 </li>
 </ol>
-<h3 id="过程化SQL"><a href="#过程化SQL" class="headerlink" title="过程化SQL"></a>过程化SQL</h3><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210830212226698.png" alt="image-20210830212226698" style="zoom: 50%;">
-
-<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210830212244848.png" alt="image-20210830212244848" style="zoom: 50%;">
-
-
-
+<h3 id="过程化SQL"><a href="#过程化SQL" class="headerlink" title="过程化SQL"></a>过程化SQL</h3><p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210830212226698.png" alt="image-20210830212226698" style="zoom: 50%;"></p>
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/0%E6%95%B0%E6%8D%AE%E5%BA%93/image-20210830212244848.png" alt="image-20210830212244848" style="zoom: 50%;"></p>
 <h3 id="存储过程和函数"><a href="#存储过程和函数" class="headerlink" title="存储过程和函数"></a>存储过程和函数</h3><h3 id="开放数据库互连（ODBC）"><a href="#开放数据库互连（ODBC）" class="headerlink" title="开放数据库互连（ODBC）"></a>开放数据库互连（ODBC）</h3><p>不同DBMS之间共享数据</p>
 <h3 id="OLE-DB"><a href="#OLE-DB" class="headerlink" title="OLE DB"></a>OLE DB</h3><h3 id="Java数据库连接（JDBC）"><a href="#Java数据库连接（JDBC）" class="headerlink" title="Java数据库连接（JDBC）"></a>Java数据库连接（JDBC）</h3><h2 id="关系查询处理和查询优化"><a href="#关系查询处理和查询优化" class="headerlink" title="关系查询处理和查询优化"></a>关系查询处理和查询优化</h2><h2 id="数据库恢复技术"><a href="#数据库恢复技术" class="headerlink" title="数据库恢复技术"></a>数据库恢复技术</h2><h3 id="事务基本概念"><a href="#事务基本概念" class="headerlink" title="事务基本概念"></a>事务基本概念</h3><ol>
 <li>定义：用户定义的一个数据库操作序列，这些操作要么全做，要么全不做，是一个不可分割的工作单位</li>
@@ -1033,8 +1002,8 @@ FOR EACH &#123;ROW|STATEMENT&#125;
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/09/01/2%E6%9D%82%E9%A1%B9/Lab-3-NAS/" rel="prev" title="">
-      <i class="fa fa-chevron-left"></i> 
+    <a href="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/" rel="prev" title="Windows-1-Windows下SSH登录阿里云ECSlinux.md">
+      <i class="fa fa-chevron-left"></i> Windows-1-Windows下SSH登录阿里云ECSlinux.md
     </a></div>
       <div class="post-nav-item">
     <a href="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="next" title="数据结构">
@@ -1112,14 +1081,14 @@ FOR EACH &#123;ROW|STATEMENT&#125;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
@@ -1164,13 +1133,13 @@ FOR EACH &#123;ROW|STATEMENT&#125;
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">90k</span>
+    <span title="站点总字数">84k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:22</span>
+    <span title="站点阅读时长">1:16</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

@@ -152,799 +152,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/2%E6%9D%82%E9%A1%B9/Lab-1-%E6%B5%AA%E6%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/01/2%E6%9D%82%E9%A1%B9/Lab-1-%E6%B5%AA%E6%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-01 11:25:44" itemprop="dateCreated datePublished" datetime="2021-09-01T11:25:44+08:00">2021-09-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-13 15:23:11" itemprop="dateModified" datetime="2021-08-13T15:23:11+08:00">2021-08-13</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>更新历史：</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">时间</th>
-<th align="center">更新内容：更新位置</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">20210813</td>
-<td align="center">问题4.3：开发环境训练耗时对比<a href="#jump3">点此跳转</a></td>
-</tr>
-<tr>
-<td align="center">20210807</td>
-<td align="center">增加了对于开发环境的说明<a href="#jump2">点此跳转</a>；增加问题4.2</td>
-</tr>
-<tr>
-<td align="center">20210805</td>
-<td align="center">解答问题4.1</td>
-</tr>
-<tr>
-<td align="center">20210804</td>
-<td align="center">修改文档内容、增加此文档更新地址</td>
-</tr>
-<tr>
-<td align="center">20210801</td>
-<td align="center">开发环境占用资源的说明：<a href="#jump1">点此跳转</a></td>
-</tr>
-<tr>
-<td align="center">20210730</td>
-<td align="center">初版</td>
-</tr>
-</tbody></table>
-<p>各AIStation深度学习平台的使用者大家好，现对平台使用作出相应介绍以帮助各位更好操作。</p>
-<h1 id="一、平台总体环境介绍"><a href="#一、平台总体环境介绍" class="headerlink" title="一、平台总体环境介绍"></a>一、平台总体环境介绍</h1><ul>
-<li>访问方式：连接校园网后，打开网址：<a target="_blank" rel="noopener" href="https://101.7.186.128:32206/%EF%BC%8C%E8%BE%93%E5%85%A5%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E3%80%82">https://101.7.186.128:32206/，输入账号密码登录。</a></li>
-<li>本平台共有两台服务器，作为开发（kaifa）、训练(xunlian)资源组；硬件资源方面，CPU都是64核，其中开发资源组具有4张显卡，训练资源组具有8张显卡。</li>
-<li><strong>开发资源组硬件资源为复用，训练资源组为独占</strong>。开发资源组供系统运行及维持开发环境，训练资源组仅供训练，因此，请==特别注意==：<ul>
-<li>开发：<ul>
-<li><strong>新建开发环境时资源组请选择kaifa，勿选择xunlian。以免训练资源长时间独占造成浪费</strong></li>
-<li><strong>开发环境长时间不进行操作（168小时），系统会自动作删除处理</strong></li>
-<li><span id="jump2">==PS:==</span>如确实需要长时间使用开发环境独占GPU ，可联系管理员邮箱。</li>
-</ul>
-</li>
-<li>存储：<ul>
-<li>存储空间有限，因此<strong>不再用的个人镜像请及时删除</strong></li>
-</ul>
-</li>
-<li>训练方式：<ul>
-<li><strong>建议：</strong>执行机器学习的训练任务时在“训练管理”功能进行，此时cpu、gpu独占，训练效率最高、时间最短。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="二、平台操作指南（以下链接请连接校园网后下载）"><a href="#二、平台操作指南（以下链接请连接校园网后下载）" class="headerlink" title="二、平台操作指南（以下链接请连接校园网后下载）"></a>二、平台操作指南（以下链接请连接校园网后下载）</h1><ul>
-<li>详细内容参考此：<a target="_blank" rel="noopener" href="http://101.7.186.125:5000/fbsharing/6QM05CKq%EF%BC%8C%E6%AD%A4%E6%96%87%E6%A1%A3%E5%B7%B2%E5%AF%B9%E5%B9%B3%E5%8F%B0%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BD%9C%E5%87%BA%E4%BA%86%E8%AF%A6%E5%B0%BD%E8%AF%B4%E6%98%8E%EF%BC%8C%E8%AF%B7%E5%8B%BF%E5%92%A8%E8%AF%A2%E5%B7%B2%E7%BB%8F%E5%8F%99%E8%BF%B0%E6%B8%85%E6%A5%9A%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82%E4%BB%A5%E4%B8%8B%E4%B8%BA%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E%E3%80%82">http://101.7.186.125:5000/fbsharing/6QM05CKq，此文档已对平台的使用作出了详尽说明，请勿咨询已经叙述清楚的问题。以下为补充说明。</a></li>
-<li>如有开发程序需求，<strong>推荐在使用者自己电脑上开发完毕之后直接进行训练</strong>，如已有镜像不满足要求，可拉取镜像之后进行配置并保存为镜像。需要注意：<ul>
-<li><strong>资源配额（8cpu核+1gpu）=开发环境占用+训练任务占用</strong>。因此，请尤其注意训练任务资源勿超出配额</li>
-<li><span id="jump1">==开发环境占用资源说明：==</span>账号配额为8+1（8cpu核+1gpu）的情况下，开发环境的建立（选择资源组为kaifa）会占用cpu配额，但不占用gpu配额。例如，新建开发环境占用了4+1（4cpu核+1gpu）的资源，那么训练的时候选4+1才能够正常运行任务，选择6+1则会一直排队中 ，此时必须删除开发环境。</li>
-<li>开发环境如选择长期作开发用途，请勿长时间（月以上的跨度）运行，会越来越慢，推荐定期拉取重建。</li>
-<li>系统自带的开发环境可能会出现jupyter、apt命令不能正常使用的情况，导致无法配置镜像，此时可用Centos的镜像，方法有2<ul>
-<li>自行新建centos的镜像配置开发环境，可参考此文件：<a target="_blank" rel="noopener" href="http://101.7.186.125:5000/fbsharing/APJdC0yj">http://101.7.186.125:5000/fbsharing/APJdC0yj</a></li>
-<li>本课题组提供一个已配置好的centos镜像，名字为：centos-jupyterlabgood-admin006，镜像仅包括python、jupyter lab、ssh。请注意：cuda、cudnn、pytorch、tensorflow等等需自行安装。（驱动只适配cuda10.1）。使用者本机如想访问建好的开发环境的jupyter lab请参考此文档：<a target="_blank" rel="noopener" href="http://101.7.186.125:5000/fbsharing/fa5ZjWwD%EF%BC%9B%E4%B8%80%E4%B8%AA%E6%AD%A3%E7%A1%AE%E7%9A%84jupyter_lab_config.py%E6%96%87%E4%BB%B6%EF%BC%88%E5%8F%AF%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%90%8E%E6%9B%BF%E6%8D%A2%EF%BC%89%EF%BC%9Ahttp://101.7.186.125:5000/fbsharing/QaYjSZGr%E3%80%82">http://101.7.186.125:5000/fbsharing/fa5ZjWwD；一个正确的jupyter_lab_config.py文件（可生成配置文件后替换）：http://101.7.186.125:5000/fbsharing/QaYjSZGr。</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="三、其它说明"><a href="#三、其它说明" class="headerlink" title="三、其它说明"></a>三、其它说明</h1><h2 id="平台使用问题咨询"><a href="#平台使用问题咨询" class="headerlink" title="平台使用问题咨询"></a>平台使用问题咨询</h2><p><strong>AIStation平台使用问题的咨询渠道仅包括本邮箱<a href="mailto:&#108;&#105;&#x78;&#x69;&#x61;&#110;&#46;&#x73;&#104;&#x61;&#x6e;&#x64;&#x6f;&#110;&#x67;&#64;&#x71;&#x71;&#x2e;&#x63;&#111;&#109;">&#108;&#105;&#x78;&#x69;&#x61;&#110;&#46;&#x73;&#104;&#x61;&#x6e;&#x64;&#x6f;&#110;&#x67;&#64;&#x71;&#x71;&#x2e;&#x63;&#111;&#109;</a></strong>，咨询内容仅包括AIStation的使用方面，24小时内回复。如果存在硬件资源方面的不足，请联系6层兰方鹏老师。</p>
-<h2 id="文档实时更新地址（以时间最新一版为准）"><a href="#文档实时更新地址（以时间最新一版为准）" class="headerlink" title="文档实时更新地址（以时间最新一版为准）"></a>文档实时更新地址（以时间最新一版为准）</h2><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1oNw6EWwKLgOVEWXr4Framw">https://pan.baidu.com/s/1oNw6EWwKLgOVEWXr4Framw</a> 提取码：tcxa</p>
-<p>请各位使用者不定期查看，本课题组内新有人使用时，请转发此文档。</p>
-<h2 id="使用守则"><a href="#使用守则" class="headerlink" title="使用守则"></a>使用守则</h2><ol>
-<li>AIStation使用守则：<br> （1）请勿使用AIStation平台资源进行违法犯罪活动。<br> （2）请勿使用AIStation平台资源进行诸如挖矿等与学习科研无关的行为。</li>
-<li>AIStation平台资源仅用于深度学习训练，不供其它用途</li>
-<li>建议：新建训练任务的时候以自己的名字开头，避免同时登录的其他人误删。例如：(lisi-MNIST)</li>
-<li>务必及时保存运行结果至本地计算机，做好个人数据备份等操作</li>
-</ol>
-<h1 id="四、常见问题解答"><a href="#四、常见问题解答" class="headerlink" title="四、常见问题解答"></a>四、常见问题解答</h1><h2 id="文件下载时，提示“无法下载-网络问题”怎么办？"><a href="#文件下载时，提示“无法下载-网络问题”怎么办？" class="headerlink" title="文件下载时，提示“无法下载-网络问题”怎么办？"></a>文件下载时，提示“无法下载-网络问题”怎么办？</h2><p>答：</p>
-<ul>
-<li>可以采用WinSCP、Xftp、MobaXterm等支持FTP、SFTP协议的软件进行文件传输。<ul>
-<li>IP地址为101.7.186.128，端口号22，用户名密码与申请到的AIStation账号密码相同。</li>
-<li>如果有开发环境，也可以采用开发环境的IP和端口，此时用户名密码可通过“开发环境$\rightarrow$操作$\rightarrow$SSH“进行查看。</li>
-</ul>
-</li>
-</ul>
-<h2 id="非校园网访问登录VPN经常断连怎么办？"><a href="#非校园网访问登录VPN经常断连怎么办？" class="headerlink" title="非校园网访问登录VPN经常断连怎么办？"></a>非校园网访问登录VPN经常断连怎么办？</h2><p>连接教程：</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="http://iadmin.tyut.edu.cn/info/1155/2280.htm">http://iadmin.tyut.edu.cn/info/1155/2280.htm</a></p>
-<p><a target="_blank" rel="noopener" href="https://xxb.ecust.edu.cn/2017/1130/c7624a71409/page.htm">https://xxb.ecust.edu.cn/2017/1130/c7624a71409/page.htm</a></p>
-</blockquote>
-<p>如果经常断连可以从以下网址下载最新版v1.2.16(这一版好像稳定一小时断连一次，学校推荐的版本不定期经常断连)：</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="http://client.arraynetworks.com.cn:8080/zh/troubleshooting">http://client.arraynetworks.com.cn:8080/zh/troubleshooting</a></p>
-</blockquote>
-<h2 id="开发环境训练速度对比"><a href="#开发环境训练速度对比" class="headerlink" title="开发环境训练速度对比"></a>开发环境训练速度对比</h2><p><span id="jump3">==PyTorch深度学习对比：==</span></p>
-<p>MX250,CUDA10.2:</p>
-<img src="../images/image-20210813104319384.png" alt="image-20210813104319384" style="zoom:67%;">
-
-<p>开发环境，4核1GPU：</p>
-<img src="../images/image-20210813104356379.png" alt="image-20210813104356379" style="zoom:67%;">
-
-<p>结论：推荐使用训练任务跑程序。</p>
-<p>​                        ©2021  太原理工大学·信息与计算机学院·计算机软件与理论实验室<br>​                       地址:山西省晋中市榆次区大学街209号 太原理工大学 信息与计算机学院北楼6层</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/2%E6%9D%82%E9%A1%B9/0-%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/01/2%E6%9D%82%E9%A1%B9/0-%E7%94%9F%E6%B4%BB%E7%9B%B8%E5%85%B3/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-01 11:25:44" itemprop="dateCreated datePublished" datetime="2021-09-01T11:25:44+08:00">2021-09-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-14 01:10:53" itemprop="dateModified" datetime="2021-08-14T01:10:53+08:00">2021-08-14</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>481</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="订票"><a href="#订票" class="headerlink" title="订票"></a>订票</h1><h2 id="1-1-回家"><a href="#1-1-回家" class="headerlink" title="1.1 回家"></a>1.1 回家</h2><table>
-<thead>
-<tr>
-<th align="center">出发</th>
-<th align="center">途经1</th>
-<th align="center">中转方案</th>
-<th align="center">途经2</th>
-<th align="center">到达</th>
-<th>Cost（成）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1.17武宿机场（11：55）</td>
-<td align="center">临沂启阳机场（13：30）</td>
-<td align="center">打车（14元，20min）</td>
-<td align="center">临沂站（15：36）</td>
-<td align="center">嘉祥站（19：03）</td>
-<td>305+14+32</td>
-</tr>
-<tr>
-<td align="center">武宿机场（12：55）</td>
-<td align="center">临沂启阳机场（14：45）</td>
-<td align="center">打车（14元，20min）</td>
-<td align="center">临沂站（15：36）</td>
-<td align="center">嘉祥站（19：03）</td>
-<td>298+14+32</td>
-</tr>
-<tr>
-<td align="center">太原南（15：38）</td>
-<td align="center">北京西（20：22）</td>
-<td align="center">公交（2元，1h）</td>
-<td align="center">北京站（23：26）</td>
-<td align="center">嘉祥站（07：35）</td>
-<td>75+2+163</td>
-</tr>
-<tr>
-<td align="center">太原（21：23）</td>
-<td align="center">兖州（06：03）</td>
-<td align="center">公交（11元，3h20min）</td>
-<td align="center"></td>
-<td align="center">嘉祥</td>
-<td>163+11</td>
-</tr>
-<tr>
-<td align="center">太原（20：49）</td>
-<td align="center">菏泽（04：54）</td>
-<td align="center"></td>
-<td align="center">菏泽站（05：18）</td>
-<td align="center">嘉祥（06：10）</td>
-<td>158+14.5</td>
-</tr>
-<tr>
-<td align="center">D4623太原南（12:18）</td>
-<td align="center">郑州站（14:56，15：30）</td>
-<td align="center"></td>
-<td align="center">菏泽站（19：13,21:05）</td>
-<td align="center">嘉祥站(22：04)</td>
-<td></td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td></td>
-</tr>
-<tr>
-<td align="center">太原南（12：18/12:26）</td>
-<td align="center">郑州（14:56）/郑州东(16:12,16:22、1)</td>
-<td align="center">/商丘（17：19）</td>
-<td align="center"></td>
-<td align="center"></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>方案1：太原南（D2569）到17：21西安北，30分钟到西安，19：3出发到兖州，06：23到兖州。</p>
-<p>方案2：太原南到郑州（）</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/2%E6%9D%82%E9%A1%B9/0-%E5%8F%82%E5%8A%A0%E8%BF%87%E7%9A%84%E4%BC%9A%E8%AE%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/01/2%E6%9D%82%E9%A1%B9/0-%E5%8F%82%E5%8A%A0%E8%BF%87%E7%9A%84%E4%BC%9A%E8%AE%AE/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-01 11:25:44" itemprop="dateCreated datePublished" datetime="2021-09-01T11:25:44+08:00">2021-09-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-28 08:42:25" itemprop="dateModified" datetime="2021-06-28T08:42:25+08:00">2021-06-28</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>240</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-2021年5月-ACM-SIGMOD-PODS-2021"><a href="#1-2021年5月-ACM-SIGMOD-PODS-2021" class="headerlink" title="1. 2021年5月 ACM SIGMOD/PODS 2021"></a>1. 2021年5月 ACM SIGMOD/PODS 2021</h1><p>Your Confirmation Number is: Y7N9KMZYNF6</p>
-<p><a target="_blank" rel="noopener" href="https://2021.sigmod.org/index.shtml">https://2021.sigmod.org/index.shtml</a></p>
-<h1 id="2-2021年4月DASFAA-2021"><a href="#2-2021年4月DASFAA-2021" class="headerlink" title="2. 2021年4月DASFAA 2021"></a>2. 2021年4月DASFAA 2021</h1><p> The 26th International Conference on Database Systems for Advanced Applications </p>
-<h1 id="3-2020年9月-VLDB2020"><a href="#3-2020年9月-VLDB2020" class="headerlink" title="3. 2020年9月 VLDB2020"></a>3. 2020年9月 VLDB2020</h1><h1 id="4-2020年4月-ICDE2020"><a href="#4-2020年4月-ICDE2020" class="headerlink" title="4. 2020年4月 ICDE2020"></a>4. 2020年4月 ICDE2020</h1><h1 id="5-区块链产业创新发展论坛"><a href="#5-区块链产业创新发展论坛" class="headerlink" title="5.  区块链产业创新发展论坛"></a>5.  区块链产业创新发展论坛</h1><h1 id="6-中期汇报"><a href="#6-中期汇报" class="headerlink" title="6 中期汇报"></a>6 中期汇报</h1><p>​    </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/2%E6%9D%82%E9%A1%B9/0-%E5%86%99%E7%A8%8B%E5%BA%8F%E9%81%87%E5%88%B0%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/01/2%E6%9D%82%E9%A1%B9/0-%E5%86%99%E7%A8%8B%E5%BA%8F%E9%81%87%E5%88%B0%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-01 11:25:44" itemprop="dateCreated datePublished" datetime="2021-09-01T11:25:44+08:00">2021-09-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-23 09:22:47" itemprop="dateModified" datetime="2021-08-23T09:22:47+08:00">2021-08-23</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="VSCode快捷键"><a href="#VSCode快捷键" class="headerlink" title="VSCode快捷键"></a>VSCode快捷键</h1><table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">插入注释</td>
-<td align="center">Alt + Shift + a</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-</tbody></table>
-<h1 id="Windows"><a href="#Windows" class="headerlink" title="Windows:"></a>Windows:</h1><h2 id="字体："><a href="#字体：" class="headerlink" title="字体："></a>字体：</h2><ul>
-<li>Fira Code Retina</li>
-<li>powerline</li>
-<li>Sarasa Term SC # 没FCR好看但是支持中文<h2 id="限制WSL2占用大量内存"><a href="#限制WSL2占用大量内存" class="headerlink" title="限制WSL2占用大量内存"></a>限制WSL2占用大量内存</h2></li>
-<li>宿主机：C:\Users\LEEXIAN\.wslconfig进行配置</li>
-<li>WSL2：echo 3 &gt; /proc/sys/vm/drop_caches</li>
-</ul>
-<h2 id="PowerShell-更换主题"><a href="#PowerShell-更换主题" class="headerlink" title="PowerShell 更换主题"></a>PowerShell 更换主题</h2><p>Get-PoshThemes 显示主题</p>
-<p>更改C:\Users\10935\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1改主题名字</p>
-<h1 id="H5py"><a href="#H5py" class="headerlink" title="H5py"></a>H5py</h1><h2 id="生成数据集的典型做法"><a href="#生成数据集的典型做法" class="headerlink" title="生成数据集的典型做法"></a>生成数据集的典型做法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> h5py</span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line">hdf5_path = <span class="string">&#x27;/home/datasets/&#x27;</span>  <span class="comment"># 存储h5文件的路径</span></span><br><span class="line"><span class="comment"># 建立文件用来存数据</span></span><br><span class="line"><span class="keyword">if</span> os.path.exists(hdf5_path):</span><br><span class="line">    os.remove(hdf5_path)</span><br><span class="line">    f = h5py.File(hdf5_path, mode=<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    f = h5py.File(hdf5_path, mode=<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line"></span><br><span class="line">train_shape = (<span class="built_in">len</span>(train_addrs), <span class="number">128</span>, <span class="number">128</span>, <span class="number">3</span>)</span><br><span class="line">f.create_dataset(<span class="string">&quot;train_img&quot;</span>, train_shape, np.uint8)</span><br><span class="line"><span class="comment"># 两种赋值方法：</span></span><br><span class="line"><span class="comment">## 1. 按照位置赋值</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(train_addrs):</span><br><span class="line">               <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">				此处对数据进行处理</span></span><br><span class="line"><span class="string">				&quot;&quot;&quot;</span></span><br><span class="line">               <span class="comment"># 文件f的train_img对象的第i个元素是data</span></span><br><span class="line">               <span class="comment"># data可以是数字，可以是字符串，可以是多维矩阵</span></span><br><span class="line">               f[<span class="string">&quot;train_data&quot;</span>][i, ...] = data</span><br><span class="line"><span class="comment">## 2. 一次性赋值</span></span><br><span class="line">f[<span class="string">&quot;test_labels&quot;</span>][...] = test_labels</span><br><span class="line">               </span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h1 id="Originlab各种图的基本概念"><a href="#Originlab各种图的基本概念" class="headerlink" title="Originlab各种图的基本概念"></a>Originlab各种图的基本概念</h1><h2 id="各种图辨析"><a href="#各种图辨析" class="headerlink" title="各种图辨析"></a>各种图辨析</h2><p>条形图：表示不同类别数据之间的数量关系</p>
-<p>柱状图：表示不同类别数据不同取值的大小关系</p>
-<p>直方图：表示同一类数据的区间范围的数量分布关系</p>
-<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><p><strong>分位数</strong>（Quantile），亦称<strong>分位点</strong>，是指将一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/828980">随机变量</a>的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/828907">概率分布</a>范围分为几个等份的数值点，常用的有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%AD%E4%BD%8D%E6%95%B0/3087401">中位数</a>（即二分位数）、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9B%9B%E5%88%86%E4%BD%8D%E6%95%B0/5040599">四分位数</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%99%BE%E5%88%86%E4%BD%8D%E6%95%B0/10064171">百分位数</a>等。</p>
-<p>四分位数（Quartile）是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BB%9F%E8%AE%A1%E5%AD%A6/1175">统计学</a>中<strong>分位数</strong>的一种，即把所有数值由小到大排列并分成四等份，处于三个分割点位置的数值就是四分位数。</p>
-<p>1）<strong>第一四分位数</strong>(Q1)，又称“较小四分位数”，等于该样本中所有数值由小到大排列后第25%的数字；</p>
-<p>2）<strong>第二四分位数</strong>(Q2)，又称“<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%AD%E4%BD%8D%E6%95%B0">中位数</a>”，等于该样本中所有数值由小到大排列后第50%的数字；</p>
-<p>3）<strong>第三四分位数</strong>(Q3)，又称“较大四分位数”，等于该样本中所有数值由小到大排列后第75%的数字。</p>
-<p>第三四分位数与第一四分位数的差距又称<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9B%9B%E5%88%86%E4%BD%8D%E8%B7%9D">四分位距</a>。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/01/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-01 11:25:44" itemprop="dateCreated datePublished" datetime="2021-09-01T11:25:44+08:00">2021-09-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-30 13:38:42" itemprop="dateModified" datetime="2021-07-30T13:38:42+08:00">2021-07-30</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>适用于基于Docker的人工智能开发平台，或者容器内不能使用service的情况（不能以docker run方式启动容器）</p>
-<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 能够docker run启动容器的建议加一个--privileged 这样就可以在容器内使用systemctl进行服务的启停操作</span></span><br><span class="line">docker run -itd --privileged centos /usr/sbin/init</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装镜像的命令</span></span><br><span class="line">docker pull centos:centos8</span><br></pre></td></tr></table></figure>
-<h1 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h1><h2 id="２-１-基础包的安装"><a href="#２-１-基础包的安装" class="headerlink" title="２.１　基础包的安装"></a>２.１　基础包的安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 由于pull的centos是最小化的，因此需要安装一些必要的包</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> centos8yum和dnf并存，dnf是yum的下一代包管理软件，因此下文的yum都可以用dnf试一试</span></span><br><span class="line">yum install -y openssh-server</span><br><span class="line">yum install -y openssh-clients # 安装了这个之后再命令行输入ssh就不会提示‘command not found’</span><br><span class="line">yum install -y initscripts # 这个是能够在容器里面运行service命令</span><br><span class="line">yum install -y net-tools.x86_64</span><br><span class="line">yum install -y vim</span><br><span class="line">yum install -y paswd</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-2-ssh的配置"><a href="#2-2-ssh的配置" class="headerlink" title="2.2 ssh的配置"></a>2.2 ssh的配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line"><span class="meta">#</span><span class="bash"> 确保</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># PermitRootLogin yes</span></span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-3-启动SSH服务"><a href="#2-3-启动SSH服务" class="headerlink" title="2.3 启动SSH服务"></a>2.3 启动SSH服务</h2><p>因为不能使用service启动服务，会报错：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Redirecting to /bin/systemctl start sshd.service</span><br><span class="line">System has not been booted with systemd as init system (PID 1). Can&#x27;t operate.</span><br><span class="line">Failed to connect to bus: Host is down</span><br></pre></td></tr></table></figure>
-
-<p>因此采用手动启动，方式如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /var/run/sshd</span><br><span class="line">/usr/sbin/sshd -D &amp;</span><br></pre></td></tr></table></figure>
-
-<p>若报错：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Unable to load host key: /etc/ssh/ssh_host_rsa_key</span><br><span class="line">Unable to load host key: /etc/ssh/ssh_host_ecdsa_key</span><br><span class="line">Unable to load host key: /etc/ssh/ssh_host_ed25519_key</span><br><span class="line">sshd: no hostkeys available -- exiting.</span><br></pre></td></tr></table></figure>
-<p>则输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -q -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key -N &#x27;&#x27;  </span><br><span class="line">ssh-keygen -q -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N &#x27;&#x27;</span><br><span class="line">ssh-keygen -t dsa -f /etc/ssh/ssh_host_ed25519_key -N &#x27;&#x27;</span><br><span class="line">/usr/sbin/sshd -D &amp; # 此时应该不会报错</span><br></pre></td></tr></table></figure>
-
-<p>再输入<code>netstat -apn | grep ssh</code>，则显示：</p>
-<figure class="highlight plaintext"><figcaption><span>-apn | grep ssh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tcp       0      0 0.0.0.0:22   0.0.0.0:*   LISTEN      599/sshd            </span><br><span class="line">tcp6      0      0 :::22         :::*        LISTEN      599/sshd </span><br></pre></td></tr></table></figure>
-
-<p>再输入：<code>passwd</code>设置你想要的密码</p>
-<p>这时就可以通过SSH进行连接这个容器（客户端（如windows）仍然需要安装SSH）</p>
-<p>在客户端的terminal里输入<code>ssh root@&#123;容器的IP&#125; -p &#123;端口号&#125;</code>，密码输入刚才设置的即可。</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43827595/article/details/113810439">https://blog.csdn.net/qq_43827595/article/details/113810439</a></p>
-</blockquote>
-<h1 id="3-跨局域网远程连接docker的CentOS-8"><a href="#3-跨局域网远程连接docker的CentOS-8" class="headerlink" title="3 跨局域网远程连接docker的CentOS 8"></a>3 跨局域网远程连接docker的CentOS 8</h1><p>前提（可有可无）：下载tmux会话管理工具， <code>yum install tmux</code>或者<code>dnf install tmux(仅限CentOS8)</code>都可以，详细使用见下方参考链接。</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/10/tmux.html">https://www.ruanyifeng.com/blog/2019/10/tmux.html</a></p>
-</blockquote>
-<p>简单使用：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 新建会话</span></span><br><span class="line">tmux new -s test</span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入会话</span></span><br><span class="line">tmux attach -t test</span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入之后可以进行操作 按Ctrl+B,再按D退出</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看当前建立的会话（在正常的shell里面输入）</span></span><br><span class="line">tmux ls</span><br><span class="line"><span class="meta">#</span><span class="bash"> 杀死会话</span></span><br><span class="line">tmux kill-session -t test</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="3-1-方式1：ngrok"><a href="#3-1-方式1：ngrok" class="headerlink" title="3.1 方式1：ngrok"></a>3.1 方式1：ngrok</h2><p><a target="_blank" rel="noopener" href="https://dashboard.ngrok.com/get-started/setup">注册账号</a>并下载所匹配的安装包（只有命令行的linux系统可以ssh远程的登录然后使用Xtfp7进行文件的传输，下载链接见<a target="_blank" rel="noopener" href="https://www.netsarang.com/zh/free-for-home-school/">Xftp7家庭和学校免费授权官方正版</a>）  </p>
-<p>进入到ngrok压缩包所在目录：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">unzip ngrok-stable-linux-amd64.zip</span><br><span class="line">tmux new -s ngrok</span><br><span class="line">tmux attach -t ngrok</span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入到ngrok所在目录</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 链接你的ngrok账户（其中有个密钥）</span></span><br><span class="line">./ngrok authtoken &#123;密钥&#125;</span><br><span class="line">./ngrok tcp 22 # tcp可以用于SSH远程登录</span><br><span class="line"><span class="meta">#</span><span class="bash"> 成功之后会显示如下内容</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ngrok by @inconshreveable                                                                             </span><br><span class="line">Session Status                online        </span><br><span class="line">Account                       &#123;这里是账户名&#125; (Plan: Free)       </span><br><span class="line">Version                       2.3.35     </span><br><span class="line">Region                        United States (us) </span><br><span class="line">Web Interface                 http://127.0.0.1:4040                                              </span><br><span class="line">Forwarding                    tcp://0.tcp.ngrok.io:&#123;端口号&#125; -&gt; localhost:22 </span><br><span class="line">Connections                   ttl     opn     rt1     rt5     p50     p90                         </span><br><span class="line">                              0       0       0.00    0.00    0.00    0.00  </span><br></pre></td></tr></table></figure>
-
-<p>之后就可以在另一台电脑使用<code>ssh root@0.tcp.ngrok.io -p &#123;端口号&#125;</code>连接了。</p>
-<p><strong>但是</strong>，ngrok是国外服务器，因此速度较慢，所以连接上能明显感受到延迟  此处推荐sakurafrp，可以选国内节点，速度快。</p>
-<h2 id="3-2-方式2：sakurafrp"><a href="#3-2-方式2：sakurafrp" class="headerlink" title="3.2 方式2：sakurafrp"></a>3.2 方式2：sakurafrp</h2><p><a target="_blank" rel="noopener" href="https://www.natfrp.com/">sakurafrp官网</a></p>
-<ol>
-<li>在浏览器上，打开官网&gt;创建隧道&gt;节点选国内的（需要实名认证 花1￥）&gt;隧道类型选TCP&gt;端口填22（windows做远程桌面的时候需要写3389）&gt;确认创建</li>
-<li>在docker的CentOS8里面，参考sakurafrp的官网的软件下载那一栏安装软件，命令行输入<code>bash &lt;(curl -s https://getfrp.sh)</code>&gt;按提示即可，如果无法设置为系统服务的话不设置也不影响（一般docker容器都不能）</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/01/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-01 11:25:44" itemprop="dateCreated datePublished" datetime="2021-09-01T11:25:44+08:00">2021-09-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-22 15:43:58" itemprop="dateModified" datetime="2021-08-22T15:43:58+08:00">2021-08-22</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h1><h2 id="查看当前存在的镜像"><a href="#查看当前存在的镜像" class="headerlink" title="查看当前存在的镜像"></a>查看当前存在的镜像</h2><p> <code>docker images -a</code>或者<code>docker image ls -a</code></p>
-<h2 id="查看当前运行的容器"><a href="#查看当前运行的容器" class="headerlink" title="查看当前运行的容器"></a>查看当前运行的容器</h2><p><code>docker container ls -a</code>等价于<code>docker ps -a</code></p>
-<h2 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h2><p><code>docker pull centos:latest</code></p>
-<h2 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REPOSITORY          TAG       IMAGE ID       CREATED        SIZE</span><br><span class="line">docker101tutorial   latest    c0fbef3fb08f   6 hours ago    28MB</span><br><span class="line">ubuntu              18.04     7d0d8fa37224   10 days ago    63.1MB</span><br></pre></td></tr></table></figure>
-
-<h3 id="以ID删除：docker-image-rm-IMAGE-ID"><a href="#以ID删除：docker-image-rm-IMAGE-ID" class="headerlink" title="以ID删除：docker image rm IMAGE ID"></a>以ID删除：<code>docker image rm IMAGE ID</code></h3><p><code>docker image rm  7d0</code> </p>
-<h3 id="以镜像名删除：docker-image-rm-REPOSITORY-TAG"><a href="#以镜像名删除：docker-image-rm-REPOSITORY-TAG" class="headerlink" title="以镜像名删除：docker image rm REPOSITORY:TAG  "></a>以镜像名删除：<code>docker image rm REPOSITORY:TAG  </code></h3><p><code>docker image rm ubuntu:18.04</code></p>
-<p>终端返回：</p>
-<p><code>Deleted: sha256:7d0d8fa372249c6a1de9868ad62af9a14aaae2a2b17da867d8fad099a637fd0f Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652</code></p>
-<h3 id="以摘要删除docker-image-rm-DIGEST"><a href="#以摘要删除docker-image-rm-DIGEST" class="headerlink" title="以摘要删除docker image rm DIGEST"></a>以摘要删除<code>docker image rm DIGEST</code></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker image ls --digests</span><br><span class="line">docker image sha256:139b3846cee2e63de9ced83cee7023a2d95763ee2573e5b0ab6dea9dfbd4db8f</span><br></pre></td></tr></table></figure>
-
-<p>终端返回:</p>
-<p><code>Untagged: ubuntu@sha256:139b3846cee2e63de9ced83cee7023a2d95763ee2573e5b0ab6dea9dfbd4db8f</code></p>
-<p>实质并未删除镜像 只是删除了摘要</p>
-<h3 id="批量删除"><a href="#批量删除" class="headerlink" title="批量删除"></a>批量删除</h3><p>删除所有ubuntu的镜像</p>
-<p><code>docker image rm $(docker image ls -q ubuntu)</code></p>
-<h1 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h1><h2 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h2><p><code>docker run -it --rm centos:latest bash</code></p>
-<h2 id="查看容器信息"><a href="#查看容器信息" class="headerlink" title="查看容器信息"></a>查看容器信息</h2><p><code>docker inspect 容器ID</code></p>
-<h2 id="连接到容器"><a href="#连接到容器" class="headerlink" title="连接到容器"></a>连接到容器</h2><p><code>docker attach 容器ID </code></p>
-<p><code>docker exec -it 容器ID /bin/bash</code></p>
-<h1 id="docker中运行MYSQL"><a href="#docker中运行MYSQL" class="headerlink" title="docker中运行MYSQL"></a>docker中运行MYSQL</h1><ol>
-<li>拉取容器：docker pull mysql:latest</li>
-<li>运行容器<ul>
-<li><code>docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest</code></li>
-<li><code>docker exec -it mysql bash</code></li>
-</ul>
-</li>
-<li>容器内登录mysql<ul>
-<li><code>mysql -uroot -p</code>$\rightarrow$输入密码123456即可</li>
-</ul>
-</li>
-<li>容器启停<ul>
-<li><code>docker ps -a</code> 获取容器ID和名字，查看状态、<ul>
-<li>如果是Exit<ul>
-<li><code>docker start ID/Name</code></li>
-<li><code>docker exec -it Name bash</code>进入容器</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>docker stop ID/Name</code></li>
-<li><code>docker restart ID/Name</code></li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -968,10 +175,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-01 11:23:40 / 修改时间：23:20:45" itemprop="dateCreated datePublished" datetime="2021-09-01T11:23:40+08:00">2021-09-01</time>
+              <time title="创建时间：2021-09-01 11:23:40" itemprop="dateCreated datePublished" datetime="2021-09-01T11:23:40+08:00">2021-09-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-02 11:20:46" itemprop="dateModified" datetime="2021-09-02T11:20:46+08:00">2021-09-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1008,24 +221,24 @@
 
       
           <ul>
-<li><a href="#1-%E6%9C%AC%E6%96%87%E6%91%98%E8%A6%81%E5%8F%8A%E8%AF%B4%E6%98%8E">1 本文摘要及说明</a></li>
-<li><a href="#2-windows%E9%85%8D%E7%BD%AE%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E7%9A%84%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95">2 Windows配置远程登录的几种常见方法</a><ul>
-<li><a href="#21-windows-powershell-%E6%96%B9%E5%BC%8F">2.1 Windows PowerShell 方式</a><ul>
-<li><a href="#211-%E6%A3%80%E6%9F%A5">2.1.1 检查</a></li>
-<li><a href="#212-%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5">2.1.2 生成密钥</a></li>
-<li><a href="#213-%E6%96%B0%E5%BB%BAconfig%E6%96%87%E4%BB%B6">2.1.3 新建config文件</a></li>
-<li><a href="#214-%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8Becs%E5%AE%9E%E4%BE%8B">2.1.4 连接远程ECS实例</a></li>
+<li><a href="#1-本文摘要及说明">1 本文摘要及说明</a></li>
+<li><a href="#2-windows配置远程登录的几种常见方法">2 Windows配置远程登录的几种常见方法</a><ul>
+<li><a href="#21-windows-powershell-方式">2.1 Windows PowerShell 方式</a><ul>
+<li><a href="#211-检查">2.1.1 检查</a></li>
+<li><a href="#212-生成密钥">2.1.2 生成密钥</a></li>
+<li><a href="#213-新建config文件">2.1.3 新建config文件</a></li>
+<li><a href="#214-连接远程ecs实例">2.1.4 连接远程ECS实例</a></li>
 </ul>
 </li>
-<li><a href="#22-git-bash-%E6%96%B9%E5%BC%8F">2.2 Git Bash 方式</a></li>
-<li><a href="#23-vscode%E6%8F%92%E4%BB%B6remote-ssh%E6%96%B9%E5%BC%8F">2.3 VSCode插件（Remote-SSH）方式</a><ul>
-<li><a href="#231-%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6">2.3.1 安装插件：</a></li>
-<li><a href="#232-%E8%BF%9E%E6%8E%A5">2.3.2 连接</a></li>
+<li><a href="#22-git-bash-方式">2.2 Git Bash 方式</a></li>
+<li><a href="#23-vscode插件remote-ssh方式">2.3 VSCode插件（Remote-SSH）方式</a><ul>
+<li><a href="#231-安装插件">2.3.1 安装插件：</a></li>
+<li><a href="#232-连接">2.3.2 连接</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">参考文献</a></li>
+<li><a href="#参考文献">参考文献</a></li>
 </ul>
 <h1 id="1-本文摘要及说明"><a href="#1-本文摘要及说明" class="headerlink" title="1 本文摘要及说明"></a>1 本文摘要及说明</h1><p>小白写的小白向教程，错误之处还请指正。</p>
 <p>记录自己Windows采用SSH方式远程登录阿里云ECS虚拟机的配置过程记录及踩的坑。</p>
@@ -1034,9 +247,9 @@
 <li>阿里云ECS实例需要时开启状态</li>
 <li>阿里云ECS实例中“本实例安全组”的“内网入方向全部规则”中要保持22/22端口的开启。（其实这个端口默认是开启的，笔者前段时间进行过设置，导致该端口并未开启，从而受到阻碍，故提出此处注意的点。）</li>
 </ul>
-<p><img src="/../../images/2020-08-14-23-48-35.png"></p>
-<h1 id="2-Windows配置远程登录的几种常见方法"><a href="#2-Windows配置远程登录的几种常见方法" class="headerlink" title="2 Windows配置远程登录的几种常见方法"></a>2 Windows配置远程登录的几种常见方法</h1><h2 id="2-1-Windows-PowerShell-方式"><a href="#2-1-Windows-PowerShell-方式" class="headerlink" title="2.1 Windows PowerShell 方式"></a>2.1 Windows PowerShell 方式</h2><h3 id="2-1-1-检查"><a href="#2-1-1-检查" class="headerlink" title="2.1.1 检查"></a>2.1.1 检查</h3><p>首先检查自己是不是系统已经安装了SSH，笔者电脑Win 10版本是2004，发现已经安装了SSH，若读者电脑未安装，则可通过<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse">此处</a>查看如何安装<br><img src="/../../images/2020-08-14-21-45-48.png"></p>
-<h3 id="2-1-2-生成密钥"><a href="#2-1-2-生成密钥" class="headerlink" title="2.1.2 生成密钥"></a>2.1.2 生成密钥</h3><p>输入命令<code>ssh-keygen</code>生成公私钥，这一步一路回车即可。<br><img src="/../../images/2020-08-14-23-41-51.png"></p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-23-48-35.png" alt></p>
+<h1 id="2-Windows配置远程登录的几种常见方法"><a href="#2-Windows配置远程登录的几种常见方法" class="headerlink" title="2 Windows配置远程登录的几种常见方法"></a>2 Windows配置远程登录的几种常见方法</h1><h2 id="2-1-Windows-PowerShell-方式"><a href="#2-1-Windows-PowerShell-方式" class="headerlink" title="2.1 Windows PowerShell 方式"></a>2.1 Windows PowerShell 方式</h2><h3 id="2-1-1-检查"><a href="#2-1-1-检查" class="headerlink" title="2.1.1 检查"></a>2.1.1 检查</h3><p>首先检查自己是不是系统已经安装了SSH，笔者电脑Win 10版本是2004，发现已经安装了SSH，若读者电脑未安装，则可通过<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse">此处</a>查看如何安装<br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-21-45-48.png" alt></p>
+<h3 id="2-1-2-生成密钥"><a href="#2-1-2-生成密钥" class="headerlink" title="2.1.2 生成密钥"></a>2.1.2 生成密钥</h3><p>输入命令<code>ssh-keygen</code>生成公私钥，这一步一路回车即可。<br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-23-41-51.png" alt></p>
 <p>由于笔者已经生成过，所以有提示是否覆写，正常情况下一路回车即可。啥都不用填写，直接回车。</p>
 <h3 id="2-1-3-新建config文件"><a href="#2-1-3-新建config文件" class="headerlink" title="2.1.3 新建config文件"></a>2.1.3 新建config文件</h3><p>打开密钥存储的路径文件夹<code>C:\User\lihua/.ssh</code>（名字以lihua为例）新建一个config文件（文件无后缀名），其内容如下所示：</p>
 <pre><code>Host root
@@ -1044,51 +257,46 @@
   User xxxx
   Port xx
   IdentityFile ~/.ssh/id_rsa
-</code></pre>
-<p>说明：  </p>
+</code></pre><p>说明：  </p>
 <ul>
-<li><p>Host: 这个地方随便写，笔者这写的<code>root</code>，故意与$User$不一致，是为了与GitBash方式区分开。</p>
-</li>
-<li><p>HostName: 此处填写阿里云ECS实例的公网IP地址，如下图：<br><img src="/../../images/2020-08-14-23-45-31.png"></p>
+<li>Host: 这个地方随便写，笔者这写的<code>root</code>，故意与$User$不一致，是为了与GitBash方式区分开。</li>
+<li><p>HostName: 此处填写阿里云ECS实例的公网IP地址，如下图：<br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-23-45-31.png" alt></p>
 </li>
 <li><p>User: 这是阿里云ECS实例的用户名，有的教程可能写的是root但是笔者试了并不能成功，可能需要进行别的设置才行吧。笔者这里经过反复验证发现是虚拟机的账户名才成功连接。比如：lihua, wanglei 这种当初设置的账户名称</p>
 </li>
-<li><p>Port: 端口号，笔者这里是22</p>
-</li>
-<li><p>最后一行<code>IdentityFile</code>照抄即可</p>
-</li>
+<li>Port: 端口号，笔者这里是22</li>
+<li>最后一行<code>IdentityFile</code>照抄即可</li>
 </ul>
-<p>最后查看自己windows电脑的文件路径，应该如下所示（know_hosts可以没有，这个应该是后期连接服务器才生成的，确保前三个文件是有的话即可）<br><img src="/../../images/2020-08-14-23-30-33.png"></p>
+<p>最后查看自己windows电脑的文件路径，应该如下所示（know_hosts可以没有，这个应该是后期连接服务器才生成的，确保前三个文件是有的话即可）<br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-14-23-30-33.png" alt></p>
 <h3 id="2-1-4-连接远程ECS实例"><a href="#2-1-4-连接远程ECS实例" class="headerlink" title="2.1.4 连接远程ECS实例"></a>2.1.4 连接远程ECS实例</h3><p>打开PowerShell并进入到<code>C:\User\lihua/.ssh</code>文件下输入如下命令</p>
 <pre><code>ssh lihua@xx.xx.xxx.xxx -p 22
-</code></pre>
-<p>再输入密码（如果读者的ECS安装了图形化界面的话，密码是图形化界面登录的密码，而不是ECS自带VNC远程连接的密码。）</p>
-<p><img src="/../../images/2020-08-15-00-04-58.png"></p>
+</code></pre><p>再输入密码（如果读者的ECS安装了图形化界面的话，密码是图形化界面登录的密码，而不是ECS自带VNC远程连接的密码。）</p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-04-58.png" alt></p>
 <p>登录成功之后应该是这样的，同时邮件还会受到阿里云的提示：</p>
-<p><img src="/../../images/2020-08-15-00-02-49.png"><br><img src="/../../images/2020-08-15-00-08-00.png"></p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-02-49.png" alt><br><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-08-00.png" alt></p>
 <h2 id="2-2-Git-Bash-方式"><a href="#2-2-Git-Bash-方式" class="headerlink" title="2.2 Git Bash 方式"></a>2.2 Git Bash 方式</h2><p>前三步和上一节一样，只有连接上有一处需要注意的地方。打开<code>C:\User\lihua/.ssh</code>直接Git Bash Here：</p>
-<p><img src="/../../images/2020-08-15-00-16-25.png"></p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-16-25.png" alt></p>
 <p>然后输入箭头所指的内容：</p>
-<p><img src="/../../images/2020-08-15-00-17-50.png"></p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-17-50.png" alt></p>
 <p>可以发现，<strong>这里是<code>ssh root</code>，root是$config$文件里的Host，而不是User</strong>，此处是需要注意的。</p>
-<h2 id="2-3-VSCode插件（Remote-SSH）方式"><a href="#2-3-VSCode插件（Remote-SSH）方式" class="headerlink" title="2.3 VSCode插件（Remote-SSH）方式"></a>2.3 VSCode插件（Remote-SSH）方式</h2><h3 id="2-3-1-安装插件："><a href="#2-3-1-安装插件：" class="headerlink" title="2.3.1 安装插件："></a>2.3.1 安装插件：</h3><p><img src="/../../images/2020-08-15-00-21-01.png"></p>
+<h2 id="2-3-VSCode插件（Remote-SSH）方式"><a href="#2-3-VSCode插件（Remote-SSH）方式" class="headerlink" title="2.3 VSCode插件（Remote-SSH）方式"></a>2.3 VSCode插件（Remote-SSH）方式</h2><h3 id="2-3-1-安装插件："><a href="#2-3-1-安装插件：" class="headerlink" title="2.3.1 安装插件："></a>2.3.1 安装插件：</h3><p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-21-01.png" alt></p>
 <h3 id="2-3-2-连接"><a href="#2-3-2-连接" class="headerlink" title="2.3.2 连接"></a>2.3.2 连接</h3><ol>
 <li>点击+号</li>
 </ol>
-<p><img src="/../../images/2020-08-15-00-30-03.png"></p>
-<ol start="2">
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-30-03.png" alt></p>
+<ol>
 <li><p>输入<code>ssh lihua@xx.xx.xxx.xxx -p 22</code></p>
 </li>
 <li><p>右键连接：</p>
 </li>
 </ol>
-<p><img src="/../../images/2020-08-15-00-31-58.png">  </p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-31-58.png" alt>  </p>
 <p>然后：</p>
-<p><img src="/../../images/2020-08-15-00-32-36.png"></p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-32-36.png" alt></p>
 <p>再然后：</p>
-<p><img src="/../../images/2020-08-15-00-33-18.png"></p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-33-18.png" alt></p>
 <p>左下角这样就说明成功连接了：</p>
-<p><img src="/../../images/2020-08-15-00-36-52.png"></p>
+<p><img src="/2021/09/01/3Windows/W-1-Windows%E4%B8%8BSSH%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91ECSlinux/2020-08-15-00-36-52.png" alt></p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><blockquote>
 <p>[1] <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse">https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse</a><br>[2] <a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/remote/ssh">https://code.visualstudio.com/docs/remote/ssh</a><br>[3] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenzhaoyu/p/9898679.html">https://www.cnblogs.com/chenzhaoyu/p/9898679.html</a><br>[4] <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/68577071">https://zhuanlan.zhihu.com/p/68577071</a>  </p>
 </blockquote>
@@ -1222,10 +430,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-01 11:23:40 / 修改时间：23:20:52" itemprop="dateCreated datePublished" datetime="2021-09-01T11:23:40+08:00">2021-09-01</time>
+              <time title="创建时间：2021-09-01 11:23:40" itemprop="dateCreated datePublished" datetime="2021-09-01T11:23:40+08:00">2021-09-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-02 11:25:49" itemprop="dateModified" datetime="2021-09-02T11:25:49+08:00">2021-09-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1262,28 +476,34 @@
 
       
           <p><strong>更新历史：</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">时间</th>
-<th align="center">更新内容：更新位置</th>
-<th align="center">更新人</th>
+<th style="text-align:center">时间</th>
+<th style="text-align:center">更新内容：更新位置</th>
+<th style="text-align:center">更新人</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">20210728</td>
-<td align="center">网段设置注意事项：<a href="#jump1">点此跳转</a></td>
-<td align="center">李显</td>
+<tbody>
+<tr>
+<td style="text-align:center">20210728</td>
+<td style="text-align:center">网段设置注意事项：<a href="#jump1">点此跳转</a></td>
+<td style="text-align:center">李显</td>
 </tr>
 <tr>
-<td align="center">20210722</td>
-<td align="center">初版</td>
-<td align="center">李显</td>
+<td style="text-align:center">20210722</td>
+<td style="text-align:center">初版</td>
+<td style="text-align:center">李显</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h1 id="0-先导知识"><a href="#0-先导知识" class="headerlink" title="0 先导知识"></a>0 先导知识</h1><ul>
-<li>最终版连接服务器方法：<strong>更改端口法</strong></li>
-<li><strong>校园网概况</strong><ul>
+<li><p>最终版连接服务器方法：<strong>更改端口法</strong></p>
+</li>
+<li><p><strong>校园网概况</strong></p>
+<ul>
 <li>校园网是一个大局域网，理论上连上校园网的所有主机都能够相互ping通（在二者都具有101.7.xxx.xxx网段的IP的情况下）。</li>
 <li>平时连接校园网的两台主机无法建立TCP远程连接（也就是没法直接远程桌面），原因有2：<ul>
 <li>两主机跨局域网，且需要被远程的主机IP为私有IP（即10.0.0.0-10.255.255.255 、172.16.0.0—172.31.255.255 、192.168.0.0-192.168.255.255 三个网段）</li>
@@ -1293,11 +513,13 @@
 <li>信息与计算机学院网段分布：101.7.186.xxx为实验楼的网段；101.7.187.xxx为北楼的网段（例如607打印机的IP就是101.7.187.235）</li>
 </ul>
 </li>
-<li><strong>本文适用</strong><ul>
-<li>只要使用人能连上校园网（在家或宿舍可以用motion pro通过VPN连接校园网<a target="_blank" rel="noopener" href="http://iadmin.tyut.edu.cn/info/1155/2280.htm%EF%BC%89%E5%B0%B1%E8%83%BD%E8%BF%9E%E6%8E%A5%E4%B8%8A%E5%AD%A6%E6%A0%A1%E7%9A%84%E4%BB%BB%E6%84%8F%E5%B7%B2%E8%81%94%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E4%B8%94%E8%BF%9E%E6%8E%A5%E8%B4%A8%E9%87%8F%E8%BF%9C%E5%A5%BD%E4%BA%8E%E5%90%91%E6%97%A5%E8%91%B5%E6%88%96FRP%E3%80%82">http://iadmin.tyut.edu.cn/info/1155/2280.htm）就能连接上学校的任意已联网服务器，且连接质量远好于向日葵或FRP。</a></li>
+<li><p><strong>本文适用</strong></p>
+<ul>
+<li>只要使用人能连上校园网（在家或宿舍可以用motion pro通过VPN连接校园网<a target="_blank" rel="noopener" href="http://iadmin.tyut.edu.cn/info/1155/2280.htm）就能连接上学校的任意已联网服务器，且连接质量远好于向日葵或FRP。">http://iadmin.tyut.edu.cn/info/1155/2280.htm）就能连接上学校的任意已联网服务器，且连接质量远好于向日葵或FRP。</a></li>
 </ul>
 </li>
-<li><strong>远程连接的方法概览</strong>（都是在需要被远程连接的主机上操作）<ul>
+<li><p><strong>远程连接的方法概览</strong>（都是在需要被远程连接的主机上操作）</p>
+<ul>
 <li><p>首先要保证服务器主机有一个101.7.xxx.xxx网段的IP，上网方式不要设置成DHCP，设置成静态IP。具体到407，就是101.7.186.xxx网段的IP。</p>
 <ul>
 <li><p>设置静态ip相关信息：</p>
@@ -1307,10 +529,8 @@
 <li>默认网关：101.7.186.1</li>
 </ul>
 </li>
-<li><p>DNS为202.207.247.227、202.207.240.225</p>
-</li>
-<li><p> <span id="jump1"><strong>20210728新增注意</strong></span>：服务器需要登录上自己的ipv6账号，如果插上网线就能上网不需要经过登录的话一般是连接在同一交换机的其他服务器有人登录了，此时自己的服务器仍然是处在小局域网而非校园网这个大局域网下。如ip为101.7.187.123，不经过ipv6登录的情况下，只有当自己电脑的ip是101.7.187.xxx的时候才能连上，而非初衷101.7.xxx.xxx就能连接上。</p>
-</li>
+<li>DNS为202.207.247.227、202.207.240.225</li>
+<li><span id="jump1"><strong>20210728新增注意</strong></span>：服务器需要登录上自己的ipv6账号，如果插上网线就能上网不需要经过登录的话一般是连接在同一交换机的其他服务器有人登录了，此时自己的服务器仍然是处在小局域网而非校园网这个大局域网下。如ip为101.7.187.123，不经过ipv6登录的情况下，只有当自己电脑的ip是101.7.187.xxx的时候才能连上，而非初衷101.7.xxx.xxx就能连接上。</li>
 </ul>
 </li>
 <li><p>修改服务器主机的远程端口为2000 ~ 3388、3390 ~ 65535之间的任意值，教程见下文。</p>
@@ -1335,19 +555,16 @@
 </ol>
 </li>
 </ol>
-<img src="../../images/image-20210721195805461.png" alt="image-20210721195805461" style="zoom: 33%;">
-
-<img src="../../images/image-20210721195941872.png" alt="image-20210721195941872" style="zoom: 33%;">
-
-<ol start="3">
+<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721195805461.png" alt="image-20210721195805461" style="zoom: 33%;"></p>
+<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721195941872.png" alt="image-20210721195941872" style="zoom: 33%;"></p>
+<ol>
 <li>修改注册表值<ol>
 <li>路径：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp</li>
 <li>修改PortNumber</li>
 </ol>
 </li>
 </ol>
-<img src="../../images/image-20210721200316807.png" alt="image-20210721200316807" style="zoom:33%;">
-
+<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721200316807.png" alt="image-20210721200316807" style="zoom:33%;"></p>
 <h2 id="1-2-修改防火墙入站端口"><a href="#1-2-修改防火墙入站端口" class="headerlink" title="1.2 修改防火墙入站端口"></a>1.2 修改防火墙入站端口</h2><ol>
 <li>修改注册表值<ol>
 <li>路径：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Defaults\FirewallPolicy\FirewallRules</li>
@@ -1355,38 +572,29 @@
 </ol>
 </li>
 </ol>
-<img src="../../images/image-20210721200632669.png" alt="image-20210721200632669" style="zoom:33%;">
-
-<img src="../../images/image-20210721200726685.png" alt="image-20210721200726685" style="zoom:33%;">
-
-<ol start="2">
+<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721200632669.png" alt="image-20210721200632669" style="zoom:33%;"></p>
+<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721200726685.png" alt="image-20210721200726685" style="zoom:33%;"></p>
+<ol>
 <li>修改注册表值<ol>
 <li>路径：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules</li>
 <li>修改RemoteDesktop-UserMode-In-TCP的LPort=2022</li>
 </ol>
 </li>
 </ol>
-<img src="../../images/image-20210721200846745.png" alt="image-20210721200846745" style="zoom:33%;">
-
-<ol start="3">
+<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721200846745.png" alt="image-20210721200846745" style="zoom:33%;"></p>
+<ol>
 <li>打开控制面板\系统和安全\Windows 防火墙\高级设置</li>
 </ol>
-<img src="../../images/image-20210721201034920.png" alt="image-20210721201034920" style="zoom:33%;">
-
-<ol start="4">
+<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721201034920.png" alt="image-20210721201034920" style="zoom:33%;"></p>
+<ol>
 <li>点击入站规则$\rightarrow$右键远程桌面-用户模式（TCP-In）$\rightarrow$启用规则</li>
 </ol>
-<img src="../../images/image-20210721201209917.png" alt="image-20210721201209917" style="zoom:33%;">
-
-<img src="../../images/image-20210721201252363.png" alt="image-20210721201252363" style="zoom:33%;">
-
-<ol start="5">
+<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721201209917.png" alt="image-20210721201209917" style="zoom:33%;"></p>
+<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721201252363.png" alt="image-20210721201252363" style="zoom:33%;"></p>
+<ol>
 <li>重启服务器即可在自己电脑上连接</li>
 </ol>
-<img src="../../images/image-20210721202949425.png" alt="image-20210721202949425" style="zoom:33%;">
-
-
-
+<p><img src="/2021/09/01/3Windows/W-4-%E4%BF%AE%E6%94%B9WindowsTCP%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%AB%AF%E5%8F%A33389/image-20210721202949425.png" alt="image-20210721202949425" style="zoom:33%;"></p>
 
       
     </div>
@@ -1483,6 +691,2320 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/4%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/4%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" class="post-title-link" itemprop="url">软件工程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-09-01 00:00:01 / 修改时间：21:59:35" itemprop="dateCreated datePublished" datetime="2021-09-01T00:00:01+08:00">2021-09-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">计算机基础知识总结</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>0</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://raw.githubusercontent.com/NAIXIL/GithubPagesPics/main/20210920210901215917.png" alt></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/5EPI%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/5EPI%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">EPI</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-01 00:00:01" itemprop="dateCreated datePublished" datetime="2021-09-01T00:00:01+08:00">2021-09-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-02 10:59:11" itemprop="dateModified" datetime="2021-09-02T10:59:11+08:00">2021-09-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">计算机基础知识总结</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="逻辑判断（判断5、6、7、8，9h）"><a href="#逻辑判断（判断5、6、7、8，9h）" class="headerlink" title="逻辑判断（判断5、6、7、8，9h）"></a>逻辑判断（判断5、6、7、8，9h）</h1><h2 id="翻译推理"><a href="#翻译推理" class="headerlink" title="翻译推理"></a>翻译推理</h2><ul>
+<li>要素<ul>
+<li>前推后<ul>
+<li>若……则……；只要……就……；所有……都……；为了……一定（必须）……；……是……的充分条件<ul>
+<li>如果想要取得好成绩，就必须减少玩耍时间 <u>好成绩→少玩耍</u><ul>
+<li>取得好成绩 肯前</li>
+<li>没取得好成绩 否前</li>
+<li>减少玩耍时间 肯后</li>
+<li>增加玩耍时间 否后</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>后推前<ul>
+<li>只有……，才……；不……，不……<ul>
+<li>人无精神则不立 <u>立$\rightarrow$精神</u></li>
+</ul>
+</li>
+<li>除非 A 否则不 B：B→A；除非 A 否则 B：-B→A<ul>
+<li>除非天地合，否则我不会与君绝</li>
+<li>除非交房租，否则搬出去。不搬出去$\rightarrow$交房租</li>
+</ul>
+</li>
+<li>谁必不可少，谁在箭头后<ul>
+<li>…是…的基础/假设/前提/关键/必要/必不可少条件</li>
+</ul>
+</li>
+<li>A的充分条件是B。B$\rightarrow$A</li>
+<li>A的必要条件是B。A$\rightarrow$B</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>规则：“逆否等价”</p>
+<ul>
+<li>$A\rightarrow B=-B\rightarrow -A$</li>
+<li><strong>肯前必肯后，否后必否前</strong>；否前肯后不知道</li>
+<li>注意：<ol>
+<li>选项与题干无关，就不选，如“坚持锻炼→风险降低”，选项“是否坚持锻炼，直接决定了阿尔茨海默症等神经退行性疾病的发病风险能降低”就不选</li>
+<li>递推关系可传递<ul>
+<li>1.“A→B”和“B→C”，可以写为“A→B→C”。<br>2.“A→B”和“-A→C”，后者逆否为“-C→A”，与前者串联为“-C→A→B”。</li>
+<li>3.“A→B”和“C→-B”，后者逆否为“B→-C”，与前者串联为“A→B→-C”。</li>
+<li>4.“A→B”和“A→C”不能串联。</li>
+<li>5.“A→B→C”可以写为“A→C”，也可以写为“-C→-B→-A”；“A→B→-C”<br>可以写为“C→-B→-A”，均可以随意变换。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>要素</p>
+<ul>
+<li>且<ul>
+<li>和、既……又……、不仅……而且……、……但是……</li>
+</ul>
+</li>
+<li>或<ul>
+<li>或者、或者…或者…、至少一个<strong>（两个也行）</strong><ul>
+<li><strong>否1$\rightarrow$1</strong><ul>
+<li>我不看篮球或不看足球。看篮球$\rightarrow$不看足球</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><u>AB至多一个。-A或-B</u></li>
+</ul>
+</li>
+<li>德摩根定律<ul>
+<li>-（A 且 B）=-A 或-B</li>
+<li>-（A 或 B）=-A 且-B<ul>
+<li>“-”进去，“且”“或”互变<ul>
+<li>-（方便面且大盘鸡）=-方便面或-大盘鸡</li>
+<li>-（咖啡因或泡枸杞）=-咖啡因且-泡枸杞</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/5EPI%E6%80%BB%E7%BB%93/image-20210823150123515.png" alt="image-20210823150123515" style="zoom: 50%;"></p>
+<ul>
+<li>要素<ul>
+<li>提问：以下哪项与题干中推理形式/结构相同？</li>
+<li>把名词换成字母<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/5EPI%E6%80%BB%E7%BB%93/image-20210823151618623.png" alt="image-20210823151618623" style="zoom: 50%;"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="组合排列"><a href="#组合排列" class="headerlink" title="组合排列"></a>组合排列</h2><ul>
+<li>题型特征：题干中给出一组对象和相关信息，要求把对象和信息进行匹配</li>
+<li>方法<ul>
+<li>排除法<ul>
+<li>何时用：题干信息确定</li>
+<li><strong>首要确定谁不是谁 </strong><ul>
+<li>比大小的题目，极值很重要。（谁最大，谁最小）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>代入法<ul>
+<li>假设选项正确，代入题干<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/5EPI%E6%80%BB%E7%BB%93/image-20210823161100333.png" alt="image-20210823161100333" style="zoom:67%;"></li>
+</ul>
+</li>
+<li>题干有“补充/添加以下哪项可以退出”，尝试代入</li>
+<li><strong>设问中有可能、不可能，考虑代入</strong><ul>
+<li>隧道排序问题</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>推理技巧<ol>
+<li>优先关注出现次数最多信息<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/5EPI%E6%80%BB%E7%BB%93/image-20210823162454639.png" alt="image-20210823162454639" style="zoom: 50%;"><ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/5EPI%E6%80%BB%E7%BB%93/image-20210823162532752.png" alt="image-20210823162532752" style="zoom: 50%;"></li>
+</ul>
+</li>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/5EPI%E6%80%BB%E7%BB%93/image-20210823163459924.png" alt="image-20210823163459924" style="zoom: 50%;"><ul>
+<li>根据题干，只有一个人考上了研究生，只有一个人说的正确且说的正确的人考上了研究生，可以知道，研究生只有一个且说的话正确；从“研究生”出现的地方入手，G说的话，必是假，因为如果G对，那么G是研究生，又因为研究生只有一个，所以G假话；可以推知H肯定没考上研究生，也就是H说了假话，也就是J是公务员，所以选D。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>符号“&gt;”、“&lt;”。往往涉及年龄、成绩、身高、收入等大小比较</li>
+<li>对象和信息比较多的时候，列表格；排序题考虑间隔</li>
+</ol>
+</li>
+</ul>
+<h2 id="逻辑论证"><a href="#逻辑论证" class="headerlink" title="逻辑论证"></a>逻辑论证</h2><ol>
+<li>论点提示词：所以，结论是，这表明/说明/意味着，由此推出/可知，据此<br>认为</li>
+<li>论据提示词：由于、因为、鉴于、根据</li>
+<li>论据常见形式：原因、数据、事例、实验或调查内容等</li>
+</ol>
+<ul>
+<li>削弱题型：反对<ul>
+<li>题型特征：提问“削弱”、“质疑”、“反驳”、“否定”</li>
+<li>削弱方式：论点与论据一致，优先考虑否定论点；论点与论据不一致、没有否定论点的选项、提问方式为削弱论证的时候，优先考虑拆桥。<ul>
+<li>否定论点<ul>
+<li>选项特征：与论点表述的意思相反 </li>
+<li>解题步骤<ol>
+<li>找出论点</li>
+<li>想出与论点意思相反的表述</li>
+<li>寻找对应选项</li>
+</ol>
+</li>
+<li>例子<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/5EPI%E6%80%BB%E7%BB%93/image-20210823195517523.png" alt="image-20210823195517523" style="zoom:50%;"><ul>
+<li>但是之前的不看，只有论点，否定论点：养老机构的噪音不影响居民生活。对比选项，A中心在位置，B中心在不了解，D中心在办养老机构之前，都无关</li>
+</ul>
+</li>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/5EPI%E6%80%BB%E7%BB%93/image-20210823200857527.png" alt="image-20210823200857527" style="zoom:50%;"></li>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/5EPI%E6%80%BB%E7%BB%93/image-20210823212131897.png" alt="image-20210823212131897" style="zoom:50%;"></li>
+</ul>
+</li>
+<li>常见的论点特殊形式<ul>
+<li>论点为“不是 A，是 C 导致 B”：甲：A 导致 B;乙：不是 A，是 C 导致 B<ul>
+<li>选项就找常考削弱乙——A 导致 C<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/5EPI%E6%80%BB%E7%BB%93/image-20210823212836980.png" alt="image-20210823212836980"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>拆桥<ul>
+<li>题型特征说论点与论据之间没有必然的联系。<ul>
+<li>特殊考法：论点为某物质比较好，论据为物质中的某些元素好<ul>
+<li>解题方法：元素含量少，没啥作用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>否定论据<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/5EPI%E6%80%BB%E7%BB%93/image-20210823223029536.png" alt="image-20210823223029536"></li>
+</ul>
+</li>
+<li>因果类<ul>
+<li>什么是因果论证？<ul>
+<li><strong>1.论点包含因果关系</strong><ul>
+<li>……是……的原因、</li>
+<li>……导致/使得/有助于……</li>
+<li>……增加/降低/加强/减轻……<ul>
+<li>例：研究人员认为，“缺觉”是导致第二天没有精神的原因</li>
+<li>例 ：有研究小组调查显示，在封闭环境中入睡的人更容易频繁醒来，而且自我感觉睡眠质量不佳。因此，有人认为，就寝时关闭门窗将会降低睡眠质量</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>因果倒置削弱：原因与结果说反</li>
+<li>他因削弱：承认结果，同一个主体存在两种及以上可能的原因；如果论点是其中一种原因，则可以用另一种原因进行削弱。<ul>
+<li>他因的特点：与论点是同一个主体、同一时间、不同原因<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/5EPI%E6%80%BB%E7%BB%93/image-20210823234229146.png" alt="image-20210823234229146"></li>
+</ul>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>加强提醒：赞同</li>
+</ul>
+<h2 id="日常结论"><a href="#日常结论" class="headerlink" title="日常结论"></a>日常结论</h2><h2 id="原因解释"><a href="#原因解释" class="headerlink" title="原因解释"></a>原因解释</h2><h1 id="定义判断-判断4，2h"><a href="#定义判断-判断4，2h" class="headerlink" title="定义判断(判断4，2h)"></a>定义判断(判断4，2h)</h1><h1 id="图形推理-判断1、2，5h"><a href="#图形推理-判断1、2，5h" class="headerlink" title="图形推理(判断1、2，5h)"></a>图形推理(判断1、2，5h)</h1><h1 id="类比推理-判断3，2h"><a href="#类比推理-判断3，2h" class="headerlink" title="类比推理(判断3，2h)"></a>类比推理(判断3，2h)</h1><h1 id="言语理解与表达-18h"><a href="#言语理解与表达-18h" class="headerlink" title="言语理解与表达(18h)"></a>言语理解与表达(18h)</h1><h1 id="数字推理"><a href="#数字推理" class="headerlink" title="数字推理"></a>数字推理</h1><h1 id="数字运算-数量1-4，12h"><a href="#数字运算-数量1-4，12h" class="headerlink" title="数字运算(数量1-4，12h)"></a>数字运算(数量1-4，12h)</h1><h1 id="资料分析-14h"><a href="#资料分析-14h" class="headerlink" title="资料分析(14h)"></a>资料分析(14h)</h1><h1 id="思维策略"><a href="#思维策略" class="headerlink" title="思维策略"></a>思维策略</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E5%A4%87%E8%80%83%E5%A4%8D%E4%B9%A0%E8%A7%84%E5%88%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E5%A4%87%E8%80%83%E5%A4%8D%E4%B9%A0%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">备考方针规划</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-01 00:00:01" itemprop="dateCreated datePublished" datetime="2021-09-01T00:00:01+08:00">2021-09-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-02 11:01:25" itemprop="dateModified" datetime="2021-09-02T11:01:25+08:00">2021-09-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">计算机基础知识总结</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="备考方针"><a href="#备考方针" class="headerlink" title="备考方针"></a>备考方针</h1><h2 id="EPI"><a href="#EPI" class="headerlink" title="EPI"></a>EPI</h2><p>就看行测的数学和思维逻辑那块</p>
+<h2 id="计算机基础复习进度"><a href="#计算机基础复习进度" class="headerlink" title="计算机基础复习进度"></a>计算机基础复习进度</h2><ul>
+<li><p>[ ] 重点复习</p>
+<ul>
+<li>[x] <strong>数据库</strong><ul>
+<li>[ ] 0822：1-3</li>
+</ul>
+</li>
+<li>[ ] <strong>数据结构</strong></li>
+<li>[ ] <strong>Java</strong></li>
+<li>[x] <strong>计算机网络(看王道)</strong><ul>
+<li>[ ] 0824：1-3</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>[ ] 5道</p>
+<ul>
+<li>[ ] 软件工程<ul>
+<li>[ ] 掌握常见考点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="简历投递"><a href="#简历投递" class="headerlink" title="简历投递"></a>简历投递</h1><h2 id="中国农业银行"><a href="#中国农业银行" class="headerlink" title="中国农业银行"></a>中国农业银行</h2><h3 id="简历投递时间、职位（0816-0905）"><a href="#简历投递时间、职位（0816-0905）" class="headerlink" title="简历投递时间、职位（0816~0905）"></a>简历投递时间、职位（0816~0905）</h3><h4 id="总行（0905）"><a href="#总行（0905）" class="headerlink" title="总行（0905）"></a>总行（0905）</h4><ul>
+<li>全球反洗钱中心（天津）</li>
+<li>远程银行中心本部机器人训练与管理岗 总行-远程银行中心本部（天津）</li>
+<li>天津培训学院培训管理岗 总行-天津培训学院</li>
+</ul>
+<h4 id="研发中心（0921）"><a href="#研发中心（0921）" class="headerlink" title="研发中心（0921）"></a>研发中心（0921）</h4><ul>
+<li>从截至8月31日接收的软件研发岗和测试开发岗简历中择优邀请参加首批笔、面试。投递简历后也可通过研发中心内部的师兄师姐进行内推。  </li>
+</ul>
+<h4 id="分行（0927）"><a href="#分行（0927）" class="headerlink" title="分行（0927）"></a>分行（0927）</h4><ul>
+<li>天津分行<ul>
+<li>本部信息技术岗</li>
+</ul>
+</li>
+<li>陕西分行<ul>
+<li>本部信息科技岗（雁塔区、碑林区两个）</li>
+<li>审计局（莲湖区）</li>
+</ul>
+</li>
+</ul>
+<h3 id="笔试（20年，175min）"><a href="#笔试（20年，175min）" class="headerlink" title="笔试（20年，175min）"></a>笔试（20年，175min）</h3><h4 id="题型分布"><a href="#题型分布" class="headerlink" title="题型分布"></a>题型分布</h4><ul>
+<li>单选80个，60min<ul>
+<li>2019年秋招与2020年区别<ul>
+<li>考了英语</li>
+<li>考了Linux指令</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</li>
+<li>编程3个，90min</li>
+<li>心理测试</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">笔试科目</th>
+<th style="text-align:center">数量（*代表一定）</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">数据库代码</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">建表、索引、关键字</td>
+</tr>
+<tr>
+<td style="text-align:center">数据库理论</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">数据结构</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">程序输出、二叉树；程序填空：哈夫曼编码、树和图的遍历、动态规划</td>
+</tr>
+<tr>
+<td style="text-align:center">计算机网络</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">C/Java</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">语言基础：创建线程、指针、构造函数；写结果或者程序填空</td>
+</tr>
+<tr>
+<td style="text-align:center">软件测试</td>
+<td style="text-align:center">5*</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">行测数学</td>
+<td style="text-align:center">5*</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">行测思维逻辑</td>
+<td style="text-align:center">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="编程（90min）"><a href="#编程（90min）" class="headerlink" title="编程（90min）"></a>编程（90min）</h4><ul>
+<li>[ ] 数组</li>
+<li>[ ] 字符串转换<ul>
+<li>[ ] <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41112238/article/details/108311295?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162980945916780357261819%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=162980945916780357261819&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-2-108311295.pc_search_result_cache&amp;utm_term=%E5%86%9C%E8%A1%8C+%E7%A0%94%E5%8F%91+%E7%AC%94%E8%AF%95&amp;spm=1018.2226.3001.4187">以下三个的python解答</a> <a target="_blank" rel="noopener" href="https://blog.csdn.net/w448345485/article/details/117430853?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162980970816780366567221%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=162980970816780366567221&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-5-117430853.pc_search_result_cache&amp;utm_term=%E5%86%9C%E8%A1%8C+%E7%A0%94%E5%8F%91+%E7%AC%94%E8%AF%95&amp;spm=1018.2226.3001.4187">java解答</a></li>
+<li>[ ] 进制转换，用&amp;￥&amp;符号代替012</li>
+<li>[ ] 给一些点求离质心最近的点的编号</li>
+<li>[ ] 扑克牌排序</li>
+</ul>
+</li>
+<li>[ ] 小数组的循环遍历或者排序</li>
+<li>[ ] 字符串算式求值</li>
+<li>[ ] 给定两个正整数：num和n，编写程序判断能否把num分解为n个连续自然数相加的和，如果能分解，则返回分解得到的n个自然数构成的列表(列表中元素按照升序排列)，如果不能分解，则返回一个空列表。<a target="_blank" rel="noopener" href="https://blog.csdn.net/HVivid1314/article/details/117751103?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.control&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/HVivid1314/article/details/117751103?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.control&amp;spm=1001.2101.3001.4242</a></li>
+<li>[ ] 矩阵最大领域值</li>
+<li>[ ] 人口增长率</li>
+<li>[ ] 字符串排序</li>
+<li>[ ] 括号匹配问题：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/535193?type=post&amp;order=create&amp;pos=&amp;page=1&amp;ncTraceId=&amp;channel=-1&amp;source_id=search_post_nctrack">https://www.nowcoder.com/discuss/535193?type=post&amp;order=create&amp;pos=&amp;page=1&amp;ncTraceId=&amp;channel=-1&amp;source_id=search_post_nctrack</a></li>
+<li>[ ] 柱形图积水问题：</li>
+<li>[ ] <a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/668920三道分别是：GDP总量和增长率的运算、一个数是否能分解成多个（n）自然连续数相加、还有一个是自定义字符串[排序](https://www.nowcoder.com/jump/super-jump/word?word=排序)。">https://www.nowcoder.com/discuss/668920三道分别是：GDP总量和增长率的运算、一个数是否能分解成多个（n）自然连续数相加、还有一个是自定义字符串[排序](https://www.nowcoder.com/jump/super-jump/word?word=排序)。</a></li>
+<li><p>[ ] <a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=leetcode">leetcode</a>完全平方数问题（没A出来）</p>
+</li>
+<li><p>[ ] LeetCode简单、中等级别的题目多刷一刷；剑指offer</p>
+</li>
+</ul>
+<h3 id="网络面试经验"><a href="#网络面试经验" class="headerlink" title="网络面试经验"></a>网络面试经验</h3><h4 id="技术面"><a href="#技术面" class="headerlink" title="技术面"></a>技术面</h4><ul>
+<li><p>[ ] 数据结构</p>
+<ul>
+<li>[ ] 堆栈</li>
+<li>[ ] 什么是哈夫曼树？</li>
+<li>[ ] 什么是满<a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=二叉树">二叉树</a>？</li>
+<li>[ ] 列举几个<a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=排序">排序</a><a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=算法">算法</a>。快排是否是稳定<a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=排序">排序</a>，为什么（什么是稳定）？</li>
+<li>[ ] 哪些是稳定排序</li>
+</ul>
+</li>
+<li><p>[ ] 数据库</p>
+<ul>
+<li>[ ] 数据库中delete、drop、truncate的区别？哪个最快？</li>
+<li>[ ] 索引失效的情况。like+%开头这种情况一定会失效吗？</li>
+<li>[ ] 数据库的锁是哪些</li>
+<li>[ ] mysql的隔离性</li>
+</ul>
+</li>
+<li><p>[ ] 图论（遍历方式、表示方法、最短遍历算法）</p>
+</li>
+<li><p>[ ] 计算机网络</p>
+<ul>
+<li><p>[ ] session和cookie的区别</p>
+<ul>
+<li><p>[ ] ① cookie 只能存储 ASCII 码，而 session 可以存储任何类型的数据。</p>
+<p>② session 存储在服务器，而 cookie 存储在客户浏览器中，容易被恶意查看。。</p>
+<p>③ session 的运行依赖 session id，而 session id 存在 cookie 中，叫做 JSESSIONID。如果浏览器禁用了 cookie ，同时 session 也会失效（可以通过其它方式实现，比如在 url 中传递 session_id）</p>
+</li>
+</ul>
+</li>
+<li><p>[ ] 面试官最爱的UDP和TCP高频面试题：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/doxVJZ1G6187B4AOXb0JlA">https://mp.weixin.qq.com/s/doxVJZ1G6187B4AOXb0JlA</a></p>
+</li>
+</ul>
+</li>
+<li><p>[ ] Java</p>
+<ul>
+<li>[ ] ==和equals区别</li>
+<li>[ ] Spring</li>
+<li>[ ] List、Set、Map的区别</li>
+<li>[ ] spring特点/优点</li>
+<li>[ ] spring中IOC注入</li>
+<li>[ ] vue生命周期</li>
+<li>[ ] vue组件参数传递的方法</li>
+<li>[ ] <strong>HashMap 和 Hashtable 有什么区别</strong></li>
+<li>[ ] <strong>如何避免 sql 注入</strong></li>
+<li>[ ] <strong>java服务端开发的相关知识</strong>。</li>
+</ul>
+</li>
+<li><p>[ ] python</p>
+<ul>
+<li>[ ] 内存管理机制</li>
+<li>[ ] python内存管理机制</li>
+<li>[ ] python如何提升运算速度</li>
+<li>[ ] 设计模式有哪些</li>
+<li>[ ] list中如何去重</li>
+<li>[ ] python有哪些数据类型</li>
+<li>[ ] python数据清洗有哪些方法</li>
+</ul>
+</li>
+<li><p>[ ] 游标是什么？</p>
+</li>
+</ul>
+<p>get和post   多次post怎么保证数据安全  springmvc接收流程 Redis数据结构 Redis缓存击穿和缓存雪崩 怎么解决缓存雪崩 solr服务器集群搭建 Redis主从机制 springBoot相对于spring的优势 拦截器怎么设计 · Java虚拟机 区，以及回收机制 · MySQL数据库的存储结构 ·索引的存储 ·常用算法（图论查找，搜索，以排序） · servlet与jsp的区别 · JSP的九大作用域，七大action · seesion cookie差异 · seesion cookie差异使用实例 · HTTP、ip、tcp 三次握手 StringBuffer与StringBuilder的区别 Spring IOC与Spring Aop实现原理 JVM内存分区 Callable与Runnable Zookeeper是什么 消息中间件是什么 实现线程的两种方式 .string buffer,builder 多态 spring怎么保持线程安全？ 数据库联合索引，普通索引，要遵循什么规则 线程几种状态，怎么转化的(没回答好） .堆排序 有哪些线程池 数据库事务，隔离级别 JVM内存模型 索引什么时候失效 JVM 运行时内存划分，OOM，栈溢出 垃圾回收，新生代，老年代，为什么新生代采用复制算法， TCP 三次握手，四次挥手，TIME WAIT spring，IOC 原理，AOP底层实现 抽象类和接口的区别 线程池实现原理 hashmap 实现 string buffer,builder Java特性，然后解释 java基本类型 .jvm模型，解释 .MySQL引擎 spring mvc流程 spring aop，ioc .redis缓存击透 如何处理高并发 项目介绍，遇到的困难，如何解决 mysql优化 线程池，参数 反射机制 垃圾回收机制 spring的IOC与aop MySQL安装时选择的字符集是哪个 MySQL拼接字符串用的哪个函数 .Linux常用指令 spring中有哪些设计模式</p>
+<p>大集合：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41112238/article/details/108899842?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162980945916780357261819%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=162980945916780357261819&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-1-108899842.pc_search_result_cache&amp;utm_term=%E5%86%9C%E8%A1%8C+%E7%A0%94%E5%8F%91+%E7%AC%94%E8%AF%95&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/qq_41112238/article/details/108899842?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162980945916780357261819%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=162980945916780357261819&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-1-108899842.pc_search_result_cache&amp;utm_term=%E5%86%9C%E8%A1%8C+%E7%A0%94%E5%8F%91+%E7%AC%94%E8%AF%95&amp;spm=1018.2226.3001.4187</a></p>
+<h2 id="交通银行（截止20211017）"><a href="#交通银行（截止20211017）" class="headerlink" title="交通银行（截止20211017）"></a>交通银行（截止20211017）</h2><h3 id="简历投递时间、职位"><a href="#简历投递时间、职位" class="headerlink" title="简历投递时间、职位"></a>简历投递时间、职位</h3><h4 id="总行"><a href="#总行" class="headerlink" title="总行"></a>总行</h4><ul>
+<li>软开，西安</li>
+<li></li>
+</ul>
+<h4 id="分行"><a href="#分行" class="headerlink" title="分行"></a>分行</h4><ul>
+<li>天津分行信息科技</li>
+<li>西安分行信息科技</li>
+</ul>
+<h2 id="工商银行（不推荐去）"><a href="#工商银行（不推荐去）" class="headerlink" title="工商银行（不推荐去）"></a>工商银行（不推荐去）</h2><h2 id="邮政储蓄（最多2个岗位，截至0926，笔试10月中旬）"><a href="#邮政储蓄（最多2个岗位，截至0926，笔试10月中旬）" class="headerlink" title="邮政储蓄（最多2个岗位，截至0926，笔试10月中旬）"></a>邮政储蓄（最多2个岗位，截至0926，笔试10月中旬）</h2><ul>
+<li>总行<ul>
+<li>西安软件研发中心<ul>
+<li>信息技术类</li>
+</ul>
+</li>
+<li>总行审计局分局审计科技岗（职业范围受限，出差多，80/360）<ul>
+<li>天津</li>
+<li>西安</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="招商银行（1010）"><a href="#招商银行（1010）" class="headerlink" title="招商银行（1010）"></a>招商银行（1010）</h2><ol>
+<li>岗位<ol>
+<li>天津：信息技术岗</li>
+<li>西安：信息技术岗</li>
+</ol>
+</li>
+</ol>
+<h2 id="中国建设银行"><a href="#中国建设银行" class="headerlink" title="中国建设银行"></a>中国建设银行</h2><h2 id="渤海银行"><a href="#渤海银行" class="headerlink" title="渤海银行"></a>渤海银行</h2><h2 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h2><h3 id="分公司（截至0930）"><a href="#分公司（截至0930）" class="headerlink" title="分公司（截至0930）"></a>分公司（截至0930）</h3><h3 id="移动研究院（1007）"><a href="#移动研究院（1007）" class="headerlink" title="移动研究院（1007）"></a>移动研究院（1007）</h3><ul>
+<li>西安<ul>
+<li>后端开发工程师</li>
+<li>测试工程师</li>
+<li>前端开发工程师</li>
+<li>大数据开发工程师</li>
+<li>AI算法工程师</li>
+</ul>
+</li>
+</ul>
+<h2 id="联通"><a href="#联通" class="headerlink" title="联通"></a>联通</h2><ol>
+<li>岗位：<ol>
+<li>天津：<ol>
+<li>软件开发工程师</li>
+</ol>
+</li>
+<li>西安<ol>
+<li>西安分公司<ol>
+<li>大数据分析工程师</li>
+<li>云资源运营工程师</li>
+</ol>
+</li>
+<li>西安分院（软件研究院）<ol>
+<li>软件开发工程师</li>
+</ol>
+</li>
+<li>西安研发中心（中国联合网络通信集团有限公司-联通数字科技有限公司）<ol>
+<li>后端开发工程师</li>
+<li>测试开发工程师</li>
+<li></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="电信"><a href="#电信" class="headerlink" title="电信"></a>电信</h2><ol>
+<li>岗位：<ol>
+<li>天津<ol>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E5%A4%87%E8%80%83%E5%A4%8D%E4%B9%A0%E8%A7%84%E5%88%92/image-20210831110447161.png" alt="image-20210831110447161"></li>
+</ol>
+</li>
+<li>西安：<ol>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E5%A4%87%E8%80%83%E5%A4%8D%E4%B9%A0%E8%A7%84%E5%88%92/image-20210831110634118.png" alt="image-20210831110634118"></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="兴业银行"><a href="#兴业银行" class="headerlink" title="兴业银行"></a>兴业银行</h2><h2 id="联想（0917）"><a href="#联想（0917）" class="headerlink" title="联想（0917）"></a>联想（0917）</h2><p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E5%A4%87%E8%80%83%E5%A4%8D%E4%B9%A0%E8%A7%84%E5%88%92/image-20210831103756385.png" alt="image-20210831103756385" style="zoom: 50%;"></p>
+<h1 id="面经分享（综合类）"><a href="#面经分享（综合类）" class="headerlink" title="面经分享（综合类）"></a>面经分享（综合类）</h1><p>21届秋招记录——银行篇<a target="_blank" rel="noopener" href="https://www.sohu.com/a/440481836_690895">https://www.sohu.com/a/440481836_690895</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/670597?type=post&amp;order=create&amp;pos=&amp;page=1&amp;ncTraceId=&amp;channel=-1&amp;source_id=search_post_nctrack">https://www.nowcoder.com/discuss/670597?type=post&amp;order=create&amp;pos=&amp;page=1&amp;ncTraceId=&amp;channel=-1&amp;source_id=search_post_nctrack</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/619989?type=post&amp;order=create&amp;pos=&amp;page=1&amp;ncTraceId=&amp;channel=-1&amp;source_id=search_post_nctrack">https://www.nowcoder.com/discuss/619989?type=post&amp;order=create&amp;pos=&amp;page=1&amp;ncTraceId=&amp;channel=-1&amp;source_id=search_post_nctrack</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">计算机网络</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-01 00:00:01" itemprop="dateCreated datePublished" datetime="2021-09-01T00:00:01+08:00">2021-09-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-02 10:58:18" itemprop="dateModified" datetime="2021-09-02T10:58:18+08:00">2021-09-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">计算机基础知识总结</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>9.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>9 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="计算机网络（第7版）"><a href="#计算机网络（第7版）" class="headerlink" title="计算机网络（第7版）"></a>计算机网络（第7版）</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="互联网的组成"><a href="#互联网的组成" class="headerlink" title="互联网的组成"></a>互联网的组成</h3><ol>
+<li>边缘部分（用户直接使用的）<ul>
+<li>C/S，客户-服务器方式</li>
+<li>P2P，对等连接方式</li>
+</ul>
+</li>
+<li>核心部分（提供连通性和交换的，服务于边缘）<ul>
+<li>路由器实现<strong>分组交换</strong>功能，采用存储转发技术<ul>
+<li>优点：高效（动态分配带宽）、灵活（对分组独立选择路由）、迅速（不建立连接就可以发送分组）、可靠（靠协议和分组交换网实现）</li>
+<li>缺点：分组交换造成时延；分组控制信息造成时延。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="计算机网络的类别"><a href="#计算机网络的类别" class="headerlink" title="计算机网络的类别"></a>计算机网络的类别</h3><ol>
+<li>按照网络的作用范围<ul>
+<li>广域网WAN,Wide，采用交换技术</li>
+<li>城域网MAN,Metropolitan</li>
+<li>局域网LAN,Local，采用广播技术</li>
+<li>个人局域网PAN,Personal</li>
+</ul>
+</li>
+<li>按照网络的使用者<ul>
+<li>公用网</li>
+<li>专用网</li>
+</ul>
+</li>
+<li>接入网（AN）</li>
+</ol>
+<h3 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h3><ol>
+<li>速率：bit/s</li>
+<li>带宽：传输的最高数据率，bit/s</li>
+<li>吞吐量</li>
+<li>时延<ol>
+<li>发送时延：数据帧长度/发送速率</li>
+<li>传播时延：信道长度/光速</li>
+<li>处理时延：分析分组的首部、提取数据、差错检验</li>
+<li>排队时延：在路由器中的排队时间</li>
+<li>时延带宽积：传播时延*带宽，又称以比特为单位的链路长度</li>
+</ol>
+</li>
+<li>往返时间RRT，Round-Trip-Time。有效数据率=数据长度/(发送时间+RRT)</li>
+<li>利用率：信道利用率；网络利用率（全网络信道利用率的加权平均）。利用率增大，时延急速变大</li>
+</ol>
+<h3 id="计算机网络体系结构（从功能的角度划分）"><a href="#计算机网络体系结构（从功能的角度划分）" class="headerlink" title="计算机网络体系结构（从功能的角度划分）"></a>计算机网络体系结构（从功能的角度划分）</h3><p>开放系统互连基本参考模型OSI/RM（7层），理论上的。事实上是TCP/IP（4层，应用层、运输层、网际层、网络接口层）。</p>
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824003124298.png" alt="image-20210824003124298" style="zoom:50%;"></p>
+<p>OSI模型通信过程：</p>
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824094024156.png" alt="image-20210824094024156" style="zoom:50%;"></p>
+<p>表示层：功能：数据格式变换；数据加密解密；数据压缩与回复</p>
+<p>会话层：功能：建立连接</p>
+<p>传输层：功能：可靠传输；差错控制；流量控制；复用分用。</p>
+<p>网络层：功能：路由选择；流量控制；差错控制；拥塞控制。</p>
+<p><strong>五层协议：</strong></p>
+<ol>
+<li>应用层    <ul>
+<li>通过进程间交互完成特定网络应用</li>
+<li>协议包括DNS,HTTP,SMTP,FTP</li>
+</ul>
+</li>
+<li>运输层<ul>
+<li>负责向两台主机进程间通信提供通用的数据传输服务。</li>
+<li>协议包括：传输控制协议(TCP)，面向连接的、可靠的数据传输协议，单位是报文段；用户数据报协议(UDP)，无连接的、尽最大努力的数据传输服务，单位是用户数据报。</li>
+</ul>
+</li>
+<li>网络层<ul>
+<li>为分组交换网上的不同主机提供通信服务</li>
+<li>协议IP协议，IPX,ICMP,IGMP,ARP；主要设备是路由器；传输单位是IP数据报。</li>
+</ul>
+</li>
+<li>数据链路层：主要设备是交换机，网桥；把数据报组装成帧</li>
+<li>物理层：单位是bit，主要设备是集线器，中继器</li>
+</ol>
+<p><strong>辨析：</strong></p>
+<ul>
+<li>可靠性由运输层的TCP协议负责</li>
+</ul>
+<h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><h3 id="信道、码元、传输速率"><a href="#信道、码元、传输速率" class="headerlink" title="信道、码元、传输速率"></a>信道、码元、传输速率</h3><ul>
+<li>信号<ul>
+<li>模拟信号：调制解调器到电话端局</li>
+<li>数字信号：用户计算机到调制解调器<ul>
+<li>调制：<ul>
+<li>基带调制：对基带信号的波形进行变换</li>
+<li>带通调制：用载波（carrier）把基带信号的频率范围调高，转换成模拟信号</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>信道<ul>
+<li>码元：时间间隔相同的符号表示一个二进制数字，这样的时间间隔内的信号称为二进制码元。</li>
+<li>波特率：多少码元/s，单位$ Baud $。有上限，超过则会产生码间串扰，使得信号失真。</li>
+<li>传输方式：<ul>
+<li>单工</li>
+<li>半双工：不能同时发送消息</li>
+<li>全双工</li>
+</ul>
+</li>
+<li>码元传输速率<ul>
+<li>公式：$ C=Wlog_2(1+S/N) (bit/s) $</li>
+<li>影响：<ul>
+<li>信道的频率范围</li>
+<li>信噪比</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>常用编码方式：<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824101613775.png" alt="image-20210824101613775" style="zoom: 67%;"></li>
+<li>不归零制：正电瓶代表1；负代表0</li>
+<li>归零制：正脉冲代表1；负脉冲代表0</li>
+<li>曼彻斯特编码：位周期中心的向上跳变代表0；向下跳变代表1</li>
+<li>差分曼彻斯特编码：位的开始边界有跳变代表0；没有跳变代表1。每一位的中心都有跳变。</li>
+</ul>
+</li>
+<li>传输介质<ul>
+<li>导引型传输媒体：双绞线；同轴电缆；光缆</li>
+<li>非导引型传输媒体：<ul>
+<li>范围：甚高频（30MHz~300MHz）；特高频（300~3G）；超高频（3G~30G）；极高频（30G~300G）</li>
+<li>无线电波：所有方向；穿透能力强，远距离</li>
+<li>微波通信（300M~30GHz），常用的是（2~40GHz）。传播方向直线<ul>
+<li>地面微波通信</li>
+<li>卫星通信<ul>
+<li>优点：通信容量大；距离远；覆盖广；广播通信和多址通信</li>
+<li>缺点：时延长；受气候影响；误码率高；成本高</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>红外光、激光：需要转换信号格式为红外光、激光信号</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="信道复用（multiplexing）技术"><a href="#信道复用（multiplexing）技术" class="headerlink" title="信道复用（multiplexing）技术"></a>信道复用（multiplexing）技术</h3><ul>
+<li><h2 id="数据链路层（以下王道考研书的目录格式，书太乱）"><a href="#数据链路层（以下王道考研书的目录格式，书太乱）" class="headerlink" title="数据链路层（以下王道考研书的目录格式，书太乱）"></a>数据链路层（以下王道考研书的目录格式，书太乱）</h2></li>
+</ul>
+<h3 id="数据链路层的功能、介绍"><a href="#数据链路层的功能、介绍" class="headerlink" title="数据链路层的功能、介绍"></a>数据链路层的功能、介绍</h3><ol>
+<li>基本概念<ul>
+<li>数据链路：物理链路+协议</li>
+<li>帧：数据链路层的协议数据单元</li>
+</ul>
+</li>
+<li>数据链路层通信步骤<ol>
+<li>网络层的IP数据报添加首部和尾部封装成帧</li>
+<li>封装的帧进行发送</li>
+<li>检查帧是否出错，提取出来IP数据报发送到网络层</li>
+</ol>
+</li>
+<li>三个基本问题：<ol>
+<li>封装成帧<ol>
+<li>添加首部( SOH,start of header)和尾部(EOT,end of transmission )用于帧定界</li>
+<li>MTU：最大传送单元<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824112746957.png" alt="image-20210824112746957" style="zoom: 80%;"></li>
+</ol>
+</li>
+<li>透明传输：转义SOH,EOT<ul>
+<li>方法：字节填充：添加ESC到数据里面的控制字符之前。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h3><ol>
+<li>误码率（BER）：传输错误的比特占所有毕业总数的比率。BER与信噪比有关系</li>
+<li>传输差错包括：比特差错；帧差错（帧丢失、帧重复、帧失序）</li>
+</ol>
+<h4 id="检错编码"><a href="#检错编码" class="headerlink" title="检错编码"></a>检错编码</h4><ol>
+<li>循环冗余检验（CRC，Cyclic Redundancy Check）<ul>
+<li>添加帧检验序列（FCS），就是数据除以一个数之后的余数</li>
+<li>优点：可以实现无比特差错的传输，<strong>但并不是可靠传输</strong></li>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824160224978.png" alt="image-20210824160224978" style="zoom:80%;"></li>
+</ul>
+</li>
+<li>奇、偶校验码，能检测出来奇数个错，不能检测出来偶数个出错</li>
+</ol>
+<h4 id="纠错编码"><a href="#纠错编码" class="headerlink" title="纠错编码"></a>纠错编码</h4><p>海明码：可以发现双比特错；纠正单比特错。</p>
+<ol>
+<li>步骤<ol>
+<li>根据海明不等式确定效验码的位数：$2^r=k+r+1$,r为冗余信息位数，k为信息位数</li>
+<li>确定校验码位置和数据的位置：校验码的位置在$2^n$位置，例如四位校验码位置在：0、1、4、8位置，如下表$P_{1,2,3,4}$的位置</li>
+<li>校验码值的求解，令所有要校验的位的异或为0.要校验的位：与校验码位置的二进制位的1所在位置一样的数据（例如，校验码$p_2$的位置的二进制1在倒数第二位，发现$D_{1,3,4,6}$的在倒数第二位，所以$p_1 \oplus D_1 \oplus D_3\oplus D_4\oplus D_6 = 0$，异或：相同为0，相异为1）。<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824161214278.png" alt="image-20210824161214278" style="zoom:67%;"></li>
+<li>检错并纠错<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824162223340.png" alt="image-20210824162223340"></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="流量控制与可靠传输机制"><a href="#流量控制与可靠传输机制" class="headerlink" title="流量控制与可靠传输机制"></a>流量控制与可靠传输机制</h3><h4 id="流量控制、可靠传输与滑动窗口机制"><a href="#流量控制、可靠传输与滑动窗口机制" class="headerlink" title="流量控制、可靠传输与滑动窗口机制"></a>流量控制、可靠传输与滑动窗口机制</h4><ol>
+<li>停止-等待流量控制基本原理：发送方发送之后，等待接收方的应答信号，之后才发送下一帧，每次只可以发送一帧</li>
+<li>滑动窗口：停止等待：发送窗口=1，接收窗口=1；GBN发送窗口&gt;1，接收窗口=1；SR都大于1。</li>
+<li>可靠传输<ul>
+<li>数据链路层的可靠传输机制通常使用确认和超时重传两种机制来完成。自动重传请求（ARQ）</li>
+<li>PS：可靠传输协议在谢希仁版计算机网络中划归运输层，这是因为现在网络传输质量比较好，抛弃了可靠传输，早期的时候是属于数据链路层的。</li>
+</ul>
+</li>
+</ol>
+<h4 id="单帧滑动窗口与停止等待协议"><a href="#单帧滑动窗口与停止等待协议" class="headerlink" title="单帧滑动窗口与停止等待协议"></a>单帧滑动窗口与停止等待协议</h4><ol>
+<li>流程<ol>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824172711599.png" alt="image-20210824172711599" style="zoom: 50%;"></li>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824172754230.png" alt="image-20210824172754230" style="zoom:50%;"></li>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824172830473.png" alt="image-20210824172830473" style="zoom:50%;"></li>
+</ol>
+</li>
+<li>缺点：信道利用率低</li>
+</ol>
+<h4 id="多帧滑动窗口与后退N帧协议（GBN）"><a href="#多帧滑动窗口与后退N帧协议（GBN）" class="headerlink" title="多帧滑动窗口与后退N帧协议（GBN）"></a>多帧滑动窗口与后退N帧协议（GBN）</h4><ol>
+<li>原理：可以连续发送帧而不需要确认，<strong>接收方检测到失序的信息帧之后，要求发送方重发最后一个正确接收的信息帧之后所有未被确认的帧</strong>。也就是接收方只能按照顺序接受帧。</li>
+<li><strong>累积确认：</strong>接收方为了减少开销，可以接收到N个帧之后发一个，$ACK_n$表示已经收到前$n$个帧；或者自己有数据发过去的时候<strong>稍带确认</strong>。</li>
+<li>优点：信道利用率高。</li>
+<li>缺点：会丢弃已经送达的正确的帧，导致传送效率不高；滑动窗口长度的选择：如果采用$n$个比特对帧进行编号，那么窗口长度w：$1\le w\le 2^n-1$</li>
+</ol>
+<h4 id="多帧滑动窗口与选择重传协议（SR）"><a href="#多帧滑动窗口与选择重传协议（SR）" class="headerlink" title="多帧滑动窗口与选择重传协议（SR）"></a>多帧滑动窗口与选择重传协议（SR）</h4><ol>
+<li>只重传出现差错的数据帧或计时器超时的数据帧，但是此时必须加大接收窗口（以便接收发送序号不连续但是仍然处在接收窗口中的数据帧），等到所缺失的数据帧到达之后一并交送主机。</li>
+<li>特点：接收方有缓存；只重传出错的帧；对数据帧逐一确认，收一个确认一个</li>
+<li>窗口长度选择：发送窗口等于接收窗口长度。如果采用$n$个比特对帧进行编号，$W_{Tmax}=W_{Rmax}=2^{n-1}$<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824221433716.png" alt="image-20210824221433716" style="zoom:50%;"></li>
+</ul>
+</li>
+</ol>
+<h3 id="介质访问控制（MAC）"><a href="#介质访问控制（MAC）" class="headerlink" title="介质访问控制（MAC）"></a>介质访问控制（MAC）</h3><ol>
+<li>主要任务：隔离信号同一信道的其他节点的信号，协调节点的传输。</li>
+</ol>
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824222121267.png" alt="image-20210824222121267" style="zoom: 67%;"></p>
+<h4 id="信道划分MAC（静态分配信道）"><a href="#信道划分MAC（静态分配信道）" class="headerlink" title="信道划分MAC（静态分配信道）"></a>信道划分MAC（静态分配信道）</h4><h5 id="频分、时分"><a href="#频分、时分" class="headerlink" title="频分、时分"></a>频分、时分</h5><p>频分复用(FDM, Frequency Division Multiplexing)、时分复用(TDM)、统计时分复用(STDM)</p>
+<ul>
+<li>FDM:<ul>
+<li>用户通信始终占用分配到的频带</li>
+</ul>
+</li>
+<li>TDM：有利于数字信号的传输<ul>
+<li>不同时间占用不同的频带宽度 </li>
+</ul>
+</li>
+<li>STDM：又称为异步时分复用<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824222555789.png" alt="image-20210824222555789" style="zoom:50%;"></li>
+</ul>
+</li>
+</ul>
+<h5 id="波分、码分"><a href="#波分、码分" class="headerlink" title="波分、码分"></a>波分、码分</h5><p>波分复用(Wavelength)、码分复用(Code)</p>
+<ul>
+<li>WDM：就是光的频分复用，一根光纤传输多个频率很接近的光载波信号<ul>
+<li>Desne WDM,DWDM，密集波分复用</li>
+</ul>
+</li>
+<li>CDM：也叫CDMA，码分多址<ul>
+<li>比特时间被分成m个更短的时间槽称为<strong>码片</strong>，通常每个比特64或者128个码片，每个站点被指定一个唯一的m位码片序列</li>
+<li>数据发送：当两个或多个站点同时发送的时候，数据在信道中<strong>线性相加</strong>（保证信道利用率），为了能分离信号，要求码片序列之间<strong>相互正交</strong>（保证数据不相互干扰）。</li>
+<li>数据分离：合并的数据和源站规格化内积再除以向量的分量个数。</li>
+</ul>
+</li>
+</ul>
+<h4 id="随机MAC（动态分配信道）"><a href="#随机MAC（动态分配信道）" class="headerlink" title="随机MAC（动态分配信道）"></a>随机MAC（动态分配信道）</h4><h5 id="ALOHA协议"><a href="#ALOHA协议" class="headerlink" title="ALOHA协议"></a>ALOHA协议</h5><h6 id="纯ALOHA协议"><a href="#纯ALOHA协议" class="headerlink" title="纯ALOHA协议"></a>纯ALOHA协议</h6><ol>
+<li>思想：不监听信道；不按时间槽发送，<strong>想发就发</strong>；随机重发。</li>
+</ol>
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824231312644.png" alt="image-20210824231312644" style="zoom: 50%;"></p>
+<h6 id="时隙ALOHA协议"><a href="#时隙ALOHA协议" class="headerlink" title="时隙ALOHA协议"></a>时隙ALOHA协议</h6><ol>
+<li>思想：同步各个站点的时间，将时间划分成等长的时隙（slot），规定只能<strong>在每个时隙开始的时候才能发送一个帧</strong>。</li>
+<li>效率比纯ALOHA协议高了一倍。</li>
+</ol>
+<h5 id="CSMA协议"><a href="#CSMA协议" class="headerlink" title="CSMA协议"></a>CSMA协议</h5><p>载波侦听多路访问（CSMA）</p>
+<ol>
+<li>$1$-坚持CSMA<ul>
+<li>侦听到信道忙后，继续侦听信道；一直侦听到信道空闲之后，发送帧的概率为1，就立即发送数据。</li>
+<li>缺点：传播延迟对协议的性能影响比较大（例如两个节点都想发送数据）</li>
+</ul>
+</li>
+<li>非坚持CSMA<ul>
+<li>侦听到信道空闲之后，就立即发送数据；侦听到信道忙之后，放弃侦听，就等待一个随机的时间后再重复侦听。</li>
+<li>缺点：增加了延迟。优点：提高了信道利用率。</li>
+</ul>
+</li>
+<li>$p-$坚持CSMA：用于时分信道<ul>
+<li>侦听信道，如果忙的话，就持续侦听，直至信道空闲；如果侦听到空闲，就以概率$p$发送数据，以概率$1-p$推迟到下一个时隙，重复此过程。</li>
+<li>优点：是上面两个的折衷方案。</li>
+</ul>
+</li>
+</ol>
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824234459835.png" alt="image-20210824234459835" style="zoom:67%;"></p>
+<h5 id="CSMA-CD协议-rightarrow-适用于总线型网络或者半双工网络环境。"><a href="#CSMA-CD协议-rightarrow-适用于总线型网络或者半双工网络环境。" class="headerlink" title="CSMA/CD协议$\rightarrow$适用于总线型网络或者半双工网络环境。"></a>CSMA/CD协议$\rightarrow$适用于总线型网络或者半双工网络环境。</h5><p>载波侦听多路访问/碰撞检测。<em>**</em></p>
+<ul>
+<li>工作流程：<strong>先听后发，边听边发，冲突停发，随机重发</strong><ul>
+<li>适配器听到信道空闲，则开始传输帧；如果适配器听到信道忙，一直侦听到不忙，然后传输。</li>
+<li>传输的过程中，适配器检测来自其它适配器的能量，如果期间没有检测到来自其他适配器的信号能量，那么就完成了传输；否则，适配器停止传输它的帧，取而代之的是一个48比特的拥塞信号。</li>
+<li>在中止（即传输拥塞信号）后，适配器采用截断二进制指数退避算法等待一段随机时间后继续侦听信道。</li>
+</ul>
+</li>
+<li>总线的传播时延对此协议影响很大。</li>
+<li>为了保证发送的时候能检测到可能存在的冲突，帧的传输时延至少要两倍于信号在总线中的传播时延，因此帧的长度要大于一个最小帧长（=总线传播时延*数据传输率*2）。</li>
+<li>二进制指数退避算法<ul>
+<li>$重传次数k=min{重传次数，10}，离散整数集合{0，1，3,7,15,2^k-1}随机取数为r，争用周期为\tau$</li>
+<li>退避时间为：$2r\tau$</li>
+</ul>
+</li>
+</ul>
+<h5 id="CSMA-CA协议-rightarrow-适用于无线连接的局域网"><a href="#CSMA-CA协议-rightarrow-适用于无线连接的局域网" class="headerlink" title="CSMA/CA协议$\rightarrow$适用于无线连接的局域网"></a>CSMA/CA协议$\rightarrow$适用于无线连接的局域网</h5><p>载波侦听多路访问/碰撞避免</p>
+<ul>
+<li><p>碰撞避免的方式：</p>
+<ul>
+<li>预约信道：通知其它站点自己所需时间</li>
+<li>ACK帧：所有站点接收到发给自己的数据帧（除了广播帧、组播帧之后，都需要发送一个ACK帧）</li>
+<li>TSC/CTS帧，用于解决隐蔽站的问题。</li>
+</ul>
+</li>
+<li><p>​    与CD的区别</p>
+<ul>
+<li>可以避免，但是不能完全避免。</li>
+<li>传输介质不同：CD是用于总线型以太网；CA用于无线局域网（802.11a/b/g/n）</li>
+<li>检测方式不同，CD是检测电压电话，CA采用能量检测、载波检测（与伪随机码运算比较）、能量载波混合检测。</li>
+<li>在本节点没有冲突，不表示在接收节点出没有冲突。</li>
+</ul>
+</li>
+</ul>
+<h4 id="轮询访问MAC：令牌传递协议（动态分配信道）"><a href="#轮询访问MAC：令牌传递协议（动态分配信道）" class="headerlink" title="轮询访问MAC：令牌传递协议（动态分配信道）"></a>轮询访问MAC：令牌传递协议（动态分配信道）</h4><p>一个监控站以循环方式轮询每个节点，决定信道的分配。</p>
+<p>令牌在各个节点间以某个固定次序交换。</p>
+<h3 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h3><p>介质访问控制协议包括CSMA/CD、令牌总线和令牌环，适用上前两个是总线型局域网，最后一个是环形局域网</p>
+<p>局域网的数据链路层</p>
+<ol>
+<li>LAN优点：<ol>
+<li>具有广播功能</li>
+<li>便于系统的扩展和演变</li>
+<li>提高了系统的可靠性、可用性、生存性</li>
+</ol>
+</li>
+<li>分类<ol>
+<li>星形网</li>
+<li>环形网</li>
+<li>总线网</li>
+</ol>
+</li>
+<li>共享信道<ol>
+<li>静态划分信道：FDM,TDM,WDM,CDM</li>
+<li>动态媒体接入控制（多点接入）:信道并非在用户通信时固定给用户<ol>
+<li>随机接入</li>
+<li>受控接入</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824154702057.png" alt="image-20210824154702057" style="zoom:80%;"></p>
+<ul>
+<li>通常将802.3局域网简称为以太网。<ul>
+<li>采用无连接的工作方式</li>
+<li>不对数据帧编号，不要求确认。尽最大努力交付数据，不可靠服务。差错纠正由高层完成。</li>
+</ul>
+</li>
+<li>注意：全双工方式不需要争用信道，也就不需要CSMA/CD协议。高速以太网既能半双工，也能全双工。</li>
+<li>IEEE 802.11<ul>
+<li>采用CSMA/CA</li>
+</ul>
+</li>
+</ul>
+<h3 id="广域网"><a href="#广域网" class="headerlink" title="广域网"></a>广域网</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>由交换机组成（交换机只能在单个网络中转发分组，路由器可以在多个网络之间转发分组）</li>
+<li>广域网协议主要在网络层</li>
+</ul>
+<h4 id="PPP协议"><a href="#PPP协议" class="headerlink" title="PPP协议"></a>PPP协议</h4><p><strong>PPP协议</strong></p>
+<ol>
+<li>定义：PPP协议是用户计算机和ISP进行通信的时候所使用的数据链路层协议</li>
+<li>要求：简单（提供不可靠的数据报服务即可）、封装成帧、透明性（数据中帧定界符的解决）、支持多种网络层协议、多种类型链路（串行并行、同步异步、低速高速、光电、交换非交换）、差错检测（及时丢弃有差错的帧）、检测连接状态、最大传送单元、网络地址协商（知道对方的地址）、数据压缩协商。</li>
+<li>协议组成：<ol>
+<li>将IP数据报封装到串行链路</li>
+<li>一个用来建立、配置和测试数据链路连接的链路控制协议（LCP）</li>
+<li>一套网络控制协议（NCP），以支持不同的网络层协议</li>
+</ol>
+</li>
+<li>帧格式<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824145840156.png" alt="image-20210824145840156"></li>
+<li>字节填充（把0x7E转义），用于异步传输<ol>
+<li>信息字段中的0x7E编转成2字节的（0x7D, 0x5E）</li>
+<li>0x7D转成（0x7D, 0x5D）</li>
+<li>信息字段中出现ASCII码的控制字符（小于0x20的），前面加一个0x7D</li>
+</ol>
+</li>
+<li>零比特填充。用于同步传输<ul>
+<li>5个连续的1就填充一个0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>链路控制协议（LCP）网络控制协议（NCP）<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210824153133032.png" alt="image-20210824153133032" style="zoom:80%;"></li>
+</ul>
+</li>
+</ol>
+<h4 id="HDLC协议"><a href="#HDLC协议" class="headerlink" title="HDLC协议"></a>HDLC协议</h4><ul>
+<li>高级数据链路控制协议<ul>
+<li>面向比特的数据链路层协议。PPP是面向字节的</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210825004001056.png" alt="image-20210825004001056" style="zoom:80%;"></p>
+<h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><h3 id="网络层的功能"><a href="#网络层的功能" class="headerlink" title="网络层的功能"></a>网络层的功能</h3><ol>
+<li><strong>路由选择</strong>：根据网络拓扑情况，动态地改变所选择的路由。</li>
+<li><strong>分组转发</strong>：根据转发表将用户的IP数据报从合适的端口转发出去。<ol>
+<li>路由表：根据路由选择算法得出：转发表：由路由表得出的</li>
+</ol>
+</li>
+<li>拥塞控制：<ol>
+<li>判断：网络负载增加，发现吞吐量小了，证明由拥塞。</li>
+<li>作用：确保子网能够承载所达到的流量。设置主机、路由器及路由器内部的转发处理过程，单一地增加资源并不能解决拥塞。</li>
+<li>方法：<ol>
+<li><strong>开环控制（静态）：</strong>设计网络时避免会发生拥塞的因素。<ul>
+<li>包括：何时可以接收新流量、何时可丢弃分组及丢弃哪些分组、确定何种调度决策</li>
+</ul>
+</li>
+<li><strong>闭环控制（动态）：</strong>检测网络实时发生的拥塞，将拥塞信息传到合适的地方，调整网络系统的运行</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="路由算法"><a href="#路由算法" class="headerlink" title="路由算法"></a>路由算法</h3><ol>
+<li>路由算法分类：<ol>
+<li>静态路由算法（非自适应路由算法）<ul>
+<li>手工配置的路由信息</li>
+</ul>
+</li>
+<li>动态路由算法（自适应路由算法）<ul>
+<li>路由器间彼此交换信息，按照一定的算法优化得到的</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><strong>距离-向量路由算法</strong><ol>
+<li>原理：结点将其路由选择表（<strong>每条路经的目的地</strong>；<strong>路经的代价</strong>）定期传送给<strong>相邻节点</strong>。</li>
+<li>路由表更新原则：（1）有新的路由；（2）有路径代价低的路由</li>
+<li>代表算法：路由信息协议：<strong>RIP算法</strong>：使用“跳数”作为距离的度量、</li>
+<li>评价：可能会遇到路由环路等情况</li>
+</ol>
+</li>
+<li><strong>链路状态路由算法</strong><ol>
+<li>原理：要求每个结点都具有完全相同的网络拓扑信息。（1）主动测试邻接结点的状态；（2）定期将链路状态传播给<strong>所有其他结点</strong>（或称路由节点）</li>
+<li>代表算法：<strong>OSPF算法</strong>（<u>网络层协议，使用IP数据报传送；RIP是应用层协议，在传输层使用UDP</u>）</li>
+<li>链路状态路由算法特征：<ol>
+<li>向本自治系统所有路由器发送信息，使用洪泛法。</li>
+<li>发送的信息是与路由器相邻的所有路由器的链路状态（相邻信息及该链路的费用、距离、时延、带宽）。</li>
+<li>只有链路状态变化时，才发送消息</li>
+</ol>
+</li>
+<li>迪杰斯特拉算法计算单源最短路径</li>
+</ol>
+</li>
+<li>层次路由<ol>
+<li>因特网将整个互联网划分成许多小的自治系统</li>
+<li>分类：<ol>
+<li>内部网关协议（IGP）/域内路由选择<ul>
+<li>包括：RIP和OSPF</li>
+</ul>
+</li>
+<li>外部网关协议（EGP）/域间路由选择<ul>
+<li><strong>BGP</strong>（<u>应用层协议，基于TCP</u>）</li>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830093424482.png" alt="image-20210830093424482"></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="IPv4"><a href="#IPv4" class="headerlink" title="IPv4"></a>IPv4</h3><ol>
+<li>IPV4分组<ol>
+<li>格式：首部+尾部</li>
+<li>IP数据报分片：<ul>
+<li>当IP数据报的总长度大于链路的MTU时，需要将IP数据报中的数据分装在两个或多个较小的IP数据报中，称为片</li>
+<li>数据报中由标志位（MF位（1表示<u>还有更多分片</u>），DF位（1表示<u>不要分片</u>））标识分片。</li>
+</ul>
+</li>
+<li>转发分组流程<ol>
+<li>路由器提取IP数据报首部获得主机的IP地址D，得出目的网络地址N；</li>
+<li>若N与此路由器直接相连，则直接交付；否则，执行3</li>
+<li>若路由表中有目的地址为D的特定主机路由，则将数据报传送给下一跳路由（通过ARP转成MAC地址，使用MAC帧传输，下同）；否则执行4</li>
+<li>若路由表中有到达网络N的路由，则把数据报传送给路由表指明的下一跳路由；否则执行5</li>
+<li>若路由表中有一个默认路由，则把数据报传送给路由表指明的下一跳路由；否则执行6</li>
+<li>报告转发分组出错。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>IPV4地址与NAT<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210829235726192.png" alt="image-20210829235726192" style="zoom:80%;"></li>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830001031567.png" alt="image-20210830001031567" style="zoom:80%;"></li>
+<li>IP地址的特点：<ol>
+<li>由网络号和主机号构成</li>
+<li>IP地址是标识主机/路由器和一条链路的接口。因此一个主机连接多个网络就有多个IP。（路由器至少有2个IP地址）</li>
+<li>用转发器或者桥接器连接的若干LAN仍然是一个网络</li>
+<li>在IP地址中，所有分配到的网络都是平等的</li>
+</ol>
+</li>
+<li>NAT(网络地址转换)<ul>
+<li>将专用网络地址转换为公用地址</li>
+<li>私有IP：<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830001611121.png" alt="image-20210830001611121"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>子网划分与子网掩码、CIDR<ol>
+<li>子网划分<ol>
+<li>IP：｛&lt;网络号&gt;，&lt;子网号&gt;，&lt;主机号&gt;｝</li>
+<li>子网号占用了主机号地址</li>
+</ol>
+</li>
+<li>子网掩码<ol>
+<li>由一串1和跟随的一串0构成，1对应IP地址中的网络号和子网号，0对应主机号。</li>
+<li>IP地址与子网掩码进行“与”运算，就可得到子网的网络地址。</li>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830002223106.png" alt="image-20210830002223106"></li>
+</ol>
+</li>
+<li>无分类域间路由选择（CIDR）</li>
+</ol>
+</li>
+<li>ARP、DHCP与ICMP<ol>
+<li>IP地址与硬件地址：<ol>
+<li>网络层采用IP地址</li>
+<li>到达目的网络之后采用MAC地址寻找目的</li>
+</ol>
+</li>
+<li>地址解析协议ARP<ol>
+<li>每个主机维持一个ARP表，存放主机和路由器IP到MAC地址的映射表。</li>
+<li>工作原理：<ol>
+<li>A向B发送IP数据报；</li>
+<li>现在ARP高速缓存中查看有无B的IP，有则查出其硬件地址并写入MAC帧，接着进行发送；</li>
+<li>若没有，广播ARP分组，B收到ARP分组之后，发出响应ARP分组，这样A就收到了B的IP与MAC地址的映射。</li>
+</ol>
+</li>
+<li><strong>ARP工作在网络层；NAT工作在传输层。</strong></li>
+</ol>
+</li>
+<li>动态主机配置协议DHCP<ol>
+<li>基于UDP的，因为TCP需要建立连接</li>
+</ol>
+</li>
+<li>网际控制报文协议ICMP：IP层协议<ol>
+<li>目的：让主机或路由器报告差错和异常。</li>
+<li>分类<ol>
+<li>ICMP<strong>差错</strong>报文<ul>
+<li>终点不可达；源点抑制（因为拥塞导致数据交付失败）；时间超过（终点发送的）；参数问题；改变路由。</li>
+</ul>
+</li>
+<li>ICMP<strong>询问</strong>报文<ul>
+<li>回送请求和回答报文、时间戳请求和回答报文、掩码地址请求和回答报文、路由询问和通告报文。</li>
+</ul>
+</li>
+<li>应用<ol>
+<li>PING：回送请求和回答报文<ul>
+<li>PING工作在应用层</li>
+</ul>
+</li>
+<li>Traceroute/tracert：ICMP时间超过报文<ul>
+<li>工作在网络层</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h3><ul>
+<li>解决IP地址耗尽的方式：<ul>
+<li>无类别编址CIDR    </li>
+<li>NAT网络地址转换</li>
+<li>IPv6</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>IPV6主要特点：地址空间大（128位）；即插即用；资源预分配；安全性；端到端的，数据不能分片。</li>
+<li>IPV6地址</li>
+</ol>
+<h3 id="路由协议"><a href="#路由协议" class="headerlink" title="路由协议"></a>路由协议</h3><h4 id="自治系统（Autonormous-System）"><a href="#自治系统（Autonormous-System）" class="headerlink" title="自治系统（Autonormous System）"></a>自治系统（Autonormous System）</h4><p>单一技术下管理的一组路由器</p>
+<h4 id="域内路由与域间路由"><a href="#域内路由与域间路由" class="headerlink" title="域内路由与域间路由"></a>域内路由与域间路由</h4><ol>
+<li>域内路由选择（内部网关协议，IGP）：AS内的路由选择</li>
+<li>域间路由选择（外部网关协议，EGP）：AS间的</li>
+</ol>
+<h4 id="路由信息协议（RIP）"><a href="#路由信息协议（RIP）" class="headerlink" title="路由信息协议（RIP）"></a>路由信息协议（RIP）</h4><p>属于应用层协议，使用UDP传播；</p>
+<p>优点：实现简单、开销小、收敛过程较快</p>
+<p>缺点：网络规模受限；网络规模大则开销大；网络出现故障，则需要较长信息才能传播至所有路由。</p>
+<h4 id="开放最短路径优先（OSPF）"><a href="#开放最短路径优先（OSPF）" class="headerlink" title="开放最短路径优先（OSPF）"></a>开放最短路径优先（OSPF）</h4><h4 id="协议边界网关协议（BGP）"><a href="#协议边界网关协议（BGP）" class="headerlink" title="协议边界网关协议（BGP）"></a>协议边界网关协议（BGP）</h4><h3 id="IP组播（应用于UDP）"><a href="#IP组播（应用于UDP）" class="headerlink" title="IP组播（应用于UDP）"></a>IP组播（应用于UDP）</h3><h4 id="组播概念"><a href="#组播概念" class="headerlink" title="组播概念"></a>组播概念</h4><p>一对多发送</p>
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830093627990.png" alt="image-20210830093627990" style="zoom: 67%;"></p>
+<h4 id="IP组播地址"><a href="#IP组播地址" class="headerlink" title="IP组播地址"></a>IP组播地址</h4><p>采用D类地址：224.0.0.0~239.255.255.255</p>
+<ul>
+<li>特点：<ul>
+<li>尽最大努力交付</li>
+<li>只能用于目的地址，不能用于源地址</li>
+<li>对组播数据报不产生ICMP差错报文，因此ping命令行不通</li>
+<li>并非所有硬件地址都可以组播</li>
+</ul>
+</li>
+</ul>
+<h4 id="IGMP与组播路由算法"><a href="#IGMP与组播路由算法" class="headerlink" title="IGMP与组播路由算法"></a>IGMP与组播路由算法</h4><p>因特网组管理协议（IGMP）</p>
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830094609674.png" alt="image-20210830094609674" style="zoom:80%;"></p>
+<h3 id="移动IP"><a href="#移动IP" class="headerlink" title="移动IP"></a>移动IP</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><h4 id="通信过程"><a href="#通信过程" class="headerlink" title="通信过程"></a>通信过程</h4><h3 id="网络层设备"><a href="#网络层设备" class="headerlink" title="网络层设备"></a>网络层设备</h3><h4 id="路由器的组成与功能"><a href="#路由器的组成与功能" class="headerlink" title="路由器的组成与功能"></a>路由器的组成与功能</h4><h4 id="路由表与路由转发"><a href="#路由表与路由转发" class="headerlink" title="路由表与路由转发"></a>路由表与路由转发</h4><p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830095054038.png" alt="image-20210830095054038"></p>
+<h2 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h2><h3 id="传输层提供的服务"><a href="#传输层提供的服务" class="headerlink" title="传输层提供的服务"></a>传输层提供的服务</h3><ol>
+<li>传输层功能：<ol>
+<li>进程间逻辑通信；网络层是主机之间的逻辑通信。</li>
+<li>复用和分用：<ol>
+<li>复用：不同进程使用同一个传输层协议</li>
+<li>分用：接收方在收到数据后可以正确交付到目的应用进程</li>
+<li>网络层的复用分用：<ol>
+<li>复用：不同协议的数据都可以封装成IP数据报发送出去</li>
+<li>分用：接收方的网络层在剥去首部之后将数据交付给相应的协议</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>差错检测（首部和数据部分）</li>
+<li>提供面向连接的TCP和无连接的UDP</li>
+</ol>
+</li>
+<li>传输层的寻址与端口<ol>
+<li>端口是传输层的服务访问点（SAP）；IP地址是网络层的SAP；MAC地址是数据链路层的。</li>
+<li>通过IP地址区分主机，通过端口号标识和区分主机中的不同应用进程。</li>
+<li>套接字=（主机IP地址，端口号）</li>
+</ol>
+</li>
+</ol>
+<h3 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h3><h4 id="UDP数据报"><a href="#UDP数据报" class="headerlink" title="UDP数据报"></a>UDP数据报</h4><ol>
+<li>优点：<ol>
+<li>无须建立连接</li>
+<li>开销小：维持开销和分组首部的开销</li>
+<li>发送速度快</li>
+</ol>
+</li>
+<li>报文是UDP数据报处理的最小单位</li>
+<li>使用UDP的网络应用，其数据传输的可靠性由应用层负责。</li>
+<li>UDP数据报的长度不包括伪首部的长度</li>
+</ol>
+<h4 id="UDP检验"><a href="#UDP检验" class="headerlink" title="UDP检验"></a>UDP检验</h4><p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830101850817.png" alt="image-20210830101850817"></p>
+<h3 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h3><h4 id="TCP协议的特点"><a href="#TCP协议的特点" class="headerlink" title="TCP协议的特点"></a>TCP协议的特点</h4><ol>
+<li>面向连接</li>
+<li>点对点的</li>
+<li>可靠交付：数据无差错、不丢失、不重复且有序</li>
+<li>全双工通信</li>
+<li>面向字节流的</li>
+</ol>
+<h4 id="TCP报文段"><a href="#TCP报文段" class="headerlink" title="TCP报文段"></a>TCP报文段</h4><p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830102102384.png" alt="image-20210830102102384" style="zoom:80%;"></p>
+<h4 id="TCP连接管理"><a href="#TCP连接管理" class="headerlink" title="TCP连接管理"></a>TCP连接管理</h4><ol>
+<li>连接建立：三次握手<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830102326027.png" alt="image-20210830102326027" style="zoom:80%;"></li>
+<li>第二次握手服务端分配好资源（分配TCP缓存和变量）；第三次握手分配客户端资源。</li>
+<li>前两次握手不携带应用数据，但是需要消耗序号；第三次携带数据则消耗序号，不携带则不消耗。</li>
+</ul>
+</li>
+<li>数据传送</li>
+<li>连接释放：四次握手<ul>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830102802926.png" alt="image-20210830102802926" style="zoom:80%;"></li>
+<li><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830103020413.png" alt="image-20210830103020413"></li>
+</ul>
+</li>
+</ol>
+<h4 id="TCP可靠传输"><a href="#TCP可靠传输" class="headerlink" title="TCP可靠传输"></a>TCP可靠传输</h4><ol>
+<li>序号<ul>
+<li>保证数据能有序提交给应用层</li>
+<li>序号是报文段发送的数据的第一个字节的序号</li>
+</ul>
+</li>
+<li>确认<ul>
+<li>确认号：希望收到的下一个报文段的序号</li>
+<li>累计确认：只确认到第一个丢失字节为止的字节</li>
+</ul>
+</li>
+<li>重传<ol>
+<li>超时<ul>
+<li><strong>超时重传时间</strong>稍大于<strong>加权平均往返时间</strong></li>
+</ul>
+</li>
+<li>冗余ACK<ul>
+<li>A给B发送数据12345，B只收到了1345，因此在收到就发送三个对1的确认，希望收到2号报文段</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="TCP流量控制"><a href="#TCP流量控制" class="headerlink" title="TCP流量控制"></a>TCP流量控制</h4><p>基于滑动窗口协议的流量控制机制</p>
+<h4 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h4><ol>
+<li>与流量控制对比<ol>
+<li>同：都是控制发送方的发送速率</li>
+<li>区别：<ol>
+<li>拥塞控制是让网络承受现有的网络负荷，是一个全局性的过程</li>
+<li>流量控制是点对点的</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>发送方维持两个窗口：<ol>
+<li>接收窗口rwnd<ul>
+<li>接收方根据目前接收缓存的大小许诺的最新窗口值，反映接收方的容量。由接收方通知发送方的</li>
+</ul>
+</li>
+<li>拥塞窗口cwnd<ul>
+<li>发送方根据自己估算的网络拥塞程度设置的窗口值，反映网络当前容量</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>发送窗口上限值=$min[rwnd,cwnd]$</li>
+<li>拥塞控制算法：<ol>
+<li>慢开始：拥塞窗口（$cwnd$）慢慢变大，扩大到慢开始门限，就改用拥塞避免算法</li>
+<li>拥塞避免：发送端的拥塞窗口$cwnd$每经过一个往返时延RRT就增加一个MSS（$cwnd+1$）的大小（加法增大）；当出现一次超时，令慢开始门限等于当前$cwnd$的一半（乘法减小）<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830113844616.png" alt="image-20210830113844616" style="zoom:80%;"></li>
+<li>快重传：收到3个重复的ACK报文的时候，就重传。</li>
+<li>快恢复：收到3个重复的ACK的时候，执行”乘法减小“，将$cwnd$设置成慢开始门限改变后的数值，然后执行拥塞避免算法。<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830114321303.png" alt="image-20210830114321303" style="zoom:80%;"></li>
+<li>实际应用中，检测到超时，就采用慢开始和拥塞避免；接受到冗余ACK，就采用快重传和快恢复。</li>
+</ol>
+</li>
+</ol>
+<p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830114517007.png" alt="image-20210830114517007"></p>
+<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><h3 id="网络应用模型"><a href="#网络应用模型" class="headerlink" title="网络应用模型"></a>网络应用模型</h3><ol>
+<li>客户端/服务器模型<ol>
+<li>特点：<ol>
+<li>客户是服务请求方，服务器是服务提供方</li>
+<li>服务端可以管理客户机</li>
+<li>客户机相互之间不直接通信</li>
+<li>可扩展性不佳</li>
+</ol>
+</li>
+<li>代表：Web, FTP, 远程登录，电子邮件</li>
+</ol>
+</li>
+<li>P2P模型<ol>
+<li>优点：<ol>
+<li>减轻了服务器的计算压力</li>
+<li>多个客户端共享文档</li>
+<li>可扩展性好</li>
+<li>网络健壮性强</li>
+</ol>
+</li>
+<li>缺点：提供服务会占用内存；加大了网络的拥塞</li>
+<li>代表：PPlive, Bittorrent, 电驴</li>
+</ol>
+</li>
+</ol>
+<h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><ol>
+<li>层次域名空间<img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830134000472.png" alt="image-20210830134000472" style="zoom: 50%;"><ol>
+<li>国家顶级域名：cn,us</li>
+<li>通用顶级域名：.com, .org, .gov</li>
+<li>基础结构域名：arpa，反向域名解析</li>
+</ol>
+</li>
+<li>域名服务器<ol>
+<li>根域名服务器</li>
+<li>顶级域名服务器</li>
+<li>授权域名服务器</li>
+<li>本地域名服务器（配置网络填写的DNS地址）</li>
+</ol>
+</li>
+<li>解析器，使用UDP<ol>
+<li>域名映射成IP，正向解析；IP映射成域名，反向解析。</li>
+<li></li>
+</ol>
+</li>
+</ol>
+<h3 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h3><ul>
+<li>FTP客户端和服务器传递FTP命令的时候，使用的连接是”建立在UDP之上的控制连接“</li>
+</ul>
+<h3 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h3><h3 id="WWW"><a href="#WWW" class="headerlink" title="WWW"></a>WWW</h3><p><img src="/2021/09/01/1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20210830134817220.png" alt="image-20210830134817220"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/" class="post-title-link" itemprop="url">Windows-2-WSL2安装Cuda及Cudnn.md</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-31 16:28:40" itemprop="dateCreated datePublished" datetime="2021-08-31T16:28:40+08:00">2021-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-02 11:24:09" itemprop="dateModified" datetime="2021-09-02T11:24:09+08:00">2021-09-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-环境"><a href="#1-环境" class="headerlink" title="1. 环境"></a>1. 环境</h1><ul>
+<li>Windows10_insider_preview，必须得是insider_preview版本（OS内部版本开头数字要是20150以上），要不安装好了也是检测不到GPU的，已安装WSL2下的Ubuntu20.04</li>
+<li>WSL2<ul>
+<li>python3.8.5</li>
+<li>pip 20.0.2</li>
+<li>tensorflow==2.4.0</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208213617002.png" alt="image-20210208213617002" style="zoom:33%;"></p>
+<h1 id="2-安装步骤"><a href="#2-安装步骤" class="headerlink" title="2. 安装步骤"></a>2. 安装步骤</h1><h2 id="2-1-驱动的安装"><a href="#2-1-驱动的安装" class="headerlink" title="　2.1 驱动的安装"></a>　2.1 驱动的安装</h2><p>WSL2的Nvidia驱动安装说明</p>
+<blockquote>
+<p>微软关于WSL安装英伟达驱动的说明：<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/direct3d12/gpu-cuda-in-wsl">https://docs.microsoft.com/en-us/windows/win32/direct3d12/gpu-cuda-in-wsl</a></p>
+</blockquote>
+<ol>
+<li><p>前提条件：</p>
+<ol>
+<li>Windows OS内部版本号&gt;20150</li>
+<li>WSL2</li>
+</ol>
+</li>
+<li>在<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda/wsl/download">此网址</a>根据显卡类型选择驱动下载，在Windows下安装</li>
+</ol>
+<h2 id="2-2-Cuda-11-1安装"><a href="#2-2-Cuda-11-1安装" class="headerlink" title="2.2 Cuda-11.1安装"></a>2.2 Cuda-11.1安装</h2><p>编者按:<a target="_blank" rel="noopener" href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html">官方给出的WSL安装Cuda教程</a>给出了两种安装方式,经过亲身实践apt-get方式安装的是行不通的,因为在执行<code>sh -c &#39;echo &quot;deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 /&quot; &gt; /etc/apt/sources.list.d/cuda.list&#39;</code>之后再执行<code>apt-get</code>的时候会报错<code>The repository http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 is not signed</code>以及<code>BAG SIG</code>错误,编者在网络搜索了很多方法(包括导入GPG公钥到<em>keyserver.ubuntu.com</em>等等方法)都是不可行的.</p>
+<p><img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208215808957.png" alt="image-20210208215808957" style="zoom:50%;"><br><img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210705154349367.png" alt="image-20210208215808957" style="zoom:50%;"></p>
+<p>下文给出的是<strong>切实可行的办法</strong>,也就是通过runfile方法进行安装.</p>
+<p>打开<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-11.1.0-download-archive?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=WSLUbuntu&amp;target_version=20&amp;target_type=runfilelocal">这个网址</a>按照下图进行选择</p>
+<p><img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208215949949.png" alt="image-20210208215949949" style="zoom:50%;"></p>
+<p>先在shell里面切换到ubuntu的Downloads文件夹,接着在Ubuntu的Shell里面输入:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://developer.download.nvidia.com/compute/cuda/11.1.0/local_installers/cuda_11.1.0_455.23.05_linux.run </span><br><span class="line">sudo sh cuda_11.1.0_455.23.05_linux.run</span><br></pre></td></tr></table></figure>
+<p>上面命令第一行会下载一个.run的文件到Downloads,第二行是进行安装.网络上其他教程可能会说在安装的时候不要选安装Driver的选项,但是实际操作过程中并没有让选择安装Driver的教程,猜想可能是因为cuda的版本(11.1)比较新,已经适配了WSL(毕竟在选择的网址那已经有了一个WSL-Ubuntu的选项).</p>
+<p>安装完成之后在电脑的<code>/usr/local</code>目录下应该有一个cuda-11.1的文件夹(其中cuda那个是安装过程自动创建的软连接).</p>
+<p><img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208220927510.png" alt="image-20210208220927510" style="zoom:50%;"></p>
+<p>接下来还需要配置环境变量,这里如果是自己的电脑建议直接在<code>/etc/profile</code>里面配置,省的开机后环境变量会失效或者是从bash切换到zsh的时候导致环境变量失效(编者就是因为安装之后又嫌弃WindowsTerminal的终端太难看,又弄的zsh-ohmyzsh-powerline什么的):</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&#x27;$PATH:/usr/local/cuda-11.1/bin/:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin&#x27;</span><br><span class="line">export LD_LIBRARY_PATH=&quot;/usr/local/cuda-11.1/lib64:$LD_LIBRARY_PATH&quot;</span><br></pre></td></tr></table></figure>
+<p>完毕之后输入<code>nvcc -V</code>应该显示如下信息.如果没有,那就是没安装成功,卸载重装重新走一遍上面的流程.</p>
+<p><img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208221022268.png" alt="image-20210208221022268" style="zoom:50%;"></p>
+<h2 id="2-3-Cudnn安装"><a href="#2-3-Cudnn安装" class="headerlink" title="2.3 Cudnn安装"></a>2.3 Cudnn安装</h2><p>说是安装实际也不是,就是下载文件然后复制到对应的cuda的文件夹就是了.</p>
+<p>网址:<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">https://developer.nvidia.com/rdp/cudnn-download</a></p>
+<p>上面的网址需要注册成为开发者才能下载.cudnn的版本一定要和cuda的版本对应.</p>
+<p><img src="/2021/08/31/3Windows/W-2-WSL2%E5%AE%89%E8%A3%85Cuda%E5%8F%8ACudnn/image-20210208232414929.png" alt="image-20210208232414929" style="zoom:50%;"></p>
+<p>下载后得到的文件夹是<code>cudnn-11.2-linux-x64-v8.1.0.77.arj</code>,这里后缀名是arj,原因不详(我是在Windows下载的),但是可以直接把后缀改成tgz,之后移动到Ubuntu对应的文件夹(Windows的盘符比如说D盘在WSL-Ubuntu里面就是<code>/mnt/d/</code>),移动到Ubuntu的里面(此处我移动到了Ubuntu的Downloads文件夹,以下操作也是在Downloads文件夹下进行操作)就可以进行Cudnn文件的安装(其实是复制):</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf cudnn-11.2-linux-x64-v8.1.0.77.tgz</span><br><span class="line">sudo cp cuda/include/cudnn.h /usr/local/cuda-11.1/include/</span><br><span class="line">sudo cp cuda/lib64/libcudnn* /usr/local/cuda-11.1/lib64/</span><br><span class="line">sudo cp /usr/local/cuda-11.1/lib64/libcusolver.so.11 /usr/local/cuda-11.1/lib64/libcusolver.so.10</span><br><span class="line">sudo chmod +x /usr/local/cuda/include/cudnn.h</span><br><span class="line">sudo chmod +x /usr/local/cuda/lib64/libcudnn*</span><br></pre></td></tr></table></figure>
+<p>这里<strong>一定要</strong>执行复制libcusolver.so.11的那行命令,不然cuda会无法正常工作报如下错误,找不到GPU.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Could not load dynamic library &#x27;libcusolver.so.10&#x27;; dlerror: libcusolver.so.10: </span><br><span class="line">cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-11.1/lib64</span><br></pre></td></tr></table></figure>
+<p>至此,在Windows的WSL-Ubuntu下安装Cuda以及Cudnn已结束.以下代码可以验证GPU的存在(需要已经安装tensorflow).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">devices = tf.config.list_physical_devices()</span><br><span class="line"><span class="built_in">print</span>(devices)</span><br></pre></td></tr></table></figure>
+<p>输出:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[PhysicalDevice(name=<span class="string">&#x27;/physical_device:CPU:0&#x27;</span>, device_type=<span class="string">&#x27;CPU&#x27;</span>), PhysicalDevice(name=<span class="string">&#x27;/physical_device:GPU:0&#x27;</span>, device_type=<span class="string">&#x27;GPU&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+<h1 id="几处容易踩坑的地方"><a href="#几处容易踩坑的地方" class="headerlink" title="几处容易踩坑的地方"></a>几处容易踩坑的地方</h1><h2 id="1-环境变量的配置"><a href="#1-环境变量的配置" class="headerlink" title="1 环境变量的配置"></a>1 环境变量的配置</h2><h3 id="1-1-重启后nvcc-V显示comman-not-found怎么回事"><a href="#1-1-重启后nvcc-V显示comman-not-found怎么回事" class="headerlink" title="1.1 重启后nvcc -V显示comman not found怎么回事"></a>1.1 重启后<code>nvcc -V</code>显示comman not found怎么回事</h3><p>如果是自己的电脑,建议直接将环境变量设置在<code>/etc/profile</code>里面,一劳永逸.也不会因为弃用bash(安装了zsh的情况下),导致~/.bashrc里面的环境变量失效.</p>
+<h2 id="2-Cudnn的安装"><a href="#2-Cudnn的安装" class="headerlink" title="　2 Cudnn的安装"></a>　2 Cudnn的安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /usr/local/cuda-11.1/lib64/libcusolver.so.11 /usr/local/cuda-11.1/lib64/libcusolver.so.10</span><br></pre></td></tr></table></figure>
+<p>上面这行命令可能随着安装的版本不同而改变,在Jupyter里面运行下面这段代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">devices = tf.config.list_physical_devices()</span><br><span class="line"><span class="built_in">print</span>(devices)</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2Latex/Latex%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/31/2Latex/Latex%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Latex常用命令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-08-31 16:00:15 / 修改时间：23:50:06" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Latex/" itemprop="url" rel="index"><span itemprop="name">Latex</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Latex公式速查表"><a href="#Latex公式速查表" class="headerlink" title="Latex公式速查表"></a>Latex公式速查表</h1><h2 id="希腊字母："><a href="#希腊字母：" class="headerlink" title="希腊字母："></a>希腊字母：</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">大写</th>
+<th style="text-align:center">写法</th>
+<th style="text-align:center">小写</th>
+<th style="text-align:center">写法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$A$</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">$\alpha$</td>
+<td style="text-align:center">\\alpha</td>
+</tr>
+<tr>
+<td style="text-align:center">$B$</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">$\beta$</td>
+<td style="text-align:center">\\beta</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Gamma$</td>
+<td style="text-align:center">\\Gamma</td>
+<td style="text-align:center">$\gamma$</td>
+<td style="text-align:center">\gamma</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Delta$</td>
+<td style="text-align:center">\Delta</td>
+<td style="text-align:center">$\delta$</td>
+<td style="text-align:center">\delta</td>
+</tr>
+<tr>
+<td style="text-align:center">$H$</td>
+<td style="text-align:center">H</td>
+<td style="text-align:center">$\eta$</td>
+<td style="text-align:center">\eta</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Theta$</td>
+<td style="text-align:center">\Theta</td>
+<td style="text-align:center">$\theta$</td>
+<td style="text-align:center">\theta</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Lambda$</td>
+<td style="text-align:center">\Lambda</td>
+<td style="text-align:center">$\lambda$</td>
+<td style="text-align:center">\lambda</td>
+</tr>
+<tr>
+<td style="text-align:center">$M$</td>
+<td style="text-align:center">M</td>
+<td style="text-align:center">$\mu$</td>
+<td style="text-align:center">\mu</td>
+</tr>
+<tr>
+<td style="text-align:center">$N$</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">$\nu$</td>
+<td style="text-align:center">\nu</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Xi$</td>
+<td style="text-align:center">\Xi</td>
+<td style="text-align:center">$\xi$</td>
+<td style="text-align:center">\xi</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Pi$</td>
+<td style="text-align:center">\Pi</td>
+<td style="text-align:center">$\pi$</td>
+<td style="text-align:center">\pi</td>
+</tr>
+<tr>
+<td style="text-align:center">$P$</td>
+<td style="text-align:center">P</td>
+<td style="text-align:center">$\rho$</td>
+<td style="text-align:center">\rho</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Sigma$</td>
+<td style="text-align:center">\Sigma</td>
+<td style="text-align:center">$\sigma$</td>
+<td style="text-align:center">\sigma</td>
+</tr>
+<tr>
+<td style="text-align:center">$T$</td>
+<td style="text-align:center">T</td>
+<td style="text-align:center">$\tau$</td>
+<td style="text-align:center">\tau</td>
+</tr>
+<tr>
+<td style="text-align:center">$Y$</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">$\upsilon$</td>
+<td style="text-align:center">\upsilon</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Phi$</td>
+<td style="text-align:center">\Phi</td>
+<td style="text-align:center">$\phi$</td>
+<td style="text-align:center">\phi</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Psi$</td>
+<td style="text-align:center">\Psi</td>
+<td style="text-align:center">$\psi$</td>
+<td style="text-align:center">\psi</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Omega$</td>
+<td style="text-align:center">\Omega</td>
+<td style="text-align:center">$\omega$</td>
+<td style="text-align:center">\omega</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="括号与位置标定"><a href="#括号与位置标定" class="headerlink" title="括号与位置标定"></a>括号与位置标定</h2><ul>
+<li>上标、下标：^ _ ：x_2\^3   $x_2^3$</li>
+<li>求和：\sum下标~上标，例如：$\sum_{i=0}^n$ :    $\sum_{i=0}^n$</li>
+<li>积分：<ul>
+<li>\int下标~上标，例如：$\int_1^\infty$ :    $\int_1^\infty$</li>
+<li>\iint下标~上标，例如：$\iint_1^\infty$:     $\iint_1^\infty$</li>
+</ul>
+</li>
+<li>连乘：$\prod\lbrace a+b \rbrace$:     $\prod\lbrace a+b \rbrace$</li>
+<li>$\max_{c_k}$:      $\max_{c_k}$</li>
+</ul>
+<h2 id="特殊函数与符号"><a href="#特殊函数与符号" class="headerlink" title="特殊函数与符号"></a>特殊函数与符号</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">形式</th>
+<th style="text-align:center">语法</th>
+<th style="text-align:center">形式</th>
+<th style="text-align:center">语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$\lt$</td>
+<td style="text-align:center">\lt</td>
+<td style="text-align:center">$\gt$</td>
+<td style="text-align:center">\gt</td>
+</tr>
+<tr>
+<td style="text-align:center">$\le$</td>
+<td style="text-align:center">\le</td>
+<td style="text-align:center">$\ge$</td>
+<td style="text-align:center">\ge</td>
+</tr>
+<tr>
+<td style="text-align:center">$\ne$</td>
+<td style="text-align:center">\ne</td>
+<td style="text-align:center">$\not \ge$</td>
+<td style="text-align:center">\not \ge</td>
+</tr>
+<tr>
+<td style="text-align:center">$\cup$</td>
+<td style="text-align:center">\cup</td>
+<td style="text-align:center">$\cap$</td>
+<td style="text-align:center">\cap</td>
+</tr>
+<tr>
+<td style="text-align:center">$\setminus$:差集</td>
+<td style="text-align:center">\setminus</td>
+<td style="text-align:center">$\subset$</td>
+<td style="text-align:center">\subset</td>
+</tr>
+<tr>
+<td style="text-align:center">$\subseteq$</td>
+<td style="text-align:center">\subseteq</td>
+<td style="text-align:center">$\subsetneq$</td>
+<td style="text-align:center">\subsetneq</td>
+</tr>
+<tr>
+<td style="text-align:center">$\supset$</td>
+<td style="text-align:center">\supset</td>
+<td style="text-align:center">$\in$</td>
+<td style="text-align:center">\in</td>
+</tr>
+<tr>
+<td style="text-align:center">$\notin$</td>
+<td style="text-align:center">\notin 、\not \in</td>
+<td style="text-align:center">$\emptyset$</td>
+<td style="text-align:center">\emptyset</td>
+</tr>
+<tr>
+<td style="text-align:center">$\varnothing$</td>
+<td style="text-align:center">\varnothing</td>
+<td style="text-align:center">$\mapsto$</td>
+<td style="text-align:center">\mapsto</td>
+</tr>
+<tr>
+<td style="text-align:center">$\to$</td>
+<td style="text-align:center">\to</td>
+<td style="text-align:center">$\rightarrow$</td>
+<td style="text-align:center">\rightarrow</td>
+</tr>
+<tr>
+<td style="text-align:center">$\leftarrow$</td>
+<td style="text-align:center">\leftarrow</td>
+<td style="text-align:center">$\Leftarrow$</td>
+<td style="text-align:center">\Leftarrow</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Rightarrow$</td>
+<td style="text-align:center">\Rightarrow</td>
+<td style="text-align:center">$\lnot$</td>
+<td style="text-align:center">\lont</td>
+</tr>
+<tr>
+<td style="text-align:center">$\land$</td>
+<td style="text-align:center">\land</td>
+<td style="text-align:center">$\lor$</td>
+<td style="text-align:center">\lor</td>
+</tr>
+<tr>
+<td style="text-align:center">$\forall$</td>
+<td style="text-align:center">\forall</td>
+<td style="text-align:center">$\exists$</td>
+<td style="text-align:center">\exists</td>
+</tr>
+<tr>
+<td style="text-align:center">$\top$</td>
+<td style="text-align:center">\top</td>
+<td style="text-align:center">$\bot$</td>
+<td style="text-align:center">\bot</td>
+</tr>
+<tr>
+<td style="text-align:center">$\vdash$</td>
+<td style="text-align:center">\vdash</td>
+<td style="text-align:center">$\vDash$</td>
+<td style="text-align:center">\vDash</td>
+</tr>
+<tr>
+<td style="text-align:center">$\star$</td>
+<td style="text-align:center">\star</td>
+<td style="text-align:center">$\ast$</td>
+<td style="text-align:center">\ast</td>
+</tr>
+<tr>
+<td style="text-align:center">$\oplus$</td>
+<td style="text-align:center">\oplus</td>
+<td style="text-align:center">$\circ$</td>
+<td style="text-align:center">\circ</td>
+</tr>
+<tr>
+<td style="text-align:center">$\bullet$</td>
+<td style="text-align:center">\bullet</td>
+<td style="text-align:center">$\approx$</td>
+<td style="text-align:center">\approx</td>
+</tr>
+<tr>
+<td style="text-align:center">$\sim$</td>
+<td style="text-align:center">\sim</td>
+<td style="text-align:center">$\equiv$</td>
+<td style="text-align:center">\equiv</td>
+</tr>
+<tr>
+<td style="text-align:center">$\prec$</td>
+<td style="text-align:center">\prec</td>
+<td style="text-align:center">$\infty$</td>
+<td style="text-align:center">\infty</td>
+</tr>
+<tr>
+<td style="text-align:center">$\aleph_o$</td>
+<td style="text-align:center">\aleph_o</td>
+<td style="text-align:center">$\nabla$</td>
+<td style="text-align:center">\nabla</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Im$</td>
+<td style="text-align:center">\Im</td>
+<td style="text-align:center">$\R$</td>
+<td style="text-align:center">\R</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Re$</td>
+<td style="text-align:center">\Re</td>
+<td style="text-align:center">$a\pmod b$</td>
+<td style="text-align:center">\pmod</td>
+</tr>
+<tr>
+<td style="text-align:center">$\ldots$</td>
+<td style="text-align:center">\ldots  （low）</td>
+<td style="text-align:center">$\cdots$</td>
+<td style="text-align:center">\cdots （center）</td>
+</tr>
+<tr>
+<td style="text-align:center">$\cdot$</td>
+<td style="text-align:center">\cdot</td>
+<td style="text-align:center">$\dot x$</td>
+<td style="text-align:center">\dot x</td>
+</tr>
+<tr>
+<td style="text-align:center">$\hatｘ$</td>
+<td style="text-align:center">\hat x</td>
+<td style="text-align:center">$\widehat {xyz}$</td>
+<td style="text-align:center">\widehat {xyz}</td>
+</tr>
+<tr>
+<td style="text-align:center">$\overline x$</td>
+<td style="text-align:center">\overline x</td>
+<td style="text-align:center">$\vec x$</td>
+<td style="text-align:center">\vec x</td>
+</tr>
+<tr>
+<td style="text-align:center">$\overrightarrow x$</td>
+<td style="text-align:center">\overrightarrow x</td>
+<td style="text-align:center">$\mathbf {sasd}$</td>
+<td style="text-align:center">\mathbf {} 黑体</td>
+</tr>
+<tr>
+<td style="text-align:center">$\mathtt {ACBD}$</td>
+<td style="text-align:center">\mathtt{ABCD}</td>
+<td style="text-align:center">$\Bbb{ABCDR}$</td>
+<td style="text-align:center">\Bbb{ABCDR}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="括号："><a href="#括号：" class="headerlink" title="括号："></a>括号：</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">形式</th>
+<th style="text-align:center">写法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$(x)$</td>
+<td style="text-align:center">$(x)$</td>
+</tr>
+<tr>
+<td style="text-align:center">$[x]$</td>
+<td style="text-align:center">$[x]$</td>
+</tr>
+<tr>
+<td style="text-align:center">$\lbrace x \rbrace$</td>
+<td style="text-align:center">$\lbrace x \rbrace$</td>
+</tr>
+<tr>
+<td style="text-align:center">$\langle x \rangle$</td>
+<td style="text-align:center">$\langle x \rangle$</td>
+</tr>
+<tr>
+<td style="text-align:center">$\lceil x \rceil$</td>
+<td style="text-align:center">$\lceil x \rceil$</td>
+</tr>
+<tr>
+<td style="text-align:center">$\lfloor x \rfloor$</td>
+<td style="text-align:center">$\lfloor x \rfloor$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="分数与根式"><a href="#分数与根式" class="headerlink" title="分数与根式"></a>分数与根式</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">形式</th>
+<th style="text-align:center">写法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$\frac a{b+1}$</td>
+<td style="text-align:center">$\frac a {b+1}$</td>
+</tr>
+<tr>
+<td style="text-align:center">${a+1} \over {b}$</td>
+<td style="text-align:center">${a+1} \over {b}$</td>
+</tr>
+<tr>
+<td style="text-align:center">$x = a_0 + \frac {1^2}{a_1 + \frac {a_2}{2}}$</td>
+<td style="text-align:center">$x = a_0 + \frac {1^2} {a_1 + \frac {a_2}{2}}$</td>
+</tr>
+<tr>
+<td style="text-align:center">$\sqrt [2] {\frac x y}$</td>
+<td style="text-align:center">$\sqrt [2] {\frac x y}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="分段函数、多行算式"><a href="#分段函数、多行算式" class="headerlink" title="分段函数、多行算式"></a>分段函数、多行算式</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">形式</th>
+<th style="text-align:center">写法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$f(n) \begin{cases} \cfrac n2, &amp;if\ n\ =\ 9\\ 3n+1, &amp;if\ n\ \neq 9 \end{cases}$</td>
+<td style="text-align:center">$f(n) \begin{cases} \cfrac n2, &amp;if\ n\ =\ 9\\ 3n+1, &amp;if\ n\ \neq 9 \end{cases}$</td>
+</tr>
+<tr>
+<td style="text-align:center">$ \begin{equation}\begin{split} a&amp;= b+c-d&amp;\quad +e+f\\ &amp;=g+h \end{split}\end{equation}$</td>
+<td style="text-align:center">$ \begin{equation}\begin{split} a&amp;= b+c-d&amp;\quad +e+f\\ &amp;=g+h \end{split}\end{equation}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="方程组"><a href="#方程组" class="headerlink" title="方程组"></a>方程组</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">形式</th>
+<th style="text-align:center">语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">\left \{ \begin{array}{c} …… \end{array} \right.</td>
+</tr>
+<tr>
+<td style="text-align:center">$\left \{\begin{array}{c} a_1x+b_1y+c_1z = d_1\\a_2x+b_2y-c_2z=d_2^2 \end{array} \right.$</td>
+<td style="text-align:center">$\left \{\begin{array}{c} a_1x+b_1y+c_1z = d_1\\\a_2x+b_2y-c_2z=d_2^2 \end{array} \right.$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">形式</th>
+<th style="text-align:center">语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$\begin{matrix}1 &amp; x &amp; x^2\\1 &amp; y &amp; y^2\\1 &amp; z &amp; z^2\\\end{matrix}$</td>
+<td style="text-align:center">\begin{matrix}1 &amp; x &amp; x^2\\\1 &amp; y &amp; y^2\\\1 &amp; z &amp; z^2\\\ end{matrix}</td>
+</tr>
+<tr>
+<td style="text-align:center">$\begin{pmatrix}1 &amp; x &amp; x^2\\1 &amp; y &amp; y^2\\1 &amp; z &amp; z^2\\\end{pmatrix}$</td>
+<td style="text-align:center">\begin{pmatrix}1 &amp; x &amp; x^2\\1 &amp; y &amp; y^2\\1 &amp; z &amp; z^2\\\end{pmatrix}</td>
+</tr>
+<tr>
+<td style="text-align:center">$\begin{bmatrix}1 &amp; x &amp; x^2\\1 &amp; y &amp; y^2\\1 &amp; z &amp; z^2\\\end{bmatrix}$</td>
+<td style="text-align:center">\begin{bmatrix}1 &amp; x &amp; x^2\\1 &amp; y &amp; y^2\\1 &amp; z &amp; z^2\\\end{bmatrix}</td>
+</tr>
+<tr>
+<td style="text-align:center">$\begin{vmatrix}1 &amp; x &amp; x^2\\1 &amp; y &amp; y^2\\1 &amp; z &amp; z^2\\\end{vmatrix}$</td>
+<td style="text-align:center">\begin{vmatrix}1 &amp; x &amp; x^2\\1 &amp; y &amp; y^2\\1 &amp; z &amp; z^2\\\end{vmatrix}</td>
+</tr>
+<tr>
+<td style="text-align:center">$\begin{Vmatrix}1 &amp; x &amp; x^2\\1 &amp; y &amp; y^2\\1 &amp; z &amp; z^2\\\end{Vmatrix}$</td>
+<td style="text-align:center">\begin{Vmatrix}1 &amp; x &amp; x^2\\1 &amp; y &amp; y^2\\1 &amp; z &amp; z^2\\\end{Vmatrix}</td>
+</tr>
+<tr>
+<td style="text-align:center">$\left[\begin{array} {c c \</td>
+<td style="text-align:center">c} 1 &amp; 2 &amp; 3\\1 &amp; 3 &amp; 9\\ \hline 1 &amp; 4 &amp; 16\\\end{array} \right]$</td>
+<td>\left[\begin{array} {c c \</td>
+<td>c} 1 &amp; 2 &amp; 3\\1 &amp; 3 &amp; 9\\ \hline 1 &amp; 4 &amp; 16\\\end{array} \right]</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="公式标号"><a href="#公式标号" class="headerlink" title="公式标号"></a>公式标号</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">形式</th>
+<th style="text-align:center">语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$x+y=z \tag{1.2}$</td>
+<td style="text-align:center">x+y=z \tag{1.2}</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -1552,14 +3074,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
@@ -1604,13 +3126,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">90k</span>
+    <span title="站点总字数">84k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:22</span>
+    <span title="站点阅读时长">1:16</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
