@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"naixil.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="jupyter篇常用命令 jupyter notebook 移除虚拟环境jupyter kernelspec remove XXX pip3 install —user  jupyter -i http:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F; —trusted-host pypi.douban.com nbconvert 命令行运行： ipython nbconvert —to not">
+  <meta name="description" content="jupyter篇常用命令 jupyter notebook 移除虚拟环境jupyter kernelspec remove XXX pip3 install –user  jupyter -i http:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F; –trusted-host pypi.douban.com nbconvert 命令行运行： ipython nbconvert –to not">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Py-2-Jupyter">
 <meta property="og:url" content="https://naixil.github.io/2021/08/31/2PythonStudy/Py-2-Jupyter/index.html">
 <meta property="og:site_name" content="LiXian&#39;s Blog">
-<meta property="og:description" content="jupyter篇常用命令 jupyter notebook 移除虚拟环境jupyter kernelspec remove XXX pip3 install —user  jupyter -i http:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F; —trusted-host pypi.douban.com nbconvert 命令行运行： ipython nbconvert —to not">
+<meta property="og:description" content="jupyter篇常用命令 jupyter notebook 移除虚拟环境jupyter kernelspec remove XXX pip3 install –user  jupyter -i http:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F; –trusted-host pypi.douban.com nbconvert 命令行运行： ipython nbconvert –to not">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://naixil.github.io/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206135856519.png">
 <meta property="og:image" content="https://naixil.github.io/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206140917586.png">
@@ -266,11 +266,11 @@
       
         <h1 id="jupyter篇"><a href="#jupyter篇" class="headerlink" title="jupyter篇"></a>jupyter篇</h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
 <li>jupyter notebook 移除虚拟环境<code>jupyter kernelspec remove XXX</code></li>
-<li>pip3 install —user  jupyter -i <a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a> —trusted-host pypi.douban.com</li>
+<li>pip3 install –user  jupyter -i <a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a> –trusted-host pypi.douban.com</li>
 <li>nbconvert<ul>
 <li>命令行运行：<ul>
-<li>ipython nbconvert —to notebook —execute plot.ipynb —output output.ipynb # 输出运行结果到output.ipynb/html</li>
-<li>—to python/pdf/html/notebook # 转换成对应的文件</li>
+<li>ipython nbconvert –to notebook –execute plot.ipynb –output output.ipynb # 输出运行结果到output.ipynb/html</li>
+<li>–to python/pdf/html/notebook # 转换成对应的文件</li>
 </ul>
 </li>
 </ul>
@@ -282,6 +282,7 @@
 </li>
 </ul>
 <h2 id="Jupyter显示完整数组"><a href="#Jupyter显示完整数组" class="headerlink" title="Jupyter显示完整数组"></a>Jupyter显示完整数组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.set_printoptions(threshold=np.inf)</span><br></pre></td></tr></table></figure>
+
 <h1 id="WSL下jupyter-notebook安装、访问"><a href="#WSL下jupyter-notebook安装、访问" class="headerlink" title="WSL下jupyter notebook安装、访问"></a>WSL下jupyter notebook安装、访问</h1><h2 id="文档适用"><a href="#文档适用" class="headerlink" title="文档适用"></a>文档适用</h2><ul>
 <li>Windows10环境已安装WSL2下的Ubuntu20.04</li>
 <li>WSL2<ul>
@@ -295,7 +296,7 @@
 <ol>
 <li><p>pip install jupyter notebook</p>
 </li>
-<li><p>jupyter notebook —generate-config</p>
+<li><p>jupyter notebook –generate-config</p>
 <ol>
 <li>这一步会生成一个jupyternotebook的配置文件文件位置在(如果是root用户登录)：’/root/.jupyter/jupyter_notebook_config.py’</li>
 </ol>
@@ -335,31 +336,39 @@
 </ol>
 </li>
 <li><p>输入jupyter notebook 此时你的EDGE浏览器会访问localhost:8888/tree，这里我配置的时候显示</p>
-<p><img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206140917586.png" alt="image-20210206140917586" style="zoom:33%;"></p>
-</li>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206140917586.png" alt="image-20210206140917586" style="zoom:33%;"></li>
 </ol>
 <p><strong>这里我也不知道为啥，有知道的欢迎告知。</strong></p>
 <p>我的解决办法就是在ubuntu终端里面输入ifconfig查看当前WSL的ip地址，比如我的是</p>
-<p><img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206141119912.png" alt="image-20210206141119912" style="zoom:33%;"></p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206141119912.png" alt="image-20210206141119912" style="zoom:33%;">
+
 <p>那么就把localhost换成IP地址172.27.118.134就行了，如下图就可以访问了。</p>
-<p><img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206141244301.png" alt="image-20210206141244301" style="zoom:50%;"></p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206141244301.png" alt="image-20210206141244301" style="zoom:50%;">
+
 <h2 id="多虚拟环境配置"><a href="#多虚拟环境配置" class="headerlink" title="多虚拟环境配置"></a>多虚拟环境配置</h2><p>这里不推荐安装virtualenvwrapper，降低学习成本，而且安装了jupyter notebook之后也不需要频繁激活虚拟环境。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv </span><br><span class="line"><span class="comment"># 在/root（这里笔者以root用户登录的）文件夹下新建一个Virtualevs的文件夹用来存放虚拟环境</span></span><br><span class="line">mkdir /root/Virtualenvs</span><br><span class="line">cd /root/Virtualenvs</span><br><span class="line"><span class="comment"># 建立虚拟环境名字为‘tensorflow’</span></span><br><span class="line">virtualenv -p /usr/<span class="built_in">bin</span>/python3<span class="number">.8</span> tensorflow</span><br><span class="line"><span class="comment"># 激活虚拟环境配置jupyter notebook</span></span><br><span class="line">source /root/Virtualenvs/tensorflow/<span class="built_in">bin</span>/avtivate</span><br><span class="line"><span class="comment"># 这里终端应该是类似（tensorflow）...# 这种的形式，就说明进入到了虚拟环境，可以pip list查看一下安装的包，应该是 之后setuptools什么的</span></span><br><span class="line">ModuleNotFoundError: No module named <span class="string">&#x27;jupyter_nbextensions_configurator&#x27;</span></span><br><span class="line">python -m ipykernel install --name tensorflow --display-name tensorflow</span><br><span class="line"><span class="comment"># 再打开jupyter notebook之后就可以在new那里看到新建的虚拟环境了</span></span><br><span class="line">jupyter notebook</span><br><span class="line"><span class="comment"># 而且这样之后即使deactivate虚拟环境之后，在基础的那个环境里面打开jupyter notebook之后也可以选择虚拟环境</span></span><br></pre></td></tr></table></figure>
+
 <p>扩展安装</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter_contrib_nbextensions -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/ </span><br><span class="line">jupyter contrib nbextension install  --user</span><br><span class="line">pip install jupyter_nbextensions_configurator -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/</span><br><span class="line">jupyter nbextensions_configurator <span class="built_in">enable</span> --user</span><br><span class="line"><span class="comment"># 这之后就可以看到Nbextension，复选框选择哪个就是激活哪个</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206144358079.png" alt="image-20210206144358079" style="zoom: 25%;"></p>
+
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206144358079.png" alt="image-20210206144358079" style="zoom: 25%;">
+
 <h1 id="浪潮jupyter访问："><a href="#浪潮jupyter访问：" class="headerlink" title="浪潮jupyter访问："></a>浪潮jupyter访问：</h1><h2 id="新建开发环境"><a href="#新建开发环境" class="headerlink" title="新建开发环境"></a>新建开发环境</h2><p>使用tmux命令启动一个新的会话运行<code>jupyter lab</code></p>
 <p>依次输入如下命令：</p>
 <p><img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730143240613.png" alt="image-20210730143240613"></p>
-<p><img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730143309274.png" alt="image-20210730143309274" style="zoom:50%;"></p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730143309274.png" alt="image-20210730143309274" style="zoom:50%;">
+
 <p>记住jupyter的端口号：8888</p>
 <p>tmux的返回原来的终端：先按下Ctrl+B 再按下D，其他命令自行网络搜索。</p>
 <p>首先在本机的浏览器输入开发环境8888端口对应的101.7.186.128的端口（也即浏览器打开101.7.186.128:57663/），查看8888端口对应的浪潮主机端口方式见下图：</p>
-<p><img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730144015314.png" alt="image-20210730144015314" style="zoom:33%;"></p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730144015314.png" alt="image-20210730144015314" style="zoom:33%;">
+
 <p>能打开则代表可以连接上。（默认密码是123，更改方式可以在开发环境的shell里面输入，<code>jupyter server password</code>进行更改）</p>
-<p><img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730144440658.png" alt="image-20210730144440658" style="zoom:33%;"></p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730144440658.png" alt="image-20210730144440658" style="zoom:33%;">
+
 <p>如果打不开的话，转第二节：</p>
-<p><img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730144233395.png" alt="image-20210730144233395" style="zoom:50%;"></p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730144233395.png" alt="image-20210730144233395" style="zoom:50%;">
+
 <h2 id="本地cmd操作"><a href="#本地cmd操作" class="headerlink" title="本地cmd操作"></a>本地cmd操作</h2><p>本机的命令行界面输入：</p>
 <p><code>ssh -p 42239  -N -f -L localhost:8889:localhost:8888 root@101.7.186.128</code></p>
 <p>其中：42239为开发环境的ssh端口，查看方法看下图。</p>
@@ -368,8 +377,12 @@
 <p>回车之后不显示密码错误，代表已经建立连接了。下面的这个终端不要退出，需要保持连接。</p>
 <p><img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730143822009.png" alt="image-20210730143822009"></p>
 <p>此时，在本机浏览器输入<a target="_blank" rel="noopener" href="http://localhost:8889/">http://localhost:8889/</a></p>
-<p><img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730144312561.png" alt="image-20210730144312561" style="zoom:33%;"></p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730144312561.png" alt="image-20210730144312561" style="zoom:33%;">
+
+
+
 <h1 id="Jupyter-Lab"><a href="#Jupyter-Lab" class="headerlink" title="Jupyter Lab"></a>Jupyter Lab</h1><h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dnf module list nodejs</span><br><span class="line">dnf module reset nodejs  # 如果不能安装的话</span><br><span class="line">dnf module install nodejs:12</span><br></pre></td></tr></table></figure>
+
 <p> <code>ssh -p 22651 -N -f -L localhost:8888:localhost:8890 root@219.150.218.20</code></p>
 <h2 id="Jupyter-Lab插件推荐"><a href="#Jupyter-Lab插件推荐" class="headerlink" title="Jupyter Lab插件推荐"></a>Jupyter Lab插件推荐</h2><p>插件安装<code>jupyter labextension install @telamonian/theme-darcula</code></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/jtpio/jupyterlab-python-file">jupyterlab-python-file</a></p>
@@ -552,13 +565,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">82k</span>
+    <span title="站点总字数">87k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:14</span>
+    <span title="站点阅读时长">1:20</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
