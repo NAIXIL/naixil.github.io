@@ -152,6 +152,676 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/3Linux/L-3-Python2%E5%8D%87%E7%BA%A73%E3%80%81CentOS-Vim-Golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/31/3Linux/L-3-Python2%E5%8D%87%E7%BA%A73%E3%80%81CentOS-Vim-Golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">Linux-3-Python2升级3、CentOS-Vim-Golang环境配置.md</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-01 21:05:26" itemprop="dateModified" datetime="2021-09-01T21:05:26+08:00">2021-09-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/08/31/3Linux/L-3-Python2%E5%8D%87%E7%BA%A73%E3%80%81CentOS-Vim-Golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="post-meta-item leancloud_visitors" data-flag-title="Linux-3-Python2升级3、CentOS-Vim-Golang环境配置.md" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/08/31/3Linux/L-3-Python2%E5%8D%87%E7%BA%A73%E3%80%81CentOS-Vim-Golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/31/3Linux/L-3-Python2%E5%8D%87%E7%BA%A73%E3%80%81CentOS-Vim-Golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Python升级"><a href="#Python升级" class="headerlink" title="Python升级"></a>Python升级</h1><h2 id="下载并编译"><a href="#下载并编译" class="headerlink" title="下载并编译"></a>下载并编译</h2><pre><code>mkdir /usr/local/Python3 &amp;&amp; cd /usr/local/Python3
+wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
+tar xvf Python-3.7.2.tar.xz 
+cd Python-3.7.2
+./configure &amp;&amp; make &amp;&amp; make install 
+</code></pre>
+<h2 id="创建软链接"><a href="#创建软链接" class="headerlink" title="创建软链接"></a>创建软链接</h2><p>执行完2.1之后，终端输入python发现仍然是2.7.6的版本，只有输入python3才显示python3.7.2版本。这是因为系统默认输入python就是指向2。<br>解决办法：</p>
+<pre><code>whereis python # 此处/usr/bin/python就是输入python链接向的python版本
+mv /usr/bin/python /usr/bin/python.bak # 备份原先的
+ln -s /usr/local/Python3 /usr/bin/python # 创建软链接
+</code></pre>
+<p>至此可达成输入python显示python3.7.2版本</p>
+<h2 id="修改yum配置"><a href="#修改yum配置" class="headerlink" title="修改yum配置"></a><strong>修改yum配置</strong></h2><pre><code>vim /usr/bin/yum
+# /usr/bin/python2.7 #第一行改成这个，保证yum可用
+vim /usr/libexec/urlgrabber-ext-down 
+# /usr/bin/python2.7 # 该第一行，保证yum能用
+</code></pre>
+<h2 id="安装pip3"><a href="#安装pip3" class="headerlink" title="安装pip3"></a><strong>安装pip3</strong></h2><pre><code>yum install pip3
+# 此时pip2 pip3同时存在。创建链接的方法与python相同
+# 可以先用whereis pip查看路径
+</code></pre>
+<h2 id="python升级过程报错总结"><a href="#python升级过程报错总结" class="headerlink" title="python升级过程报错总结"></a>python升级过程报错总结</h2><p><strong>下载编译过程：</strong></p>
+<ul>
+<li>ModuleNotFoundError: No module named ‘_ctypes’<ul>
+<li>执行<code>yum install libffi-devel</code>再执行<code>./configure &amp;&amp; make &amp;&amp; make install</code></li>
+</ul>
+</li>
+<li>zipimport.ZipImportError: can‘t decompress data; zlib not availabl<ul>
+<li>执行<code>yum install zlib*</code>再执行<code>./configure &amp;&amp; make &amp;&amp; make install</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="Vim升级"><a href="#Vim升级" class="headerlink" title="Vim升级"></a>Vim升级</h1><blockquote>
+<p>参考这几个沙里淘金的有用链接：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37903963/article/details/99683590">https://blog.csdn.net/qq_37903963/article/details/99683590</a></p>
+</blockquote>
+</blockquote>
+<ol>
+<li>主要按照上边的这个链接需要修改其第三步编译那句，最好改成（安装完python3再升级vim）：</li>
+</ol>
+<p><code>./configure --with-features=huge --enable-multibyte --enable-rubyinterp=yes --enable-python3interp=yes --with-python3-config-dir=$(python3-config --configdir) --enable-perlinterp=yes --enable-luainterp=yes --enable-gui=gtk2 --enable-cscope --prefix=/usr/local/bin </code></p>
+<ol start="2">
+<li><p>极度表扬这个链接里面的<br><code>alias vim=&#39;usr/local/bin/vim&#39;</code><br>本人在升级的时候只能当前用户使用vim8.2，但是root用户输入<code>vim --version</code>仍然是vim7，在尝试过修改 </p>
+<ul>
+<li><strong>全局配置</strong> /etc/profile</li>
+<li><strong>root用户的配置文件</strong> ~/.bashrc和~/.bash_profile</li>
+</ul>
+<p>中PATH的环境变量之后，仍然不能用root使用vim。<br>其<strong>解决办法</strong>，就是在root下，卸载vim，并且<code>alias vim=&#39;usr/local/bin/vim&#39;</code>（设置命令的别名），路径为vim的编译安装路径，可以用<code>whereis vim</code>查看。</p>
+</li>
+</ol>
+<blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/JoiT/p/build_from_source_for_linux_vim.html">https://www.cnblogs.com/JoiT/p/build_from_source_for_linux_vim.html</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/hunter___/article/details/105712003">https://blog.csdn.net/hunter___/article/details/105712003</a></p>
+</blockquote>
+</blockquote>
+<h2 id="Vim配置基础知识"><a href="#Vim配置基础知识" class="headerlink" title="Vim配置基础知识"></a>Vim配置基础知识</h2><p>vim的配置文件有两处：<code>/etc/vimrc</code>及每个用户下的<code>~/.vimrc</code>（root下有一个，个人用户（如ABC也有一个，改变<code>~/.vimrc</code>不对另一个有改变）），</p>
+<h2 id="https-github-com-amix-vimrc"><a href="#https-github-com-amix-vimrc" class="headerlink" title="https://github.com/amix/vimrc"></a><a target="_blank" rel="noopener" href="https://github.com/amix/vimrc">https://github.com/amix/vimrc</a></h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">Linux-4-环境变量</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-01 21:05:50" itemprop="dateModified" datetime="2021-09-01T21:05:50+08:00">2021-09-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="post-meta-item leancloud_visitors" data-flag-title="Linux-4-环境变量" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>485</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="环境变量永久生效"><a href="#环境变量永久生效" class="headerlink" title="环境变量永久生效"></a>环境变量永久生效</h1><ul>
+<li>要是想永远生效直接在/etc/profile里面</li>
+<li>安装了zsh之后修改变量是在~/.zshrc而不是在/~.bashrc里面</li>
+<li>ls  |wc -w # 查看文件夹下文件总数</li>
+</ul>
+<p>在虚拟机Ubuntu中设置完GO的环境变量之后，打开新的终端输入<code>go version</code>发现go不能用，重新设置环境变量后（<code>export PATH=$PATH:/usr/local/go/bin</code>）可用。这样的话就需要每次使用GO都要设置环境变量，伤不起.jpg</p>
+<p>原因：环境变量设置有关系。</p>
+<p><code>sudo vim ~/.bashrc</code></p>
+<p>把以下内容粘贴到文件最末尾</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export GOROOT=/usr/local/go #GOROOT是系统上安装Go软件包的位置。</span><br><span class="line">export GOBIN=$GOROOT/bin</span><br><span class="line">export PATH=$PATH:$GOBIN</span><br><span class="line">export GOPATH=/home/GOPATH #GOPATH是工作目录的位置。</span><br></pre></td></tr></table></figure>
+
+<p><code>source ~/.bashrc</code></p>
+<p>以上三步之后就可以了，有的可能还有修改~/.profile文件，未尝试，如果上面的行不通可以试一试。推荐自己的电脑设置环境变量在/etc/profile</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-1-%E5%86%85%E7%BD%AE%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/31/2PythonStudy/Py-1-%E5%86%85%E7%BD%AE%E5%BA%93/" class="post-title-link" itemprop="url">Py-1-内置库</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-02 19:50:02" itemprop="dateModified" datetime="2021-09-02T19:50:02+08:00">2021-09-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/08/31/2PythonStudy/Py-1-%E5%86%85%E7%BD%AE%E5%BA%93/" class="post-meta-item leancloud_visitors" data-flag-title="Py-1-内置库" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/08/31/2PythonStudy/Py-1-%E5%86%85%E7%BD%AE%E5%BA%93/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/31/2PythonStudy/Py-1-%E5%86%85%E7%BD%AE%E5%BA%93/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="python内置库"><a href="#python内置库" class="headerlink" title="python内置库"></a>python内置库</h1><h2 id="time"><a href="#time" class="headerlink" title="time"></a>time</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time </span><br><span class="line"><span class="built_in">print</span>(time.time())<span class="comment"># 1970纪元之后经过的浮点秒数</span></span><br><span class="line"><span class="built_in">print</span>(time.localtime(time.time()))</span><br></pre></td></tr></table></figure>
+
+<h2 id="os-sys"><a href="#os-sys" class="headerlink" title="os sys"></a>os sys</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os,sys</span><br><span class="line"><span class="built_in">print</span>(os.getcwd()) <span class="comment"># 当前文件夹的路径，不能加参数</span></span><br><span class="line"><span class="built_in">print</span>(sys.path[<span class="number">0</span>]) <span class="comment"># 当前文件夹的路径</span></span><br><span class="line"><span class="built_in">print</span>(os.path.abspath(<span class="string">&#x27;.&#x27;</span>))  <span class="comment"># 文件所在文件夹的路径</span></span><br><span class="line"><span class="built_in">print</span>(os.path.abspath(<span class="string">&#x27;..&#x27;</span>))  <span class="comment"># 当前文件所在文件夹的路径的上一级</span></span><br><span class="line"><span class="built_in">print</span>(os.path.abspath(<span class="string">&#x27;file/&#x27;</span>))</span><br><span class="line"><span class="comment">#以下是输出：</span></span><br><span class="line"><span class="comment"># /home/TorchStudy</span></span><br><span class="line"><span class="comment"># /home/TorchStudy</span></span><br><span class="line"><span class="comment"># /home/TorchStudy</span></span><br><span class="line"><span class="comment"># /home/TorchStudy/file</span></span><br><span class="line"><span class="comment"># print(os.path.basename(&#x27;__file__&#x27;))</span></span><br><span class="line"><span class="built_in">print</span>(os.path.realpath(__file__)) <span class="comment"># 当前文件的路径，包括.py文件；只有在.py文件才管用</span></span><br><span class="line"><span class="built_in">print</span>(os.path.realpath(__file__ + os.path.sep + <span class="string">&#x27;..&#x27;</span> + os.path.sep)) <span class="comment"># 当前文件所在的路径</span></span><br><span class="line">now_path = os.path.abspath(__file__ + <span class="string">&#x27;/..&#x27;</span>)  <span class="comment"># 同上</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="iter迭代器"><a href="#iter迭代器" class="headerlink" title="iter迭代器"></a>iter迭代器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">next(iter([1, 2, 3])) </span><br><span class="line">&gt;&gt;&gt; 1</span><br><span class="line">next(iter([1, 2, 3])) </span><br><span class="line">&gt;&gt;&gt; 2</span><br><span class="line">next(iter([1, 2, 3])) </span><br><span class="line">&gt;&gt;&gt; 3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="列表逆序"><a href="#列表逆序" class="headerlink" title="列表逆序"></a>列表逆序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">items= [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">items[::-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="h5py生成数据集的典型做法"><a href="#h5py生成数据集的典型做法" class="headerlink" title="h5py生成数据集的典型做法"></a>h5py生成数据集的典型做法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> h5py</span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line">hdf5_path = <span class="string">&#x27;/home/datasets/&#x27;</span>  <span class="comment"># 存储h5文件的路径</span></span><br><span class="line"><span class="comment"># 建立文件用来存数据</span></span><br><span class="line"><span class="keyword">if</span> os.path.exists(hdf5_path):</span><br><span class="line">    os.remove(hdf5_path)</span><br><span class="line">    f = h5py.File(hdf5_path, mode=<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    f = h5py.File(hdf5_path, mode=<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line"></span><br><span class="line">train_shape = (<span class="built_in">len</span>(train_addrs), <span class="number">128</span>, <span class="number">128</span>, <span class="number">3</span>)</span><br><span class="line">f.create_dataset(<span class="string">&quot;train_img&quot;</span>, train_shape, np.uint8)</span><br><span class="line"><span class="comment"># 两种赋值方法：</span></span><br><span class="line"><span class="comment">## 1. 按照位置赋值</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(train_addrs):</span><br><span class="line">               <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">				此处对数据进行处理</span></span><br><span class="line"><span class="string">				&quot;&quot;&quot;</span></span><br><span class="line">               <span class="comment"># 文件f的train_img对象的第i个元素是data</span></span><br><span class="line">               <span class="comment"># data可以是数字，可以是字符串，可以是多维矩阵</span></span><br><span class="line">               f[<span class="string">&quot;train_data&quot;</span>][i, ...] = data</span><br><span class="line"><span class="comment">## 2. 一次性赋值</span></span><br><span class="line">f[<span class="string">&quot;test_labels&quot;</span>][...] = test_labels</span><br><span class="line">               </span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h1 id="移动文件夹"><a href="#移动文件夹" class="headerlink" title="移动文件夹"></a>移动文件夹</h1><p>批量更改不同文件夹里同名文件夹名字并移动到一起</p>
+<p><strong>适合情况：</strong></p>
+<ul>
+<li>大的文件夹下有许多个不同文件的不同名字较小文件夹</li>
+<li>部分较小文件夹有同名文件夹<ul>
+<li>例如Windows下有如下形式目录结构<ul>
+<li>d:\data\A\output</li>
+<li>d:\data\B\output</li>
+<li>d:\data\C\output</li>
+<li>d:\data\D\output</li>
+<li>d:\data\E\</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>本程序能够将所有的output文件夹复制到<code>d:\\all_output</code>文件夹下，且分为$A-ouput, B-output$…</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os,sys</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">copy_folder</span>(<span class="params">rootpath, dstpath</span>):</span></span><br><span class="line">    <span class="comment"># 读取文件夹目录，返回指定的文件夹包含的文件或文件夹的名字的列表</span></span><br><span class="line">    dirs = os.listdir(rootpath)</span><br><span class="line">    <span class="comment"># 将读取的文件夹名字转成数组形式</span></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">dir</span> <span class="keyword">in</span> dirs:</span><br><span class="line">        <span class="comment"># print(dir)</span></span><br><span class="line">        <span class="comment"># 移动符合条件的文件夹并重命名</span></span><br><span class="line">        <span class="keyword">if</span> os.path.exists(rootpath + os.path.sep + <span class="built_in">dir</span> + os.path.sep + <span class="string">&#x27;output&#x27;</span>):</span><br><span class="line">            shutil.copytree(rootpath + os.path.sep + <span class="built_in">dir</span> + os.path.sep + <span class="string">&#x27;output&#x27;</span>, dstpath + os.path.sep + <span class="string">&#x27;all&#x27;</span> + os.path.sep + <span class="built_in">dir</span>+<span class="string">&#x27;-output&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    rootpath = <span class="string">&#x27;D:\\data&#x27;</span></span><br><span class="line">    dstpath = <span class="string">&#x27;D:\\all_output&#x27;</span></span><br><span class="line">    copy_folder(rootpath, dstpath)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Finish!!&quot;</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-2-Jupyter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/31/2PythonStudy/Py-2-Jupyter/" class="post-title-link" itemprop="url">Py-2-Jupyter</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-02 11:13:47" itemprop="dateModified" datetime="2021-09-02T11:13:47+08:00">2021-09-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/08/31/2PythonStudy/Py-2-Jupyter/" class="post-meta-item leancloud_visitors" data-flag-title="Py-2-Jupyter" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/08/31/2PythonStudy/Py-2-Jupyter/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/31/2PythonStudy/Py-2-Jupyter/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="jupyter篇"><a href="#jupyter篇" class="headerlink" title="jupyter篇"></a>jupyter篇</h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
+<li>jupyter notebook 移除虚拟环境<code>jupyter kernelspec remove XXX</code></li>
+<li>pip3 install –user  jupyter -i <a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a> –trusted-host pypi.douban.com</li>
+<li>nbconvert<ul>
+<li>命令行运行：<ul>
+<li>ipython nbconvert –to notebook –execute plot.ipynb –output output.ipynb # 输出运行结果到output.ipynb/html</li>
+<li>–to python/pdf/html/notebook # 转换成对应的文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>nohup command &gt; output.log 2&gt;&amp;1 &amp;<ul>
+<li>tail -f filename # 实时查看输出</li>
+<li>jobs查看nohup进程</li>
+</ul>
+</li>
+</ul>
+<h2 id="Jupyter显示完整数组"><a href="#Jupyter显示完整数组" class="headerlink" title="Jupyter显示完整数组"></a>Jupyter显示完整数组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.set_printoptions(threshold=np.inf)</span><br></pre></td></tr></table></figure>
+
+<h1 id="WSL下jupyter-notebook安装、访问"><a href="#WSL下jupyter-notebook安装、访问" class="headerlink" title="WSL下jupyter notebook安装、访问"></a>WSL下jupyter notebook安装、访问</h1><h2 id="文档适用"><a href="#文档适用" class="headerlink" title="文档适用"></a>文档适用</h2><ul>
+<li>Windows10环境已安装WSL2下的Ubuntu20.04</li>
+<li>WSL2<ul>
+<li>Ubuntu20.04（没桌面的那种）</li>
+<li>python3.8.5</li>
+<li>pip 20.0.2</li>
+</ul>
+</li>
+</ul>
+<h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><p><strong>以下为安装步骤：</strong></p>
+<ol>
+<li><p>pip install jupyter notebook</p>
+</li>
+<li><p>jupyter notebook –generate-config</p>
+<ol>
+<li>这一步会生成一个jupyternotebook的配置文件文件位置在(如果是root用户登录)：’/root/.jupyter/jupyter_notebook_config.py’</li>
+</ol>
+</li>
+<li><p>jupyter notebook password # 这里会要求你输入并确认密码，回车</p>
+<ol>
+<li>[NotebookPasswordApp] Wrote hashed password to root/.jupyter/jupyter_notebook_config.json</li>
+<li>vim /root/.jupyter\jupyter_notebook_config.json<ol>
+<li>复制里面单引号的乱码，那个就是加密后的密码</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>设置你windows电脑的浏览器能打开jupyternotebook</p>
+<ol>
+<li>我这里安装的是EDGE DEV版本的浏览器，Windows中路径为C:\Program Files (x86)\Microsoft\Edge Dev\Application\msedge.exe</li>
+<li>那么在WSL2的Ubuntu里面，这个路径就是：/mnt/c/Program\ Files\ (x86)/Microsoft/Edge\ Dev/Application/msedge.exe，可以在Ubuntu里面不断TAB补全路径试一下，其中路径中的空格和括号（）在输入之前都要打一个反斜杠\，才能行得通</li>
+<li>创建软连接：ln -sf /mnt/c/Program\ Files\ (x86)/Microsoft/Edge\ Dev/Application/msedge.exe /usr/bin/msedge</li>
+<li>上面这三个小的三步完成之后，你再Ubuntu终端里直接输入msedge能直接打开你的Windows的EDGE DEV浏览器</li>
+</ol>
+</li>
+<li><p>vim /root/.jupyter/jupyter_notebook_config.py # 打开这个文件搜索文件的内容按如下步骤修改，VIM里面命令模式（:/XXX）是搜索，比如我想搜字符串2021，那我就可以转到命令模式（就是有冒号的那个），然后输入/2021，再Enter，n是下一个，N是上一个</p>
+<ol>
+<li>c.NotebookApp.ip = ‘*’</li>
+<li>c.NotebookApp.allow_remote_access = True # 允许远程访问</li>
+<li>c.NotebookApp.allow_root = True # 允许root用户登录</li>
+<li>c.NotebookApp.notebook_dir = ‘/root/Projects’ # 里面的文件夹可以自定义为自己想要的项目文件夹</li>
+<li>c.NotebookApp.use_redirect_file = False</li>
+<li>c.NotebookApp.password = ‘此处填写3-2-1步骤生成的password’</li>
+<li>把Windows的EDGE DEV作为Ubuntu的默认浏览器<ol>
+<li>import webbrowser</li>
+<li>webbrowser.register(‘msedge’,None,webbrowser.GenericBrowser(‘/usr/bin/msedge’))</li>
+<li>c.NotebookApp.browser=’msedge’<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206135856519.png" alt="image-20210206135856519" style="zoom: 33%;"></li>
+</ol>
+</li>
+<li>换命令模式 wq!退出</li>
+</ol>
+</li>
+<li><p>输入jupyter notebook 此时你的EDGE浏览器会访问localhost:8888/tree，这里我配置的时候显示</p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206140917586.png" alt="image-20210206140917586" style="zoom:33%;"></li>
+</ol>
+<p><strong>这里我也不知道为啥，有知道的欢迎告知。</strong></p>
+<p>我的解决办法就是在ubuntu终端里面输入ifconfig查看当前WSL的ip地址，比如我的是</p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206141119912.png" alt="image-20210206141119912" style="zoom:33%;">
+
+<p>那么就把localhost换成IP地址172.27.118.134就行了，如下图就可以访问了。</p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206141244301.png" alt="image-20210206141244301" style="zoom:50%;">
+
+<h2 id="多虚拟环境配置"><a href="#多虚拟环境配置" class="headerlink" title="多虚拟环境配置"></a>多虚拟环境配置</h2><p>这里不推荐安装virtualenvwrapper，降低学习成本，而且安装了jupyter notebook之后也不需要频繁激活虚拟环境。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv </span><br><span class="line"><span class="comment"># 在/root（这里笔者以root用户登录的）文件夹下新建一个Virtualevs的文件夹用来存放虚拟环境</span></span><br><span class="line">mkdir /root/Virtualenvs</span><br><span class="line">cd /root/Virtualenvs</span><br><span class="line"><span class="comment"># 建立虚拟环境名字为‘tensorflow’</span></span><br><span class="line">virtualenv -p /usr/<span class="built_in">bin</span>/python3<span class="number">.8</span> tensorflow</span><br><span class="line"><span class="comment"># 激活虚拟环境配置jupyter notebook</span></span><br><span class="line">source /root/Virtualenvs/tensorflow/<span class="built_in">bin</span>/avtivate</span><br><span class="line"><span class="comment"># 这里终端应该是类似（tensorflow）...# 这种的形式，就说明进入到了虚拟环境，可以pip list查看一下安装的包，应该是 之后setuptools什么的</span></span><br><span class="line">ModuleNotFoundError: No module named <span class="string">&#x27;jupyter_nbextensions_configurator&#x27;</span></span><br><span class="line">python -m ipykernel install --name tensorflow --display-name tensorflow</span><br><span class="line"><span class="comment"># 再打开jupyter notebook之后就可以在new那里看到新建的虚拟环境了</span></span><br><span class="line">jupyter notebook</span><br><span class="line"><span class="comment"># 而且这样之后即使deactivate虚拟环境之后，在基础的那个环境里面打开jupyter notebook之后也可以选择虚拟环境</span></span><br></pre></td></tr></table></figure>
+
+<p>扩展安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter_contrib_nbextensions -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/ </span><br><span class="line">jupyter contrib nbextension install  --user</span><br><span class="line">pip install jupyter_nbextensions_configurator -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/</span><br><span class="line">jupyter nbextensions_configurator <span class="built_in">enable</span> --user</span><br><span class="line"><span class="comment"># 这之后就可以看到Nbextension，复选框选择哪个就是激活哪个</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210206144358079.png" alt="image-20210206144358079" style="zoom: 25%;">
+
+<h1 id="浪潮jupyter访问："><a href="#浪潮jupyter访问：" class="headerlink" title="浪潮jupyter访问："></a>浪潮jupyter访问：</h1><h2 id="新建开发环境"><a href="#新建开发环境" class="headerlink" title="新建开发环境"></a>新建开发环境</h2><p>使用tmux命令启动一个新的会话运行<code>jupyter lab</code></p>
+<p>依次输入如下命令：</p>
+<p><img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730143240613.png" alt="image-20210730143240613"></p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730143309274.png" alt="image-20210730143309274" style="zoom:50%;">
+
+<p>记住jupyter的端口号：8888</p>
+<p>tmux的返回原来的终端：先按下Ctrl+B 再按下D，其他命令自行网络搜索。</p>
+<p>首先在本机的浏览器输入开发环境8888端口对应的101.7.186.128的端口（也即浏览器打开101.7.186.128:57663/），查看8888端口对应的浪潮主机端口方式见下图：</p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730144015314.png" alt="image-20210730144015314" style="zoom:33%;">
+
+<p>能打开则代表可以连接上。（默认密码是123，更改方式可以在开发环境的shell里面输入，<code>jupyter server password</code>进行更改）</p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730144440658.png" alt="image-20210730144440658" style="zoom:33%;">
+
+<p>如果打不开的话，转第二节：</p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730144233395.png" alt="image-20210730144233395" style="zoom:50%;">
+
+<h2 id="本地cmd操作"><a href="#本地cmd操作" class="headerlink" title="本地cmd操作"></a>本地cmd操作</h2><p>本机的命令行界面输入：</p>
+<p><code>ssh -p 42239  -N -f -L localhost:8889:localhost:8888 root@101.7.186.128</code></p>
+<p>其中：42239为开发环境的ssh端口，查看方法看下图。</p>
+<p>回车之后会让输入密码，如果下图显示的密码不对，在开发环境的终端里面输入<code>passwd</code>，改个密码再输入。</p>
+<p><img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730142918765.png" alt="image-20210730142918765"></p>
+<p>回车之后不显示密码错误，代表已经建立连接了。下面的这个终端不要退出，需要保持连接。</p>
+<p><img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730143822009.png" alt="image-20210730143822009"></p>
+<p>此时，在本机浏览器输入<a target="_blank" rel="noopener" href="http://localhost:8889/">http://localhost:8889/</a></p>
+<img src="/2021/08/31/2PythonStudy/Py-2-Jupyter/image-20210730144312561.png" alt="image-20210730144312561" style="zoom:33%;">
+
+
+
+<h1 id="Jupyter-Lab"><a href="#Jupyter-Lab" class="headerlink" title="Jupyter Lab"></a>Jupyter Lab</h1><h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dnf module list nodejs</span><br><span class="line">dnf module reset nodejs  # 如果不能安装的话</span><br><span class="line">dnf module install nodejs:12</span><br></pre></td></tr></table></figure>
+
+<p> <code>ssh -p 22651 -N -f -L localhost:8888:localhost:8890 root@219.150.218.20</code></p>
+<h2 id="Jupyter-Lab插件推荐"><a href="#Jupyter-Lab插件推荐" class="headerlink" title="Jupyter Lab插件推荐"></a>Jupyter Lab插件推荐</h2><p>插件安装<code>jupyter labextension install @telamonian/theme-darcula</code></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jtpio/jupyterlab-python-file">jupyterlab-python-file</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/krassowski/jupyterlab-lsp">@krassowski/jupyterlab-lsp</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/epi2me-labs/jupyterlab-code-cell-collapser">@epi2melabs/jupyterlab-code-cell-collapser</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/telamonian/theme-darcula">@telamonian/theme-darcula</a></p>
+<p>@krassowski/jupyterlab_go_to_definition</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/johnnybarrels/jupyterlab_onedarkpro">jupyterlab_onedarkpro</a></p>
+<h2 id="插件快捷键"><a href="#插件快捷键" class="headerlink" title="插件快捷键"></a>插件快捷键</h2><h3 id="krassowski-jupyterlab-go-to-definition"><a href="#krassowski-jupyterlab-go-to-definition" class="headerlink" title="@krassowski/jupyterlab_go_to_definition"></a>@krassowski/jupyterlab_go_to_definition</h3><ul>
+<li>查看变量定义<ul>
+<li>Alt + 点击</li>
+<li>Ctrl + Alt + B</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/2PythonStudy/Py-3-%E5%A4%9A%E8%BF%9B%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1250,601 +1920,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">Linux-2-Centos命令行远程显示图片</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-02 11:19:33" itemprop="dateModified" datetime="2021-09-02T11:19:33+08:00">2021-09-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/" class="post-meta-item leancloud_visitors" data-flag-title="Linux-2-Centos命令行远程显示图片" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>能够在最小化安装的Centos8显示matplotlib图片</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">centos8服务端安装Xterm终端模拟器</span></span><br><span class="line">yum install xterm</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在客户端Xstart建立连接，在命令那一块输入</span></span><br><span class="line">/usr/bin/xterm -ls -display $DISPLAY</span><br><span class="line">yum install PyQt5</span><br><span class="line">python test.py # test.py见下文</span><br></pre></td></tr></table></figure>
-
-<img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210305111141873.png" alt="image-20210305111141873" style="zoom:33%;">
-
-<p>测试程序test.py：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line">matplotlib.use(<span class="string">&#x27;Qt5Agg&#x27;</span>) <span class="comment"># 必需</span></span><br><span class="line">x = np.arange(<span class="number">1</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br><span class="line">y = np.arange(<span class="number">1</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br><span class="line">plt.plot(x, y,<span class="string">&#x27;bo&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<p>若报错：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qt.qpa.plugin: Could not load the Qt platform plugin &quot;xcb&quot; in &quot;&quot; even though it was found. This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span><br></pre></td></tr></table></figure>
-
-<p>则在终端输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export QT_DEBUG_PLUGINS=1</span><br><span class="line">python test.py</span><br></pre></td></tr></table></figure>
-
-<p>接下来会显示详细报错</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(libxcb-icccm.so.4: cannot open shared object file: No such file or directory)&quot;</span><br><span class="line">qt.qpa.plugin: Could not load the Qt platform plugin &quot;xcb&quot; in &quot;&quot; even though it was found.</span><br><span class="line">This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span><br><span class="line"></span><br><span class="line">Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, xcb.</span><br><span class="line">Aborted (core dumped)</span><br></pre></td></tr></table></figure>
-
-<p>网上说可以缺什么安什么，事实不太可行，比如这个<code>libxcb-icccm.so.4</code>便无法安装。</p>
-<p><strong>解决办法</strong> </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-wm-0.4.1-12.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-image-0.4.0-9.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-keysyms-0.4.0-7.el8.x86_64.rpm</span><br><span class="line">sudo dnf install http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/xcb-util-renderutil-0.3.9-10.el8.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-<p>参考链接：</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://forum.qt.io/topic/122538/centos-8-qt-dependancy-install-issue/3">https://forum.qt.io/topic/122538/centos-8-qt-dependancy-install-issue/3</a></p>
-</blockquote>
-<p>此时：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py</span><br></pre></td></tr></table></figure>
-
-<p>可以正常运行。</p>
-<p><img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210305112507456.png" alt="image-20210305112507456"></p>
-<h1 id="VSCODE"><a href="#VSCODE" class="headerlink" title="VSCODE"></a>VSCODE</h1><p><strong>Windows端：</strong></p>
-<img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210309174944612.png" alt="image-20210309174944612" style="zoom:50%;">
-
-<p><img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210309175024566.png" alt="image-20210309175024566"></p>
-<p><strong>Centos端：</strong></p>
-<ol>
-<li><code>vim /etc/ssh/sshd_config</code></li>
-</ol>
-<p><img src="/2021/08/31/3Linux/L-2-Centos%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9C%E7%A8%8B%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/image-20210309175143925.png" alt="image-20210309175143925"></p>
-<ol start="2">
-<li>export DISPLAY=localhost:10.0</li>
-</ol>
-<h1 id="MobaXterm"><a href="#MobaXterm" class="headerlink" title="MobaXterm"></a>MobaXterm</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum install xorg-x11-xauth xorg-x11-fonts-* xorg-x11-font-utils xorg-x11-fonts-Type1</span><br><span class="line"></span><br><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line">    X11Forwarding yes</span><br><span class="line">    <span class="comment">#X11DisplayOffset 10</span></span><br><span class="line">    X11UseLocalhost no</span><br><span class="line"><span class="comment"># 手动启动SSH</span></span><br><span class="line">mkdir -p /var/run/sshd</span><br><span class="line">/usr/sbin/sshd -D &amp;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/3Linux/L-1-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/31/3Linux/L-1-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Linux-1-基本命令</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-01 21:04:32" itemprop="dateModified" datetime="2021-09-01T21:04:32+08:00">2021-09-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/08/31/3Linux/L-1-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="post-meta-item leancloud_visitors" data-flag-title="Linux-1-基本命令" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/08/31/3Linux/L-1-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/31/3Linux/L-1-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h2 id="慎用ln-sf"><a href="#慎用ln-sf" class="headerlink" title="慎用ln -sf"></a>慎用ln -sf</h2><ul>
-<li>程序别名是alias</li>
-<li>ln -s 现存的 你要的<ul>
-<li>ln -s /usr/bin/python3.6 /usr/bin/python</li>
-</ul>
-</li>
-</ul>
-<h2 id="压缩文件：结果导向"><a href="#压缩文件：结果导向" class="headerlink" title="压缩文件：结果导向"></a>压缩文件：结果导向</h2><ul>
-<li><p>tar -zcvf folder.tar.gz folder</p>
-</li>
-<li><p>解压文件：</p>
-<ul>
-<li>tar -zxvf folder.tar.gz</li>
-</ul>
-</li>
-<li></li>
-</ul>
-<h2 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h2><ul>
-<li>nohup command &gt; output.log 2&gt;&amp;1 &amp;<ul>
-<li>tail -f filename # 实时查看</li>
-<li>jobs命令查看运行中的<ul>
-<li>jobs -l </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="查看文件大小：-ls-lht"><a href="#查看文件大小：-ls-lht" class="headerlink" title="查看文件大小： ls -lht"></a>查看文件大小： ls -lht</h2><h2 id="查看文件夹下的文件个数"><a href="#查看文件夹下的文件个数" class="headerlink" title="查看文件夹下的文件个数"></a>查看文件夹下的文件个数</h2><p>ls -l |grep “^-“|wc -l # 不包括子文件夹</p>
-<p>ls -lR |grep “^-“|wc -l # 包括子文件夹</p>
-<h2 id="查看文件夹大小"><a href="#查看文件夹大小" class="headerlink" title="查看文件夹大小"></a>查看文件夹大小</h2><p> du -h –max-depth=1 xxx(文件夹路径)</p>
-<h2 id="批量结束进程"><a href="#批量结束进程" class="headerlink" title="批量结束进程"></a>批量结束进程</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux|grep python|grep -v grep|cut -c 9-15|xargs kill -15</span><br></pre></td></tr></table></figure>
-
-<p>管道符“|”用来隔开两个命令，管道符左边命令的输出会作为管道符右边命令的输入。下面说说用管道符联接起来的几个命令： </p>
-<p>“ps aux”是linux 里查看所有进程的命令。这时检索出的进程将作为下一条命令“grep python”的输入。 </p>
-<p>“grep python”的输出结果是，所有含有关键字“python”的进程，这是python程序</p>
-<p>“grep -v grep”是在列出的进程中去除含有关键字“grep”的进程。 </p>
-<p>“cut -c 9-15”是截取输入行的第9个字符到第15个字符，而这正好是进程号PID。 </p>
-<p>“xargs kill -15”中的xargs命令是用来把前面命令的输出结果（PID）作为“kill -15”命令的参数，并执行该令。 </p>
-<p>“kill -15”会正常退出指定进程，换成 kill -9强行杀掉</p>
-<h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dnf module list nodejs</span><br><span class="line">dnf module reset nodejs  # 如果不能安装的d</span><br><span class="line">dnf module install nodejs:12</span><br></pre></td></tr></table></figure>
-
-<h2 id="sftp传输文件"><a href="#sftp传输文件" class="headerlink" title="sftp传输文件"></a>sftp传输文件</h2><ul>
-<li>连接 sftp -P 47633 <a href="mailto:&#114;&#111;&#x6f;&#116;&#64;&#49;&#x30;&#49;&#x2e;&#55;&#46;&#x31;&#56;&#x36;&#x2e;&#x31;&#50;&#x38;">&#114;&#111;&#x6f;&#116;&#64;&#49;&#x30;&#49;&#x2e;&#55;&#46;&#x31;&#56;&#x36;&#x2e;&#x31;&#50;&#x38;</a></li>
-<li>get /home/www/download.txt E:/test/</li>
-<li>put E:/test/upload.txt /home/www/ </li>
-<li>pwd查看远程当前目录；lpwd查看主机当前目录</li>
-<li>cd改变远程目录；lcd改变主机目录</li>
-<li>exit或bye或quit退出</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/3Linux/L-3-Python2%E5%8D%87%E7%BA%A73%E3%80%81CentOS-Vim-Golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/31/3Linux/L-3-Python2%E5%8D%87%E7%BA%A73%E3%80%81CentOS-Vim-Golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">Linux-3-Python2升级3、CentOS-Vim-Golang环境配置.md</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-01 21:05:26" itemprop="dateModified" datetime="2021-09-01T21:05:26+08:00">2021-09-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/08/31/3Linux/L-3-Python2%E5%8D%87%E7%BA%A73%E3%80%81CentOS-Vim-Golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="post-meta-item leancloud_visitors" data-flag-title="Linux-3-Python2升级3、CentOS-Vim-Golang环境配置.md" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/08/31/3Linux/L-3-Python2%E5%8D%87%E7%BA%A73%E3%80%81CentOS-Vim-Golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/31/3Linux/L-3-Python2%E5%8D%87%E7%BA%A73%E3%80%81CentOS-Vim-Golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Python升级"><a href="#Python升级" class="headerlink" title="Python升级"></a>Python升级</h1><h2 id="下载并编译"><a href="#下载并编译" class="headerlink" title="下载并编译"></a>下载并编译</h2><pre><code>mkdir /usr/local/Python3 &amp;&amp; cd /usr/local/Python3
-wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
-tar xvf Python-3.7.2.tar.xz 
-cd Python-3.7.2
-./configure &amp;&amp; make &amp;&amp; make install 
-</code></pre>
-<h2 id="创建软链接"><a href="#创建软链接" class="headerlink" title="创建软链接"></a>创建软链接</h2><p>执行完2.1之后，终端输入python发现仍然是2.7.6的版本，只有输入python3才显示python3.7.2版本。这是因为系统默认输入python就是指向2。<br>解决办法：</p>
-<pre><code>whereis python # 此处/usr/bin/python就是输入python链接向的python版本
-mv /usr/bin/python /usr/bin/python.bak # 备份原先的
-ln -s /usr/local/Python3 /usr/bin/python # 创建软链接
-</code></pre>
-<p>至此可达成输入python显示python3.7.2版本</p>
-<h2 id="修改yum配置"><a href="#修改yum配置" class="headerlink" title="修改yum配置"></a><strong>修改yum配置</strong></h2><pre><code>vim /usr/bin/yum
-# /usr/bin/python2.7 #第一行改成这个，保证yum可用
-vim /usr/libexec/urlgrabber-ext-down 
-# /usr/bin/python2.7 # 该第一行，保证yum能用
-</code></pre>
-<h2 id="安装pip3"><a href="#安装pip3" class="headerlink" title="安装pip3"></a><strong>安装pip3</strong></h2><pre><code>yum install pip3
-# 此时pip2 pip3同时存在。创建链接的方法与python相同
-# 可以先用whereis pip查看路径
-</code></pre>
-<h2 id="python升级过程报错总结"><a href="#python升级过程报错总结" class="headerlink" title="python升级过程报错总结"></a>python升级过程报错总结</h2><p><strong>下载编译过程：</strong></p>
-<ul>
-<li>ModuleNotFoundError: No module named ‘_ctypes’<ul>
-<li>执行<code>yum install libffi-devel</code>再执行<code>./configure &amp;&amp; make &amp;&amp; make install</code></li>
-</ul>
-</li>
-<li>zipimport.ZipImportError: can‘t decompress data; zlib not availabl<ul>
-<li>执行<code>yum install zlib*</code>再执行<code>./configure &amp;&amp; make &amp;&amp; make install</code></li>
-</ul>
-</li>
-</ul>
-<h1 id="Vim升级"><a href="#Vim升级" class="headerlink" title="Vim升级"></a>Vim升级</h1><blockquote>
-<p>参考这几个沙里淘金的有用链接：</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37903963/article/details/99683590">https://blog.csdn.net/qq_37903963/article/details/99683590</a></p>
-</blockquote>
-</blockquote>
-<ol>
-<li>主要按照上边的这个链接需要修改其第三步编译那句，最好改成（安装完python3再升级vim）：</li>
-</ol>
-<p><code>./configure --with-features=huge --enable-multibyte --enable-rubyinterp=yes --enable-python3interp=yes --with-python3-config-dir=$(python3-config --configdir) --enable-perlinterp=yes --enable-luainterp=yes --enable-gui=gtk2 --enable-cscope --prefix=/usr/local/bin </code></p>
-<ol start="2">
-<li><p>极度表扬这个链接里面的<br><code>alias vim=&#39;usr/local/bin/vim&#39;</code><br>本人在升级的时候只能当前用户使用vim8.2，但是root用户输入<code>vim --version</code>仍然是vim7，在尝试过修改 </p>
-<ul>
-<li><strong>全局配置</strong> /etc/profile</li>
-<li><strong>root用户的配置文件</strong> ~/.bashrc和~/.bash_profile</li>
-</ul>
-<p>中PATH的环境变量之后，仍然不能用root使用vim。<br>其<strong>解决办法</strong>，就是在root下，卸载vim，并且<code>alias vim=&#39;usr/local/bin/vim&#39;</code>（设置命令的别名），路径为vim的编译安装路径，可以用<code>whereis vim</code>查看。</p>
-</li>
-</ol>
-<blockquote>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/JoiT/p/build_from_source_for_linux_vim.html">https://www.cnblogs.com/JoiT/p/build_from_source_for_linux_vim.html</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/hunter___/article/details/105712003">https://blog.csdn.net/hunter___/article/details/105712003</a></p>
-</blockquote>
-</blockquote>
-<h2 id="Vim配置基础知识"><a href="#Vim配置基础知识" class="headerlink" title="Vim配置基础知识"></a>Vim配置基础知识</h2><p>vim的配置文件有两处：<code>/etc/vimrc</code>及每个用户下的<code>~/.vimrc</code>（root下有一个，个人用户（如ABC也有一个，改变<code>~/.vimrc</code>不对另一个有改变）），</p>
-<h2 id="https-github-com-amix-vimrc"><a href="#https-github-com-amix-vimrc" class="headerlink" title="https://github.com/amix/vimrc"></a><a target="_blank" rel="noopener" href="https://github.com/amix/vimrc">https://github.com/amix/vimrc</a></h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">Linux-4-环境变量</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-31 16:00:15" itemprop="dateCreated datePublished" datetime="2021-08-31T16:00:15+08:00">2021-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-01 21:05:50" itemprop="dateModified" datetime="2021-09-01T21:05:50+08:00">2021-09-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="post-meta-item leancloud_visitors" data-flag-title="Linux-4-环境变量" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/31/3Linux/L-4-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>485</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="环境变量永久生效"><a href="#环境变量永久生效" class="headerlink" title="环境变量永久生效"></a>环境变量永久生效</h1><ul>
-<li>要是想永远生效直接在/etc/profile里面</li>
-<li>安装了zsh之后修改变量是在~/.zshrc而不是在/~.bashrc里面</li>
-<li>ls  |wc -w # 查看文件夹下文件总数</li>
-</ul>
-<p>在虚拟机Ubuntu中设置完GO的环境变量之后，打开新的终端输入<code>go version</code>发现go不能用，重新设置环境变量后（<code>export PATH=$PATH:/usr/local/go/bin</code>）可用。这样的话就需要每次使用GO都要设置环境变量，伤不起.jpg</p>
-<p>原因：环境变量设置有关系。</p>
-<p><code>sudo vim ~/.bashrc</code></p>
-<p>把以下内容粘贴到文件最末尾</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export GOROOT=/usr/local/go #GOROOT是系统上安装Go软件包的位置。</span><br><span class="line">export GOBIN=$GOROOT/bin</span><br><span class="line">export PATH=$PATH:$GOBIN</span><br><span class="line">export GOPATH=/home/GOPATH #GOPATH是工作目录的位置。</span><br></pre></td></tr></table></figure>
-
-<p><code>source ~/.bashrc</code></p>
-<p>以上三步之后就可以了，有的可能还有修改~/.profile文件，未尝试，如果上面的行不通可以试一试。推荐自己的电脑设置环境变量在/etc/profile</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1966,13 +2041,13 @@ vim /usr/libexec/urlgrabber-ext-down
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">87k</span>
+    <span title="站点总字数">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:20</span>
+    <span title="站点阅读时长">1:33</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
