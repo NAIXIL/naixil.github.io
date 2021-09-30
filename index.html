@@ -1780,153 +1780,6 @@ public static void fun2() &#123;
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/02/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Li Xian">
-      <meta itemprop="description" content="与遗忘作斗争">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiXian's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/02/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Docker-1-Docker常用命令</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-09-02 12:08:43 / 修改时间：11:04:06" itemprop="dateCreated datePublished" datetime="2021-09-02T12:08:43+08:00">2021-09-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/09/02/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-meta-item leancloud_visitors" data-flag-title="Docker-1-Docker常用命令" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/09/02/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/02/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h1><h2 id="查看当前存在的镜像"><a href="#查看当前存在的镜像" class="headerlink" title="查看当前存在的镜像"></a>查看当前存在的镜像</h2><p> <code>docker images -a</code>或者<code>docker image ls -a</code></p>
-<h2 id="查看当前运行的容器"><a href="#查看当前运行的容器" class="headerlink" title="查看当前运行的容器"></a>查看当前运行的容器</h2><p><code>docker container ls -a</code>等价于<code>docker ps -a</code></p>
-<h2 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h2><p><code>docker pull centos:latest</code></p>
-<h2 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REPOSITORY          TAG       IMAGE ID       CREATED        SIZE</span><br><span class="line">docker101tutorial   latest    c0fbef3fb08f   6 hours ago    28MB</span><br><span class="line">ubuntu              18.04     7d0d8fa37224   10 days ago    63.1MB</span><br></pre></td></tr></table></figure>
-
-<h3 id="以ID删除：docker-image-rm-IMAGE-ID"><a href="#以ID删除：docker-image-rm-IMAGE-ID" class="headerlink" title="以ID删除：docker image rm IMAGE ID"></a>以ID删除：<code>docker image rm IMAGE ID</code></h3><p><code>docker image rm  7d0</code> </p>
-<h3 id="以镜像名删除：docker-image-rm-REPOSITORY-TAG"><a href="#以镜像名删除：docker-image-rm-REPOSITORY-TAG" class="headerlink" title="以镜像名删除：docker image rm REPOSITORY:TAG  "></a>以镜像名删除：<code>docker image rm REPOSITORY:TAG  </code></h3><p><code>docker image rm ubuntu:18.04</code></p>
-<p>终端返回：</p>
-<p><code>Deleted: sha256:7d0d8fa372249c6a1de9868ad62af9a14aaae2a2b17da867d8fad099a637fd0f Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652</code></p>
-<h3 id="以摘要删除docker-image-rm-DIGEST"><a href="#以摘要删除docker-image-rm-DIGEST" class="headerlink" title="以摘要删除docker image rm DIGEST"></a>以摘要删除<code>docker image rm DIGEST</code></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker image ls --digests</span><br><span class="line">docker image sha256:139b3846cee2e63de9ced83cee7023a2d95763ee2573e5b0ab6dea9dfbd4db8f</span><br></pre></td></tr></table></figure>
-
-<p>终端返回:</p>
-<p><code>Untagged: ubuntu@sha256:139b3846cee2e63de9ced83cee7023a2d95763ee2573e5b0ab6dea9dfbd4db8f</code></p>
-<p>实质并未删除镜像 只是删除了摘要</p>
-<h3 id="批量删除"><a href="#批量删除" class="headerlink" title="批量删除"></a>批量删除</h3><p>删除所有ubuntu的镜像</p>
-<p><code>docker image rm $(docker image ls -q ubuntu)</code></p>
-<h1 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h1><h2 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h2><p><code>docker run -it --rm centos:latest bash</code></p>
-<h2 id="查看容器信息"><a href="#查看容器信息" class="headerlink" title="查看容器信息"></a>查看容器信息</h2><p><code>docker inspect 容器ID</code></p>
-<h2 id="连接到容器"><a href="#连接到容器" class="headerlink" title="连接到容器"></a>连接到容器</h2><p><code>docker attach 容器ID </code></p>
-<p><code>docker exec -it 容器ID /bin/bash</code></p>
-<h1 id="docker中运行MYSQL"><a href="#docker中运行MYSQL" class="headerlink" title="docker中运行MYSQL"></a>docker中运行MYSQL</h1><ol>
-<li>拉取容器：docker pull mysql:latest</li>
-<li>运行容器<ul>
-<li><code>docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest</code></li>
-<li><code>docker exec -it mysql bash</code></li>
-</ul>
-</li>
-<li>容器内登录mysql<ul>
-<li><code>mysql -uroot -p</code>$\rightarrow$输入密码123456即可</li>
-</ul>
-</li>
-<li>容器启停<ul>
-<li><code>docker ps -a</code> 获取容器ID和名字，查看状态、<ul>
-<li>如果是Exit<ul>
-<li><code>docker start ID/Name</code></li>
-<li><code>docker exec -it Name bash</code>进入容器</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>docker stop ID/Name</code></li>
-<li><code>docker restart ID/Name</code></li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/02/2Docker/Docker-2-Docker%E5%AE%89%E8%A3%85centos8%E5%B9%B6%E5%90%AF%E5%8A%A8SSH%E6%9C%8D%E5%8A%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2059,6 +1912,153 @@ public static void fun2() &#123;
 <ol>
 <li>在浏览器上，打开官网&gt;创建隧道&gt;节点选国内的（需要实名认证 花1￥）&gt;隧道类型选TCP&gt;端口填22（windows做远程桌面的时候需要写3389）&gt;确认创建</li>
 <li>在docker的CentOS8里面，参考sakurafrp的官网的软件下载那一栏安装软件，命令行输入<code>bash &lt;(curl -s https://getfrp.sh)</code>&gt;按提示即可，如果无法设置为系统服务的话不设置也不影响（一般docker容器都不能）</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://naixil.github.io/2021/09/02/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Li Xian">
+      <meta itemprop="description" content="与遗忘作斗争">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiXian's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/02/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Docker-1-Docker常用命令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-09-02 12:08:43 / 修改时间：11:04:06" itemprop="dateCreated datePublished" datetime="2021-09-02T12:08:43+08:00">2021-09-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/09/02/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-meta-item leancloud_visitors" data-flag-title="Docker-1-Docker常用命令" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/09/02/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/02/2Docker/Docker-1-Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h1><h2 id="查看当前存在的镜像"><a href="#查看当前存在的镜像" class="headerlink" title="查看当前存在的镜像"></a>查看当前存在的镜像</h2><p> <code>docker images -a</code>或者<code>docker image ls -a</code></p>
+<h2 id="查看当前运行的容器"><a href="#查看当前运行的容器" class="headerlink" title="查看当前运行的容器"></a>查看当前运行的容器</h2><p><code>docker container ls -a</code>等价于<code>docker ps -a</code></p>
+<h2 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h2><p><code>docker pull centos:latest</code></p>
+<h2 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REPOSITORY          TAG       IMAGE ID       CREATED        SIZE</span><br><span class="line">docker101tutorial   latest    c0fbef3fb08f   6 hours ago    28MB</span><br><span class="line">ubuntu              18.04     7d0d8fa37224   10 days ago    63.1MB</span><br></pre></td></tr></table></figure>
+
+<h3 id="以ID删除：docker-image-rm-IMAGE-ID"><a href="#以ID删除：docker-image-rm-IMAGE-ID" class="headerlink" title="以ID删除：docker image rm IMAGE ID"></a>以ID删除：<code>docker image rm IMAGE ID</code></h3><p><code>docker image rm  7d0</code> </p>
+<h3 id="以镜像名删除：docker-image-rm-REPOSITORY-TAG"><a href="#以镜像名删除：docker-image-rm-REPOSITORY-TAG" class="headerlink" title="以镜像名删除：docker image rm REPOSITORY:TAG  "></a>以镜像名删除：<code>docker image rm REPOSITORY:TAG  </code></h3><p><code>docker image rm ubuntu:18.04</code></p>
+<p>终端返回：</p>
+<p><code>Deleted: sha256:7d0d8fa372249c6a1de9868ad62af9a14aaae2a2b17da867d8fad099a637fd0f Deleted: sha256:8f8f0266f8349dd17fdca5a1c827a7c8b11d84903b1226b05c6fbdc7edd30652</code></p>
+<h3 id="以摘要删除docker-image-rm-DIGEST"><a href="#以摘要删除docker-image-rm-DIGEST" class="headerlink" title="以摘要删除docker image rm DIGEST"></a>以摘要删除<code>docker image rm DIGEST</code></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker image ls --digests</span><br><span class="line">docker image sha256:139b3846cee2e63de9ced83cee7023a2d95763ee2573e5b0ab6dea9dfbd4db8f</span><br></pre></td></tr></table></figure>
+
+<p>终端返回:</p>
+<p><code>Untagged: ubuntu@sha256:139b3846cee2e63de9ced83cee7023a2d95763ee2573e5b0ab6dea9dfbd4db8f</code></p>
+<p>实质并未删除镜像 只是删除了摘要</p>
+<h3 id="批量删除"><a href="#批量删除" class="headerlink" title="批量删除"></a>批量删除</h3><p>删除所有ubuntu的镜像</p>
+<p><code>docker image rm $(docker image ls -q ubuntu)</code></p>
+<h1 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h1><h2 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h2><p><code>docker run -it --rm centos:latest bash</code></p>
+<h2 id="查看容器信息"><a href="#查看容器信息" class="headerlink" title="查看容器信息"></a>查看容器信息</h2><p><code>docker inspect 容器ID</code></p>
+<h2 id="连接到容器"><a href="#连接到容器" class="headerlink" title="连接到容器"></a>连接到容器</h2><p><code>docker attach 容器ID </code></p>
+<p><code>docker exec -it 容器ID /bin/bash</code></p>
+<h1 id="docker中运行MYSQL"><a href="#docker中运行MYSQL" class="headerlink" title="docker中运行MYSQL"></a>docker中运行MYSQL</h1><ol>
+<li>拉取容器：docker pull mysql:latest</li>
+<li>运行容器<ul>
+<li><code>docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest</code></li>
+<li><code>docker exec -it mysql bash</code></li>
+</ul>
+</li>
+<li>容器内登录mysql<ul>
+<li><code>mysql -uroot -p</code>$\rightarrow$输入密码123456即可</li>
+</ul>
+</li>
+<li>容器启停<ul>
+<li><code>docker ps -a</code> 获取容器ID和名字，查看状态、<ul>
+<li>如果是Exit<ul>
+<li><code>docker start ID/Name</code></li>
+<li><code>docker exec -it Name bash</code>进入容器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>docker stop ID/Name</code></li>
+<li><code>docker restart ID/Name</code></li>
+</ul>
+</li>
 </ol>
 
       
